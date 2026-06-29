@@ -43,6 +43,7 @@ Google Trends RSS上位だけでは拾いにくいワールドカップなどの
 - 投稿ネタ化しやすい複合テーマ: `config/observe-queries.json`
 - ミーム・構文・動画フォーマット発見用クエリ: `config/discovery-queries.json`
 - 大型イベント・継続観測トピック: `config/major-topics.json`
+- ローカルSNS観測棚: `config/local-observation.json`
 
 ## 手動取得
 

@@ -9,6 +9,7 @@ const SNAPSHOT_DIR = path.join(DATA_DIR, "snapshots");
 const TRENDS_RSS_URL = "https://trends.google.co.jp/trending/rss?geo=JP";
 const GOOGLE_NEWS_SEARCH_URL = "https://news.google.com/rss/search";
 const MAX_WATCH_QUERIES = 80;
+const MAX_LOCAL_OBSERVATION_QUERIES = 72;
 const STANDALONE_WATCHLISTS = new Set(["sns_platform", "format", "seasonal", "local_leisure"]);
 const BROAD_DISPLAY_TERMS = new Set([
   "tiktok",
@@ -506,6 +507,103 @@ const fetchMajorTopicSignals = async (topics, globalExcludes, now) => {
   return results;
 };
 
+const tierPriority = (tier) => {
+  const priorities = { A: 100, B: 82, C: 64 };
+  return priorities[tier] || 70;
+};
+
+const localSearchUrlFor = (entry, globalExcludes) => {
+  const positiveContext = "(SNS OR TikTok OR Instagram OR X OR YouTube OR リール OR 話題 OR 人気 OR イベント OR グルメ OR 観光)";
+  const negativeContext = globalExcludes.map((word) => `-${word}`).join(" ");
+  const query = `${entry.query || entry.keyword} ${positiveContext} ${negativeContext}`.trim();
+  const params = new URLSearchParams({
+    q: query,
+    hl: "ja",
+    gl: "JP",
+    ceid: "JP:ja"
+  });
+  return `${GOOGLE_NEWS_SEARCH_URL}?${params.toString()}`;
+};
+
+const flattenLocalEntries = (sections) => {
+  const entries = [];
+  for (const section of sections) {
+    for (const entry of section.entries || []) {
+      entries.push({
+        ...entry,
+        sectionId: section.id,
+        sectionTitle: section.title,
+        sectionDescription: section.description,
+        sectionCap: section.cap || 6,
+        priority: tierPriority(entry.tier)
+      });
+    }
+  }
+  return entries
+    .sort((a, b) => b.priority - a.priority || String(a.keyword).localeCompare(String(b.keyword), "ja"))
+    .slice(0, MAX_LOCAL_OBSERVATION_QUERIES);
+};
+
+const fetchLocalObservationSignals = async (sections, globalExcludes, previousLatest, now, timeLabel, nowIso) => {
+  const sectionCounts = {};
+  const results = [];
+  const entries = flattenLocalEntries(sections);
+  const previousItems = previousLatest.localObservations || [];
+
+  for (const entry of entries) {
+    if ((sectionCounts[entry.sectionId] || 0) >= entry.sectionCap) continue;
+    const url = localSearchUrlFor(entry, globalExcludes);
+    try {
+      const xml = await fetchRss(url);
+      const rssItems = parseRssItems(xml)
+        .filter((item) => !includesAny(`${item.keyword} ${item.description} ${(item.newsTitles || []).join(" ")}`, globalExcludes))
+        .slice(0, 16);
+      if (!rssItems.length) continue;
+
+      const recentItems = rssItems.filter((item) => daysOld(item.pubDate, now) <= 10);
+      const freshness = recentItems.reduce((sum, item) => sum + Math.max(0, 10 - daysOld(item.pubDate, now)), 0);
+      const evidenceCount = recentItems.length || rssItems.length;
+      const id = idFor(`local:${entry.sectionId}:${entry.keyword}`);
+      const previousItem = previousItems.find((item) => item.id === id) || null;
+      const previousEvidenceCount = previousItem?.evidenceCount ?? null;
+      const evidenceChange = previousEvidenceCount == null ? null : evidenceCount - previousEvidenceCount;
+      const baseScore = entry.priority + Math.min(24, evidenceCount * 3) + Math.min(16, Math.round(freshness / 5));
+      const growthScore = previousEvidenceCount == null ? 0 : Math.max(-18, Math.min(28, evidenceChange * 7));
+      const score = Math.max(0, Math.min(100, Math.round(baseScore / 1.45 + growthScore)));
+      const previousScore = previousItem?.score ?? null;
+      const scoreChange = previousScore == null ? score : score - previousScore;
+
+      results.push({
+        id,
+        keyword: entry.keyword,
+        query: entry.query || entry.keyword,
+        localSection: entry.sectionId,
+        localSectionTitle: entry.sectionTitle,
+        localSectionDescription: entry.sectionDescription,
+        localTier: entry.tier || "B",
+        tags: entry.tags || [],
+        score,
+        previousScore,
+        scoreChange,
+        direction: directionFor(scoreChange, previousScore == null),
+        trendStatus: trendStatusFor({ signalType: "local_observation", previousEvidenceCount, evidenceChange }),
+        signalType: "local_observation",
+        evidenceCount,
+        previousEvidenceCount,
+        evidenceChange,
+        capturedAt: nowIso,
+        series: buildSeries(previousItem, timeLabel, score),
+        observeUrl: `https://news.google.com/search?q=${encodeURIComponent(entry.query || entry.keyword)}&hl=ja&gl=JP&ceid=JP%3Aja`
+      });
+      sectionCounts[entry.sectionId] = (sectionCounts[entry.sectionId] || 0) + 1;
+    } catch (error) {
+      console.warn(`Skipped local observation "${entry.keyword}": ${error.message}`);
+    }
+  }
+
+  return results.sort((a, b) => b.score - a.score || tierPriority(b.localTier) - tierPriority(a.localTier)).slice(0, 80);
+};
+
 const trendFromHistory = (history, keyword) => {
   const id = idFor(keyword);
   const matches = (history.items || []).filter((item) => item.id === id);
@@ -524,6 +622,13 @@ const trendStatusFor = ({ signalType, previousEvidenceCount, evidenceChange }) =
   if (signalType === "daily_trend") return "actual_trend";
   if (signalType === "topic_trend") return "actual_topic";
   if (signalType === "major_topic") return evidenceChange == null ? "major_topic" : evidenceChange > 0 ? "rising" : "major_topic";
+  if (signalType === "local_observation") {
+    if (previousEvidenceCount == null) return "candidate";
+    if (evidenceChange >= 2) return "rising";
+    if (evidenceChange > 0) return "warming";
+    if (evidenceChange < 0) return "cooling";
+    return "flat";
+  }
   if (previousEvidenceCount == null) return "candidate";
   if (evidenceChange >= 3) return "rising";
   if (evidenceChange > 0) return "warming";
@@ -588,6 +693,7 @@ const main = async () => {
   const configuredQueries = await readJson(path.join(CONFIG_DIR, "observe-queries.json"), []);
   const discoveryQueries = await readJson(path.join(CONFIG_DIR, "discovery-queries.json"), []);
   const majorTopics = await readJson(path.join(CONFIG_DIR, "major-topics.json"), []);
+  const localObservationSections = await readJson(path.join(CONFIG_DIR, "local-observation.json"), []);
   const globalExcludes = await readJson(path.join(CONFIG_DIR, "exclude.json"), []);
   const previousLatest = await readJson(path.join(DATA_DIR, "latest-trends.json"), { items: [] });
   const history = await readJson(path.join(DATA_DIR, "trend-history.json"), { items: [] });
@@ -597,6 +703,7 @@ const main = async () => {
   const discoverySignals = await fetchDiscoverySignals(discoveryQueries, watchlists, globalExcludes, now);
   const configuredSignals = await fetchConfiguredSignals(configuredQueries, watchlists, globalExcludes, now);
   const watchlistSignals = await fetchWatchlistSignals(watchlists, globalExcludes, now);
+  const localObservations = await fetchLocalObservationSignals(localObservationSections, globalExcludes, previousLatest, now, timeLabel, nowIso);
   const rawItems = [...topicSourceSignals, ...dailyTrendItems, ...majorTopicSignals, ...discoverySignals, ...configuredSignals, ...watchlistSignals];
 
   const scoredItems = rawItems
@@ -677,7 +784,8 @@ const main = async () => {
     updatedAt: nowIso,
     source: "Google Trends RSS JP",
     note: "Google Trends RSSと公開RSS検索から候補フレーズを抽出し、ウォッチリストと除外語でSNS投稿向けテーマに絞り込んでいます。",
-    items
+    items,
+    localObservations
   };
   const nextHistory = {
     items: [...(history.items || []), ...items].slice(-1200)

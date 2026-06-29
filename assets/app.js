@@ -267,6 +267,120 @@ const trendPill = (item) => {
   return anchor;
 };
 
+const localObservationLabel = (item) => {
+  const tier = item.localTier ? `優先 ${item.localTier}` : "観測";
+  const evidence = item.evidenceCount ? `観測 ${item.evidenceCount}件` : "観測中";
+  return `${tier} / ${statusLabel(item.trendStatus)} / ${evidence}`;
+};
+
+const localObservationCard = (item) => {
+  const card = safeExternalAttrs(create("a", "local-card"));
+  card.href = item.observeUrl || "https://news.google.com/";
+  const top = create("div", "local-card-top");
+  top.append(create("span", "local-tier", item.localTier || "B"));
+  top.append(create("span", "local-section-label", item.localSectionTitle || "ローカル観測"));
+  card.append(top);
+  card.append(create("strong", "", `#${item.keyword}`));
+  card.append(create("span", "local-meta", localObservationLabel(item)));
+  const tags = create("div", "local-tags");
+  (item.tags || []).slice(0, 3).forEach((tag) => tags.append(create("span", "", tag)));
+  if (tags.childElementCount) card.append(tags);
+  return card;
+};
+
+const localObservationRow = (item) => {
+  const row = safeExternalAttrs(create("a", "local-row"));
+  row.href = item.observeUrl || "https://news.google.com/";
+  row.append(create("span", "local-row-word", `#${item.keyword}`));
+  row.append(create("span", "local-row-section", item.localSectionTitle || "ローカル観測"));
+  row.append(create("span", "local-row-meta", localObservationLabel(item)));
+  return row;
+};
+
+const groupLocalObservations = (items) => {
+  const groups = new Map();
+  for (const item of items || []) {
+    const key = item.localSection || "local";
+    const group = groups.get(key) || {
+      id: key,
+      title: item.localSectionTitle || "ローカル観測",
+      description: item.localSectionDescription || "",
+      items: []
+    };
+    group.items.push(item);
+    groups.set(key, group);
+  }
+  const groupOrder = {
+    local_subculture: 10,
+    local_vtubers: 9,
+    local_idols_music: 8,
+    local_cosplay_popculture: 7,
+    local_anikura_dj: 6,
+    local_esports_game: 5,
+    local_media: 4,
+    local_creators: 3,
+    local_family_events: 2,
+    local_leisure_islands: 1,
+    local_facilities_events: 0,
+    local_official: 0
+  };
+  return [...groups.values()]
+    .map((group) => ({
+      ...group,
+      items: sortBy(group.items, (item) => item.score || 0)
+    }))
+    .sort((a, b) => (groupOrder[b.id] || 0) - (groupOrder[a.id] || 0) || b.items.length - a.items.length);
+};
+
+const localDisplayWeight = (item) => {
+  const sectionBoosts = {
+    local_subculture: 24,
+    local_vtubers: 22,
+    local_cosplay_popculture: 20,
+    local_anikura_dj: 18,
+    local_idols_music: 16,
+    local_esports_game: 12
+  };
+  const tierBoosts = { A: 12, B: 6, C: 0 };
+  return (item.score || 0) + (sectionBoosts[item.localSection] || 0) + (tierBoosts[item.localTier] || 0);
+};
+
+const localObservationShelf = (items, options = {}) => {
+  const wrap = create("section", options.home ? "dashboard-panel local-shelf home-local-shelf" : "section local-shelf");
+  const head = create("div", options.home ? "panel-head" : "section-head");
+  head.append(create("h2", "", "ローカルSNS観測棚"));
+  head.append(create("span", "section-count", `${items.length}件`));
+  const lead = create("p", "local-shelf-lead", "サブカル、地域メディア、観光、グルメ、週末イベントを通常トレンドと分けて観測しています。");
+  const cards = create("div", "local-card-grid");
+  const topItems = sortBy(items, localDisplayWeight).slice(0, options.home ? 6 : 8);
+  if (topItems.length) cards.replaceChildren(...topItems.map(localObservationCard));
+  else renderEmpty(cards, "ローカルSNS観測は次回取得後に表示されます。");
+  wrap.append(head, lead, cards);
+  return wrap;
+};
+
+const localObservationSections = (items) => {
+  const wrap = create("section", "section local-detail-section");
+  const head = create("div", "section-head");
+  head.append(create("h2", "", "ローカル観測：カテゴリ別"));
+  head.append(create("span", "section-count", `${items.length}件`));
+  const groupsWrap = create("div", "local-groups");
+  const groups = groupLocalObservations(items).slice(0, 12);
+  groupsWrap.replaceChildren(
+    ...groups.map((group) => {
+      const detail = create("details", "local-group");
+      const summary = create("summary", "", `${group.title}（${group.items.length}件）`);
+      const description = create("p", "local-group-description", group.description);
+      const rows = create("div", "local-row-list");
+      rows.replaceChildren(...group.items.slice(0, 8).map(localObservationRow));
+      detail.append(summary, description, rows);
+      return detail;
+    })
+  );
+  wrap.append(head, groupsWrap);
+  return wrap;
+};
+
 const categoryBar = (key, count, max) => {
   const row = create("div", "category-bar");
   row.append(create("span", "category-label", categoryName(key)));
@@ -290,6 +404,7 @@ const statTile = (label, value, detail) => {
 const renderHome = ({ site, links, latest }) => {
   document.title = site.siteName || "SNSトレンドバズフィード";
   const items = latest.items || [];
+  const localObservations = latest.localObservations || [];
   const mainTrends = rankedTrendItems(items);
   const evergreen = evergreenItems(items);
   const growing = sortBy(items.filter(isGrowingObservation), (item) => item.evidenceChange || 0).slice(0, 8);
@@ -372,7 +487,8 @@ const renderHome = ({ site, links, latest }) => {
   );
   linksPanel.append(linksHead, linkList);
 
-  dashboardTarget.replaceChildren(leadPanel, categoryPanel, evergreenPanel, growingPanel, linksPanel);
+  const localPanel = localObservationShelf(localObservations, { home: true });
+  dashboardTarget.replaceChildren(leadPanel, categoryPanel, evergreenPanel, growingPanel, linksPanel, localPanel);
   document.querySelector("[data-note]").textContent = site.dataRefreshNote || "観測スコアは独自指標です。";
 };
 
@@ -455,6 +571,7 @@ const renderList = ({ site, links, latest }) => {
   document.querySelector("[data-updated]").textContent = `最終更新 ${formatUpdated(latest.updatedAt)}`;
   const main = document.querySelector("[data-dashboard]");
   const items = latest.items || [];
+  const localObservations = latest.localObservations || [];
 
   const mainTrends = rankedTrendItems(items);
   main.append(section("主役: いま実際に話題のワード", mainTrends, { featured: true, limit: 5, maxItems: 20, expandable: true, totalLabel: `${mainTrends.length}件観測` }));
@@ -480,6 +597,11 @@ const renderList = ({ site, links, latest }) => {
   for (const [title, key] of categoryDefs) {
     const categoryItems = sortBy(categoryPool.filter((item) => categoryKey(item) === key), (item) => item.score || 0).slice(0, 20);
     appendIfAny(main, title, categoryItems, { compact: true, limit: 5, maxItems: 20, expandable: true, totalLabel: `${categoryItems.length}件` });
+  }
+
+  if (localObservations.length) {
+    main.append(localObservationShelf(localObservations));
+    main.append(localObservationSections(localObservations));
   }
 
   const linkSection = create("section", "section");

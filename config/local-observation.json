@@ -1,0 +1,215 @@
+[
+  {
+    "id": "local_media",
+    "title": "地域メディア",
+    "description": "鹿児島の街ネタ、店舗、イベントを拾う起点",
+    "cap": 7,
+    "entries": [
+      { "tier": "A", "keyword": "KagoshimaniaX", "query": "KagoshimaniaX 鹿児島 グルメ イベント SNS", "tags": ["街ネタ", "グルメ"] },
+      { "tier": "A", "keyword": "TJカゴシマ", "query": "TJカゴシマ グルメ 温泉 イベント", "tags": ["地域情報"] },
+      { "tier": "A", "keyword": "よかガイドかごしま", "query": "よかガイドかごしま 観光 グルメ 温泉", "tags": ["観光"] },
+      { "tier": "A", "keyword": "リビングかごしま", "query": "リビングかごしま おでかけ グルメ イベント", "tags": ["生活"] },
+      { "tier": "A", "keyword": "おでかけカゴシマ", "query": "おでかけカゴシマ グルメ 週末", "tags": ["おでかけ"] },
+      { "tier": "A", "keyword": "かごしまぐるり", "query": "かごしまぐるり グルメ 特産品 地域PR", "tags": ["物産"] },
+      { "tier": "B", "keyword": "Felia フェリア", "query": "Felia フェリア 鹿児島 グルメ 暮らし", "tags": ["生活"] },
+      { "tier": "B", "keyword": "LEAP鹿児島", "query": "LEAP鹿児島 街ネタ 店舗 イベント", "tags": ["街ネタ"] },
+      { "tier": "B", "keyword": "Kagomaga カゴマガ", "query": "Kagomaga カゴマガ 鹿児島 サブカル VTuber", "tags": ["カルチャー"] },
+      { "tier": "B", "keyword": "鹿児島経済新聞", "query": "鹿児島経済新聞 店舗 イベント 街ネタ", "tags": ["ニュース"] }
+    ]
+  },
+  {
+    "id": "local_official",
+    "title": "公式・観光",
+    "description": "公式観光、自治体、観光協会の発信",
+    "cap": 7,
+    "entries": [
+      { "tier": "A", "keyword": "南の宝箱 鹿児島", "query": "南の宝箱 鹿児島 観光 UGC", "tags": ["県公式"] },
+      { "tier": "A", "keyword": "かごしまの旅", "query": "かごしまの旅 観光 イベント スポット", "tags": ["観光"] },
+      { "tier": "A", "keyword": "鹿児島市観光ナビ", "query": "鹿児島市観光ナビ 桜島 街歩き", "tags": ["市公式"] },
+      { "tier": "A", "keyword": "鹿児島観光コンベンション協会", "query": "鹿児島観光コンベンション協会 イベント", "tags": ["観光"] },
+      { "tier": "A", "keyword": "鹿児島ファン拡大アンバサダー", "query": "鹿児島ファン拡大アンバサダー インフルエンサー", "tags": ["PR"] },
+      { "tier": "A", "keyword": "屋久島観光協会", "query": "屋久島観光協会 観光 UGC", "tags": ["離島"] },
+      { "tier": "A", "keyword": "あまみの", "query": "あまみの 奄美 観光 宿 食", "tags": ["離島"] },
+      { "tier": "A", "keyword": "奄美群島観光物産協会", "query": "奄美群島観光物産協会 イベント 物産", "tags": ["離島"] },
+      { "tier": "B", "keyword": "桜島フェリー", "query": "桜島フェリー 鹿児島 観光", "tags": ["交通"] },
+      { "tier": "B", "keyword": "指宿市観光協会", "query": "指宿市観光協会 温泉 砂むし", "tags": ["温泉"] },
+      { "tier": "B", "keyword": "霧島市観光協会", "query": "霧島市観光協会 温泉 観光", "tags": ["温泉"] },
+      { "tier": "B", "keyword": "種子島観光協会", "query": "種子島観光協会 宇宙 離島", "tags": ["離島"] }
+    ]
+  },
+  {
+    "id": "local_creators",
+    "title": "グルメ・観光クリエイター",
+    "description": "保存系投稿、店舗紹介、旅動画の候補",
+    "cap": 8,
+    "entries": [
+      { "tier": "A", "keyword": "はらぺこあいちゃん", "query": "はらぺこあいちゃん 鹿児島 グルメ", "tags": ["グルメ"] },
+      { "tier": "A", "keyword": "ポポの休日", "query": "ポポの休日 麻生祐貴 鹿児島 観光 グルメ", "tags": ["観光"] },
+      { "tier": "A", "keyword": "はいちーずの鹿児島旅", "query": "はいちーずの鹿児島旅 永江優人 観光", "tags": ["旅動画"] },
+      { "tier": "A", "keyword": "ミヤーチ", "query": "ミヤーチ 鹿児島 サウナ グルメ TikTok", "tags": ["サウナ"] },
+      { "tier": "A", "keyword": "TuuBouのグルメ旅", "query": "TuuBouのグルメ旅 鹿児島", "tags": ["グルメ動画"] },
+      { "tier": "B", "keyword": "鹿児島No.1グルメ", "query": "鹿児島No.1グルメ 飲食店 紹介", "tags": ["グルメ"] },
+      { "tier": "B", "keyword": "鹿児島ぶち上げチャンネル", "query": "鹿児島ぶち上げチャンネル グルメ エンタメ", "tags": ["動画"] },
+      { "tier": "B", "keyword": "Kagoshima Life", "query": "Kagoshima Life 鹿児島暮らし グルメ 観光", "tags": ["暮らし"] },
+      { "tier": "B", "keyword": "かごしまいんすたふーど", "query": "かごしまいんすたふーど Instagram 鹿児島 グルメ", "tags": ["Instagram"] },
+      { "tier": "B", "keyword": "鹿児島カフェ", "query": "鹿児島カフェ 話題 Instagram", "tags": ["カフェ"] },
+      { "tier": "B", "keyword": "鹿児島ラーメン", "query": "鹿児島ラーメン 話題 SNS", "tags": ["ラーメン"] }
+    ]
+  },
+  {
+    "id": "local_subculture",
+    "title": "サブカル・若年層",
+    "description": "鹿児島発の若年層文脈、界隈語、ファン投稿",
+    "cap": 9,
+    "entries": [
+      { "tier": "A", "keyword": "ぬた。", "query": "ぬた。 天使界隈 水色界隈 鹿児島", "tags": ["サブカル"] },
+      { "tier": "A", "keyword": "ぬた㌠", "query": "ぬた㌠ ファンアート 推し活", "tags": ["ファン"] },
+      { "tier": "A", "keyword": "#ぬたさんアート", "query": "#ぬたさんアート ファンアート", "tags": ["UGC"] },
+      { "tier": "A", "keyword": "#ぬたぽすと", "query": "#ぬたぽすと ファン投稿", "tags": ["UGC"] },
+      { "tier": "A", "keyword": "鹿児島TikTok", "query": "鹿児島TikTok クリエイター ショート動画", "tags": ["動画"] },
+      { "tier": "A", "keyword": "カイセイ", "query": "カイセイ 鹿児島 TikTok 旅 グルメ", "tags": ["動画"] },
+      { "tier": "B", "keyword": "天使界隈", "query": "天使界隈 鹿児島 ファッション", "tags": ["界隈"] },
+      { "tier": "B", "keyword": "水色界隈", "query": "水色界隈 鹿児島 ファッション", "tags": ["界隈"] },
+      { "tier": "B", "keyword": "地雷系 量産型 鹿児島", "query": "地雷系 量産型 鹿児島", "tags": ["若年層"] },
+      { "tier": "B", "keyword": "Y3K サイバー系", "query": "Y3K サイバー系 鹿児島", "tags": ["ビジュアル"] },
+      { "tier": "B", "keyword": "鹿児島サブカル女子", "query": "鹿児島サブカル女子", "tags": ["発掘"] },
+      { "tier": "C", "keyword": "鹿児島あるある", "query": "鹿児島あるある TikTok リール", "tags": ["動画"] },
+      { "tier": "C", "keyword": "鹿児島踊ってみた", "query": "鹿児島踊ってみた TikTok", "tags": ["動画"] },
+      { "tier": "C", "keyword": "鹿児島歌ってみた", "query": "鹿児島歌ってみた", "tags": ["音楽"] }
+    ]
+  },
+  {
+    "id": "local_vtubers",
+    "title": "VTuber・配信者",
+    "description": "ご当地VTuber、配信者、ライブ配信文化",
+    "cap": 8,
+    "entries": [
+      { "tier": "A", "keyword": "桜馬トウカ", "query": "桜馬トウカ 鹿児島 VTuber 指宿", "tags": ["ご当地V"] },
+      { "tier": "A", "keyword": "夢乃むぅこ", "query": "夢乃むぅこ 鹿児島 VTuber 観光", "tags": ["ご当地V"] },
+      { "tier": "A", "keyword": "月見あま", "query": "月見あま 鹿児島 VTuber 知覧", "tags": ["ご当地V"] },
+      { "tier": "A", "keyword": "麒嶋たの丸", "query": "麒嶋たの丸 鹿児島 VTuber", "tags": ["ご当地V"] },
+      { "tier": "A", "keyword": "理科教師サイエンス", "query": "理科教師サイエンス 鹿児島 VTuber", "tags": ["教育"] },
+      { "tier": "B", "keyword": "VRegion 鹿児島", "query": "VRegion 鹿児島 地方創生 VTuber", "tags": ["地域PR"] },
+      { "tier": "B", "keyword": "鹿児島VTuber", "query": "鹿児島VTuber ご当地VTuber", "tags": ["発掘"] },
+      { "tier": "B", "keyword": "鹿児島配信者", "query": "鹿児島配信者 YouTube TikTok", "tags": ["配信"] },
+      { "tier": "B", "keyword": "鹿児島ライバー", "query": "鹿児島ライバー ライブ配信", "tags": ["配信"] }
+    ]
+  },
+  {
+    "id": "local_idols_music",
+    "title": "アイドル・音楽",
+    "description": "ご当地アイドル、アニソン、ボカロ、ライブ系",
+    "cap": 8,
+    "entries": [
+      { "tier": "A", "keyword": "S☆UTHERN CROSS", "query": "S☆UTHERN CROSS サザンクロス 鹿児島 アイドル", "tags": ["アイドル"] },
+      { "tier": "A", "keyword": "#サザクロ", "query": "#サザクロ 鹿児島 アイドル", "tags": ["UGC"] },
+      { "tier": "B", "keyword": "鹿児島ローカルアイドル", "query": "鹿児島ローカルアイドル イベント", "tags": ["発掘"] },
+      { "tier": "B", "keyword": "りなメロ", "query": "りなメロ 鹿児島 アニソン 声優", "tags": ["アニソン"] },
+      { "tier": "B", "keyword": "りなかる", "query": "りなかる 鹿児島 コスプレ アニソン", "tags": ["イベント"] },
+      { "tier": "B", "keyword": "Wazze!かごちなフェス", "query": "Wazze!かごちなフェス 鹿児島 声優", "tags": ["フェス"] },
+      { "tier": "B", "keyword": "鹿児島アニソン", "query": "鹿児島アニソン イベント", "tags": ["音楽"] },
+      { "tier": "C", "keyword": "鹿児島ボカロ", "query": "鹿児島ボカロ イベント", "tags": ["音楽"] }
+    ]
+  },
+  {
+    "id": "local_cosplay_popculture",
+    "title": "コスプレ・ポップカルチャー",
+    "description": "コスプレ、同人、痛車、ポップカルチャーイベント",
+    "cap": 9,
+    "entries": [
+      { "tier": "A", "keyword": "かごコス", "query": "かごコス 鹿児島 コスプレ イベント", "tags": ["コスプレ"] },
+      { "tier": "A", "keyword": "cos.CAFÉ", "query": "cos.CAFÉ 鹿児島 コスプレ", "tags": ["コスプレ"] },
+      { "tier": "A", "keyword": "鹿児島ポップカルチャーフェス", "query": "鹿児島ポップカルチャーフェス コスプレ 痛車 カードゲーム", "tags": ["イベント"] },
+      { "tier": "B", "keyword": "#かごコス", "query": "#かごコス 鹿児島", "tags": ["UGC"] },
+      { "tier": "B", "keyword": "#りなかる", "query": "#りなかる 鹿児島", "tags": ["UGC"] },
+      { "tier": "B", "keyword": "#鹿児島コスプレ", "query": "#鹿児島コスプレ", "tags": ["UGC"] },
+      { "tier": "B", "keyword": "鹿児島同人誌即売会", "query": "鹿児島同人誌即売会 創作イベント", "tags": ["同人"] },
+      { "tier": "B", "keyword": "鹿児島痛車", "query": "鹿児島痛車 イベント", "tags": ["痛車"] },
+      { "tier": "B", "keyword": "鹿児島カードゲーム", "query": "鹿児島カードゲーム イベント", "tags": ["TCG"] },
+      { "tier": "B", "keyword": "鹿児島ボードゲーム", "query": "鹿児島ボードゲーム イベント", "tags": ["ボドゲ"] }
+    ]
+  },
+  {
+    "id": "local_anikura_dj",
+    "title": "アニクラ・DJ",
+    "description": "アニソン、ボカロ、VTuber楽曲、クラブカルチャー",
+    "cap": 8,
+    "entries": [
+      { "tier": "A", "keyword": "GEEK DELIGHTS", "query": "GEEK DELIGHTS 鹿児島 アニクラ", "tags": ["アニクラ"] },
+      { "tier": "A", "keyword": "#ギーデラ", "query": "#ギーデラ 鹿児島", "tags": ["UGC"] },
+      { "tier": "A", "keyword": "happy+Sugar", "query": "happy+Sugar 鹿児島 アニソン ボカロ", "tags": ["アニソン"] },
+      { "tier": "B", "keyword": "MUNITY UNiTE", "query": "MUNITY UNiTE 鹿児島 サブカル DJ", "tags": ["DJ"] },
+      { "tier": "B", "keyword": "CLUB ESCAPE 鹿児島", "query": "CLUB ESCAPE 鹿児島 アニクラ", "tags": ["会場"] },
+      { "tier": "B", "keyword": "鹿児島アニクラ", "query": "鹿児島アニクラ アニソンDJ", "tags": ["発掘"] },
+      { "tier": "B", "keyword": "鹿児島DJイベント", "query": "鹿児島DJイベント クラブ", "tags": ["音楽"] },
+      { "tier": "B", "keyword": "鹿児島ボカロイベント", "query": "鹿児島ボカロイベント", "tags": ["ボカロ"] }
+    ]
+  },
+  {
+    "id": "local_esports_game",
+    "title": "eスポーツ・ゲーム",
+    "description": "eスポーツ、ゲーム大会、TCG、ボードゲーム",
+    "cap": 8,
+    "entries": [
+      { "tier": "A", "keyword": "鹿児島県eスポーツ連合", "query": "鹿児島県eスポーツ連合 KGeU 大会", "tags": ["eスポーツ"] },
+      { "tier": "A", "keyword": "マグマeスポーツフェス", "query": "マグマeスポーツフェス 鹿児島", "tags": ["eスポーツ"] },
+      { "tier": "A", "keyword": "Osaki Gamers FLAG", "query": "Osaki Gamers FLAG 大崎町 eスポーツ", "tags": ["ゲーム"] },
+      { "tier": "B", "keyword": "鹿児島eスポーツ", "query": "鹿児島eスポーツ 大会 コミュニティ", "tags": ["発掘"] },
+      { "tier": "B", "keyword": "鹿児島ゲーム大会", "query": "鹿児島ゲーム大会", "tags": ["大会"] },
+      { "tier": "B", "keyword": "鹿児島ゲーマー", "query": "鹿児島ゲーマー 配信者", "tags": ["発掘"] },
+      { "tier": "C", "keyword": "鹿児島スマブラ", "query": "鹿児島スマブラ 大会", "tags": ["ゲーム"] },
+      { "tier": "C", "keyword": "鹿児島ポケカ", "query": "鹿児島ポケカ イベント", "tags": ["TCG"] }
+    ]
+  },
+  {
+    "id": "local_family_events",
+    "title": "子連れ・週末",
+    "description": "親子イベント、週末のおでかけ、雨の日導線",
+    "cap": 7,
+    "entries": [
+      { "tier": "A", "keyword": "鹿児島子連れイベント情報", "query": "鹿児島子連れイベント情報 週末", "tags": ["親子"] },
+      { "tier": "A", "keyword": "休日どこいく 鹿児島", "query": "休日どこいく 鹿児島 イベント", "tags": ["週末"] },
+      { "tier": "A", "keyword": "鹿児島発 家族でお出かけ", "query": "鹿児島発 家族でお出かけ", "tags": ["親子"] },
+      { "tier": "B", "keyword": "鹿児島子連れ", "query": "鹿児島子連れ おでかけ Instagram", "tags": ["UGC"] },
+      { "tier": "B", "keyword": "鹿児島週末", "query": "鹿児島週末 イベント おでかけ", "tags": ["週末"] },
+      { "tier": "B", "keyword": "鹿児島雨の日", "query": "鹿児島雨の日 おでかけ", "tags": ["屋内"] },
+      { "tier": "B", "keyword": "いこーよ鹿児島", "query": "いこーよ鹿児島 子ども イベント", "tags": ["親子"] }
+    ]
+  },
+  {
+    "id": "local_leisure_islands",
+    "title": "温泉・離島・レジャー",
+    "description": "サウナ、温泉、屋久島、奄美、航路、旅行",
+    "cap": 9,
+    "entries": [
+      { "tier": "A", "keyword": "THE BARREL", "query": "THE BARREL 鹿児島 サウナ", "tags": ["サウナ"] },
+      { "tier": "A", "keyword": "指宿こころの湯", "query": "指宿こころの湯 温泉", "tags": ["温泉"] },
+      { "tier": "A", "keyword": "こしかの温泉", "query": "こしかの温泉 サウナ グランピング", "tags": ["温泉"] },
+      { "tier": "A", "keyword": "屋久島旅行", "query": "屋久島旅行 観光 SNS", "tags": ["離島"] },
+      { "tier": "A", "keyword": "奄美旅行", "query": "奄美旅行 観光 SNS", "tags": ["離島"] },
+      { "tier": "B", "keyword": "鹿児島サウナ", "query": "鹿児島サウナ Instagram TikTok", "tags": ["サウナ"] },
+      { "tier": "B", "keyword": "鹿児島温泉", "query": "鹿児島温泉 日帰り SNS", "tags": ["温泉"] },
+      { "tier": "B", "keyword": "フェリー屋久島", "query": "フェリー屋久島 鹿児島港", "tags": ["航路"] },
+      { "tier": "B", "keyword": "離島旅行", "query": "離島旅行 奄美 屋久島 種子島", "tags": ["離島"] }
+    ]
+  },
+  {
+    "id": "local_facilities_events",
+    "title": "施設・イベント",
+    "description": "商業施設、屋内レジャー、スポーツ、地域行事",
+    "cap": 9,
+    "entries": [
+      { "tier": "A", "keyword": "よかど鹿児島", "query": "よかど鹿児島 イベント グルメ", "tags": ["商業施設"] },
+      { "tier": "A", "keyword": "アミュプラザ鹿児島", "query": "アミュプラザ鹿児島 イベント", "tags": ["商業施設"] },
+      { "tier": "A", "keyword": "センテラス天文館", "query": "センテラス天文館 イベント", "tags": ["商業施設"] },
+      { "tier": "A", "keyword": "いおワールドかごしま水族館", "query": "いおワールドかごしま水族館 親子", "tags": ["親子"] },
+      { "tier": "A", "keyword": "平川動物公園", "query": "平川動物公園 親子 イベント", "tags": ["親子"] },
+      { "tier": "A", "keyword": "サンライトゾーン", "query": "サンライトゾーン 鹿児島 ボウリング", "tags": ["自社"] },
+      { "tier": "A", "keyword": "T-MAX BOWL", "query": "T-MAX BOWL 鹿児島 ボウリング", "tags": ["自社"] },
+      { "tier": "A", "keyword": "鹿児島レブナイズ", "query": "鹿児島レブナイズ 試合 地域", "tags": ["スポーツ"] },
+      { "tier": "A", "keyword": "鹿児島ユナイテッドFC", "query": "鹿児島ユナイテッドFC 試合 地域", "tags": ["スポーツ"] },
+      { "tier": "B", "keyword": "六月灯", "query": "六月灯 鹿児島 イベント", "tags": ["季節"] },
+      { "tier": "B", "keyword": "鹿児島マルシェ", "query": "鹿児島マルシェ 週末", "tags": ["イベント"] }
+    ]
+  }
+]
