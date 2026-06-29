@@ -52,7 +52,7 @@ const signed = (value) => {
 };
 
 const directionLabel = (direction) => {
-  const labels = { up: "上昇", flat: "横ばい", down: "下降", new: "新規" };
+  const labels = { up: "↑", flat: "→", down: "↓", new: "NEW" };
   return labels[direction] || "観測";
 };
 
@@ -75,7 +75,7 @@ const statusLabel = (status) => {
     major_topic: "大型話題",
     rising: "伸長",
     warming: "微増",
-    flat: "横ばい",
+    flat: "安定",
     cooling: "減少",
     candidate: "判定待ち"
   };

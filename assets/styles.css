@@ -9,10 +9,10 @@
   --accent-2: #2f5bff;
   --accent-soft: #eaf5ff;
   --accent-ink: #075a9f;
-  --rise: #dc2626;
+  --rise: #e11d48;
   --flat: #6b7280;
-  --down: #2457d6;
-  --new: #7a4ee8;
+  --down: #1e3a8a;
+  --new: #018bee;
   --shadow: 0 14px 36px rgba(21, 52, 92, 0.09);
   font-family: "Segoe UI", "Noto Sans JP", system-ui, sans-serif;
 }
@@ -433,29 +433,34 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 48px;
-  height: 26px;
+  min-width: 30px;
+  height: 30px;
   padding: 0 8px;
   border-radius: 999px;
   color: #fff;
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 17px;
+  font-weight: 850;
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow: 0 8px 18px rgba(21, 52, 92, 0.12);
 }
 
 .badge.up {
-  background: var(--rise);
+  background: linear-gradient(135deg, #fb7185, var(--rise));
 }
 
 .badge.flat {
-  background: var(--flat);
+  background: linear-gradient(135deg, #9ca3af, var(--flat));
 }
 
 .badge.down {
-  background: var(--down);
+  background: linear-gradient(135deg, #4f46e5, var(--down));
 }
 
 .badge.new {
-  background: var(--new);
+  min-width: 52px;
+  font-size: 12px;
+  background: linear-gradient(135deg, #38bdf8, var(--new));
 }
 
 .metrics {
@@ -986,29 +991,35 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 44px;
-  min-height: 24px;
-  padding: 3px 7px;
+  justify-self: end;
+  width: fit-content;
+  min-width: 28px;
+  min-height: 26px;
+  padding: 4px 7px;
   border-radius: 999px;
   color: #fff;
-  font-size: 11px;
-  font-weight: 750;
+  font-size: 15px;
+  font-weight: 850;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .simple-badge.up {
-  background: var(--rise);
+  background: linear-gradient(135deg, #fb7185, var(--rise));
 }
 
 .simple-badge.flat {
-  background: var(--flat);
+  background: linear-gradient(135deg, #9ca3af, var(--flat));
 }
 
 .simple-badge.down {
-  background: var(--down);
+  background: linear-gradient(135deg, #4f46e5, var(--down));
 }
 
 .simple-badge.new {
-  background: var(--new);
+  min-width: 46px;
+  font-size: 11px;
+  background: linear-gradient(135deg, #38bdf8, var(--new));
 }
 
 .compact-list {
