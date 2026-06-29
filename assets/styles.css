@@ -150,6 +150,13 @@ h1 {
   align-items: start;
 }
 
+.list-overview {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1.25fr) minmax(360px, 0.75fr);
+  gap: 14px;
+}
+
 .list-dashboard > .section {
   grid-column: span 6;
   margin-top: 0;
@@ -165,6 +172,14 @@ h1 {
   grid-column: 1 / -1;
 }
 
+.list-dashboard > .list-main-section {
+  grid-column: 1 / -1;
+}
+
+.list-dashboard > .list-evergreen-section {
+  grid-column: 1 / -1;
+}
+
 .list-dashboard > .compact-section .compact-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -177,6 +192,26 @@ h1 {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
+.list-main-section .grid,
+.list-evergreen-section .grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.list-main-section .trend-card {
+  min-height: 265px;
+}
+
+.list-main-section .trend-card:first-child {
+  grid-column: span 2;
+  background:
+    linear-gradient(135deg, rgba(1, 139, 238, 0.1), rgba(47, 91, 255, 0.03)),
+    #fff;
+}
+
+.list-main-section .trend-card:first-child .keyword {
+  font-size: 24px;
+}
+
 .featured-section .trend-card {
   border-color: #b6d5f3;
   box-shadow: 0 12px 28px rgba(23, 76, 136, 0.07);
@@ -184,6 +219,13 @@ h1 {
 
 .compact-section {
   margin-top: 16px;
+}
+
+.list-dashboard > .compact-section {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.74);
 }
 
 .compact-grid {
@@ -208,6 +250,110 @@ h1 {
   font-size: 12px;
   font-weight: 700;
   white-space: nowrap;
+}
+
+.list-focus-panel,
+.list-insight-panel {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(21, 52, 92, 0.08);
+}
+
+.list-focus-panel {
+  background:
+    radial-gradient(circle at 92% 12%, rgba(1, 139, 238, 0.16), transparent 28%),
+    linear-gradient(135deg, #ffffff 0%, #f7fbff 100%);
+}
+
+.list-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.list-panel-head h2 {
+  font-size: 17px;
+  font-weight: 850;
+}
+
+.list-hero-trend {
+  display: grid;
+  gap: 10px;
+  min-height: 170px;
+  padding: 18px;
+  border: 1px solid #bddaf5;
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(1, 139, 238, 0.12), rgba(47, 91, 255, 0.05)),
+    #fff;
+}
+
+.list-hero-trend strong {
+  min-width: 0;
+  color: #0f1b32;
+  font-size: 34px;
+  line-height: 1.12;
+  overflow-wrap: anywhere;
+}
+
+.list-hero-trend small {
+  color: #46566e;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.list-focus-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.list-focus-list .trend-pill {
+  min-height: 62px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.list-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.list-summary-tile {
+  display: grid;
+  gap: 5px;
+  min-height: 92px;
+  padding: 12px;
+  border: 1px solid #e0ebf8;
+  border-radius: 8px;
+  background: #fbfdff;
+}
+
+.list-summary-tile span,
+.list-summary-tile small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.list-summary-tile strong {
+  color: var(--accent-ink);
+  font-size: 30px;
+  line-height: 1;
+}
+
+.list-category-strip {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #e5edf8;
 }
 
 .grid {
@@ -790,7 +936,8 @@ h1 {
   margin-top: 10px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fff;
+  background: #fbfdff;
+  overflow: hidden;
 }
 
 .accordion summary {
@@ -815,6 +962,7 @@ h1 {
   min-height: 42px;
   padding: 8px 12px;
   border-top: 1px solid #edf1f6;
+  background: #fff;
 }
 
 .simple-trend-row:first-child {
@@ -952,12 +1100,20 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .list-overview {
+    grid-template-columns: 1fr;
+  }
+
   .list-dashboard > .section,
   .list-dashboard > .featured-section,
   .list-dashboard > .local-shelf,
   .list-dashboard > .local-detail-section,
   .list-dashboard > .link-section {
     grid-column: 1 / -1;
+  }
+
+  .list-main-section .trend-card:first-child {
+    grid-column: auto;
   }
 
   .meta {
@@ -967,6 +1123,8 @@ h1 {
   .grid,
   .link-grid,
   .featured-section .grid,
+  .list-main-section .grid,
+  .list-evergreen-section .grid,
   .compact-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1020,6 +1178,15 @@ h1 {
     font-size: 30px;
   }
 
+  .list-hero-trend strong {
+    font-size: 28px;
+  }
+
+  .list-focus-list,
+  .list-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
   .hero-stats,
   .home-link-list,
   .local-card-grid,
@@ -1043,6 +1210,8 @@ h1 {
   .grid,
   .link-grid,
   .featured-section .grid,
+  .list-main-section .grid,
+  .list-evergreen-section .grid,
   .compact-grid,
   .list-dashboard > .compact-section .compact-grid {
     grid-template-columns: 1fr;

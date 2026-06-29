@@ -267,6 +267,59 @@ const trendPill = (item) => {
   return anchor;
 };
 
+const listHeroTrend = (item) => {
+  const anchor = safeExternalAttrs(create("a", "list-hero-trend"));
+  anchor.href = item?.observeUrl || "https://trends.google.co.jp/trends/";
+  anchor.append(create("span", "tag", item ? compactMetricText(item) : "観測待ち"));
+  anchor.append(create("strong", "", item ? `#${item.keyword}` : "トレンド取得待ち"));
+  anchor.append(create("small", "", item ? shortSignalText(item) : "GitHub Actionsの取得後に最新の観測結果が表示されます。"));
+  return anchor;
+};
+
+const listSummaryTile = (label, value, detail) => {
+  const tile = create("div", "list-summary-tile");
+  tile.append(create("span", "", label));
+  tile.append(create("strong", "", value));
+  tile.append(create("small", "", detail));
+  return tile;
+};
+
+const listOverview = ({ items, mainTrends, evergreen, growing, localObservations }) => {
+  const wrap = create("section", "list-overview");
+  const focus = create("div", "list-focus-panel");
+  const focusHead = create("div", "list-panel-head");
+  focusHead.append(create("h2", "", "実トレンドの現在地"));
+  focusHead.append(create("span", "section-count", `${mainTrends.length}件`));
+  const hero = listHeroTrend(mainTrends[0]);
+  const focusList = create("div", "list-focus-list");
+  focusList.replaceChildren(...mainTrends.slice(1, 6).map(trendPill));
+  focus.append(focusHead, hero, focusList);
+
+  const insight = create("div", "list-insight-panel");
+  const insightHead = create("div", "list-panel-head");
+  insightHead.append(create("h2", "", "観測バランス"));
+  insightHead.append(create("span", "section-count", `${items.length}件`));
+  const summaryGrid = create("div", "list-summary-grid");
+  summaryGrid.append(
+    listSummaryTile("実トレンド", `${mainTrends.length}`, "主役候補"),
+    listSummaryTile("定番ワード", `${evergreen.length}`, "準メイン"),
+    listSummaryTile("伸長検知", `${growing.length}`, "増加候補"),
+    listSummaryTile("ローカル棚", `${localObservations.length}`, "別枠観測")
+  );
+  const counts = items.reduce((acc, item) => {
+    const key = categoryKey(item);
+    acc[key] = (acc[key] || 0) + 1;
+    return acc;
+  }, {});
+  const categoryEntries = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 6);
+  const bars = create("div", "list-category-strip");
+  const maxCategory = Math.max(...categoryEntries.map((entry) => entry[1]), 1);
+  bars.replaceChildren(...categoryEntries.map(([key, count]) => categoryBar(key, count, maxCategory)));
+  insight.append(insightHead, summaryGrid, bars);
+  wrap.append(focus, insight);
+  return wrap;
+};
+
 const localObservationLabel = (item) => {
   const tier = item.localTier ? `優先 ${item.localTier}` : "観測";
   const evidence = item.evidenceCount ? `観測 ${item.evidenceCount}件` : "観測中";
@@ -540,6 +593,7 @@ const section = (title, items, options = {}) => {
   const wrap = create("section", "section");
   if (options.featured) wrap.classList.add("featured-section");
   if (options.compact) wrap.classList.add("compact-section");
+  if (options.className) wrap.classList.add(options.className);
   const head = create("div", "section-head");
   head.append(create("h2", "", title));
   if (items.length && options.totalLabel) {
@@ -575,15 +629,17 @@ const renderList = ({ site, links, latest }) => {
   const localObservations = latest.localObservations || [];
 
   const mainTrends = rankedTrendItems(items);
-  main.append(section("主役: いま実際に話題のワード", mainTrends, { featured: true, limit: 5, maxItems: 20, expandable: true, totalLabel: `${mainTrends.length}件観測` }));
-
   const evergreen = evergreenItems(items);
-  main.append(section("準メイン: 定番・継続して使えるワード", evergreen, { featured: true, limit: 5, maxItems: 20, expandable: true, totalLabel: `${evergreen.length}件保持` }));
+  const growing = sortBy(items.filter(isGrowingObservation), (item) => item.evidenceChange || 0).slice(0, 20);
+
+  main.append(listOverview({ items, mainTrends, evergreen, growing, localObservations }));
+  main.append(section("主役: いま実際に話題のワード", mainTrends, { featured: true, className: "list-main-section", limit: 6, maxItems: 20, expandable: true, totalLabel: `${mainTrends.length}件観測` }));
+  main.append(section("準メイン: 定番・継続して使えるワード", evergreen, { featured: true, className: "list-evergreen-section", limit: 6, maxItems: 20, expandable: true, totalLabel: `${evergreen.length}件保持` }));
 
   appendIfAny(
     main,
     "伸びている観測ワード",
-    sortBy(items.filter(isGrowingObservation), (item) => item.evidenceChange || 0).slice(0, 20),
+    growing,
     { compact: true, limit: 5, maxItems: 20, expandable: true, totalLabel: "最大20件" }
   );
 
