@@ -570,6 +570,7 @@ const appendIfAny = (target, title, items, options = {}) => {
 const renderList = ({ site, links, latest }) => {
   document.querySelector("[data-updated]").textContent = `最終更新 ${formatUpdated(latest.updatedAt)}`;
   const main = document.querySelector("[data-dashboard]");
+  main.classList.add("list-dashboard");
   const items = latest.items || [];
   const localObservations = latest.localObservations || [];
 
@@ -604,7 +605,7 @@ const renderList = ({ site, links, latest }) => {
     main.append(localObservationSections(localObservations));
   }
 
-  const linkSection = create("section", "section");
+  const linkSection = create("section", "section link-section");
   const head = create("div", "section-head");
   head.append(create("h2", "", "SNS別観測リンク"));
   const grid = create("div", "grid link-grid");
