@@ -1,0 +1,62 @@
+[
+  {
+    "id": "yahoo_realtime",
+    "platform": "x",
+    "label": "X",
+    "title": "Yahoo!リアルタイム検索",
+    "description": "X上で話題になっているキーワードや投稿を確認",
+    "url": "https://search.yahoo.co.jp/realtime",
+    "priority": 100,
+    "active": true
+  },
+  {
+    "id": "tiktok_creative_center",
+    "platform": "tiktok",
+    "label": "TikTok",
+    "title": "TikTok Creative Center",
+    "description": "音源・ハッシュタグ・動画トレンドを確認",
+    "url": "https://ads.tiktok.com/creative/creativeCenter/trends",
+    "priority": 100,
+    "active": true
+  },
+  {
+    "id": "instagram_explore",
+    "platform": "instagram",
+    "label": "Instagram",
+    "title": "Instagram 発見",
+    "description": "リールやハッシュタグの流れを確認",
+    "url": "https://www.instagram.com/explore/",
+    "priority": 80,
+    "active": true
+  },
+  {
+    "id": "threads_search",
+    "platform": "threads",
+    "label": "Threads",
+    "title": "Threads検索",
+    "description": "Threads上の会話や話題を確認",
+    "url": "https://www.threads.net/search",
+    "priority": 80,
+    "active": true
+  },
+  {
+    "id": "youtube_shorts",
+    "platform": "youtube",
+    "label": "YouTube Shorts",
+    "title": "YouTube Shorts",
+    "description": "ショート動画の流れを確認",
+    "url": "https://www.youtube.com/shorts",
+    "priority": 80,
+    "active": true
+  },
+  {
+    "id": "google_trends",
+    "platform": "trend",
+    "label": "検索トレンド",
+    "title": "Google Trends",
+    "description": "検索上で伸びている話題を確認",
+    "url": "https://trends.google.co.jp/trends/",
+    "priority": 80,
+    "active": true
+  }
+]

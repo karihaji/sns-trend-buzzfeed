@@ -1,0 +1,370 @@
+const paths = {
+  site: "../config/site.json",
+  links: "../config/links.json",
+  latest: "../data/latest-trends.json"
+};
+
+const pageKind = document.body.dataset.page || "list";
+
+const formatDateTitle = (date = new Date()) => {
+  const parts = new Intl.DateTimeFormat("ja-JP", {
+    timeZone: "Asia/Tokyo",
+    month: "numeric",
+    day: "numeric"
+  }).formatToParts(date);
+  const month = parts.find((part) => part.type === "month")?.value;
+  const day = parts.find((part) => part.type === "day")?.value;
+  return `${month}月${day}日の最新SNSトレンド`;
+};
+
+const formatUpdated = (value) => {
+  if (!value) return "未取得";
+  const date = new Date(value);
+  return new Intl.DateTimeFormat("ja-JP", {
+    timeZone: "Asia/Tokyo",
+    month: "numeric",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit"
+  }).format(date);
+};
+
+const loadJson = async (url, fallback) => {
+  try {
+    const response = await fetch(`${url}?v=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+    return await response.json();
+  } catch (error) {
+    console.warn(`Failed to load ${url}`, error);
+    return fallback;
+  }
+};
+
+const safeExternalAttrs = (anchor) => {
+  anchor.target = "_blank";
+  anchor.rel = "noopener noreferrer";
+  return anchor;
+};
+
+const signed = (value) => {
+  if (value === null || value === undefined) return "-";
+  return value > 0 ? `+${value}` : String(value);
+};
+
+const directionLabel = (direction) => {
+  const labels = { up: "上昇", flat: "横ばい", down: "下降", new: "新規" };
+  return labels[direction] || "観測";
+};
+
+const signalLabel = (signalType) => {
+  const labels = {
+    discovered_phrase: "発見フレーズ",
+    configured_rss: "重点観測",
+    daily_trend: "検索トレンド",
+    topic_trend: "公開RSS",
+    major_topic: "大型トピック",
+    watchlist_rss: "補助観測"
+  };
+  return labels[signalType] || "観測";
+};
+
+const statusLabel = (status) => {
+  const labels = {
+    actual_trend: "実トレンド",
+    actual_topic: "公開話題",
+    major_topic: "大型話題",
+    rising: "伸長",
+    warming: "微増",
+    flat: "横ばい",
+    cooling: "減少",
+    candidate: "判定待ち"
+  };
+  return labels[status] || "観測";
+};
+
+const classForValue = (value) => {
+  if (value > 0) return "positive";
+  if (value < 0) return "negative";
+  return "";
+};
+
+const create = (tag, className, text) => {
+  const element = document.createElement(tag);
+  if (className) element.className = className;
+  if (text !== undefined) element.textContent = text;
+  return element;
+};
+
+const sparkline = (series = []) => {
+  const wrap = create("div", "spark");
+  const values = series.length ? series.map((point) => point.score) : [0];
+  const max = Math.max(...values, 1);
+  values.forEach((value) => {
+    const bar = document.createElement("span");
+    bar.style.height = `${Math.max(10, Math.round((value / max) * 34))}px`;
+    wrap.append(bar);
+  });
+  return wrap;
+};
+
+const metric = (label, value, className = "") => {
+  const box = create("div", "metric");
+  box.append(create("span", "metric-label", label));
+  box.append(create("span", `metric-value ${className}`.trim(), value));
+  return box;
+};
+
+const trendCard = (item) => {
+  const card = create("article", "trend-card");
+  const top = create("div", "trend-title-row");
+  const left = create("div");
+  left.append(create("div", "keyword", `#${item.keyword}`));
+  left.append(create("span", "tag", item.watchlistLabel || "観測"));
+  left.append(create("span", "tag signal-tag", signalLabel(item.signalType)));
+  const status = statusLabel(item.trendStatus);
+  if (status !== item.watchlistLabel && status !== signalLabel(item.signalType)) {
+    left.append(create("span", "tag status-tag", status));
+  }
+  top.append(left);
+  top.append(create("span", `badge ${item.direction || "flat"}`, directionLabel(item.direction)));
+
+  const metrics = create("div", "metrics");
+  metrics.append(metric("観測スコア", item.score ?? "-", ""));
+  metrics.append(metric("前回比", signed(item.scoreChange), classForValue(item.scoreChange)));
+  metrics.append(metric("前日比", signed(item.yesterdayChange), classForValue(item.yesterdayChange)));
+  metrics.append(metric("順位変動", signed(item.rankChange), classForValue(item.rankChange)));
+  metrics.append(metric("観測件数", item.evidenceCount ? `${item.evidenceCount}件` : "-", ""));
+  metrics.append(metric("観測増減", signed(item.evidenceChange), classForValue(item.evidenceChange)));
+  metrics.append(metric("継続", `${item.appearCount || 1}回`, ""));
+
+  const link = safeExternalAttrs(create("a", "open-link", "観測元を開く ↗"));
+  link.href = item.observeUrl || "https://trends.google.co.jp/trends/";
+
+  card.append(top, metrics, sparkline(item.series), link);
+  return card;
+};
+
+const shortSignalText = (item) => {
+  const parts = [statusLabel(item.trendStatus), signalLabel(item.signalType)];
+  if (item.evidenceCount) parts.push(`観測 ${item.evidenceCount}件`);
+  if (item.evidenceChange !== null && item.evidenceChange !== undefined) parts.push(`増減 ${signed(item.evidenceChange)}`);
+  if (item.topicSourceCount) parts.push(`観測面 ${item.topicSourceCount}`);
+  return parts.join(" / ");
+};
+
+const simpleTrendRow = (item) => {
+  const row = safeExternalAttrs(create("a", "simple-trend-row"));
+  row.href = item.observeUrl || "https://trends.google.co.jp/trends/";
+  row.append(create("span", "simple-keyword", `#${item.keyword}`));
+  row.append(create("span", "simple-meta", shortSignalText(item)));
+  row.append(create("span", `simple-badge ${item.direction || "flat"}`, directionLabel(item.direction)));
+  return row;
+};
+
+const linkCard = (link) => {
+  const card = safeExternalAttrs(create("a", "link-card"));
+  card.href = link.url;
+  card.append(create("span", "tag", link.label));
+  card.append(create("h3", "", link.title));
+  card.append(create("p", "", link.description));
+  card.append(create("span", "open-link", "開く ↗"));
+  return card;
+};
+
+const renderEmpty = (target, message) => {
+  target.replaceChildren(create("div", "empty", message));
+};
+
+const sortBy = (items, selector) => [...items].sort((a, b) => selector(b) - selector(a));
+const categoryKey = (item) => {
+  const label = item.watchlistLabel || "";
+  const keyword = item.keyword || "";
+  if (label.includes("スポーツ") || /MLB|アスレチックス|大谷翔平|バレー|ネーションズリーグ|F1|相撲|野球|サッカー|W杯|ワールドカップ|アロンソ|森保/u.test(keyword)) return "sports";
+  if (label.includes("テクノロジー") || /Gemini|Android|iPhone|AI|スマホ|ゲーム/u.test(keyword)) return "technology";
+  if (label.includes("エンタメ") || label === "SNSトレンド" || /ガンダム|ミス・コンテスト|acosta|池田朱那|趣里|白洲迅|目黒蓮/u.test(keyword)) return "entertainment";
+  if (label.includes("季節")) return "seasonal";
+  if (label.includes("ビジネス")) return "business";
+  if (label.includes("地域")) return "local";
+  return "general";
+};
+
+const balancedTake = (items, limit, caps = {}) => {
+  const counts = {};
+  const result = [];
+  for (const item of items) {
+    const key = categoryKey(item);
+    const cap = caps[key] ?? limit;
+    if ((counts[key] || 0) >= cap) continue;
+    counts[key] = (counts[key] || 0) + 1;
+    result.push(item);
+    if (result.length >= limit) break;
+  }
+  return result;
+};
+
+const trendWeight = (item) => {
+  const weights = { actual_trend: 5, rising: 4, warming: 3, flat: 2, candidate: 1, cooling: 0 };
+  return (weights[item.trendStatus] ?? 0) * 1000 + (item.score || 0);
+};
+const isActualTrend = (item) => item.signalType === "daily_trend" || item.trendStatus === "actual_trend";
+const isActualTopic = (item) => item.signalType === "topic_trend" || item.trendStatus === "actual_topic";
+const isMajorTopic = (item) => item.signalType === "major_topic" || item.trendStatus === "major_topic";
+const isSports = (item) => categoryKey(item) === "sports";
+const isGrowingObservation = (item) => ["rising", "warming"].includes(item.trendStatus) && !isActualTrend(item) && !isActualTopic(item) && !isMajorTopic(item);
+const isEvergreen = (item) =>
+  !isActualTrend(item) &&
+  !isActualTopic(item) &&
+  !isMajorTopic(item) &&
+  ["flat", "cooling"].includes(item.trendStatus) &&
+  ((item.appearCount || 0) >= 2 || (item.evidenceCount || 0) >= 3);
+
+const compactMetricText = (item) => {
+  if (isActualTrend(item)) return `実トレンド　${item.rank ? `順位 ${item.rank}位` : "公開トレンド"}`;
+  if (isActualTopic(item)) return `公開話題　観測面 ${item.topicSourceCount || 1}`;
+  if (isMajorTopic(item)) return `大型話題　観測件数 ${item.evidenceCount ? `${item.evidenceCount}件` : "-"}`;
+  if (isGrowingObservation(item)) return `${statusLabel(item.trendStatus)}　観測増減 ${signed(item.evidenceChange)}`;
+  if (isEvergreen(item)) return `定番　観測件数 ${item.evidenceCount ? `${item.evidenceCount}件` : "-"}`;
+  return `${statusLabel(item.trendStatus)}　観測増減 ${signed(item.evidenceChange)}`;
+};
+
+const renderCompact = ({ site, links, latest }) => {
+  document.title = formatDateTitle();
+  document.querySelector("[data-title]").textContent = formatDateTitle();
+  document.querySelector("[data-updated]").textContent = `最終更新 ${formatUpdated(latest.updatedAt)}`;
+
+  const itemsTarget = document.querySelector("[data-compact-items]");
+  const rankedItems = sortBy(latest.items || [], (item) => {
+    if (isActualTrend(item)) return 4000 + (100 - (item.rank || 99));
+    if (isActualTopic(item)) return 3800 + (item.topicSourceCount || 1) * 50 + (item.score || 0);
+    if (isMajorTopic(item)) return 3500 + (item.score || 0);
+    if (isGrowingObservation(item)) return 3000 + (item.score || 0);
+    if (isEvergreen(item)) return 2000 + (item.appearCount || 0) * 20 + (item.evidenceCount || 0);
+    return trendWeight(item);
+  });
+  const items = balancedTake(rankedItems, site.maxCompactItems || 4, { sports: 1, technology: 1, entertainment: 2, seasonal: 1, business: 1, general: 2 });
+  if (!items.length) {
+    renderEmpty(itemsTarget, "まだ表示できるトレンドがありません。GitHub Actionsの初回取得後に反映されます。");
+  } else {
+    itemsTarget.replaceChildren(
+      ...items.map((item) => {
+        const row = create("a", "compact-item");
+        safeExternalAttrs(row);
+        row.href = item.observeUrl || "https://trends.google.co.jp/trends/";
+        row.append(create("div", "compact-word", `#${item.keyword}`));
+        row.append(create("div", "compact-metrics", compactMetricText(item)));
+        return row;
+      })
+    );
+  }
+
+  const linksTarget = document.querySelector("[data-compact-links]");
+  const activeLinks = links.filter((link) => link.active).sort((a, b) => b.priority - a.priority).slice(0, site.maxCompactLinks || 5);
+  linksTarget.replaceChildren(
+    ...activeLinks.map((link) => {
+      const anchor = safeExternalAttrs(create("a", "open-link", `${link.label}で確認 ↗`));
+      anchor.href = link.url;
+      return anchor;
+    })
+  );
+
+  const more = safeExternalAttrs(document.querySelector("[data-more]"));
+  more.href = site.sharePointListUrl || "../list/";
+};
+
+const section = (title, items, options = {}) => {
+  const wrap = create("section", "section");
+  if (options.featured) wrap.classList.add("featured-section");
+  if (options.compact) wrap.classList.add("compact-section");
+  const head = create("div", "section-head");
+  head.append(create("h2", "", title));
+  if (items.length && options.totalLabel) {
+    head.append(create("span", "section-count", options.totalLabel));
+  }
+  const grid = create("div", "grid");
+  if (options.compact) grid.classList.add("compact-grid");
+  if (!items.length) renderEmpty(grid, "該当する観測ワードはまだありません。");
+  else grid.replaceChildren(...items.slice(0, options.limit || 6).map(trendCard));
+  wrap.append(head, grid);
+  if (options.expandable && items.length > (options.limit || 6)) {
+    const visibleCount = options.limit || 6;
+    const extraItems = items.slice(visibleCount, options.maxItems || items.length);
+    const details = create("details", "accordion");
+    const summary = create("summary", "", `さらに${extraItems.length}件を簡易表示`);
+    const list = create("div", "simple-trend-list");
+    list.replaceChildren(...extraItems.map(simpleTrendRow));
+    details.append(summary, list);
+    wrap.append(details);
+  }
+  return wrap;
+};
+
+const appendIfAny = (target, title, items, options = {}) => {
+  if (items.length) target.append(section(title, items, options));
+};
+
+const renderList = ({ site, links, latest }) => {
+  document.querySelector("[data-updated]").textContent = `最終更新 ${formatUpdated(latest.updatedAt)}`;
+  const main = document.querySelector("[data-dashboard]");
+  const items = latest.items || [];
+
+  const mainTrends = balancedTake(
+    sortBy(items.filter((item) => isActualTrend(item) || isActualTopic(item) || isMajorTopic(item)), (item) => {
+      if (isActualTrend(item)) return 5000 + (100 - (item.rank || 99));
+      if (isActualTopic(item)) return 4200 + (item.topicSourceCount || 1) * 80 + (item.score || 0);
+      if (isMajorTopic(item)) return 3600 + (item.evidenceCount || 0) * 30 + (item.score || 0);
+      return trendWeight(item);
+    }),
+    20,
+    { sports: 4, technology: 4, entertainment: 7, seasonal: 4, local: 3, business: 2, general: 7 }
+  );
+  main.append(section("主役: いま実際に話題のワード", mainTrends, { featured: true, limit: 5, maxItems: 20, expandable: true, totalLabel: `${mainTrends.length}件観測` }));
+
+  const evergreen = balancedTake(
+    sortBy(items.filter(isEvergreen), (item) => (item.appearCount || 0) * 20 + (item.evidenceCount || 0)),
+    20,
+    { sports: 3, technology: 3, entertainment: 5, seasonal: 5, local: 5, general: 6 }
+  );
+  main.append(section("準メイン: 定番・継続して使えるワード", evergreen, { featured: true, limit: 5, maxItems: 20, expandable: true, totalLabel: `${evergreen.length}件保持` }));
+
+  appendIfAny(
+    main,
+    "伸びている観測ワード",
+    sortBy(items.filter(isGrowingObservation), (item) => item.evidenceChange || 0).slice(0, 20),
+    { compact: true, limit: 5, maxItems: 20, expandable: true, totalLabel: "最大20件" }
+  );
+
+  const categoryPool = items.filter((item) => isActualTopic(item) || isMajorTopic(item));
+  const categoryDefs = [
+    ["エンタメ・カルチャー", "entertainment"],
+    ["スポーツ", "sports"],
+    ["テクノロジー", "technology"],
+    ["季節・大型イベント", "seasonal"],
+    ["地域・レジャー", "local"]
+  ];
+  for (const [title, key] of categoryDefs) {
+    const categoryItems = sortBy(categoryPool.filter((item) => categoryKey(item) === key), (item) => item.score || 0).slice(0, 20);
+    appendIfAny(main, title, categoryItems, { compact: true, limit: 5, maxItems: 20, expandable: true, totalLabel: `${categoryItems.length}件` });
+  }
+
+  const linkSection = create("section", "section");
+  const head = create("div", "section-head");
+  head.append(create("h2", "", "SNS別観測リンク"));
+  const grid = create("div", "grid link-grid");
+  grid.replaceChildren(...links.filter((link) => link.active).sort((a, b) => b.priority - a.priority).map(linkCard));
+  linkSection.append(head, grid);
+  main.append(linkSection);
+
+  document.querySelector("[data-note]").textContent = site.dataRefreshNote || "観測スコアは独自指標です。";
+};
+
+const main = async () => {
+  const [site, links, latest] = await Promise.all([
+    loadJson(paths.site, {}),
+    loadJson(paths.links, []),
+    loadJson(paths.latest, { items: [] })
+  ]);
+  if (pageKind === "compact") renderCompact({ site, links, latest });
+  else renderList({ site, links, latest });
+};
+
+main();

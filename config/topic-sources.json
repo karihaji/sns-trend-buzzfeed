@@ -1,0 +1,44 @@
+[
+  {
+    "id": "google_trends_jp",
+    "label": "検索急上昇",
+    "url": "https://trends.google.co.jp/trending/rss?geo=JP",
+    "type": "google_trends",
+    "priority": 120
+  },
+  {
+    "id": "news_top",
+    "label": "総合話題",
+    "url": "https://news.google.com/rss?hl=ja&gl=JP&ceid=JP:ja",
+    "type": "google_news",
+    "priority": 90
+  },
+  {
+    "id": "news_sports",
+    "label": "スポーツ",
+    "url": "https://news.google.com/rss/headlines/section/topic/SPORTS?hl=ja&gl=JP&ceid=JP:ja",
+    "type": "google_news",
+    "priority": 88
+  },
+  {
+    "id": "news_entertainment",
+    "label": "エンタメ",
+    "url": "https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT?hl=ja&gl=JP&ceid=JP:ja",
+    "type": "google_news",
+    "priority": 86
+  },
+  {
+    "id": "news_technology",
+    "label": "テクノロジー",
+    "url": "https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=ja&gl=JP&ceid=JP:ja",
+    "type": "google_news",
+    "priority": 74
+  },
+  {
+    "id": "news_business",
+    "label": "ビジネス",
+    "url": "https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=ja&gl=JP&ceid=JP:ja",
+    "type": "google_news",
+    "priority": 60
+  }
+]

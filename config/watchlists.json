@@ -1,0 +1,37 @@
+[
+  {
+    "id": "sns_platform",
+    "label": "SNSトレンド",
+    "includeKeywords": ["TikTok", "リール", "YouTube Shorts", "Xで話題", "Threads", "バズ", "ミーム", "トレンド音源", "踊ってみた", "チャレンジ"],
+    "excludeKeywords": ["炎上", "事件", "事故", "訃報", "逮捕", "不祥事"],
+    "priority": 100
+  },
+  {
+    "id": "format",
+    "label": "投稿フォーマット",
+    "includeKeywords": ["あるある", "してみた", "チャレンジ", "選手権", "ランキング", "検証", "ルーティン", "一日密着", "ビフォーアフター"],
+    "excludeKeywords": ["炎上", "事件", "事故", "犯罪"],
+    "priority": 90
+  },
+  {
+    "id": "seasonal",
+    "label": "季節・イベント",
+    "includeKeywords": ["梅雨", "夏休み", "花火", "お盆", "クリスマス", "年末年始", "父の日", "母の日", "記念日", "祝日"],
+    "excludeKeywords": ["災害", "被害", "事故"],
+    "priority": 80
+  },
+  {
+    "id": "local_leisure",
+    "label": "地域・レジャー",
+    "includeKeywords": ["鹿児島", "屋久島", "奄美", "南九州", "観光", "旅行", "フェリー", "ボウリング", "温泉", "グルメ", "イベント", "スポーツ観戦"],
+    "excludeKeywords": ["事件", "事故", "災害", "逮捕"],
+    "priority": 85
+  },
+  {
+    "id": "light_topic",
+    "label": "軽い話題",
+    "includeKeywords": ["便利", "かわいい", "面白い", "懐かしい", "話題の", "流行りの", "人気の"],
+    "excludeKeywords": ["炎上", "事件", "事故", "不祥事", "批判"],
+    "priority": 70
+  }
+]
