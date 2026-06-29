@@ -2,11 +2,28 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="refresh" content="0; url=./list/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SNSトレンドバズフィード</title>
+    <link rel="stylesheet" href="./assets/styles.css">
   </head>
-  <body>
-    <p><a href="./list/">SNSトレンド観測ダッシュボードへ移動</a></p>
+  <body data-page="home">
+    <main class="page home-page">
+      <header class="home-header">
+        <div>
+          <p class="eyebrow">SNS Trend Buzzfeed</p>
+          <h1>SNSトレンドバズフィード</h1>
+          <p class="lead">実トレンドを中心に、定番ワードとカテゴリ別の話題を俯瞰</p>
+        </div>
+        <nav class="home-nav" aria-label="表示切り替え">
+          <a href="./list/">List</a>
+          <a href="./compact/">Compact</a>
+        </nav>
+      </header>
+
+      <section class="dashboard-hero" data-home-hero></section>
+      <section class="dashboard-layout" data-home-dashboard></section>
+      <p class="note" data-note></p>
+    </main>
+    <script src="./assets/app.js" type="module"></script>
   </body>
 </html>

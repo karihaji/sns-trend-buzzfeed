@@ -1,10 +1,10 @@
-const paths = {
-  site: "../config/site.json",
-  links: "../config/links.json",
-  latest: "../data/latest-trends.json"
-};
-
 const pageKind = document.body.dataset.page || "list";
+const basePath = pageKind === "home" ? "." : "..";
+const paths = {
+  site: `${basePath}/config/site.json`,
+  links: `${basePath}/config/links.json`,
+  latest: `${basePath}/data/latest-trends.json`
+};
 
 const formatDateTitle = (date = new Date()) => {
   const parts = new Intl.DateTimeFormat("ja-JP", {
@@ -227,6 +227,155 @@ const compactMetricText = (item) => {
   return `${statusLabel(item.trendStatus)}　観測増減 ${signed(item.evidenceChange)}`;
 };
 
+const rankedTrendItems = (items) =>
+  balancedTake(
+    sortBy(items.filter((item) => isActualTrend(item) || isActualTopic(item) || isMajorTopic(item)), (item) => {
+      if (isActualTrend(item)) return 5000 + (100 - (item.rank || 99));
+      if (isActualTopic(item)) return 4200 + (item.topicSourceCount || 1) * 80 + (item.score || 0);
+      if (isMajorTopic(item)) return 3600 + (item.evidenceCount || 0) * 30 + (item.score || 0);
+      return trendWeight(item);
+    }),
+    20,
+    { sports: 4, technology: 4, entertainment: 7, seasonal: 4, local: 3, business: 2, general: 7 }
+  );
+
+const evergreenItems = (items) =>
+  balancedTake(
+    sortBy(items.filter(isEvergreen), (item) => (item.appearCount || 0) * 20 + (item.evidenceCount || 0)),
+    20,
+    { sports: 3, technology: 3, entertainment: 5, seasonal: 5, local: 5, general: 6 }
+  );
+
+const categoryName = (key) => {
+  const names = {
+    entertainment: "エンタメ",
+    sports: "スポーツ",
+    technology: "テック",
+    seasonal: "季節",
+    local: "地域",
+    business: "ビジネス",
+    general: "一般"
+  };
+  return names[key] || "一般";
+};
+
+const trendPill = (item) => {
+  const anchor = safeExternalAttrs(create("a", "trend-pill"));
+  anchor.href = item.observeUrl || "https://trends.google.co.jp/trends/";
+  anchor.append(create("span", "", `#${item.keyword}`));
+  anchor.append(create("small", "", compactMetricText(item)));
+  return anchor;
+};
+
+const categoryBar = (key, count, max) => {
+  const row = create("div", "category-bar");
+  row.append(create("span", "category-label", categoryName(key)));
+  const track = create("span", "bar-track");
+  const fill = create("span", "bar-fill");
+  fill.style.width = `${Math.max(8, Math.round((count / Math.max(max, 1)) * 100))}%`;
+  track.append(fill);
+  row.append(track);
+  row.append(create("span", "category-count", `${count}`));
+  return row;
+};
+
+const statTile = (label, value, detail) => {
+  const tile = create("div", "stat-tile");
+  tile.append(create("span", "stat-label", label));
+  tile.append(create("strong", "", value));
+  tile.append(create("span", "stat-detail", detail));
+  return tile;
+};
+
+const renderHome = ({ site, links, latest }) => {
+  document.title = site.siteName || "SNSトレンドバズフィード";
+  const items = latest.items || [];
+  const mainTrends = rankedTrendItems(items);
+  const evergreen = evergreenItems(items);
+  const growing = sortBy(items.filter(isGrowingObservation), (item) => item.evidenceChange || 0).slice(0, 8);
+  const heroTarget = document.querySelector("[data-home-hero]");
+  const dashboardTarget = document.querySelector("[data-home-dashboard]");
+  const topItem = mainTrends[0];
+
+  const heroCopy = create("div", "hero-copy");
+  heroCopy.append(create("span", "tag", topItem ? compactMetricText(topItem) : "観測待ち"));
+  heroCopy.append(create("h2", "", topItem ? `#${topItem.keyword}` : "トレンド取得待ち"));
+  heroCopy.append(create("p", "", topItem ? shortSignalText(topItem) : "GitHub Actionsの取得後に最新の観測結果が表示されます。"));
+  const heroActions = create("div", "hero-actions");
+  const listLink = create("a", "primary-action", "詳しく見る");
+  listLink.href = "./list/";
+  const compactLink = create("a", "secondary-action", "Compact");
+  compactLink.href = "./compact/";
+  heroActions.append(listLink, compactLink);
+  heroCopy.append(heroActions);
+
+  const heroStats = create("div", "hero-stats");
+  heroStats.append(statTile("実トレンド", `${mainTrends.length}`, "主役候補"));
+  heroStats.append(statTile("定番ワード", `${evergreen.length}`, "継続観測"));
+  heroStats.append(statTile("伸長候補", `${growing.length}`, "増加検知"));
+  heroStats.append(statTile("最終更新", formatUpdated(latest.updatedAt), "Asia/Tokyo"));
+  heroTarget.replaceChildren(heroCopy, heroStats);
+
+  const counts = items.reduce((acc, item) => {
+    const key = categoryKey(item);
+    acc[key] = (acc[key] || 0) + 1;
+    return acc;
+  }, {});
+  const categoryEntries = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 6);
+  const maxCategory = Math.max(...categoryEntries.map((entry) => entry[1]), 1);
+
+  const leadPanel = create("section", "dashboard-panel lead-panel");
+  const leadHead = create("div", "panel-head");
+  leadHead.append(create("h2", "", "いま見るべき話題"));
+  leadHead.append(create("span", "section-count", `${mainTrends.length}件`));
+  const leadList = create("div", "pill-list");
+  leadList.replaceChildren(...mainTrends.slice(0, 7).map(trendPill));
+  leadPanel.append(leadHead, leadList);
+
+  const evergreenPanel = create("section", "dashboard-panel");
+  const evergreenHead = create("div", "panel-head");
+  evergreenHead.append(create("h2", "", "定番・継続ワード"));
+  evergreenHead.append(create("span", "section-count", `${evergreen.length}件`));
+  const evergreenList = create("div", "compact-dashboard-list");
+  evergreenList.replaceChildren(...evergreen.slice(0, 6).map(simpleTrendRow));
+  evergreenPanel.append(evergreenHead, evergreenList);
+
+  const categoryPanel = create("section", "dashboard-panel");
+  const categoryHead = create("div", "panel-head");
+  categoryHead.append(create("h2", "", "カテゴリ構成"));
+  categoryHead.append(create("span", "section-count", `${items.length}件`));
+  const bars = create("div", "category-bars");
+  bars.replaceChildren(...categoryEntries.map(([key, count]) => categoryBar(key, count, maxCategory)));
+  categoryPanel.append(categoryHead, bars);
+
+  const growingPanel = create("section", "dashboard-panel");
+  const growingHead = create("div", "panel-head");
+  growingHead.append(create("h2", "", "伸長検知"));
+  growingHead.append(create("span", "section-count", `${growing.length}件`));
+  const growingList = create("div", "compact-dashboard-list");
+  if (growing.length) growingList.replaceChildren(...growing.slice(0, 6).map(simpleTrendRow));
+  else renderEmpty(growingList, "明確な伸長ワードはまだありません。");
+  growingPanel.append(growingHead, growingList);
+
+  const linksPanel = create("section", "dashboard-panel");
+  const linksHead = create("div", "panel-head");
+  linksHead.append(create("h2", "", "観測リンク"));
+  const linkList = create("div", "home-link-list");
+  linkList.replaceChildren(
+    ...links.filter((link) => link.active).sort((a, b) => b.priority - a.priority).slice(0, 5).map((link) => {
+      const anchor = safeExternalAttrs(create("a", "home-link"));
+      anchor.href = link.url;
+      anchor.append(create("span", "", link.label));
+      anchor.append(create("strong", "", link.title));
+      return anchor;
+    })
+  );
+  linksPanel.append(linksHead, linkList);
+
+  dashboardTarget.replaceChildren(leadPanel, categoryPanel, evergreenPanel, growingPanel, linksPanel);
+  document.querySelector("[data-note]").textContent = site.dataRefreshNote || "観測スコアは独自指標です。";
+};
+
 const renderCompact = ({ site, links, latest }) => {
   document.title = formatDateTitle();
   document.querySelector("[data-title]").textContent = formatDateTitle();
@@ -307,23 +456,10 @@ const renderList = ({ site, links, latest }) => {
   const main = document.querySelector("[data-dashboard]");
   const items = latest.items || [];
 
-  const mainTrends = balancedTake(
-    sortBy(items.filter((item) => isActualTrend(item) || isActualTopic(item) || isMajorTopic(item)), (item) => {
-      if (isActualTrend(item)) return 5000 + (100 - (item.rank || 99));
-      if (isActualTopic(item)) return 4200 + (item.topicSourceCount || 1) * 80 + (item.score || 0);
-      if (isMajorTopic(item)) return 3600 + (item.evidenceCount || 0) * 30 + (item.score || 0);
-      return trendWeight(item);
-    }),
-    20,
-    { sports: 4, technology: 4, entertainment: 7, seasonal: 4, local: 3, business: 2, general: 7 }
-  );
+  const mainTrends = rankedTrendItems(items);
   main.append(section("主役: いま実際に話題のワード", mainTrends, { featured: true, limit: 5, maxItems: 20, expandable: true, totalLabel: `${mainTrends.length}件観測` }));
 
-  const evergreen = balancedTake(
-    sortBy(items.filter(isEvergreen), (item) => (item.appearCount || 0) * 20 + (item.evidenceCount || 0)),
-    20,
-    { sports: 3, technology: 3, entertainment: 5, seasonal: 5, local: 5, general: 6 }
-  );
+  const evergreen = evergreenItems(items);
   main.append(section("準メイン: 定番・継続して使えるワード", evergreen, { featured: true, limit: 5, maxItems: 20, expandable: true, totalLabel: `${evergreen.length}件保持` }));
 
   appendIfAny(
@@ -363,7 +499,8 @@ const main = async () => {
     loadJson(paths.links, []),
     loadJson(paths.latest, { items: [] })
   ]);
-  if (pageKind === "compact") renderCompact({ site, links, latest });
+  if (pageKind === "home") renderHome({ site, links, latest });
+  else if (pageKind === "compact") renderCompact({ site, links, latest });
   else renderList({ site, links, latest });
 };
 
