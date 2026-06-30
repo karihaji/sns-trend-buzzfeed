@@ -383,64 +383,30 @@ const listContextPanel = (context = {}) => {
   return panel;
 };
 
-const compactContextStrip = (context = {}) => {
-  const events = [...(context.holidays || []), ...(context.anniversaries || [])]
-    .sort((a, b) => (a.daysUntil ?? 99) - (b.daysUntil ?? 99))
-    .slice(0, 2);
-  const wrap = create("div", "compact-context");
-  wrap.append(create("span", "compact-context-label", "今日のネタ"));
-  if (!events.length) {
-    wrap.append(create("strong", "", "記念日取得待ち"));
-    return wrap;
-  }
-  events.forEach((item) => {
-    const chip = create("span", "compact-context-chip", `${contextDateLabel(item.daysUntil)}: ${item.title}`);
-    wrap.append(chip);
-  });
-  return wrap;
-};
-
-const compactWeatherStrip = (context = {}) => {
-  const wrap = create("div", "compact-weather");
-  wrap.append(create("span", "compact-context-label", "地域天気"));
-  const weather = (context.weather || []).slice(0, 4);
-  if (!weather.length) {
-    wrap.append(create("span", "compact-context-chip", "天気取得待ち"));
-    return wrap;
-  }
-  weather.forEach((item) => {
-    const chip = create("span", "compact-weather-chip");
-    chip.append(create("strong", "", item.label || "地域"));
-    chip.append(create("small", "", `${item.summary || "観測中"} ${item.temperature ?? "-"}℃`));
-    wrap.append(chip);
-  });
-  return wrap;
-};
-
 const compactHeaderContext = (context = {}) => {
-  const wrap = create("div", "compact-bento");
+  const wrap = create("div", "compact-context-board");
   const events = [...(context.holidays || []), ...(context.anniversaries || [])]
     .sort((a, b) => (a.daysUntil ?? 99) - (b.daysUntil ?? 99))
     .slice(0, 2);
   const weather = (context.weather || []).slice(0, 4);
 
-  const eventBox = create("div", "compact-bento-card compact-bento-event");
-  eventBox.append(create("span", "compact-bento-label", "今日のネタ"));
+  const eventBox = create("div", "compact-event-card");
+  eventBox.append(create("span", "compact-context-kicker", "今日のネタ"));
   if (events.length) {
     eventBox.append(create("strong", "", events.map((item) => item.title).join(" / ")));
-    eventBox.append(create("small", "", events.map((item) => contextDateLabel(item.daysUntil)).join("・")));
+    eventBox.append(create("small", "", events.map((item) => `${contextDateLabel(item.daysUntil)} ${item.category || "記念日"}`).join("  ")));
   } else {
     eventBox.append(create("strong", "", "記念日取得待ち"));
     eventBox.append(create("small", "", "投稿文脈"));
   }
 
-  const weatherBox = create("div", "compact-bento-card compact-bento-weather");
-  weatherBox.append(create("span", "compact-bento-label", "地域天気"));
-  const weatherGrid = create("div", "compact-bento-weather-grid");
+  const weatherBox = create("div", "compact-weather-board");
+  weatherBox.append(create("span", "compact-context-kicker", "地域天気"));
+  const weatherGrid = create("div", "compact-weather-row");
   if (weather.length) {
     weatherGrid.replaceChildren(
       ...weather.map((item) => {
-        const cell = create("span", "");
+        const cell = create("span", "compact-weather-stat");
         cell.append(create("b", "", item.label || "地域"));
         cell.append(create("small", "", `${item.summary || "観測中"} ${item.temperature ?? "-"}℃`));
         return cell;
