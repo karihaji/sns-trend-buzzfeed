@@ -58,7 +58,10 @@ a {
 }
 
 .compact-shell {
-  padding: 16px;
+  padding: 14px;
+  background:
+    linear-gradient(180deg, rgba(1, 139, 238, 0.08), rgba(255, 255, 255, 0.96) 34%),
+    #fff;
 }
 
 .dashboard-header {
@@ -91,7 +94,7 @@ h1 {
 }
 
 .compact-shell h1 {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .lead {
@@ -1207,7 +1210,52 @@ h1 {
 .compact-list {
   display: grid;
   gap: 8px;
-  margin-top: 14px;
+  margin-top: 10px;
+}
+
+.compact-dashboard {
+  display: grid;
+  gap: 9px;
+  margin-top: 12px;
+}
+
+.compact-spotlight {
+  display: grid;
+  gap: 7px;
+  min-height: 112px;
+  padding: 13px;
+  border: 1px solid var(--card-line, #bddaf5);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, var(--card-tint, rgba(1, 139, 238, 0.13)), rgba(255, 255, 255, 0.9)),
+    #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.compact-spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--card-accent, var(--accent)), transparent 88%);
+}
+
+.compact-spotlight > * {
+  position: relative;
+}
+
+.compact-spotlight strong {
+  color: #0f1b32;
+  font-size: 22px;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.compact-spotlight small {
+  color: #46566e;
+  font-size: 12px;
+  line-height: 1.45;
 }
 
 .compact-context {
@@ -1215,11 +1263,22 @@ h1 {
   align-items: center;
   flex-wrap: wrap;
   gap: 6px;
-  margin: 12px 0;
+  margin: 0;
   padding: 9px;
   border: 1px solid #d6e6f8;
   border-radius: 8px;
   background: #f8fbff;
+}
+
+.compact-weather {
+  display: grid;
+  grid-template-columns: auto repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  align-items: stretch;
+  padding: 8px;
+  border: 1px solid #d6e6f8;
+  border-radius: 8px;
+  background: #fff;
 }
 
 .compact-context-label,
@@ -1242,13 +1301,44 @@ h1 {
   border: 1px solid #cfe2f7;
 }
 
+.compact-weather-chip {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  padding: 5px 6px;
+  border: 1px solid #dbe8f6;
+  border-radius: 8px;
+  background: #f8fbff;
+}
+
+.compact-weather-chip strong {
+  color: #25364f;
+  font-size: 10px;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.compact-weather-chip small {
+  color: var(--accent-ink);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
 .compact-item {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 10px;
   align-items: center;
-  padding: 9px 0;
-  border-top: 1px solid var(--line);
+  padding: 10px;
+  border: 1px solid var(--card-line, var(--line));
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, var(--card-tint, rgba(1, 139, 238, 0.05)), rgba(255, 255, 255, 0.94)),
+    #fff;
 }
 
 .compact-word {
@@ -1266,9 +1356,16 @@ h1 {
 
 .compact-links {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 8px;
-  margin-top: 12px;
+  margin-top: 10px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: thin;
+}
+
+.compact-links .open-link {
+  flex: 0 0 auto;
 }
 
 .compact-footer {
@@ -1276,7 +1373,6 @@ h1 {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-top: 12px;
 }
 
 .note {
@@ -1391,6 +1487,15 @@ h1 {
   .home-nav,
   .hero-actions {
     width: 100%;
+  }
+
+  .compact-weather {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .compact-weather .compact-context-label {
+    grid-column: 1 / -1;
+    width: fit-content;
   }
 
   .home-nav a,

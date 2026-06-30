@@ -400,6 +400,32 @@ const compactContextStrip = (context = {}) => {
   return wrap;
 };
 
+const compactWeatherStrip = (context = {}) => {
+  const wrap = create("div", "compact-weather");
+  wrap.append(create("span", "compact-context-label", "地域天気"));
+  const weather = (context.weather || []).slice(0, 4);
+  if (!weather.length) {
+    wrap.append(create("span", "compact-context-chip", "天気取得待ち"));
+    return wrap;
+  }
+  weather.forEach((item) => {
+    const chip = create("span", "compact-weather-chip");
+    chip.append(create("strong", "", item.label || "地域"));
+    chip.append(create("small", "", `${item.summary || "観測中"} ${item.temperature ?? "-"}℃`));
+    wrap.append(chip);
+  });
+  return wrap;
+};
+
+const compactSpotlight = (item) => {
+  const link = safeExternalAttrs(create("a", `compact-spotlight ${item ? `category-${categoryKey(item)}` : ""}`.trim()));
+  link.href = readableTrendUrl(item);
+  link.append(create("span", "tag", item ? compactMetricText(item) : "観測待ち"));
+  link.append(create("strong", "", item ? `#${item.keyword}` : "トレンド取得待ち"));
+  link.append(create("small", "", item ? shortSignalText(item) : "最新の実トレンドを取得中です。"));
+  return link;
+};
+
 const listOverview = ({ items, mainTrends, evergreen, growing, localObservations, context }) => {
   const wrap = create("section", "list-overview");
   const focus = create("div", "list-focus-panel");
@@ -661,10 +687,12 @@ const renderHome = ({ site, links, latest }) => {
 
 const renderCompact = ({ site, links, latest }) => {
   document.title = formatDateTitle();
-  document.querySelector("[data-title]").textContent = formatDateTitle();
+  document.querySelector("[data-title]").textContent = "最新SNSトレンド";
   document.querySelector("[data-updated]").textContent = `最終更新 ${formatUpdated(latest.updatedAt)}`;
 
   const itemsTarget = document.querySelector("[data-compact-items]");
+  const dashboardTarget = document.querySelector("[data-compact-dashboard]");
+  const compactLimit = Math.min(site.maxCompactItems || 4, 3);
   const rankedItems = sortBy(latest.items || [], (item) => {
     if (isActualTrend(item)) return 4000 + (100 - (item.rank || 99));
     if (isActualTopic(item)) return 3800 + (item.topicSourceCount || 1) * 50 + (item.score || 0);
@@ -673,13 +701,19 @@ const renderCompact = ({ site, links, latest }) => {
     if (isEvergreen(item)) return 2000 + (item.appearCount || 0) * 20 + (item.evidenceCount || 0);
     return trendWeight(item);
   });
-  const items = balancedTake(rankedItems, site.maxCompactItems || 4, { sports: 1, technology: 1, entertainment: 2, seasonal: 1, business: 1, general: 2 });
+  const items = balancedTake(rankedItems, compactLimit, { sports: 1, technology: 1, entertainment: 2, seasonal: 1, business: 1, general: 2 });
+  const context = latest.context || {};
+  dashboardTarget.replaceChildren(
+    compactSpotlight(items[0]),
+    compactContextStrip(context),
+    compactWeatherStrip(context)
+  );
   if (!items.length) {
     renderEmpty(itemsTarget, "まだ表示できるトレンドがありません。GitHub Actionsの初回取得後に反映されます。");
   } else {
     itemsTarget.replaceChildren(
-      ...items.map((item) => {
-        const row = create("a", "compact-item");
+      ...items.slice(1).map((item) => {
+        const row = create("a", `compact-item category-${categoryKey(item)}`);
         safeExternalAttrs(row);
         row.href = readableTrendUrl(item);
         row.append(create("div", "compact-word", `#${item.keyword}`));
@@ -688,8 +722,6 @@ const renderCompact = ({ site, links, latest }) => {
       })
     );
   }
-
-  itemsTarget.before(compactContextStrip(latest.context || {}));
 
   const linksTarget = document.querySelector("[data-compact-links]");
   const activeLinks = links.filter((link) => link.active).sort((a, b) => b.priority - a.priority).slice(0, site.maxCompactLinks || 5);
