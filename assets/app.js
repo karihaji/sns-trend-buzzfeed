@@ -517,11 +517,9 @@ const renderHome = ({ site, links, latest }) => {
   heroCopy.append(create("h2", "", topItem ? `#${topItem.keyword}` : "トレンド取得待ち"));
   heroCopy.append(create("p", "", topItem ? shortSignalText(topItem) : "GitHub Actionsの取得後に最新の観測結果が表示されます。"));
   const heroActions = create("div", "hero-actions");
-  const listLink = create("a", "primary-action", "詳しく見る");
+  const listLink = create("a", "primary-action", "詳細リストを見る");
   listLink.href = "./list/";
-  const compactLink = create("a", "secondary-action", "Compact");
-  compactLink.href = "./compact/";
-  heroActions.append(listLink, compactLink);
+  heroActions.append(listLink);
   heroCopy.append(heroActions);
 
   const heroStats = create("div", "hero-stats");
@@ -632,8 +630,8 @@ const renderCompact = ({ site, links, latest }) => {
     })
   );
 
-  const more = safeExternalAttrs(document.querySelector("[data-more]"));
-  more.href = site.sharePointListUrl || "../list/";
+  const more = document.querySelector("[data-more]");
+  more.href = site.sharePointListUrl || "../";
 };
 
 const section = (title, items, options = {}) => {

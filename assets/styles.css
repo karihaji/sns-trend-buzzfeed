@@ -133,6 +133,13 @@ h1 {
   color: var(--accent-ink);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
 .meta {
   color: var(--muted);
   font-size: 12px;
@@ -1186,6 +1193,11 @@ h1 {
   .home-header,
   .dashboard-header {
     display: block;
+  }
+
+  .header-actions {
+    justify-content: flex-start;
+    margin-top: 12px;
   }
 
   .home-nav {
