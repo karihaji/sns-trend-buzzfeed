@@ -383,12 +383,19 @@ const listContextPanel = (context = {}) => {
   return panel;
 };
 
-const compactHeaderContext = (context = {}) => {
+const compactWeatherOrder = (item) => {
+  const label = item?.label || "";
+  const order = ["鹿児島", "種子島", "屋久島", "奄美"];
+  const index = order.findIndex((name) => label.includes(name));
+  return index === -1 ? 99 : index;
+};
+
+const compactHeaderContext = (context = {}, links = []) => {
   const wrap = create("div", "compact-meta-strip");
   const events = [...(context.holidays || []), ...(context.anniversaries || [])]
     .sort((a, b) => (a.daysUntil ?? 99) - (b.daysUntil ?? 99))
     .slice(0, 2);
-  const weather = (context.weather || []).slice(0, 4);
+  const weather = [...(context.weather || [])].sort((a, b) => compactWeatherOrder(a) - compactWeatherOrder(b)).slice(0, 4);
 
   const eventChip = create("span", "compact-meta-chip compact-meta-event");
   if (events.length) {
@@ -399,18 +406,31 @@ const compactHeaderContext = (context = {}) => {
     eventChip.append(create("span", "", "記念日取得待ち"));
   }
 
-  const weatherChip = create("span", "compact-meta-chip compact-meta-weather");
+  const weatherChip = create("div", "compact-weather-card");
+  weatherChip.append(create("b", "", "地域天気"));
+  const weatherList = create("div", "compact-weather-list");
   if (weather.length) {
-    const primary = weather[0];
-    const rainy = weather.find((item) => /雨|雷|霧雨/u.test(item.summary || ""));
-    weatherChip.append(create("b", "", primary.label || "天気"));
-    weatherChip.append(create("span", "", `${primary.summary || "観測中"} ${primary.temperature ?? "-"}℃${rainy && rainy.id !== primary.id ? ` / 雨 ${rainy.label}` : ""}`));
+    weatherList.replaceChildren(
+      ...weather.map((item) => {
+        const cell = create("span", "compact-weather-dot");
+        cell.append(create("b", "", item.label || "地域"));
+        cell.append(create("small", "", `${item.summary || "観測中"} ${item.temperature ?? "-"}℃`));
+        return cell;
+      })
+    );
   } else {
-    weatherChip.append(create("b", "", "天気"));
-    weatherChip.append(create("span", "", "取得待ち"));
+    weatherList.append(create("span", "compact-tray-empty", "天気取得待ち"));
   }
+  weatherChip.append(weatherList);
 
-  wrap.append(eventChip, weatherChip);
+  const observeMenu = create("details", "compact-observe-menu");
+  observeMenu.append(create("summary", "", "観測"));
+  const observeLinks = create("div", "compact-observe-links");
+  if (links.length) observeLinks.replaceChildren(...links.slice(0, 5).map(compactSourceLink));
+  else observeLinks.append(create("small", "compact-tray-empty", "リンク設定待ち"));
+  observeMenu.append(observeLinks);
+
+  wrap.append(eventChip, weatherChip, observeMenu);
   return wrap;
 };
 
@@ -449,7 +469,7 @@ const compactSourceLink = (link) => {
   return anchor;
 };
 
-const compactInfoTray = ({ evergreen, growing, links }) => {
+const compactInfoTray = ({ evergreen, growing }) => {
   const tray = create("div", "compact-info-tray");
 
   const evergreenBox = create("div", "compact-tray-box");
@@ -466,14 +486,7 @@ const compactInfoTray = ({ evergreen, growing, links }) => {
   else growingRows.append(create("small", "compact-tray-empty", "増加検知待ち"));
   growingBox.append(growingRows);
 
-  const sourceBox = create("div", "compact-tray-box compact-source-box");
-  sourceBox.append(create("span", "compact-tray-label", "観測"));
-  const sourceRows = create("div", "compact-source-row");
-  if (links.length) sourceRows.replaceChildren(...links.slice(0, 3).map(compactSourceLink));
-  else sourceRows.append(create("small", "compact-tray-empty", "リンク設定待ち"));
-  sourceBox.append(sourceRows);
-
-  tray.append(evergreenBox, growingBox, sourceBox);
+  tray.append(evergreenBox, growingBox);
   return tray;
 };
 
@@ -758,8 +771,9 @@ const renderCompact = ({ site, links, latest }) => {
   const items = balancedTake(rankedItems, compactLimit, { sports: 2, technology: 2, entertainment: 3, seasonal: 2, business: 1, local: 1, general: 3 }, { maxConsecutive: 2 });
   const evergreen = evergreenItems(allItems);
   const growing = sortBy(allItems.filter(isGrowingObservation), (item) => item.evidenceChange || 0);
+  const activeLinks = links.filter((link) => link.active).sort((a, b) => b.priority - a.priority);
   const context = latest.context || {};
-  contextTarget.replaceChildren(compactHeaderContext(context));
+  contextTarget.replaceChildren(compactHeaderContext(context, activeLinks));
   dashboardTarget.replaceChildren(compactSpotlight(items[0]));
   if (!items.length) {
     renderEmpty(itemsTarget, "まだ表示できるトレンドがありません。GitHub Actionsの初回取得後に反映されます。");
@@ -768,8 +782,7 @@ const renderCompact = ({ site, links, latest }) => {
   }
 
   const linksTarget = document.querySelector("[data-compact-links]");
-  const activeLinks = links.filter((link) => link.active).sort((a, b) => b.priority - a.priority);
-  linksTarget.replaceChildren(compactInfoTray({ evergreen, growing, links: activeLinks }));
+  linksTarget.replaceChildren(compactInfoTray({ evergreen, growing }));
 
   const more = document.querySelector("[data-more]");
   more.href = site.sharePointListUrl || "../";
