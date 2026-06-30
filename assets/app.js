@@ -331,7 +331,76 @@ const listSummaryTile = (label, value, detail) => {
   return tile;
 };
 
-const listOverview = ({ items, mainTrends, evergreen, growing, localObservations }) => {
+const contextDateLabel = (daysUntil) => {
+  if (daysUntil === 0) return "今日";
+  if (daysUntil === 1) return "明日";
+  return `${daysUntil}日後`;
+};
+
+const contextEventRow = (item) => {
+  const row = create("div", "context-event-row");
+  row.append(create("span", "context-date", contextDateLabel(item.daysUntil)));
+  const copy = create("div");
+  copy.append(create("strong", "", item.title || "記念日"));
+  copy.append(create("small", "", `${item.category || "記念日"} / ${item.hint || "投稿文脈を確認"}`));
+  row.append(copy);
+  return row;
+};
+
+const weatherTile = (item) => {
+  const tile = create("div", "weather-tile");
+  tile.append(create("span", "", item.label || "地域"));
+  tile.append(create("strong", "", item.summary || "観測中"));
+  tile.append(create("small", "", `${item.temperature ?? "-"}℃ / 降水 ${item.precipitation ?? "-"}%`));
+  return tile;
+};
+
+const listContextPanel = (context = {}) => {
+  const panel = create("div", "list-context-panel");
+  const head = create("div", "list-panel-head");
+  head.append(create("h2", "", "今日の運用メモ"));
+  head.append(create("span", "section-count", "投稿文脈"));
+
+  const events = [...(context.holidays || []), ...(context.anniversaries || [])]
+    .sort((a, b) => (a.daysUntil ?? 99) - (b.daysUntil ?? 99))
+    .slice(0, 4);
+  const eventList = create("div", "context-event-list");
+  if (events.length) {
+    eventList.replaceChildren(...events.map(contextEventRow));
+  } else {
+    eventList.append(create("div", "empty mini-empty", "近い記念日・祝日は設定待ちです。"));
+  }
+
+  const weatherGrid = create("div", "weather-grid");
+  const weather = (context.weather || []).slice(0, 4);
+  if (weather.length) {
+    weatherGrid.replaceChildren(...weather.map(weatherTile));
+  } else {
+    weatherGrid.append(create("div", "empty mini-empty", "天気は次回取得時に反映されます。"));
+  }
+
+  panel.append(head, eventList, weatherGrid);
+  return panel;
+};
+
+const compactContextStrip = (context = {}) => {
+  const events = [...(context.holidays || []), ...(context.anniversaries || [])]
+    .sort((a, b) => (a.daysUntil ?? 99) - (b.daysUntil ?? 99))
+    .slice(0, 2);
+  const wrap = create("div", "compact-context");
+  wrap.append(create("span", "compact-context-label", "今日のネタ"));
+  if (!events.length) {
+    wrap.append(create("strong", "", "記念日取得待ち"));
+    return wrap;
+  }
+  events.forEach((item) => {
+    const chip = create("span", "compact-context-chip", `${contextDateLabel(item.daysUntil)}: ${item.title}`);
+    wrap.append(chip);
+  });
+  return wrap;
+};
+
+const listOverview = ({ items, mainTrends, evergreen, growing, localObservations, context }) => {
   const wrap = create("section", "list-overview");
   const focus = create("div", "list-focus-panel");
   const focusHead = create("div", "list-panel-head");
@@ -363,7 +432,7 @@ const listOverview = ({ items, mainTrends, evergreen, growing, localObservations
   const maxCategory = Math.max(...categoryEntries.map((entry) => entry[1]), 1);
   bars.replaceChildren(...categoryEntries.map(([key, count]) => categoryBar(key, count, maxCategory)));
   insight.append(insightHead, summaryGrid, bars);
-  wrap.append(focus, insight);
+  wrap.append(focus, insight, listContextPanel(context));
   return wrap;
 };
 
@@ -620,6 +689,8 @@ const renderCompact = ({ site, links, latest }) => {
     );
   }
 
+  itemsTarget.before(compactContextStrip(latest.context || {}));
+
   const linksTarget = document.querySelector("[data-compact-links]");
   const activeLinks = links.filter((link) => link.active).sort((a, b) => b.priority - a.priority).slice(0, site.maxCompactLinks || 5);
   linksTarget.replaceChildren(
@@ -677,7 +748,7 @@ const renderList = ({ site, links, latest }) => {
   const evergreen = evergreenItems(items);
   const growing = sortBy(items.filter(isGrowingObservation), (item) => item.evidenceChange || 0).slice(0, 20);
 
-  main.append(listOverview({ items, mainTrends, evergreen, growing, localObservations }));
+  main.append(listOverview({ items, mainTrends, evergreen, growing, localObservations, context: latest.context || {} }));
   main.append(section("主役: いま実際に話題のワード", mainTrends, { featured: true, className: "list-main-section", limit: 5, maxItems: 20, expandable: true, totalLabel: `${mainTrends.length}件観測` }));
   main.append(section("準メイン: 定番・継続して使えるワード", evergreen, { featured: true, className: "list-evergreen-section", limit: 6, maxItems: 20, expandable: true, totalLabel: `${evergreen.length}件保持` }));
 

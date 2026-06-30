@@ -10,6 +10,8 @@ const TRENDS_RSS_URL = "https://trends.google.co.jp/trending/rss?geo=JP";
 const GOOGLE_NEWS_SEARCH_URL = "https://news.google.com/rss/search";
 const MAX_WATCH_QUERIES = 80;
 const MAX_LOCAL_OBSERVATION_QUERIES = 72;
+const OPEN_METEO_URL = "https://api.open-meteo.com/v1/forecast";
+const JAPAN_HOLIDAYS_CSV_URL = "https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv";
 const STANDALONE_WATCHLISTS = new Set(["sns_platform", "format", "seasonal", "local_leisure"]);
 const BROAD_DISPLAY_TERMS = new Set([
   "tiktok",
@@ -244,6 +246,135 @@ const fetchRss = async (url) => {
   }
   return response.text();
 };
+
+const weatherSummary = (code) => {
+  if ([0, 1].includes(code)) return "晴れ";
+  if ([2, 3].includes(code)) return "くもり";
+  if ([45, 48].includes(code)) return "霧";
+  if ([51, 53, 55, 56, 57].includes(code)) return "霧雨";
+  if ([61, 63, 65, 66, 67, 80, 81, 82].includes(code)) return "雨";
+  if ([71, 73, 75, 77, 85, 86].includes(code)) return "雪";
+  if ([95, 96, 99].includes(code)) return "雷雨";
+  return "観測中";
+};
+
+const fetchWeatherContext = async (locations = []) => {
+  const results = [];
+  for (const location of locations.slice(0, 6)) {
+    if (location.latitude == null || location.longitude == null) continue;
+    const params = new URLSearchParams({
+      latitude: String(location.latitude),
+      longitude: String(location.longitude),
+      current: "temperature_2m,weather_code,wind_speed_10m",
+      daily: "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max",
+      timezone: "Asia/Tokyo",
+      forecast_days: "1"
+    });
+    try {
+      const response = await fetch(`${OPEN_METEO_URL}?${params.toString()}`, {
+        headers: { "user-agent": "sns-trend-buzzfeed/1.0 (+GitHub Pages dashboard context)" }
+      });
+      if (!response.ok) throw new Error(`Weather failed: ${response.status} ${response.statusText}`);
+      const data = await response.json();
+      const code = data.current?.weather_code ?? data.daily?.weather_code?.[0] ?? null;
+      results.push({
+        id: location.id,
+        label: location.label,
+        temperature: Math.round(data.current?.temperature_2m ?? data.daily?.temperature_2m_max?.[0] ?? 0),
+        high: Math.round(data.daily?.temperature_2m_max?.[0] ?? 0),
+        low: Math.round(data.daily?.temperature_2m_min?.[0] ?? 0),
+        precipitation: data.daily?.precipitation_probability_max?.[0] ?? null,
+        wind: Math.round(data.current?.wind_speed_10m ?? 0),
+        weatherCode: code,
+        summary: weatherSummary(code)
+      });
+    } catch (error) {
+      console.warn(`Skipped weather "${location.label || location.id}": ${error.message}`);
+    }
+  }
+  return results;
+};
+
+const monthDay = (date) => {
+  const parts = toJstParts(date);
+  return `${parts.month}-${parts.day}`;
+};
+
+const daysUntilDate = (mmdd, now) => {
+  const parts = toJstParts(now);
+  const [month, day] = String(mmdd || "").split("-").map(Number);
+  if (!month || !day) return null;
+  const base = new Date(Date.UTC(Number(parts.year), Number(parts.month) - 1, Number(parts.day), 0, 0, 0));
+  let target = new Date(Date.UTC(Number(parts.year), month - 1, day, 0, 0, 0));
+  if (target < base) target = new Date(Date.UTC(Number(parts.year) + 1, month - 1, day, 0, 0, 0));
+  return Math.round((target - base) / (24 * 60 * 60 * 1000));
+};
+
+const upcomingAnniversaries = (anniversaries = [], now) =>
+  anniversaries
+    .map((item) => ({ ...item, daysUntil: daysUntilDate(item.date, now) }))
+    .filter((item) => item.daysUntil != null && item.daysUntil <= 14)
+    .sort((a, b) => a.daysUntil - b.daysUntil)
+    .slice(0, 5);
+
+const daysUntilIsoDate = (isoDate, now) => {
+  const targetTime = Date.parse(`${isoDate}T00:00:00+09:00`);
+  if (Number.isNaN(targetTime)) return null;
+  const parts = toJstParts(now);
+  const baseTime = Date.parse(`${parts.year}-${parts.month}-${parts.day}T00:00:00+09:00`);
+  return Math.round((targetTime - baseTime) / (24 * 60 * 60 * 1000));
+};
+
+const parseHolidayCsv = (text) =>
+  String(text || "")
+    .split(/\r?\n/)
+    .slice(1)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const [date, name] = line.split(",");
+      return { date: date?.trim(), title: name?.trim() };
+    })
+    .filter((item) => item.date && item.title);
+
+const normalizeHolidayDate = (value) => {
+  const match = String(value || "").trim().match(/^(\d{4})[/-](\d{1,2})[/-](\d{1,2})$/);
+  if (!match) return "";
+  const [, year, month, day] = match;
+  return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+};
+
+const fetchHolidayContext = async (now) => {
+  try {
+    const response = await fetch(JAPAN_HOLIDAYS_CSV_URL, {
+      headers: { "user-agent": "sns-trend-buzzfeed/1.0 (+GitHub Pages dashboard context)" }
+    });
+    if (!response.ok) throw new Error(`Holiday CSV failed: ${response.status} ${response.statusText}`);
+    const buffer = await response.arrayBuffer();
+    const text = new TextDecoder("shift_jis").decode(buffer);
+    return parseHolidayCsv(text)
+      .map((item) => ({
+        ...item,
+        date: normalizeHolidayDate(item.date),
+        category: "祝日",
+        hint: "祝日投稿、営業案内、地域イベント確認",
+        daysUntil: daysUntilIsoDate(normalizeHolidayDate(item.date), now)
+      }))
+      .filter((item) => item.daysUntil != null && item.daysUntil >= 0 && item.daysUntil <= 30)
+      .sort((a, b) => a.daysUntil - b.daysUntil)
+      .slice(0, 4);
+  } catch (error) {
+    console.warn(`Skipped holidays: ${error.message}`);
+    return [];
+  }
+};
+
+const buildDashboardContext = async (config, now, nowIso) => ({
+  generatedAt: nowIso,
+  weather: await fetchWeatherContext(config.weatherLocations || []),
+  anniversaries: upcomingAnniversaries(config.anniversaries || [], now),
+  holidays: await fetchHolidayContext(now)
+});
 
 const fetchGoogleTrendItems = async () => {
   const xml = await fetchRss(TRENDS_RSS_URL);
@@ -700,6 +831,7 @@ const main = async () => {
   const discoveryQueries = await readJson(path.join(CONFIG_DIR, "discovery-queries.json"), []);
   const majorTopics = await readJson(path.join(CONFIG_DIR, "major-topics.json"), []);
   const localObservationSections = await readJson(path.join(CONFIG_DIR, "local-observation.json"), []);
+  const dashboardContextConfig = await readJson(path.join(CONFIG_DIR, "dashboard-context.json"), {});
   const globalExcludes = await readJson(path.join(CONFIG_DIR, "exclude.json"), []);
   const previousLatest = await readJson(path.join(DATA_DIR, "latest-trends.json"), { items: [] });
   const history = await readJson(path.join(DATA_DIR, "trend-history.json"), { items: [] });
@@ -710,6 +842,7 @@ const main = async () => {
   const configuredSignals = await fetchConfiguredSignals(configuredQueries, watchlists, globalExcludes, now);
   const watchlistSignals = await fetchWatchlistSignals(watchlists, globalExcludes, now);
   const localObservations = await fetchLocalObservationSignals(localObservationSections, globalExcludes, previousLatest, now, timeLabel, nowIso);
+  const context = await buildDashboardContext(dashboardContextConfig, now, nowIso);
   const rawItems = [...topicSourceSignals, ...dailyTrendItems, ...majorTopicSignals, ...discoverySignals, ...configuredSignals, ...watchlistSignals];
 
   const scoredItems = rawItems
@@ -791,7 +924,8 @@ const main = async () => {
     source: "Google Trends RSS JP",
     note: "Google Trends RSSと公開RSS検索から候補フレーズを抽出し、ウォッチリストと除外語でSNS投稿向けテーマに絞り込んでいます。",
     items,
-    localObservations
+    localObservations,
+    context
   };
   const nextHistory = {
     items: [...(history.items || []), ...items].slice(-1200)

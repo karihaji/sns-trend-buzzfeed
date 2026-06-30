@@ -1,0 +1,132 @@
+{
+  "weatherLocations": [
+    {
+      "id": "kagoshima",
+      "label": "鹿児島",
+      "latitude": 31.5966,
+      "longitude": 130.5571
+    },
+    {
+      "id": "yakushima",
+      "label": "屋久島",
+      "latitude": 30.3711,
+      "longitude": 130.666
+    },
+    {
+      "id": "amami",
+      "label": "奄美",
+      "latitude": 28.3772,
+      "longitude": 129.4937
+    },
+    {
+      "id": "tanegashima",
+      "label": "種子島",
+      "latitude": 30.7324,
+      "longitude": 130.997
+    }
+  ],
+  "anniversaries": [
+    {
+      "date": "01-01",
+      "title": "元日",
+      "category": "祝日",
+      "hint": "年始投稿、初売り、抱負ネタ"
+    },
+    {
+      "date": "02-14",
+      "title": "バレンタインデー",
+      "category": "季節",
+      "hint": "ギフト、スイーツ、告白ネタ"
+    },
+    {
+      "date": "03-03",
+      "title": "ひな祭り",
+      "category": "季節",
+      "hint": "家族、和菓子、春の装飾"
+    },
+    {
+      "date": "04-01",
+      "title": "エイプリルフール",
+      "category": "SNS",
+      "hint": "企業投稿、ネタ企画、軽い驚き"
+    },
+    {
+      "date": "05-05",
+      "title": "こどもの日",
+      "category": "祝日",
+      "hint": "家族向け、地域イベント"
+    },
+    {
+      "date": "06-30",
+      "title": "夏越の祓",
+      "category": "季節",
+      "hint": "半年の振り返り、夏前の整え"
+    },
+    {
+      "date": "06-30",
+      "title": "ハーフタイムデー",
+      "category": "記念日",
+      "hint": "上半期まとめ、後半戦の目標"
+    },
+    {
+      "date": "07-07",
+      "title": "七夕",
+      "category": "季節",
+      "hint": "願い事、短冊、夜空ネタ"
+    },
+    {
+      "date": "07-15",
+      "title": "海の日付近",
+      "category": "地域",
+      "hint": "海、島旅、夏休み導入"
+    },
+    {
+      "date": "07-17",
+      "title": "漫画の日",
+      "category": "サブカル",
+      "hint": "推し作品、読書、展示企画"
+    },
+    {
+      "date": "08-15",
+      "title": "お盆",
+      "category": "季節",
+      "hint": "帰省、地域行事、静かな投稿"
+    },
+    {
+      "date": "09-01",
+      "title": "防災の日",
+      "category": "生活",
+      "hint": "備え、地域情報、チェックリスト"
+    },
+    {
+      "date": "10-31",
+      "title": "ハロウィン",
+      "category": "SNS",
+      "hint": "仮装、限定メニュー、写真投稿"
+    },
+    {
+      "date": "11-03",
+      "title": "まんがの日",
+      "category": "サブカル",
+      "hint": "漫画、アニメ、文化の日連動"
+    },
+    {
+      "date": "11-22",
+      "title": "いい夫婦の日",
+      "category": "記念日",
+      "hint": "ギフト、宿泊、食事提案"
+    },
+    {
+      "date": "12-24",
+      "title": "クリスマスイブ",
+      "category": "季節",
+      "hint": "イルミ、ギフト、限定企画"
+    },
+    {
+      "date": "12-31",
+      "title": "大晦日",
+      "category": "季節",
+      "hint": "振り返り、年越し、営業案内"
+    }
+  ]
+}
