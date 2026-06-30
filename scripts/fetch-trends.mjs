@@ -273,7 +273,7 @@ const fetchTopicSourceSignals = async (sources, globalExcludes, now) => {
           sources: [],
           evidenceCount: 0,
           freshness: 0,
-          observeUrl: source.type === "google_trends" ? humanTrendUrlFor(keyword) : item.observeUrl || newsSearchUrlFor(keyword)
+          observeUrl: source.type === "google_trends" ? humanTrendUrlFor(keyword) : newsSearchUrlFor(keyword)
         };
         existing.sources.push({ id: source.id, label: source.label, priority: source.priority || 60, rank: item.sourceRank });
         existing.evidenceCount += source.type === "google_trends" ? 3 : 1;
