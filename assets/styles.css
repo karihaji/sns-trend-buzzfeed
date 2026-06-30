@@ -60,7 +60,7 @@ a {
 .compact-shell {
   padding: 14px;
   background:
-    linear-gradient(180deg, rgba(1, 139, 238, 0.08), rgba(255, 255, 255, 0.96) 34%),
+    linear-gradient(180deg, rgba(244, 247, 251, 0.92), rgba(255, 255, 255, 0.98) 38%),
     #fff;
 }
 
@@ -1216,18 +1216,18 @@ h1 {
 .compact-dashboard {
   display: grid;
   gap: 9px;
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
 .compact-spotlight {
   display: grid;
   gap: 7px;
-  min-height: 112px;
-  padding: 13px;
+  min-height: 104px;
+  padding: 14px;
   border: 1px solid var(--card-line, #bddaf5);
   border-radius: 8px;
   background:
-    linear-gradient(135deg, var(--card-tint, rgba(1, 139, 238, 0.13)), rgba(255, 255, 255, 0.9)),
+    linear-gradient(135deg, var(--card-tint, rgba(1, 139, 238, 0.09)), rgba(255, 255, 255, 0.95) 48%),
     #fff;
   position: relative;
   overflow: hidden;
@@ -1268,6 +1268,99 @@ h1 {
   border: 1px solid #d6e6f8;
   border-radius: 8px;
   background: #f8fbff;
+}
+
+.compact-header-context {
+  min-width: 0;
+}
+
+.compact-bento {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.75fr) minmax(220px, 1.25fr);
+  gap: 8px;
+  align-items: stretch;
+}
+
+.compact-bento-card {
+  min-width: 0;
+  padding: 9px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 18px rgba(21, 52, 92, 0.04);
+}
+
+.compact-bento-event {
+  background:
+    linear-gradient(135deg, rgba(251, 191, 36, 0.14), rgba(255, 255, 255, 0.94)),
+    #fff;
+  border-color: #f1d394;
+}
+
+.compact-bento-weather {
+  background:
+    linear-gradient(135deg, rgba(14, 165, 233, 0.08), rgba(255, 255, 255, 0.95)),
+    #fff;
+  border-color: #c7ddeb;
+}
+
+.compact-bento-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 850;
+}
+
+.compact-bento-card strong {
+  display: block;
+  color: #1f2937;
+  font-size: 12px;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.compact-bento-card small {
+  display: block;
+  margin-top: 2px;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.compact-bento-weather-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.compact-bento-weather-grid span {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  padding: 5px 6px;
+  border: 1px solid #e3edf6;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.compact-bento-weather-grid b {
+  color: #334155;
+  font-size: 10px;
+  line-height: 1.1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.compact-bento-weather-grid small {
+  margin-top: 0;
+  color: #0f6b9c;
+  font-size: 10px;
+  line-height: 1.1;
+  white-space: nowrap;
 }
 
 .compact-weather {
@@ -1369,10 +1462,16 @@ h1 {
 }
 
 .compact-footer {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(150px, 0.72fr) minmax(0, 1.6fr) auto;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
+  padding: 10px;
+  border: 1px solid #e4ebf4;
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.92)),
+    #fff;
 }
 
 .note {
@@ -1472,6 +1571,18 @@ h1 {
   .simple-meta {
     grid-column: 1 / -1;
   }
+
+  .compact-footer {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .compact-header-context {
+    grid-column: 1 / -1;
+  }
+
+  .compact-bento {
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  }
 }
 
 @media (max-width: 560px) {
@@ -1489,7 +1600,11 @@ h1 {
     width: 100%;
   }
 
-  .compact-weather {
+  .compact-bento {
+    grid-template-columns: 1fr;
+  }
+
+  .compact-bento-weather-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 

@@ -417,6 +417,44 @@ const compactWeatherStrip = (context = {}) => {
   return wrap;
 };
 
+const compactHeaderContext = (context = {}) => {
+  const wrap = create("div", "compact-bento");
+  const events = [...(context.holidays || []), ...(context.anniversaries || [])]
+    .sort((a, b) => (a.daysUntil ?? 99) - (b.daysUntil ?? 99))
+    .slice(0, 2);
+  const weather = (context.weather || []).slice(0, 4);
+
+  const eventBox = create("div", "compact-bento-card compact-bento-event");
+  eventBox.append(create("span", "compact-bento-label", "今日のネタ"));
+  if (events.length) {
+    eventBox.append(create("strong", "", events.map((item) => item.title).join(" / ")));
+    eventBox.append(create("small", "", events.map((item) => contextDateLabel(item.daysUntil)).join("・")));
+  } else {
+    eventBox.append(create("strong", "", "記念日取得待ち"));
+    eventBox.append(create("small", "", "投稿文脈"));
+  }
+
+  const weatherBox = create("div", "compact-bento-card compact-bento-weather");
+  weatherBox.append(create("span", "compact-bento-label", "地域天気"));
+  const weatherGrid = create("div", "compact-bento-weather-grid");
+  if (weather.length) {
+    weatherGrid.replaceChildren(
+      ...weather.map((item) => {
+        const cell = create("span", "");
+        cell.append(create("b", "", item.label || "地域"));
+        cell.append(create("small", "", `${item.summary || "観測中"} ${item.temperature ?? "-"}℃`));
+        return cell;
+      })
+    );
+  } else {
+    weatherGrid.append(create("span", "", "天気取得待ち"));
+  }
+  weatherBox.append(weatherGrid);
+
+  wrap.append(eventBox, weatherBox);
+  return wrap;
+};
+
 const compactSpotlight = (item) => {
   const link = safeExternalAttrs(create("a", `compact-spotlight ${item ? `category-${categoryKey(item)}` : ""}`.trim()));
   link.href = readableTrendUrl(item);
@@ -692,6 +730,7 @@ const renderCompact = ({ site, links, latest }) => {
 
   const itemsTarget = document.querySelector("[data-compact-items]");
   const dashboardTarget = document.querySelector("[data-compact-dashboard]");
+  const contextTarget = document.querySelector("[data-compact-context]");
   const compactLimit = Math.min(site.maxCompactItems || 4, 3);
   const rankedItems = sortBy(latest.items || [], (item) => {
     if (isActualTrend(item)) return 4000 + (100 - (item.rank || 99));
@@ -703,11 +742,8 @@ const renderCompact = ({ site, links, latest }) => {
   });
   const items = balancedTake(rankedItems, compactLimit, { sports: 1, technology: 1, entertainment: 2, seasonal: 1, business: 1, general: 2 });
   const context = latest.context || {};
-  dashboardTarget.replaceChildren(
-    compactSpotlight(items[0]),
-    compactContextStrip(context),
-    compactWeatherStrip(context)
-  );
+  contextTarget.replaceChildren(compactHeaderContext(context));
+  dashboardTarget.replaceChildren(compactSpotlight(items[0]));
   if (!items.length) {
     renderEmpty(itemsTarget, "まだ表示できるトレンドがありません。GitHub Actionsの初回取得後に反映されます。");
   } else {
