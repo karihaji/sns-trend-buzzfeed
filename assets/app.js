@@ -90,8 +90,8 @@ const statusLabel = (status) => {
     actual_trend: "実トレンド",
     actual_topic: "公開話題",
     major_topic: "大型話題",
-    rising: "伸長",
-    warming: "微増",
+    rising: "伸びている",
+    warming: "やや伸びている",
     flat: "安定",
     cooling: "減少",
     candidate: "判定待ち"
@@ -151,7 +151,7 @@ const trendCard = (item) => {
   metrics.append(metric("前日比", signed(item.yesterdayChange), classForValue(item.yesterdayChange)));
   metrics.append(metric("順位変動", signed(item.rankChange), classForValue(item.rankChange)));
   metrics.append(metric("観測件数", item.evidenceCount ? `${item.evidenceCount}件` : "-", ""));
-  metrics.append(metric("観測増減", signed(item.evidenceChange), classForValue(item.evidenceChange)));
+  metrics.append(metric("観測の前回比", signed(item.evidenceChange), classForValue(item.evidenceChange)));
   metrics.append(metric("継続", `${item.appearCount || 1}回`, ""));
 
   const link = safeExternalAttrs(create("a", "open-link", "詳しく見る ↗"));
@@ -273,9 +273,9 @@ const compactMetricText = (item) => {
   if (isActualTrend(item)) return `実トレンド　${item.rank ? `順位 ${item.rank}位` : "公開トレンド"}`;
   if (isActualTopic(item)) return `公開話題　観測面 ${item.topicSourceCount || 1}`;
   if (isMajorTopic(item)) return `大型話題　観測件数 ${item.evidenceCount ? `${item.evidenceCount}件` : "-"}`;
-  if (isGrowingObservation(item)) return `${statusLabel(item.trendStatus)}　観測増減 ${signed(item.evidenceChange)}`;
-  if (isEvergreen(item)) return `定番　観測件数 ${item.evidenceCount ? `${item.evidenceCount}件` : "-"}`;
-  return `${statusLabel(item.trendStatus)}　観測増減 ${signed(item.evidenceChange)}`;
+  if (isGrowingObservation(item)) return `${statusLabel(item.trendStatus)}　前回比 ${signed(item.evidenceChange)}`;
+  if (isEvergreen(item)) return `よく使われるネタ　観測 ${item.evidenceCount ? `${item.evidenceCount}件` : "-"}`;
+  return `${statusLabel(item.trendStatus)}　前回比 ${signed(item.evidenceChange)}`;
 };
 
 const rankedTrendItems = (items) =>
@@ -473,17 +473,17 @@ const compactInfoTray = ({ evergreen, growing }) => {
   const tray = create("div", "compact-info-tray");
 
   const evergreenBox = create("div", "compact-tray-box");
-  evergreenBox.append(create("span", "compact-tray-label", "定番"));
+  evergreenBox.append(create("span", "compact-tray-label", "投稿ネタ"));
   const evergreenRows = create("div", "compact-tray-rows");
   if (evergreen.length) evergreenRows.replaceChildren(...evergreen.slice(0, 2).map(compactMiniWord));
-  else evergreenRows.append(create("small", "compact-tray-empty", "継続ワード待ち"));
+  else evergreenRows.append(create("small", "compact-tray-empty", "使いやすいネタ待ち"));
   evergreenBox.append(evergreenRows);
 
   const growingBox = create("div", "compact-tray-box");
-  growingBox.append(create("span", "compact-tray-label", "伸長"));
+  growingBox.append(create("span", "compact-tray-label", "伸びている"));
   const growingRows = create("div", "compact-tray-rows");
   if (growing.length) growingRows.replaceChildren(...growing.slice(0, 2).map(compactMiniWord));
-  else growingRows.append(create("small", "compact-tray-empty", "増加検知待ち"));
+  else growingRows.append(create("small", "compact-tray-empty", "伸び確認待ち"));
   growingBox.append(growingRows);
 
   tray.append(evergreenBox, growingBox);
@@ -508,8 +508,8 @@ const listOverview = ({ items, mainTrends, evergreen, growing, localObservations
   const summaryGrid = create("div", "list-summary-grid");
   summaryGrid.append(
     listSummaryTile("実トレンド", `${mainTrends.length}`, "主役候補"),
-    listSummaryTile("定番ワード", `${evergreen.length}`, "準メイン"),
-    listSummaryTile("伸長検知", `${growing.length}`, "増加候補"),
+    listSummaryTile("投稿ネタ候補", `${evergreen.length}`, "使いやすい話題"),
+    listSummaryTile("伸びている話題", `${growing.length}`, "前回より反応あり"),
     listSummaryTile("ローカル棚", `${localObservations.length}`, "別枠観測")
   );
   const counts = items.reduce((acc, item) => {
@@ -683,8 +683,8 @@ const renderHome = ({ site, links, latest }) => {
 
   const heroStats = create("div", "hero-stats");
   heroStats.append(statTile("実トレンド", `${mainTrends.length}`, "主役候補"));
-  heroStats.append(statTile("定番ワード", `${evergreen.length}`, "継続観測"));
-  heroStats.append(statTile("伸長候補", `${growing.length}`, "増加検知"));
+  heroStats.append(statTile("投稿ネタ候補", `${evergreen.length}`, "使いやすい話題"));
+  heroStats.append(statTile("伸びている話題", `${growing.length}`, "前回より反応あり"));
   heroStats.append(statTile("最終更新", formatUpdated(latest.updatedAt), "Asia/Tokyo"));
   heroTarget.replaceChildren(heroCopy, heroStats);
 
@@ -706,7 +706,7 @@ const renderHome = ({ site, links, latest }) => {
 
   const evergreenPanel = create("section", "dashboard-panel");
   const evergreenHead = create("div", "panel-head");
-  evergreenHead.append(create("h2", "", "定番・継続ワード"));
+  evergreenHead.append(create("h2", "", "よく使われる投稿ネタ"));
   evergreenHead.append(create("span", "section-count", `${evergreen.length}件`));
   const evergreenList = create("div", "compact-dashboard-list");
   evergreenList.replaceChildren(...evergreen.slice(0, 6).map(simpleTrendRow));
@@ -722,11 +722,11 @@ const renderHome = ({ site, links, latest }) => {
 
   const growingPanel = create("section", "dashboard-panel");
   const growingHead = create("div", "panel-head");
-  growingHead.append(create("h2", "", "伸長検知"));
+  growingHead.append(create("h2", "", "伸びている観測ワード"));
   growingHead.append(create("span", "section-count", `${growing.length}件`));
   const growingList = create("div", "compact-dashboard-list");
   if (growing.length) growingList.replaceChildren(...growing.slice(0, 6).map(simpleTrendRow));
-  else renderEmpty(growingList, "明確な伸長ワードはまだありません。");
+  else renderEmpty(growingList, "はっきり伸びている観測ワードはまだありません。");
   growingPanel.append(growingHead, growingList);
 
   const linksPanel = create("section", "dashboard-panel");
@@ -833,7 +833,7 @@ const renderList = ({ site, links, latest }) => {
 
   main.append(listOverview({ items, mainTrends, evergreen, growing, localObservations, context: latest.context || {} }));
   main.append(section("主役: いま実際に話題のワード", mainTrends, { featured: true, className: "list-main-section", limit: 5, maxItems: 20, expandable: true, totalLabel: `${mainTrends.length}件観測` }));
-  main.append(section("準メイン: 定番・継続して使えるワード", evergreen, { featured: true, className: "list-evergreen-section", limit: 6, maxItems: 20, expandable: true, totalLabel: `${evergreen.length}件保持` }));
+  main.append(section("準メイン: よく使われる投稿ネタ", evergreen, { featured: true, className: "list-evergreen-section", limit: 6, maxItems: 20, expandable: true, totalLabel: `${evergreen.length}件保持` }));
 
   appendIfAny(
     main,
