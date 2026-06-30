@@ -69,8 +69,13 @@ const signed = (value) => {
 };
 
 const directionLabel = (direction) => {
-  const labels = { up: "↑", flat: "→", down: "↓", new: "NEW" };
+  const labels = { up: "↗", flat: "→", down: "↘", new: "NEW" };
   return labels[direction] || "観測";
+};
+
+const displayDirection = (item) => {
+  if (["rising", "warming"].includes(item?.trendStatus)) return "up";
+  return item?.direction || "flat";
 };
 
 const signalLabel = (signalType) => {
@@ -90,8 +95,8 @@ const statusLabel = (status) => {
     actual_trend: "実トレンド",
     actual_topic: "公開話題",
     major_topic: "大型話題",
-    rising: "伸びている",
-    warming: "やや伸びている",
+    rising: "話題",
+    warming: "話題",
     flat: "安定",
     cooling: "減少",
     candidate: "判定待ち"
@@ -143,7 +148,7 @@ const trendCard = (item) => {
     left.append(create("span", "tag status-tag", status));
   }
   top.append(left);
-  top.append(create("span", `badge ${item.direction || "flat"}`, directionLabel(item.direction)));
+  top.append(create("span", `badge ${displayDirection(item)}`, directionLabel(displayDirection(item))));
 
   const metrics = create("div", "metrics");
   metrics.append(metric("観測スコア", item.score ?? "-", ""));
@@ -174,7 +179,7 @@ const simpleTrendRow = (item) => {
   row.href = readableTrendUrl(item);
   row.append(create("span", "simple-keyword", `#${item.keyword}`));
   row.append(create("span", "simple-meta", shortSignalText(item)));
-  row.append(create("span", `simple-badge ${item.direction || "flat"}`, directionLabel(item.direction)));
+  row.append(create("span", `simple-badge ${displayDirection(item)}`, directionLabel(displayDirection(item))));
   return row;
 };
 
@@ -273,7 +278,7 @@ const compactMetricText = (item) => {
   if (isActualTrend(item)) return `実トレンド　${item.rank ? `順位 ${item.rank}位` : "公開トレンド"}`;
   if (isActualTopic(item)) return `公開話題　観測面 ${item.topicSourceCount || 1}`;
   if (isMajorTopic(item)) return `大型話題　観測件数 ${item.evidenceCount ? `${item.evidenceCount}件` : "-"}`;
-  if (isGrowingObservation(item)) return `${statusLabel(item.trendStatus)}　前回比 ${signed(item.evidenceChange)}`;
+  if (isGrowingObservation(item)) return `話題　前回比 ${signed(item.evidenceChange)}`;
   if (isEvergreen(item)) return `よく使われるネタ　観測 ${item.evidenceCount ? `${item.evidenceCount}件` : "-"}`;
   return `${statusLabel(item.trendStatus)}　前回比 ${signed(item.evidenceChange)}`;
 };
@@ -439,7 +444,7 @@ const compactSpotlight = (item) => {
   link.href = readableTrendUrl(item);
   const head = create("div", "compact-hero-head");
   head.append(create("span", "tag", item ? compactMetricText(item) : "観測待ち"));
-  head.append(create("span", "compact-hero-status", item ? directionLabel(item.direction) : "New"));
+  head.append(create("span", "compact-hero-status", item ? directionLabel(displayDirection(item)) : "NEW"));
   link.append(head);
   link.append(create("strong", "", item ? `#${item.keyword}` : "トレンド取得待ち"));
   link.append(create("small", "", item ? shortSignalText(item) : "最新の実トレンドを取得中です。"));
@@ -451,7 +456,7 @@ const compactTrendChip = (item) => {
   chip.href = readableTrendUrl(item);
   chip.append(create("span", "", `#${item.keyword}`));
   chip.append(create("em", "", compactMetricText(item)));
-  chip.append(create("small", "", directionLabel(item.direction)));
+  chip.append(create("small", "", directionLabel(displayDirection(item))));
   return chip;
 };
 
@@ -480,10 +485,10 @@ const compactInfoTray = ({ evergreen, growing }) => {
   evergreenBox.append(evergreenRows);
 
   const growingBox = create("div", "compact-tray-box");
-  growingBox.append(create("span", "compact-tray-label", "伸びている"));
+  growingBox.append(create("span", "compact-tray-label", "話題"));
   const growingRows = create("div", "compact-tray-rows");
   if (growing.length) growingRows.replaceChildren(...growing.slice(0, 2).map(compactMiniWord));
-  else growingRows.append(create("small", "compact-tray-empty", "伸び確認待ち"));
+  else growingRows.append(create("small", "compact-tray-empty", "反応待ち"));
   growingBox.append(growingRows);
 
   tray.append(evergreenBox, growingBox);
@@ -509,7 +514,7 @@ const listOverview = ({ items, mainTrends, evergreen, growing, localObservations
   summaryGrid.append(
     listSummaryTile("実トレンド", `${mainTrends.length}`, "主役候補"),
     listSummaryTile("投稿ネタ候補", `${evergreen.length}`, "使いやすい話題"),
-    listSummaryTile("伸びている話題", `${growing.length}`, "前回より反応あり"),
+    listSummaryTile("話題", `${growing.length}`, "前回より反応あり"),
     listSummaryTile("ローカル棚", `${localObservations.length}`, "別枠観測")
   );
   const counts = items.reduce((acc, item) => {
@@ -684,7 +689,7 @@ const renderHome = ({ site, links, latest }) => {
   const heroStats = create("div", "hero-stats");
   heroStats.append(statTile("実トレンド", `${mainTrends.length}`, "主役候補"));
   heroStats.append(statTile("投稿ネタ候補", `${evergreen.length}`, "使いやすい話題"));
-  heroStats.append(statTile("伸びている話題", `${growing.length}`, "前回より反応あり"));
+  heroStats.append(statTile("話題", `${growing.length}`, "前回より反応あり"));
   heroStats.append(statTile("最終更新", formatUpdated(latest.updatedAt), "Asia/Tokyo"));
   heroTarget.replaceChildren(heroCopy, heroStats);
 
@@ -722,11 +727,11 @@ const renderHome = ({ site, links, latest }) => {
 
   const growingPanel = create("section", "dashboard-panel");
   const growingHead = create("div", "panel-head");
-  growingHead.append(create("h2", "", "伸びている観測ワード"));
+  growingHead.append(create("h2", "", "話題"));
   growingHead.append(create("span", "section-count", `${growing.length}件`));
   const growingList = create("div", "compact-dashboard-list");
   if (growing.length) growingList.replaceChildren(...growing.slice(0, 6).map(simpleTrendRow));
-  else renderEmpty(growingList, "はっきり伸びている観測ワードはまだありません。");
+  else renderEmpty(growingList, "前回より反応が見える話題はまだありません。");
   growingPanel.append(growingHead, growingList);
 
   const linksPanel = create("section", "dashboard-panel");
@@ -837,7 +842,7 @@ const renderList = ({ site, links, latest }) => {
 
   appendIfAny(
     main,
-    "伸びている観測ワード",
+    "話題",
     growing,
     { compact: true, limit: 4, maxItems: 20, expandable: true, totalLabel: "最大20件" }
   );
