@@ -132,7 +132,7 @@ const metric = (label, value, className = "") => {
 };
 
 const trendCard = (item) => {
-  const card = create("article", "trend-card");
+  const card = create("article", `trend-card category-${categoryKey(item)}`);
   const top = create("div", "trend-title-row");
   const left = create("div");
   left.append(create("div", "keyword", `#${item.keyword}`));
@@ -307,7 +307,7 @@ const categoryName = (key) => {
 };
 
 const trendPill = (item) => {
-  const anchor = safeExternalAttrs(create("a", "trend-pill"));
+  const anchor = safeExternalAttrs(create("a", `trend-pill category-${categoryKey(item)}`));
   anchor.href = readableTrendUrl(item);
   anchor.append(create("span", "", `#${item.keyword}`));
   anchor.append(create("small", "", compactMetricText(item)));
@@ -315,7 +315,7 @@ const trendPill = (item) => {
 };
 
 const listHeroTrend = (item) => {
-  const anchor = safeExternalAttrs(create("a", "list-hero-trend"));
+  const anchor = safeExternalAttrs(create("a", `list-hero-trend ${item ? `category-${categoryKey(item)}` : ""}`.trim()));
   anchor.href = readableTrendUrl(item);
   anchor.append(create("span", "tag", item ? compactMetricText(item) : "観測待ち"));
   anchor.append(create("strong", "", item ? `#${item.keyword}` : "トレンド取得待ち"));
