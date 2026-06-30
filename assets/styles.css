@@ -147,7 +147,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 16px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .list-overview {
@@ -160,6 +160,7 @@ h1 {
 .list-dashboard > .section {
   grid-column: span 6;
   margin-top: 0;
+  height: 100%;
 }
 
 .list-dashboard > .featured-section,
@@ -181,7 +182,11 @@ h1 {
 }
 
 .list-dashboard > .compact-section .compact-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.list-dashboard > .compact-section {
+  grid-column: 1 / -1;
 }
 
 .featured-section {
@@ -360,6 +365,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
+  align-items: stretch;
 }
 
 .link-grid {
@@ -377,9 +383,15 @@ h1 {
 
 .trend-card {
   display: grid;
+  grid-template-rows: auto auto 34px auto;
   gap: 12px;
+  height: 100%;
   box-shadow: 0 8px 22px rgba(21, 52, 92, 0.04);
   transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.trend-card .open-link {
+  align-self: end;
 }
 
 .trend-card:hover,

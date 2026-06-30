@@ -46,6 +46,23 @@ const safeExternalAttrs = (anchor) => {
   return anchor;
 };
 
+const newsSearchUrl = (keyword) =>
+  `https://news.google.com/search?q=${encodeURIComponent(keyword || "トレンド")}&hl=ja&gl=JP&ceid=JP%3Aja`;
+
+const trendsExploreUrl = (keyword) =>
+  `https://trends.google.com/trends/explore?geo=JP&q=${encodeURIComponent(keyword || "")}`;
+
+const readableTrendUrl = (item) => {
+  const url = item?.observeUrl || "";
+  if (/trending\/rss|trends\.google\.[^/]+\/trending\/rss/i.test(url)) {
+    return trendsExploreUrl(item?.keyword);
+  }
+  if (/\/rss|application\/rss|output=rss/i.test(url)) {
+    return newsSearchUrl(item?.keyword);
+  }
+  return url || newsSearchUrl(item?.keyword);
+};
+
 const signed = (value) => {
   if (value === null || value === undefined) return "-";
   return value > 0 ? `+${value}` : String(value);
@@ -137,8 +154,8 @@ const trendCard = (item) => {
   metrics.append(metric("観測増減", signed(item.evidenceChange), classForValue(item.evidenceChange)));
   metrics.append(metric("継続", `${item.appearCount || 1}回`, ""));
 
-  const link = safeExternalAttrs(create("a", "open-link", "観測元を開く ↗"));
-  link.href = item.observeUrl || "https://trends.google.co.jp/trends/";
+  const link = safeExternalAttrs(create("a", "open-link", "詳しく見る ↗"));
+  link.href = readableTrendUrl(item);
 
   card.append(top, metrics, sparkline(item.series), link);
   return card;
@@ -154,7 +171,7 @@ const shortSignalText = (item) => {
 
 const simpleTrendRow = (item) => {
   const row = safeExternalAttrs(create("a", "simple-trend-row"));
-  row.href = item.observeUrl || "https://trends.google.co.jp/trends/";
+  row.href = readableTrendUrl(item);
   row.append(create("span", "simple-keyword", `#${item.keyword}`));
   row.append(create("span", "simple-meta", shortSignalText(item)));
   row.append(create("span", `simple-badge ${item.direction || "flat"}`, directionLabel(item.direction)));
@@ -179,7 +196,11 @@ const sortBy = (items, selector) => [...items].sort((a, b) => selector(b) - sele
 const categoryKey = (item) => {
   const label = item.watchlistLabel || "";
   const keyword = item.keyword || "";
-  if (label.includes("スポーツ") || /MLB|アスレチックス|大谷翔平|バレー|ネーションズリーグ|F1|相撲|野球|サッカー|W杯|ワールドカップ|アロンソ|森保/u.test(keyword)) return "sports";
+  if (
+    label.includes("スポーツ") ||
+    /MLB|アスレチックス|大谷翔平|バレー|ネーションズリーグ|F1|相撲|野球|サッカー|W杯|ワールドカップ|クラブW杯|FIFA|日本代表|田中碧|久保建英|三笘薫|堂安律|森保|アロンソ|アルゼンチン|スウェーデン|浦和|鹿島|横浜FM|ヴィッセル/u.test(keyword)
+  )
+    return "sports";
   if (label.includes("テクノロジー") || /Gemini|Android|iPhone|AI|スマホ|ゲーム/u.test(keyword)) return "technology";
   if (label.includes("エンタメ") || label === "SNSトレンド" || /ガンダム|ミス・コンテスト|acosta|池田朱那|趣里|白洲迅|目黒蓮/u.test(keyword)) return "entertainment";
   if (label.includes("季節")) return "seasonal";
@@ -188,13 +209,17 @@ const categoryKey = (item) => {
   return "general";
 };
 
-const balancedTake = (items, limit, caps = {}) => {
+const balancedTake = (items, limit, caps = {}, options = {}) => {
   const counts = {};
   const result = [];
   for (const item of items) {
     const key = categoryKey(item);
     const cap = caps[key] ?? limit;
     if ((counts[key] || 0) >= cap) continue;
+    if (options.maxConsecutive) {
+      const tail = result.slice(-options.maxConsecutive);
+      if (tail.length === options.maxConsecutive && tail.every((tailItem) => categoryKey(tailItem) === key)) continue;
+    }
     counts[key] = (counts[key] || 0) + 1;
     result.push(item);
     if (result.length >= limit) break;
@@ -218,6 +243,32 @@ const isEvergreen = (item) =>
   ["flat", "cooling"].includes(item.trendStatus) &&
   ((item.appearCount || 0) >= 2 || (item.evidenceCount || 0) >= 3);
 
+const publicHeatScore = (item) => {
+  const score = item.score || 0;
+  const evidence = item.evidenceCount || 0;
+  const rankBonus = Math.max(0, 100 - (item.rank || 99));
+  if (isActualTrend(item)) return 4600 + score * 3 + rankBonus * 2 + evidence * 18;
+  if (isMajorTopic(item)) return 4500 + score * 2 + evidence * 14 + rankBonus;
+  if (isActualTopic(item)) return 4300 + score * 3 + (item.topicSourceCount || 1) * 90 + evidence * 26 + rankBonus;
+  return trendWeight(item);
+};
+
+const trendClusterKey = (item) => {
+  const keyword = item.keyword || "";
+  if (/FIFAワールドカップ2026|ワールドカップ|W杯/u.test(keyword) && !/クラブ/u.test(keyword)) return "worldcup";
+  return keyword.toLowerCase().replace(/\s+/g, "");
+};
+
+const dedupeTrendTopics = (items) => {
+  const seen = new Set();
+  return items.filter((item) => {
+    const key = trendClusterKey(item);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+};
+
 const compactMetricText = (item) => {
   if (isActualTrend(item)) return `実トレンド　${item.rank ? `順位 ${item.rank}位` : "公開トレンド"}`;
   if (isActualTopic(item)) return `公開話題　観測面 ${item.topicSourceCount || 1}`;
@@ -229,14 +280,10 @@ const compactMetricText = (item) => {
 
 const rankedTrendItems = (items) =>
   balancedTake(
-    sortBy(items.filter((item) => isActualTrend(item) || isActualTopic(item) || isMajorTopic(item)), (item) => {
-      if (isActualTrend(item)) return 5000 + (100 - (item.rank || 99));
-      if (isActualTopic(item)) return 4200 + (item.topicSourceCount || 1) * 80 + (item.score || 0);
-      if (isMajorTopic(item)) return 3600 + (item.evidenceCount || 0) * 30 + (item.score || 0);
-      return trendWeight(item);
-    }),
+    dedupeTrendTopics(sortBy(items.filter((item) => isActualTrend(item) || isActualTopic(item) || isMajorTopic(item)), publicHeatScore)),
     20,
-    { sports: 4, technology: 4, entertainment: 7, seasonal: 4, local: 3, business: 2, general: 7 }
+    { sports: 4, technology: 4, entertainment: 7, seasonal: 4, local: 3, business: 2, general: 7 },
+    { maxConsecutive: 2 }
   );
 
 const evergreenItems = (items) =>
@@ -261,7 +308,7 @@ const categoryName = (key) => {
 
 const trendPill = (item) => {
   const anchor = safeExternalAttrs(create("a", "trend-pill"));
-  anchor.href = item.observeUrl || "https://trends.google.co.jp/trends/";
+  anchor.href = readableTrendUrl(item);
   anchor.append(create("span", "", `#${item.keyword}`));
   anchor.append(create("small", "", compactMetricText(item)));
   return anchor;
@@ -269,7 +316,7 @@ const trendPill = (item) => {
 
 const listHeroTrend = (item) => {
   const anchor = safeExternalAttrs(create("a", "list-hero-trend"));
-  anchor.href = item?.observeUrl || "https://trends.google.co.jp/trends/";
+  anchor.href = readableTrendUrl(item);
   anchor.append(create("span", "tag", item ? compactMetricText(item) : "観測待ち"));
   anchor.append(create("strong", "", item ? `#${item.keyword}` : "トレンド取得待ち"));
   anchor.append(create("small", "", item ? shortSignalText(item) : "GitHub Actionsの取得後に最新の観測結果が表示されます。"));
@@ -567,7 +614,7 @@ const renderCompact = ({ site, links, latest }) => {
       ...items.map((item) => {
         const row = create("a", "compact-item");
         safeExternalAttrs(row);
-        row.href = item.observeUrl || "https://trends.google.co.jp/trends/";
+        row.href = readableTrendUrl(item);
         row.append(create("div", "compact-word", `#${item.keyword}`));
         row.append(create("div", "compact-metrics", compactMetricText(item)));
         return row;
@@ -633,14 +680,14 @@ const renderList = ({ site, links, latest }) => {
   const growing = sortBy(items.filter(isGrowingObservation), (item) => item.evidenceChange || 0).slice(0, 20);
 
   main.append(listOverview({ items, mainTrends, evergreen, growing, localObservations }));
-  main.append(section("主役: いま実際に話題のワード", mainTrends, { featured: true, className: "list-main-section", limit: 6, maxItems: 20, expandable: true, totalLabel: `${mainTrends.length}件観測` }));
+  main.append(section("主役: いま実際に話題のワード", mainTrends, { featured: true, className: "list-main-section", limit: 5, maxItems: 20, expandable: true, totalLabel: `${mainTrends.length}件観測` }));
   main.append(section("準メイン: 定番・継続して使えるワード", evergreen, { featured: true, className: "list-evergreen-section", limit: 6, maxItems: 20, expandable: true, totalLabel: `${evergreen.length}件保持` }));
 
   appendIfAny(
     main,
     "伸びている観測ワード",
     growing,
-    { compact: true, limit: 5, maxItems: 20, expandable: true, totalLabel: "最大20件" }
+    { compact: true, limit: 4, maxItems: 20, expandable: true, totalLabel: "最大20件" }
   );
 
   const categoryPool = items.filter((item) => isActualTopic(item) || isMajorTopic(item));
@@ -653,7 +700,7 @@ const renderList = ({ site, links, latest }) => {
   ];
   for (const [title, key] of categoryDefs) {
     const categoryItems = sortBy(categoryPool.filter((item) => categoryKey(item) === key), (item) => item.score || 0).slice(0, 20);
-    appendIfAny(main, title, categoryItems, { compact: true, limit: 5, maxItems: 20, expandable: true, totalLabel: `${categoryItems.length}件` });
+    appendIfAny(main, title, categoryItems, { compact: true, limit: 4, maxItems: 20, expandable: true, totalLabel: `${categoryItems.length}件` });
   }
 
   if (localObservations.length) {

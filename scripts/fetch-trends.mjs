@@ -123,6 +123,12 @@ const cleanupText = (value) =>
     .replace(/\s+/g, " ")
     .trim();
 
+const humanTrendUrlFor = (keyword) =>
+  `https://trends.google.com/trends/explore?geo=JP&q=${encodeURIComponent(keyword || "")}`;
+
+const newsSearchUrlFor = (keyword) =>
+  `https://news.google.com/search?q=${encodeURIComponent(keyword || "トレンド")}&hl=ja&gl=JP&ceid=JP%3Aja`;
+
 const getTag = (entry, tag) => {
   const match = entry.match(new RegExp(`<${escapeRegExp(tag)}[^>]*>([\\s\\S]*?)<\\/${escapeRegExp(tag)}>`, "i"));
   return match ? decodeXml(match[1]).trim() : "";
@@ -244,7 +250,7 @@ const fetchGoogleTrendItems = async () => {
   return parseRssItems(xml).map((item) => ({
     ...item,
     signalType: "daily_trend",
-    observeUrl: item.observeUrl || "https://trends.google.co.jp/trends/"
+    observeUrl: humanTrendUrlFor(item.keyword)
   }));
 };
 
@@ -267,7 +273,7 @@ const fetchTopicSourceSignals = async (sources, globalExcludes, now) => {
           sources: [],
           evidenceCount: 0,
           freshness: 0,
-          observeUrl: item.observeUrl || source.url
+          observeUrl: source.type === "google_trends" ? humanTrendUrlFor(keyword) : item.observeUrl || newsSearchUrlFor(keyword)
         };
         existing.sources.push({ id: source.id, label: source.label, priority: source.priority || 60, rank: item.sourceRank });
         existing.evidenceCount += source.type === "google_trends" ? 3 : 1;
