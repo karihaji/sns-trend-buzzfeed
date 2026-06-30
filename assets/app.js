@@ -384,50 +384,55 @@ const listContextPanel = (context = {}) => {
 };
 
 const compactHeaderContext = (context = {}) => {
-  const wrap = create("div", "compact-context-board");
+  const wrap = create("div", "compact-meta-strip");
   const events = [...(context.holidays || []), ...(context.anniversaries || [])]
     .sort((a, b) => (a.daysUntil ?? 99) - (b.daysUntil ?? 99))
-    .slice(0, 2);
+    .slice(0, 1);
   const weather = (context.weather || []).slice(0, 4);
 
-  const eventBox = create("div", "compact-event-card");
-  eventBox.append(create("span", "compact-context-kicker", "今日のネタ"));
+  const eventChip = create("span", "compact-meta-chip compact-meta-event");
   if (events.length) {
-    eventBox.append(create("strong", "", events.map((item) => item.title).join(" / ")));
-    eventBox.append(create("small", "", events.map((item) => `${contextDateLabel(item.daysUntil)} ${item.category || "記念日"}`).join("  ")));
+    const event = events[0];
+    eventChip.append(create("b", "", contextDateLabel(event.daysUntil)));
+    eventChip.append(create("span", "", event.title || "記念日"));
   } else {
-    eventBox.append(create("strong", "", "記念日取得待ち"));
-    eventBox.append(create("small", "", "投稿文脈"));
+    eventChip.append(create("b", "", "今日"));
+    eventChip.append(create("span", "", "記念日取得待ち"));
   }
 
-  const weatherBox = create("div", "compact-weather-board");
-  weatherBox.append(create("span", "compact-context-kicker", "地域天気"));
-  const weatherGrid = create("div", "compact-weather-row");
+  const weatherChip = create("span", "compact-meta-chip compact-meta-weather");
   if (weather.length) {
-    weatherGrid.replaceChildren(
-      ...weather.map((item) => {
-        const cell = create("span", "compact-weather-stat");
-        cell.append(create("b", "", item.label || "地域"));
-        cell.append(create("small", "", `${item.summary || "観測中"} ${item.temperature ?? "-"}℃`));
-        return cell;
-      })
-    );
+    const primary = weather[0];
+    const rainy = weather.find((item) => /雨|雷|霧雨/u.test(item.summary || ""));
+    weatherChip.append(create("b", "", primary.label || "天気"));
+    weatherChip.append(create("span", "", `${primary.summary || "観測中"} ${primary.temperature ?? "-"}℃${rainy && rainy.id !== primary.id ? ` / ${rainy.label}` : ""}`));
   } else {
-    weatherGrid.append(create("span", "", "天気取得待ち"));
+    weatherChip.append(create("b", "", "天気"));
+    weatherChip.append(create("span", "", "取得待ち"));
   }
-  weatherBox.append(weatherGrid);
 
-  wrap.append(eventBox, weatherBox);
+  wrap.append(eventChip, weatherChip);
   return wrap;
 };
 
 const compactSpotlight = (item) => {
-  const link = safeExternalAttrs(create("a", `compact-spotlight ${item ? `category-${categoryKey(item)}` : ""}`.trim()));
+  const link = safeExternalAttrs(create("a", `compact-spotlight compact-hero-link ${item ? `category-${categoryKey(item)}` : ""}`.trim()));
   link.href = readableTrendUrl(item);
-  link.append(create("span", "tag", item ? compactMetricText(item) : "観測待ち"));
+  const head = create("div", "compact-hero-head");
+  head.append(create("span", "tag", item ? compactMetricText(item) : "観測待ち"));
+  head.append(create("span", "compact-hero-status", item ? directionLabel(item.direction) : "New"));
+  link.append(head);
   link.append(create("strong", "", item ? `#${item.keyword}` : "トレンド取得待ち"));
   link.append(create("small", "", item ? shortSignalText(item) : "最新の実トレンドを取得中です。"));
   return link;
+};
+
+const compactTrendChip = (item) => {
+  const chip = safeExternalAttrs(create("a", `compact-trend-chip category-${categoryKey(item)}`));
+  chip.href = readableTrendUrl(item);
+  chip.append(create("span", "", `#${item.keyword}`));
+  chip.append(create("small", "", directionLabel(item.direction)));
+  return chip;
 };
 
 const listOverview = ({ items, mainTrends, evergreen, growing, localObservations, context }) => {
@@ -693,6 +698,7 @@ const renderCompact = ({ site, links, latest }) => {
   document.title = formatDateTitle();
   document.querySelector("[data-title]").textContent = "最新SNSトレンド";
   document.querySelector("[data-updated]").textContent = `最終更新 ${formatUpdated(latest.updatedAt)}`;
+  document.querySelector("[data-more]").textContent = "詳しく見る";
 
   const itemsTarget = document.querySelector("[data-compact-items]");
   const dashboardTarget = document.querySelector("[data-compact-dashboard]");
@@ -713,27 +719,11 @@ const renderCompact = ({ site, links, latest }) => {
   if (!items.length) {
     renderEmpty(itemsTarget, "まだ表示できるトレンドがありません。GitHub Actionsの初回取得後に反映されます。");
   } else {
-    itemsTarget.replaceChildren(
-      ...items.slice(1).map((item) => {
-        const row = create("a", `compact-item category-${categoryKey(item)}`);
-        safeExternalAttrs(row);
-        row.href = readableTrendUrl(item);
-        row.append(create("div", "compact-word", `#${item.keyword}`));
-        row.append(create("div", "compact-metrics", compactMetricText(item)));
-        return row;
-      })
-    );
+    itemsTarget.replaceChildren(...items.slice(1, 3).map(compactTrendChip));
   }
 
   const linksTarget = document.querySelector("[data-compact-links]");
-  const activeLinks = links.filter((link) => link.active).sort((a, b) => b.priority - a.priority).slice(0, site.maxCompactLinks || 5);
-  linksTarget.replaceChildren(
-    ...activeLinks.map((link) => {
-      const anchor = safeExternalAttrs(create("a", "open-link", `${link.label}で確認 ↗`));
-      anchor.href = link.url;
-      return anchor;
-    })
-  );
+  linksTarget.replaceChildren();
 
   const more = document.querySelector("[data-more]");
   more.href = site.sharePointListUrl || "../";
