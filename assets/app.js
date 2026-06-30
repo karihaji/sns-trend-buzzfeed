@@ -387,14 +387,13 @@ const compactHeaderContext = (context = {}) => {
   const wrap = create("div", "compact-meta-strip");
   const events = [...(context.holidays || []), ...(context.anniversaries || [])]
     .sort((a, b) => (a.daysUntil ?? 99) - (b.daysUntil ?? 99))
-    .slice(0, 1);
+    .slice(0, 2);
   const weather = (context.weather || []).slice(0, 4);
 
   const eventChip = create("span", "compact-meta-chip compact-meta-event");
   if (events.length) {
-    const event = events[0];
-    eventChip.append(create("b", "", contextDateLabel(event.daysUntil)));
-    eventChip.append(create("span", "", event.title || "記念日"));
+    eventChip.append(create("b", "", contextDateLabel(events[0].daysUntil)));
+    eventChip.append(create("span", "", events.map((event) => event.title || "記念日").join(" / ")));
   } else {
     eventChip.append(create("b", "", "今日"));
     eventChip.append(create("span", "", "記念日取得待ち"));
@@ -405,7 +404,7 @@ const compactHeaderContext = (context = {}) => {
     const primary = weather[0];
     const rainy = weather.find((item) => /雨|雷|霧雨/u.test(item.summary || ""));
     weatherChip.append(create("b", "", primary.label || "天気"));
-    weatherChip.append(create("span", "", `${primary.summary || "観測中"} ${primary.temperature ?? "-"}℃${rainy && rainy.id !== primary.id ? ` / ${rainy.label}` : ""}`));
+    weatherChip.append(create("span", "", `${primary.summary || "観測中"} ${primary.temperature ?? "-"}℃${rainy && rainy.id !== primary.id ? ` / 雨 ${rainy.label}` : ""}`));
   } else {
     weatherChip.append(create("b", "", "天気"));
     weatherChip.append(create("span", "", "取得待ち"));
@@ -431,8 +430,51 @@ const compactTrendChip = (item) => {
   const chip = safeExternalAttrs(create("a", `compact-trend-chip category-${categoryKey(item)}`));
   chip.href = readableTrendUrl(item);
   chip.append(create("span", "", `#${item.keyword}`));
+  chip.append(create("em", "", compactMetricText(item)));
   chip.append(create("small", "", directionLabel(item.direction)));
   return chip;
+};
+
+const compactMiniWord = (item) => {
+  const row = safeExternalAttrs(create("a", "compact-mini-word"));
+  row.href = readableTrendUrl(item);
+  row.append(create("span", "", `#${item.keyword}`));
+  row.append(create("small", "", compactMetricText(item)));
+  return row;
+};
+
+const compactSourceLink = (link) => {
+  const anchor = safeExternalAttrs(create("a", "compact-source-link", link.label));
+  anchor.href = link.url;
+  return anchor;
+};
+
+const compactInfoTray = ({ evergreen, growing, links }) => {
+  const tray = create("div", "compact-info-tray");
+
+  const evergreenBox = create("div", "compact-tray-box");
+  evergreenBox.append(create("span", "compact-tray-label", "定番"));
+  const evergreenRows = create("div", "compact-tray-rows");
+  if (evergreen.length) evergreenRows.replaceChildren(...evergreen.slice(0, 2).map(compactMiniWord));
+  else evergreenRows.append(create("small", "compact-tray-empty", "継続ワード待ち"));
+  evergreenBox.append(evergreenRows);
+
+  const growingBox = create("div", "compact-tray-box");
+  growingBox.append(create("span", "compact-tray-label", "伸長"));
+  const growingRows = create("div", "compact-tray-rows");
+  if (growing.length) growingRows.replaceChildren(...growing.slice(0, 2).map(compactMiniWord));
+  else growingRows.append(create("small", "compact-tray-empty", "増加検知待ち"));
+  growingBox.append(growingRows);
+
+  const sourceBox = create("div", "compact-tray-box compact-source-box");
+  sourceBox.append(create("span", "compact-tray-label", "観測"));
+  const sourceRows = create("div", "compact-source-row");
+  if (links.length) sourceRows.replaceChildren(...links.slice(0, 3).map(compactSourceLink));
+  else sourceRows.append(create("small", "compact-tray-empty", "リンク設定待ち"));
+  sourceBox.append(sourceRows);
+
+  tray.append(evergreenBox, growingBox, sourceBox);
+  return tray;
 };
 
 const listOverview = ({ items, mainTrends, evergreen, growing, localObservations, context }) => {
@@ -703,8 +745,9 @@ const renderCompact = ({ site, links, latest }) => {
   const itemsTarget = document.querySelector("[data-compact-items]");
   const dashboardTarget = document.querySelector("[data-compact-dashboard]");
   const contextTarget = document.querySelector("[data-compact-context]");
-  const compactLimit = Math.min(site.maxCompactItems || 4, 3);
-  const rankedItems = sortBy(latest.items || [], (item) => {
+  const allItems = latest.items || [];
+  const compactLimit = Math.min(Math.max(site.maxCompactItems || 6, 6), 8);
+  const rankedItems = sortBy(allItems, (item) => {
     if (isActualTrend(item)) return 4000 + (100 - (item.rank || 99));
     if (isActualTopic(item)) return 3800 + (item.topicSourceCount || 1) * 50 + (item.score || 0);
     if (isMajorTopic(item)) return 3500 + (item.score || 0);
@@ -712,18 +755,21 @@ const renderCompact = ({ site, links, latest }) => {
     if (isEvergreen(item)) return 2000 + (item.appearCount || 0) * 20 + (item.evidenceCount || 0);
     return trendWeight(item);
   });
-  const items = balancedTake(rankedItems, compactLimit, { sports: 1, technology: 1, entertainment: 2, seasonal: 1, business: 1, general: 2 });
+  const items = balancedTake(rankedItems, compactLimit, { sports: 2, technology: 2, entertainment: 3, seasonal: 2, business: 1, local: 1, general: 3 }, { maxConsecutive: 2 });
+  const evergreen = evergreenItems(allItems);
+  const growing = sortBy(allItems.filter(isGrowingObservation), (item) => item.evidenceChange || 0);
   const context = latest.context || {};
   contextTarget.replaceChildren(compactHeaderContext(context));
   dashboardTarget.replaceChildren(compactSpotlight(items[0]));
   if (!items.length) {
     renderEmpty(itemsTarget, "まだ表示できるトレンドがありません。GitHub Actionsの初回取得後に反映されます。");
   } else {
-    itemsTarget.replaceChildren(...items.slice(1, 3).map(compactTrendChip));
+    itemsTarget.replaceChildren(...items.slice(1, 5).map(compactTrendChip));
   }
 
   const linksTarget = document.querySelector("[data-compact-links]");
-  linksTarget.replaceChildren();
+  const activeLinks = links.filter((link) => link.active).sort((a, b) => b.priority - a.priority);
+  linksTarget.replaceChildren(compactInfoTray({ evergreen, growing, links: activeLinks }));
 
   const more = document.querySelector("[data-more]");
   more.href = site.sharePointListUrl || "../";
