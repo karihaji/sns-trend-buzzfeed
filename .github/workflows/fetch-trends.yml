@@ -41,7 +41,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Update SNS trend buzzfeed data"
-          file_pattern: "data/**/*.json"
+          file_pattern: "data/*.json data/**/*.json"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
