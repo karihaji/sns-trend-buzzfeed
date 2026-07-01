@@ -242,12 +242,33 @@ const isActualTopic = (item) => item.signalType === "topic_trend" || item.trendS
 const isMajorTopic = (item) => item.signalType === "major_topic" || item.trendStatus === "major_topic";
 const isSports = (item) => categoryKey(item) === "sports";
 const isGrowingObservation = (item) => ["rising", "warming"].includes(item.trendStatus) && !isActualTrend(item) && !isActualTopic(item) && !isMajorTopic(item);
-const isEvergreen = (item) =>
-  !isActualTrend(item) &&
-  !isActualTopic(item) &&
-  !isMajorTopic(item) &&
-  ["flat", "cooling"].includes(item.trendStatus) &&
-  ((item.appearCount || 0) >= 2 || (item.evidenceCount || 0) >= 3);
+const keywordText = (item) => String(item?.keyword || "").trim();
+const isSentenceLikeKeyword = (item) => {
+  const keyword = keywordText(item);
+  if (keyword.length > 22) return true;
+  if (/[、。！？]|から|まで|について|として|より|など|発表|会見|翌日|第\d+話|画像\d|＜|＞|販売|投資|疑い|方針|見通し/.test(keyword)) return true;
+  if (/^\d+月\d+日$|^[A-Za-z\s]+warning$/i.test(keyword)) return true;
+  return false;
+};
+const isCleanPublicTopic = (item) => {
+  const keyword = keywordText(item);
+  if (!keyword || isSentenceLikeKeyword(item)) return false;
+  if (/ニュース|速報|記事|写真|動画|会見|警報|氾濫|被害|容疑|逮捕|死去|訃報/.test(keyword)) return false;
+  return keyword.length <= 18 || (item.topicSourceCount || 0) >= 2 || (item.evidenceCount || 0) >= 3;
+};
+const isMainTrendItem = (item) => {
+  if (item.signalType === "daily_trend" || item.signalType === "yahoo_realtime") return !isSentenceLikeKeyword(item);
+  if (isActualTopic(item)) return isCleanPublicTopic(item) && (item.topicSourceCount || 0) >= 2 && keywordText(item).length <= 16;
+  return false;
+};
+const isPostIdea = (item) => {
+  const keyword = keywordText(item);
+  if (isActualTrend(item) || isActualTopic(item) || isMajorTopic(item)) return false;
+  if (isSentenceLikeKeyword(item)) return false;
+  if (!/構文|あるある|チャレンジ|ダンス|音源|ミーム|選手権|してみた|作ってみた|検証|ルーティン|テンプレ|ネタ|ハック|診断|ポーズ|加工|コーデ|メイク|レシピ|グッズ/.test(keyword)) return false;
+  return (item.evidenceCount || 0) >= 2 || (item.appearCount || 0) >= 2 || ["rising", "warming", "flat", "cooling"].includes(item.trendStatus);
+};
+const isEvergreen = isPostIdea;
 
 const publicHeatScore = (item) => {
   const score = item.score || 0;
@@ -280,13 +301,13 @@ const compactMetricText = (item) => {
   if (isActualTopic(item)) return `公開話題　観測面 ${item.topicSourceCount || 1}`;
   if (isMajorTopic(item)) return `大型話題　観測件数 ${item.evidenceCount ? `${item.evidenceCount}件` : "-"}`;
   if (isGrowingObservation(item)) return `話題　前回比 ${signed(item.evidenceChange)}`;
-  if (isEvergreen(item)) return `よく使われるネタ　観測 ${item.evidenceCount ? `${item.evidenceCount}件` : "-"}`;
+  if (isEvergreen(item)) return `投稿ネタ　観測 ${item.evidenceCount ? `${item.evidenceCount}件` : "-"}`;
   return `${statusLabel(item.trendStatus)}　前回比 ${signed(item.evidenceChange)}`;
 };
 
 const rankedTrendItems = (items) =>
   balancedTake(
-    dedupeTrendTopics(sortBy(items.filter((item) => isActualTrend(item) || isActualTopic(item) || isMajorTopic(item)), publicHeatScore)),
+    dedupeTrendTopics(sortBy(items.filter(isMainTrendItem), publicHeatScore)),
     20,
     { sports: 4, technology: 4, entertainment: 7, seasonal: 4, local: 3, business: 2, general: 7 },
     { maxConsecutive: 2 }
@@ -294,7 +315,7 @@ const rankedTrendItems = (items) =>
 
 const evergreenItems = (items) =>
   balancedTake(
-    sortBy(items.filter(isEvergreen), (item) => (item.appearCount || 0) * 20 + (item.evidenceCount || 0)),
+    sortBy(items.filter(isEvergreen), (item) => (item.evidenceCount || 0) * 30 + (item.appearCount || 0) * 12 + (item.score || 0)),
     20,
     { sports: 3, technology: 3, entertainment: 5, seasonal: 5, local: 5, general: 6 }
   );
@@ -770,15 +791,7 @@ const renderCompact = ({ site, links, latest }) => {
   const contextTarget = document.querySelector("[data-compact-context]");
   const allItems = latest.items || [];
   const compactLimit = Math.min(Math.max(site.maxCompactItems || 6, 6), 8);
-  const rankedItems = sortBy(allItems, (item) => {
-    if (isActualTrend(item)) return 4000 + (100 - (item.rank || 99));
-    if (isActualTopic(item)) return 3800 + (item.topicSourceCount || 1) * 50 + (item.score || 0);
-    if (isMajorTopic(item)) return 3500 + (item.score || 0);
-    if (isGrowingObservation(item)) return 3000 + (item.score || 0);
-    if (isEvergreen(item)) return 2000 + (item.appearCount || 0) * 20 + (item.evidenceCount || 0);
-    return trendWeight(item);
-  });
-  const items = balancedTake(rankedItems, compactLimit, { sports: 2, technology: 2, entertainment: 3, seasonal: 2, business: 1, local: 1, general: 3 }, { maxConsecutive: 2 });
+  const items = rankedTrendItems(allItems).slice(0, compactLimit);
   const evergreen = evergreenItems(allItems);
   const growing = sortBy(allItems.filter(isGrowingObservation), (item) => item.evidenceChange || 0);
   const activeLinks = links.filter((link) => link.active).sort((a, b) => b.priority - a.priority);
@@ -852,12 +865,13 @@ const renderList = ({ site, links, latest }) => {
     { compact: true, limit: 4, maxItems: 20, expandable: true, totalLabel: "最大20件" }
   );
 
-  const categoryPool = items.filter((item) => isActualTopic(item) || isMajorTopic(item));
+  const categoryPool = items.filter((item) => (isActualTopic(item) || isMajorTopic(item)) && !isSentenceLikeKeyword(item));
   const categoryDefs = [
     ["エンタメ・カルチャー", "entertainment"],
     ["スポーツ", "sports"],
     ["テクノロジー", "technology"],
-    ["季節・大型イベント", "seasonal"],
+    ["季節・イベント", "seasonal"],
+    ["ビジネス・生活", "business"],
     ["地域・レジャー", "local"]
   ];
   for (const [title, key] of categoryDefs) {

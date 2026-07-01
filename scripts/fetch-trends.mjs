@@ -199,6 +199,8 @@ const isUsableGeneralTopic = (keyword, sourceText, globalExcludes) => {
   if (GENERIC_TITLE_WORDS.has(value)) return false;
   if (/[「」『』“”]|…/.test(value)) return false;
   if (/ニュースの現場|真相|明かす|語る|追いかけている|単なる直感|練習中|苛立つ|低い雲|天気|雨雲|霧雨|注意|市政|混沌の世界|メニュー写真|パフォーマー/u.test(value)) return false;
+  if (/第\d+話|翌日|会食|与党|販売|投資|疑い|警報|氾濫|画像\d|＜|＞|について|として|など|発表|方針|見通し|20\d{2}年/u.test(value)) return false;
+  if (/^\d+月\d+日$|^[A-Za-z\s]+warning$/i.test(value)) return false;
   if (includesAny(`${value} ${sourceText}`, globalExcludes)) return false;
   if (GENERAL_TOPIC_BLOCK_PATTERNS.some((pattern) => pattern.test(`${value} ${sourceText}`))) return false;
   return true;
