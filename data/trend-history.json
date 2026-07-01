@@ -15,2529 +15,6 @@
       "yesterdayChange": null,
       "direction": "flat",
       "trendStatus": "actual_trend",
-      "appearCount": 5,
-      "signalType": "daily_trend",
-      "evidenceCount": 3,
-      "previousEvidenceCount": 3,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "検索急上昇"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:13",
-          "score": 100
-        },
-        {
-          "time": "10:21",
-          "score": 100
-        },
-        {
-          "time": "10:27",
-          "score": 100
-        },
-        {
-          "time": "10:28",
-          "score": 100
-        },
-        {
-          "time": "10:29",
-          "score": 100
-        }
-      ],
-      "observeUrl": "https://trends.google.com/trending/rss?geo=JP"
-    },
-    {
-      "id": "5f3cc2602d89",
-      "keyword": "ハイドラガンダム",
-      "watchlist": "actual_public_trend",
-      "watchlistLabel": "実トレンド",
-      "rank": 1,
-      "previousRank": 1,
-      "rankChange": 0,
-      "score": 100,
-      "previousScore": 100,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "actual_trend",
-      "appearCount": 5,
-      "signalType": "daily_trend",
-      "evidenceCount": 3,
-      "previousEvidenceCount": 3,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "検索急上昇"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:13",
-          "score": 97
-        },
-        {
-          "time": "10:21",
-          "score": 100
-        },
-        {
-          "time": "10:27",
-          "score": 100
-        },
-        {
-          "time": "10:28",
-          "score": 100
-        },
-        {
-          "time": "10:29",
-          "score": 100
-        }
-      ],
-      "observeUrl": "https://trends.google.com/trending/rss?geo=JP"
-    },
-    {
-      "id": "9c582e9269fe",
-      "keyword": "ワールドカップ",
-      "watchlist": "major_topic",
-      "watchlistLabel": "スポーツ大型トピック",
-      "rank": 1,
-      "previousRank": 1,
-      "rankChange": 0,
-      "score": 100,
-      "previousScore": 100,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "major_topic",
-      "appearCount": 4,
-      "signalType": "major_topic",
-      "evidenceCount": 30,
-      "previousEvidenceCount": 30,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:21",
-          "score": 100
-        },
-        {
-          "time": "10:27",
-          "score": 100
-        },
-        {
-          "time": "10:28",
-          "score": 100
-        },
-        {
-          "time": "10:29",
-          "score": 100
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%20OR%20W%E6%9D%AF%20FIFA%20%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "c731931ef36d",
-      "keyword": "FIFAワールドカップ2026",
-      "watchlist": "major_topic",
-      "watchlistLabel": "スポーツ大型トピック",
-      "rank": 1,
-      "previousRank": 1,
-      "rankChange": 0,
-      "score": 100,
-      "previousScore": 100,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "major_topic",
-      "appearCount": 4,
-      "signalType": "major_topic",
-      "evidenceCount": 30,
-      "previousEvidenceCount": 30,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:21",
-          "score": 100
-        },
-        {
-          "time": "10:27",
-          "score": 100
-        },
-        {
-          "time": "10:28",
-          "score": 100
-        },
-        {
-          "time": "10:29",
-          "score": 100
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=FIFA%20%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%202026%20OR%20W%E6%9D%AF%202026&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "708d857bbc93",
-      "keyword": "バレーボールネーションズリーグ",
-      "watchlist": "major_topic",
-      "watchlistLabel": "スポーツ大型トピック",
-      "rank": 1,
-      "previousRank": 1,
-      "rankChange": 0,
-      "score": 100,
-      "previousScore": 100,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "major_topic",
-      "appearCount": 4,
-      "signalType": "major_topic",
-      "evidenceCount": 29,
-      "previousEvidenceCount": 29,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:21",
-          "score": 100
-        },
-        {
-          "time": "10:27",
-          "score": 94
-        },
-        {
-          "time": "10:28",
-          "score": 100
-        },
-        {
-          "time": "10:29",
-          "score": 100
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=%E3%83%90%E3%83%AC%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%AB%20%E3%83%8D%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%BA%E3%83%AA%E3%83%BC%E3%82%B0%20%E7%94%B7%E5%AD%90%20OR%20VNL&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "d4983f928f94",
-      "keyword": "MLB",
-      "watchlist": "major_topic",
-      "watchlistLabel": "スポーツ大型トピック",
-      "rank": 1,
-      "previousRank": 1,
-      "rankChange": 0,
-      "score": 100,
-      "previousScore": 100,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "major_topic",
-      "appearCount": 4,
-      "signalType": "major_topic",
-      "evidenceCount": 30,
-      "previousEvidenceCount": 30,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:21",
-          "score": 100
-        },
-        {
-          "time": "10:27",
-          "score": 100
-        },
-        {
-          "time": "10:28",
-          "score": 100
-        },
-        {
-          "time": "10:29",
-          "score": 100
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=MLB%20%E5%A4%A7%E8%B0%B7%20OR%20%E3%83%89%E3%82%B8%E3%83%A3%E3%83%BC%E3%82%B9%20OR%20%E3%83%A1%E3%82%B8%E3%83%A3%E3%83%BC%E3%83%AA%E3%83%BC%E3%82%B0&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "30cbddc3a761",
-      "keyword": "夏の高校野球",
-      "watchlist": "major_topic",
-      "watchlistLabel": "季節スポーツ",
-      "rank": 1,
-      "previousRank": 1,
-      "rankChange": 0,
-      "score": 100,
-      "previousScore": 100,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "major_topic",
-      "appearCount": 4,
-      "signalType": "major_topic",
-      "evidenceCount": 28,
-      "previousEvidenceCount": 28,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:21",
-          "score": 100
-        },
-        {
-          "time": "10:27",
-          "score": 100
-        },
-        {
-          "time": "10:28",
-          "score": 100
-        },
-        {
-          "time": "10:29",
-          "score": 100
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=%E9%AB%98%E6%A0%A1%E9%87%8E%E7%90%83%20%E5%A4%8F%20%E7%94%B2%E5%AD%90%E5%9C%92&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "526df278c16e",
-      "keyword": "花火大会",
-      "watchlist": "major_topic",
-      "watchlistLabel": "季節イベント",
-      "rank": 1,
-      "previousRank": 1,
-      "rankChange": 0,
-      "score": 100,
-      "previousScore": 100,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "major_topic",
-      "appearCount": 4,
-      "signalType": "major_topic",
-      "evidenceCount": 27,
-      "previousEvidenceCount": 27,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:21",
-          "score": 100
-        },
-        {
-          "time": "10:27",
-          "score": 100
-        },
-        {
-          "time": "10:28",
-          "score": 100
-        },
-        {
-          "time": "10:29",
-          "score": 100
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=%E8%8A%B1%E7%81%AB%E5%A4%A7%E4%BC%9A%202026%20%E4%BA%BA%E6%B0%97%20OR%20%E9%96%8B%E5%82%AC&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "ea0aca72bbdb",
-      "keyword": "アスレチックス",
-      "watchlist": "actual_public_trend",
-      "watchlistLabel": "実トレンド",
-      "rank": 2,
-      "previousRank": 2,
-      "rankChange": 0,
-      "score": 100,
-      "previousScore": 100,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "actual_trend",
-      "appearCount": 5,
-      "signalType": "daily_trend",
-      "evidenceCount": 3,
-      "previousEvidenceCount": 3,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "検索急上昇"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:13",
-          "score": 95
-        },
-        {
-          "time": "10:21",
-          "score": 100
-        },
-        {
-          "time": "10:27",
-          "score": 100
-        },
-        {
-          "time": "10:28",
-          "score": 100
-        },
-        {
-          "time": "10:29",
-          "score": 100
-        }
-      ],
-      "observeUrl": "https://trends.google.com/trending/rss?geo=JP"
-    },
-    {
-      "id": "e8b8483aeee7",
-      "keyword": "ミス・コンテスト",
-      "watchlist": "actual_public_trend",
-      "watchlistLabel": "実トレンド",
-      "rank": 5,
-      "previousRank": 5,
-      "rankChange": 0,
-      "score": 100,
-      "previousScore": 100,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "actual_trend",
-      "appearCount": 5,
-      "signalType": "daily_trend",
-      "evidenceCount": 3,
-      "previousEvidenceCount": 3,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "検索急上昇"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:13",
-          "score": 91
-        },
-        {
-          "time": "10:21",
-          "score": 91
-        },
-        {
-          "time": "10:27",
-          "score": 100
-        },
-        {
-          "time": "10:28",
-          "score": 100
-        },
-        {
-          "time": "10:29",
-          "score": 100
-        }
-      ],
-      "observeUrl": "https://trends.google.com/trending/rss?geo=JP"
-    },
-    {
-      "id": "86e7a4aef8e5",
-      "keyword": "acosta!",
-      "watchlist": "actual_public_trend",
-      "watchlistLabel": "実トレンド",
-      "rank": 6,
-      "previousRank": 6,
-      "rankChange": 0,
-      "score": 100,
-      "previousScore": 100,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "actual_trend",
-      "appearCount": 3,
-      "signalType": "daily_trend",
-      "evidenceCount": 3,
-      "previousEvidenceCount": 3,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "検索急上昇"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:27",
-          "score": 99
-        },
-        {
-          "time": "10:28",
-          "score": 100
-        },
-        {
-          "time": "10:29",
-          "score": 100
-        }
-      ],
-      "observeUrl": "https://trends.google.com/trending/rss?geo=JP"
-    },
-    {
-      "id": "8e688453651f",
-      "keyword": "池田朱那",
-      "watchlist": "actual_public_trend",
-      "watchlistLabel": "実トレンド",
-      "rank": 7,
-      "previousRank": 7,
-      "rankChange": 0,
-      "score": 100,
-      "previousScore": 100,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "actual_trend",
-      "appearCount": 4,
-      "signalType": "daily_trend",
-      "evidenceCount": 3,
-      "previousEvidenceCount": 3,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "検索急上昇"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:13",
-          "score": 87
-        },
-        {
-          "time": "10:27",
-          "score": 100
-        },
-        {
-          "time": "10:28",
-          "score": 100
-        },
-        {
-          "time": "10:29",
-          "score": 100
-        }
-      ],
-      "observeUrl": "https://trends.google.com/trending/rss?geo=JP"
-    },
-    {
-      "id": "44e0baad5df9",
-      "keyword": "バレー男子日本代表",
-      "watchlist": "public_topic",
-      "watchlistLabel": "総合話題",
-      "rank": 1,
-      "previousRank": 1,
-      "rankChange": 0,
-      "score": 96,
-      "previousScore": 96,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "actual_topic",
-      "appearCount": 3,
-      "signalType": "topic_trend",
-      "evidenceCount": 2,
-      "previousEvidenceCount": 2,
-      "evidenceChange": 0,
-      "topicSourceCount": 2,
-      "topicSources": [
-        "総合話題",
-        "スポーツ"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:27",
-          "score": 92
-        },
-        {
-          "time": "10:28",
-          "score": 96
-        },
-        {
-          "time": "10:29",
-          "score": 96
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1ZdThXajlZT1ZWZ0FOMW5lM1RhZnhjOXBLT09IeEtualROTzNVOWllVU0wZXFXZk9LTU5kMm12cDRZTThiU1F0Zy05alRmUExlcEVsV3Z1YlZPMzJvd3p2SG9DR25sV2JqemE5eHhFaU03aWhtVTU3cVZuLWU4dG8?oc=5"
-    },
-    {
-      "id": "6a4e75fff72b",
-      "keyword": "趣里＆白洲迅が所轄刑事に",
-      "watchlist": "public_topic",
-      "watchlistLabel": "エンタメ",
-      "rank": 1,
-      "previousRank": 1,
-      "rankChange": 0,
-      "score": 96,
-      "previousScore": 96,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "actual_topic",
-      "appearCount": 3,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "エンタメ"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:27",
-          "score": 73
-        },
-        {
-          "time": "10:28",
-          "score": 96
-        },
-        {
-          "time": "10:29",
-          "score": 96
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5RYjZOYXNaYXQ2TkZRQjdzb2xyc1ZOLWRhSmQ4U3JacWI5c2dZUDVCdXVheWFfRG5SQVdnd24tTDlaYnRVaVpTV1dtd2FQSE52NFE?oc=5"
-    },
-    {
-      "id": "b93d4680a72a",
-      "keyword": "グーグルがGeminiをアップグレード",
-      "watchlist": "public_topic",
-      "watchlistLabel": "テクノロジー",
-      "rank": 1,
-      "previousRank": 1,
-      "rankChange": 0,
-      "score": 96,
-      "previousScore": 93,
-      "scoreChange": 3,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "actual_topic",
-      "appearCount": 3,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "テクノロジー"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:27",
-          "score": 88
-        },
-        {
-          "time": "10:28",
-          "score": 93
-        },
-        {
-          "time": "10:29",
-          "score": 96
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBZRHVPUVFXWG5iRk5lMC1ZaU5TdHFieUZrd3o1SWRtbjBpMG5XUXhDMm9HVkJpZ3l4VWsyRXVOTGFkZW5oQ1dWN21PQ0ZTZGhCM3lzTXJnZlY?oc=5"
-    },
-    {
-      "id": "c7d2965ef6bd",
-      "keyword": "苛立つ光秀に届いた手紙は？",
-      "watchlist": "public_topic",
-      "watchlistLabel": "エンタメ",
-      "rank": 4,
-      "previousRank": 4,
-      "rankChange": 0,
-      "score": 93,
-      "previousScore": 85,
-      "scoreChange": 8,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "up",
-      "trendStatus": "actual_topic",
-      "appearCount": 3,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "エンタメ"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:27",
-          "score": 85
-        },
-        {
-          "time": "10:28",
-          "score": 85
-        },
-        {
-          "time": "10:29",
-          "score": 93
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9zbTlOOUNhZE16RE11ZHpreUdiblF4MEw2b0pYZHAxTkZhbFdQeVJyeTRlcEpkSVpValNncUpRSC1SaU5oUzhtcS1ub0Z4ZDNVSWFrY0lSUWg5ZWdKRkM5SE1uWktISzBO?oc=5"
-    },
-    {
-      "id": "0d802e82341f",
-      "keyword": "古いAndroidスマホ",
-      "watchlist": "public_topic",
-      "watchlistLabel": "テクノロジー",
-      "rank": 4,
-      "previousRank": 4,
-      "rankChange": 0,
-      "score": 92,
-      "previousScore": 87,
-      "scoreChange": 5,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "up",
-      "trendStatus": "actual_topic",
-      "appearCount": 3,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "テクノロジー"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:27",
-          "score": 82
-        },
-        {
-          "time": "10:28",
-          "score": 87
-        },
-        {
-          "time": "10:29",
-          "score": 92
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBnWVE3ckxXcHdMTUJLdUFxOGhuLXl4elBQQnlmb2JsWmVuckRzLWxfT0VlMExQd1JWanNKa3BRSU1XMGhxbWhkQVM0NGxJeEVnZURmTmw3cnZxWk04TVJsOVBSTDZJbW5RSk1LMVY4QUZjOWR4enprVzB1ZEVRMVk?oc=5"
-    },
-    {
-      "id": "29ce01e91fc2",
-      "keyword": "堅実な市政",
-      "watchlist": "public_topic",
-      "watchlistLabel": "総合話題",
-      "rank": 5,
-      "previousRank": 5,
-      "rankChange": 0,
-      "score": 92,
-      "previousScore": 87,
-      "scoreChange": 5,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "up",
-      "trendStatus": "actual_topic",
-      "appearCount": 3,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "総合話題"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:27",
-          "score": 82
-        },
-        {
-          "time": "10:28",
-          "score": 87
-        },
-        {
-          "time": "10:29",
-          "score": 92
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1CVmtpQzZpZ2wzc3dDaFhHWW9MVjVTbGFwSjFGLTQ3cS1HQUFSU2dvZzFaNG1JcGpMTGdmLVVrVzlNZ09uYU9oM0lQNmdQb1N2OVpXT21KdDBkdWpHN1l5U1I4VTN1Zy1pMkdVcy1n?oc=5"
-    },
-    {
-      "id": "103e7f66e31f",
-      "keyword": "アストンマーティンのアロンソ",
-      "watchlist": "public_topic",
-      "watchlistLabel": "スポーツ",
-      "rank": 5,
-      "previousRank": 5,
-      "rankChange": 0,
-      "score": 92,
-      "previousScore": 87,
-      "scoreChange": 5,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "up",
-      "trendStatus": "actual_topic",
-      "appearCount": 3,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "スポーツ"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:27",
-          "score": 82
-        },
-        {
-          "time": "10:28",
-          "score": 87
-        },
-        {
-          "time": "10:29",
-          "score": 92
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiR0FVX3lxTFBPemRzZHAtOXRCZjdLYnB3R01KZm5SdTF3NnJwNGhxbXF0STU4TmxFOGZtUlQ3T1h1cUFzVkdQbS1ETmdjeDhJ?oc=5"
-    },
-    {
-      "id": "ce3a0ed1c4c7",
-      "keyword": "日本代表の練習中",
-      "watchlist": "public_topic",
-      "watchlistLabel": "テクノロジー",
-      "rank": 3,
-      "previousRank": 2,
-      "rankChange": -1,
-      "score": 91,
-      "previousScore": 91,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "actual_topic",
-      "appearCount": 3,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "テクノロジー"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:27",
-          "score": 86
-        },
-        {
-          "time": "10:28",
-          "score": 91
-        },
-        {
-          "time": "10:29",
-          "score": 91
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5DTUVCNXV0NTBseWhIdXNHWkM0Q3RBbDE4cXpPbUowS21KX0pOSmNhRDJheUZHT0xNX19qQzlfV3QyVDNhTkkyaDQzTmRQUWJFV1ZhRVVfcGpJRjNfV2plYzdzc19XVGZBYVZzV2kxMFdOU3VRX0dWQjk0WmlzMVU?oc=5"
-    },
-    {
-      "id": "d6e5342cfd98",
-      "keyword": "混沌の世界 信頼と価値磨く 日経",
-      "watchlist": "public_topic",
-      "watchlistLabel": "ビジネス",
-      "rank": 4,
-      "previousRank": 4,
-      "rankChange": 0,
-      "score": 90,
-      "previousScore": 85,
-      "scoreChange": 5,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "up",
-      "trendStatus": "actual_topic",
-      "appearCount": 3,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "ビジネス"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:27",
-          "score": 80
-        },
-        {
-          "time": "10:28",
-          "score": 85
-        },
-        {
-          "time": "10:29",
-          "score": 90
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5fVHhPSzhVY3B5V2xnLUZVaXJyVDE3d0V3ZHdyTnpDRzhRREx6aER2N3J5ZG9iS0pKVm1ZTFVVWHQ0bTlZR25xV2RFbEdoamNGLTJoUnFHRllic01pYTJwd0lMUDhqRTNESGNyaw?oc=5"
-    },
-    {
-      "id": "6b8e882b8e03",
-      "keyword": "大谷翔平",
-      "watchlist": "public_topic",
-      "watchlistLabel": "スポーツ",
-      "rank": 6,
-      "previousRank": 6,
-      "rankChange": 0,
-      "score": 90,
-      "previousScore": 85,
-      "scoreChange": 5,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "up",
-      "trendStatus": "actual_topic",
-      "appearCount": 3,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "スポーツ"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:27",
-          "score": 80
-        },
-        {
-          "time": "10:28",
-          "score": 85
-        },
-        {
-          "time": "10:29",
-          "score": 90
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5mVlhTV0tQSXJlRURoUmZGXzNRLWhhdHV1Z1NqbW5jNV94Y3A5VHJRWTdsOHgxZ1ppa2ZxdWJjS1RyZnFpSkt4N1F3UFA4ajdBR0E5cWk5WWNBV2xmYnltRFFJVG1VRG5oRW5Ldmp4UVRjWGNVQWc?oc=5"
-    },
-    {
-      "id": "0bf738bc15f3",
-      "keyword": "関東は霧雨の朝 雨雲レーダーに映りにくい低い雲に注意",
-      "watchlist": "public_topic",
-      "watchlistLabel": "総合話題",
-      "rank": 7,
-      "previousRank": 7,
-      "rankChange": 0,
-      "score": 88,
-      "previousScore": 83,
-      "scoreChange": 5,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "up",
-      "trendStatus": "actual_topic",
-      "appearCount": 3,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "総合話題"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:27",
-          "score": 78
-        },
-        {
-          "time": "10:28",
-          "score": 83
-        },
-        {
-          "time": "10:29",
-          "score": 88
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBnRkg0S3A1ZTFSWlRNdkNrZXQzVjlweDB6dHIwMDR5OFhaZTNsWk5ROE5DczhoMkVTd3Q5WFRIeTdOSld0VHBaXzZwazNvdjVHTGRiLQ?oc=5"
-    },
-    {
-      "id": "78456c65d871",
-      "keyword": "テラ・クライシス",
-      "watchlist": "public_topic",
-      "watchlistLabel": "ビジネス",
-      "rank": 7,
-      "previousRank": 7,
-      "rankChange": 0,
-      "score": 84,
-      "previousScore": 79,
-      "scoreChange": 5,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "up",
-      "trendStatus": "actual_topic",
-      "appearCount": 3,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "ビジネス"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:27",
-          "score": 74
-        },
-        {
-          "time": "10:28",
-          "score": 79
-        },
-        {
-          "time": "10:29",
-          "score": 84
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE80amxPa2tmcVE2N0hESjdKR3A5RVRXOWZlcm9IcG85TEFHTnVqbGxfWGdEZ2hyQ0VOalMweVRFcE0wSGp6b2JYZDBRVk9heWw1cWowU1JJb3VoVXBJVzBlOE5JRUJtOG5E?oc=5"
-    },
-    {
-      "id": "f157a8335523",
-      "keyword": "小椋藍",
-      "watchlist": "public_topic",
-      "watchlistLabel": "スポーツ",
-      "rank": 9,
-      "previousRank": 9,
-      "rankChange": 0,
-      "score": 84,
-      "previousScore": 79,
-      "scoreChange": 5,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "up",
-      "trendStatus": "actual_topic",
-      "appearCount": 3,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "スポーツ"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:27",
-          "score": 74
-        },
-        {
-          "time": "10:28",
-          "score": 79
-        },
-        {
-          "time": "10:29",
-          "score": 84
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOVjBqSnh5eHpiQ2ljc1IxejczbEFkS2pYeHF5dFRfZzg0TDJZU2hkbzJnVWNvWTVQZXdZX3RfUE5QTkxhTkttSXR4TWMwUmZndFg4c2xma3Y3X254V1g3OVpDOUp3Z3hFLVg5cG5QUVJKNXpTV3pOYmdIeDlKbWItZTRKbEI4WnhiOTRVQ2htVDVSMVpMaXFvTExwcVFfS3dNMVhadEF2bWVRUExSRmtrVG5CYzB3UQ?oc=5"
-    },
-    {
-      "id": "a5e487dc05dc",
-      "keyword": "夏休み",
-      "watchlist": "major_topic",
-      "watchlistLabel": "季節イベント",
-      "rank": 12,
-      "previousRank": 12,
-      "rankChange": 0,
-      "score": 82,
-      "previousScore": 82,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "major_topic",
-      "appearCount": 8,
-      "signalType": "major_topic",
-      "evidenceCount": 5,
-      "previousEvidenceCount": 5,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "09:43",
-          "score": 37
-        },
-        {
-          "time": "09:44",
-          "score": 29
-        },
-        {
-          "time": "10:21",
-          "score": 92
-        },
-        {
-          "time": "10:27",
-          "score": 82
-        },
-        {
-          "time": "10:28",
-          "score": 82
-        },
-        {
-          "time": "10:29",
-          "score": 82
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=%E5%A4%8F%E4%BC%91%E3%81%BF%20%E6%97%85%E8%A1%8C%20%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%20%E8%A9%B1%E9%A1%8C&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "a059674de150",
-      "keyword": "パフォーマーの工藤大輝＆岩岡徹＆和田颯も歌声を披露",
-      "watchlist": "public_topic",
-      "watchlistLabel": "エンタメ",
-      "rank": 10,
-      "previousRank": 10,
-      "rankChange": 0,
-      "score": 81,
-      "previousScore": 76,
-      "scoreChange": 5,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "up",
-      "trendStatus": "actual_topic",
-      "appearCount": 3,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "エンタメ"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:27",
-          "score": 71
-        },
-        {
-          "time": "10:28",
-          "score": 76
-        },
-        {
-          "time": "10:29",
-          "score": 81
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBTQlpCSXIwN0pMOUU1ckJ1YlBaQU9reWNiYzJSWHpDS0pGWjdnNzBzUXBNZXFwNmpnVVZYcFQ2QkVsR3BWTnJKUDVYdjE4aTR1ekVr?oc=5"
-    },
-    {
-      "id": "94040c19e00e",
-      "keyword": "オーストラリア",
-      "watchlist": "public_topic",
-      "watchlistLabel": "総合話題",
-      "rank": 11,
-      "previousRank": 11,
-      "rankChange": 0,
-      "score": 80,
-      "previousScore": 75,
-      "scoreChange": 5,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "up",
-      "trendStatus": "actual_topic",
-      "appearCount": 3,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "総合話題"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:27",
-          "score": 70
-        },
-        {
-          "time": "10:28",
-          "score": 75
-        },
-        {
-          "time": "10:29",
-          "score": 80
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5OWnVSazJoMDZ1cTlrOXZ0N3hiYzBlb1B0bVhZak5EM1VrVXJxaF9waUIwNFB6NVlYajNNM2g0NWlxVUNBb1ZBOTE4TWRXaC04eGMxb1B4VHdqUGtTRzU1bldmZGpCVWJNQkhEbg?oc=5"
-    },
-    {
-      "id": "602e75102e52",
-      "keyword": "国産AI開発の全容判明",
-      "watchlist": "public_topic",
-      "watchlistLabel": "テクノロジー",
-      "rank": 10,
-      "previousRank": 11,
-      "rankChange": 1,
-      "score": 78,
-      "previousScore": 68,
-      "scoreChange": 10,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "up",
-      "trendStatus": "actual_topic",
-      "appearCount": 2,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "テクノロジー"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:28",
-          "score": 68
-        },
-        {
-          "time": "10:29",
-          "score": 78
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1QWDB4N1VvdVlZWC12UFFpNjd4OWIzYWN1M2luTFdKTjhLT0EzQnY5ZGdNU05mNF9ILUlVaU9lRzQ0bEJZZ2luSVVwTjc4cHQtaG8zbkVoRUZOQWNHRE8tOTJIQUNBLW1tUmJCeg?oc=5"
-    },
-    {
-      "id": "20fa5017e50f",
-      "keyword": "同じ番号で2台のiPhoneを使える〜iOS27の新機能",
-      "watchlist": "public_topic",
-      "watchlistLabel": "テクノロジー",
-      "rank": 11,
-      "previousRank": 12,
-      "rankChange": 1,
-      "score": 76,
-      "previousScore": 66,
-      "scoreChange": 10,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "up",
-      "trendStatus": "actual_topic",
-      "appearCount": 2,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "テクノロジー"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:28",
-          "score": 66
-        },
-        {
-          "time": "10:29",
-          "score": 76
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE4wUjhRVUJCX0oxamRJcmQxZzJiVThFd2pZbXVTMkIzOXFCNXdxUG5WRnFIU01RVWZsQ1NQZWREZWRuRGdXaGo2NmtGRdIBUEFVX3lxTE4yS05fa1ItWE03bFVMQmNHamx1SUo3UmRyc0FOdmpWaVdoaWo3VE1lR2RuNGVSUUxhUUVZZWlucVB0NVBBRnhPQlI4T1dJcy1a?oc=5"
-    },
-    {
-      "id": "d1d1cac95bb1",
-      "keyword": "大相撲名古屋場所 番付発表 綱とり目指す霧島 東の大関に",
-      "watchlist": "public_topic",
-      "watchlistLabel": "スポーツ",
-      "rank": 12,
-      "previousRank": 12,
-      "rankChange": 0,
-      "score": 73,
-      "previousScore": 68,
-      "scoreChange": 5,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "up",
-      "trendStatus": "actual_topic",
-      "appearCount": 2,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "スポーツ"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:28",
-          "score": 68
-        },
-        {
-          "time": "10:29",
-          "score": 73
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5IeWdWRDBldUFISnkyQ1VGY0FrenNMdjE5YWkwZ2EtU19WTlFscnpnTWlLOTMzSGM4R3FDVFVmbkdubGNjQzhuWnY2NndkS18wVmRiTjRna0hLY3ptTkdn?oc=5"
-    },
-    {
-      "id": "bc02e0f3d963",
-      "keyword": "クラブワールドカップ",
-      "watchlist": "major_topic",
-      "watchlistLabel": "スポーツ大型トピック",
-      "rank": 15,
-      "previousRank": 15,
-      "rankChange": 0,
-      "score": 72,
-      "previousScore": 67,
-      "scoreChange": 5,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "up",
-      "trendStatus": "major_topic",
-      "appearCount": 3,
-      "signalType": "major_topic",
-      "evidenceCount": 4,
-      "previousEvidenceCount": 4,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:21",
-          "score": 74
-        },
-        {
-          "time": "10:28",
-          "score": 67
-        },
-        {
-          "time": "10:29",
-          "score": 72
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=%E3%82%AF%E3%83%A9%E3%83%96%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%20OR%20%E3%82%AF%E3%83%A9%E3%83%96W%E6%9D%AF&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "55b7804e3da9",
-      "keyword": "フェルスタッペンが執念の2位",
-      "watchlist": "public_topic",
-      "watchlistLabel": "スポーツ",
-      "rank": 13,
-      "previousRank": 13,
-      "rankChange": 0,
-      "score": 71,
-      "previousScore": 66,
-      "scoreChange": 5,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "up",
-      "trendStatus": "actual_topic",
-      "appearCount": 2,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "スポーツ"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:28",
-          "score": 66
-        },
-        {
-          "time": "10:29",
-          "score": 71
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE85N0FZdjNQUVlneU9HVkcxTzF1SEVyQzQ5NW9XdXdMaVNxVUFTY0lpR1BUazV2VVFJMG5JWGdaNDMxRmtxU1Jr?oc=5"
-    },
-    {
-      "id": "2feb3bc30291",
-      "keyword": "目黒蓮",
-      "watchlist": "public_topic",
-      "watchlistLabel": "エンタメ",
-      "rank": 13,
-      "previousRank": 13,
-      "rankChange": 0,
-      "score": 70,
-      "previousScore": 65,
-      "scoreChange": 5,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "up",
-      "trendStatus": "actual_topic",
-      "appearCount": 2,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "エンタメ"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:28",
-          "score": 65
-        },
-        {
-          "time": "10:29",
-          "score": 70
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBNeHFzVEc3dV9ybFhJeG9PaW9qZ0steXhDTHR3TlA0T1Q3bGpLOUFmQlRxSllteHVzMlRiVm42LXJhUE5MWXFWTGlEQUI2cWJuZWxFb293?oc=5"
-    },
-    {
-      "id": "ff5b67a75b2c",
-      "keyword": "ダンスチャレンジ",
-      "watchlist": "sns_platform",
-      "watchlistLabel": "SNSトレンド",
-      "rank": 12,
-      "previousRank": 12,
-      "rankChange": 0,
-      "score": 65,
-      "previousScore": 65,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "flat",
-      "appearCount": 14,
-      "signalType": "discovered_phrase",
-      "evidenceCount": 4,
-      "previousEvidenceCount": 4,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:06",
-          "score": 65
-        },
-        {
-          "time": "10:08",
-          "score": 65
-        },
-        {
-          "time": "10:13",
-          "score": 65
-        },
-        {
-          "time": "10:21",
-          "score": 65
-        },
-        {
-          "time": "10:28",
-          "score": 65
-        },
-        {
-          "time": "10:29",
-          "score": 65
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=%E3%83%80%E3%83%B3%E3%82%B9%E3%83%81%E3%83%A3%E3%83%AC%E3%83%B3%E3%82%B8&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "e8c7ef119ba0",
-      "keyword": "学校あるある",
-      "watchlist": "sns_platform",
-      "watchlistLabel": "SNSトレンド",
-      "rank": 12,
-      "previousRank": 12,
-      "rankChange": 0,
-      "score": 65,
-      "previousScore": 65,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "flat",
-      "appearCount": 14,
-      "signalType": "discovered_phrase",
-      "evidenceCount": 4,
-      "previousEvidenceCount": 4,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:06",
-          "score": 65
-        },
-        {
-          "time": "10:08",
-          "score": 65
-        },
-        {
-          "time": "10:13",
-          "score": 65
-        },
-        {
-          "time": "10:21",
-          "score": 65
-        },
-        {
-          "time": "10:28",
-          "score": 65
-        },
-        {
-          "time": "10:29",
-          "score": 65
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=%E5%AD%A6%E6%A0%A1%E3%81%82%E3%82%8B%E3%81%82%E3%82%8B&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "dd3c832f44b6",
-      "keyword": "沖縄飲み会あるある",
-      "watchlist": "sns_platform",
-      "watchlistLabel": "SNSトレンド",
-      "rank": 15,
-      "previousRank": 15,
-      "rankChange": 0,
-      "score": 63,
-      "previousScore": 63,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "flat",
-      "appearCount": 14,
-      "signalType": "discovered_phrase",
-      "evidenceCount": 3,
-      "previousEvidenceCount": 3,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:06",
-          "score": 65
-        },
-        {
-          "time": "10:08",
-          "score": 65
-        },
-        {
-          "time": "10:13",
-          "score": 63
-        },
-        {
-          "time": "10:21",
-          "score": 63
-        },
-        {
-          "time": "10:28",
-          "score": 63
-        },
-        {
-          "time": "10:29",
-          "score": 63
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=%E6%B2%96%E7%B8%84%E9%A3%B2%E3%81%BF%E4%BC%9A%E3%81%82%E3%82%8B%E3%81%82%E3%82%8B&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "dee05e77e772",
-      "keyword": "薬剤師あるある",
-      "watchlist": "sns_platform",
-      "watchlistLabel": "SNSトレンド",
-      "rank": 15,
-      "previousRank": 15,
-      "rankChange": 0,
-      "score": 63,
-      "previousScore": 82,
-      "scoreChange": -19,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "down",
-      "trendStatus": "flat",
-      "appearCount": 13,
-      "signalType": "discovered_phrase",
-      "evidenceCount": 3,
-      "previousEvidenceCount": 3,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:06",
-          "score": 65
-        },
-        {
-          "time": "10:06",
-          "score": 65
-        },
-        {
-          "time": "10:08",
-          "score": 41
-        },
-        {
-          "time": "10:13",
-          "score": 55
-        },
-        {
-          "time": "10:21",
-          "score": 82
-        },
-        {
-          "time": "10:29",
-          "score": 63
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=%E8%96%AC%E5%89%A4%E5%B8%AB%E3%81%82%E3%82%8B%E3%81%82%E3%82%8B&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "a21ab9823f1c",
-      "keyword": "ビートルズ来日が残したもの 60周年",
-      "watchlist": "public_topic",
-      "watchlistLabel": "エンタメ",
-      "rank": 15,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 61,
-      "previousScore": null,
-      "scoreChange": 61,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "エンタメ"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:29",
-          "score": 61
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9WSVJna29XU2F2Nm8xY2JqQzNGUHlmc3dtSGNsb2pnX19YdlFjdTNyVHU3em5fN0h3LXgzNy00U2hEUWdUSGdURndEZjhuNG1Hc192STBEQnBndjdDd0FFODA4a1IyU3lUSXdXWQ?oc=5"
-    },
-    {
-      "id": "c217d10c6e75",
-      "keyword": "中村敬斗",
-      "watchlist": "public_topic",
-      "watchlistLabel": "スポーツ",
-      "rank": 16,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 60,
-      "previousScore": null,
-      "scoreChange": 60,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "スポーツ"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:29",
-          "score": 60
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5QWEtuRmx5UE42aDJjeE5nSG9TaFE3Y1UteU1yV3NIQjZuMmtVX0VvQ1pRQ0R2YURHM3dVQUpmMHlxeVJZU3I0SGhUX0xfVmlzczhSR0dmYlEwSGI1OTgyMkRNRXpQZ3BLRk5KTTZtVC1fN0M5UGk4?oc=5"
-    },
-    {
-      "id": "6a648247e136",
-      "keyword": "TikTokチャレンジ",
-      "watchlist": "sns_platform",
-      "watchlistLabel": "SNSトレンド",
-      "rank": 26,
-      "previousRank": 26,
-      "rankChange": 0,
-      "score": 60,
-      "previousScore": 60,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "flat",
-      "appearCount": 16,
-      "signalType": "configured_rss",
-      "evidenceCount": 20,
-      "previousEvidenceCount": 20,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:06",
-          "score": 62
-        },
-        {
-          "time": "10:06",
-          "score": 62
-        },
-        {
-          "time": "10:08",
-          "score": 62
-        },
-        {
-          "time": "10:13",
-          "score": 60
-        },
-        {
-          "time": "10:21",
-          "score": 60
-        },
-        {
-          "time": "10:29",
-          "score": 60
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=TikTok%20%E3%83%81%E3%83%A3%E3%83%AC%E3%83%B3%E3%82%B8&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "94bfd629d3aa",
-      "keyword": "TikTokトレンド音源",
-      "watchlist": "sns_platform",
-      "watchlistLabel": "SNSトレンド",
-      "rank": 26,
-      "previousRank": 26,
-      "rankChange": 0,
-      "score": 60,
-      "previousScore": 60,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "flat",
-      "appearCount": 16,
-      "signalType": "configured_rss",
-      "evidenceCount": 20,
-      "previousEvidenceCount": 20,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:06",
-          "score": 62
-        },
-        {
-          "time": "10:06",
-          "score": 62
-        },
-        {
-          "time": "10:08",
-          "score": 62
-        },
-        {
-          "time": "10:13",
-          "score": 60
-        },
-        {
-          "time": "10:21",
-          "score": 60
-        },
-        {
-          "time": "10:29",
-          "score": 60
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=TikTok%20%E3%83%88%E3%83%AC%E3%83%B3%E3%83%89%E9%9F%B3%E6%BA%90&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "c72bd46a9b6b",
-      "keyword": "鹿児島グルメ",
-      "watchlist": "local_leisure",
-      "watchlistLabel": "地域・レジャー",
-      "rank": 26,
-      "previousRank": 26,
-      "rankChange": 0,
-      "score": 60,
-      "previousScore": 60,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "flat",
-      "appearCount": 16,
-      "signalType": "configured_rss",
-      "evidenceCount": 20,
-      "previousEvidenceCount": 20,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:06",
-          "score": 62
-        },
-        {
-          "time": "10:06",
-          "score": 62
-        },
-        {
-          "time": "10:08",
-          "score": 62
-        },
-        {
-          "time": "10:13",
-          "score": 60
-        },
-        {
-          "time": "10:21",
-          "score": 60
-        },
-        {
-          "time": "10:29",
-          "score": 60
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=%E9%B9%BF%E5%85%90%E5%B3%B6%20%E3%82%B0%E3%83%AB%E3%83%A1%20%E8%A9%B1%E9%A1%8C&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "b130739585aa",
-      "keyword": "リールあるある",
-      "watchlist": "format",
-      "watchlistLabel": "投稿フォーマット",
-      "rank": 26,
-      "previousRank": 26,
-      "rankChange": 0,
-      "score": 59,
-      "previousScore": 59,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "flat",
-      "appearCount": 16,
-      "signalType": "configured_rss",
-      "evidenceCount": 20,
-      "previousEvidenceCount": 20,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:06",
-          "score": 61
-        },
-        {
-          "time": "10:06",
-          "score": 61
-        },
-        {
-          "time": "10:08",
-          "score": 61
-        },
-        {
-          "time": "10:13",
-          "score": 59
-        },
-        {
-          "time": "10:21",
-          "score": 59
-        },
-        {
-          "time": "10:29",
-          "score": 59
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=Instagram%20%E3%83%AA%E3%83%BC%E3%83%AB%20%E3%81%82%E3%82%8B%E3%81%82%E3%82%8B&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "edd25d7b4866",
-      "keyword": "YouTube Shortsネタ",
-      "watchlist": "sns_platform",
-      "watchlistLabel": "SNSトレンド",
-      "rank": 26,
-      "previousRank": 26,
-      "rankChange": 0,
-      "score": 59,
-      "previousScore": 59,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "flat",
-      "appearCount": 16,
-      "signalType": "configured_rss",
-      "evidenceCount": 20,
-      "previousEvidenceCount": 20,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:06",
-          "score": 61
-        },
-        {
-          "time": "10:06",
-          "score": 61
-        },
-        {
-          "time": "10:08",
-          "score": 61
-        },
-        {
-          "time": "10:13",
-          "score": 59
-        },
-        {
-          "time": "10:21",
-          "score": 59
-        },
-        {
-          "time": "10:29",
-          "score": 59
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=YouTube%20Shorts%20%E8%A9%B1%E9%A1%8C&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "ba7567f9e0a0",
-      "keyword": "踊ってみた",
-      "watchlist": "sns_platform",
-      "watchlistLabel": "SNSトレンド",
-      "rank": 26,
-      "previousRank": 26,
-      "rankChange": 0,
-      "score": 59,
-      "previousScore": 59,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "flat",
-      "appearCount": 17,
-      "signalType": "configured_rss",
-      "evidenceCount": 20,
-      "previousEvidenceCount": 20,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:06",
-          "score": 61
-        },
-        {
-          "time": "10:06",
-          "score": 61
-        },
-        {
-          "time": "10:08",
-          "score": 61
-        },
-        {
-          "time": "10:13",
-          "score": 59
-        },
-        {
-          "time": "10:21",
-          "score": 59
-        },
-        {
-          "time": "10:29",
-          "score": 59
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=%E8%B8%8A%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F%20TikTok&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "a450a56b7894",
-      "keyword": "屋久島旅行",
-      "watchlist": "local_leisure",
-      "watchlistLabel": "地域・レジャー",
-      "rank": 26,
-      "previousRank": 26,
-      "rankChange": 0,
-      "score": 59,
-      "previousScore": 59,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "flat",
-      "appearCount": 16,
-      "signalType": "configured_rss",
-      "evidenceCount": 20,
-      "previousEvidenceCount": 20,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:06",
-          "score": 61
-        },
-        {
-          "time": "10:06",
-          "score": 61
-        },
-        {
-          "time": "10:08",
-          "score": 61
-        },
-        {
-          "time": "10:13",
-          "score": 59
-        },
-        {
-          "time": "10:21",
-          "score": 59
-        },
-        {
-          "time": "10:29",
-          "score": 59
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=%E5%B1%8B%E4%B9%85%E5%B3%B6%20%E6%97%85%E8%A1%8C%20%E4%BA%BA%E6%B0%97&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "88448d216ba2",
-      "keyword": "奄美旅行",
-      "watchlist": "local_leisure",
-      "watchlistLabel": "地域・レジャー",
-      "rank": 26,
-      "previousRank": 26,
-      "rankChange": 0,
-      "score": 59,
-      "previousScore": 59,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "flat",
-      "appearCount": 16,
-      "signalType": "configured_rss",
-      "evidenceCount": 20,
-      "previousEvidenceCount": 20,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:06",
-          "score": 61
-        },
-        {
-          "time": "10:06",
-          "score": 61
-        },
-        {
-          "time": "10:08",
-          "score": 61
-        },
-        {
-          "time": "10:13",
-          "score": 59
-        },
-        {
-          "time": "10:21",
-          "score": 59
-        },
-        {
-          "time": "10:29",
-          "score": 59
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=%E5%A5%84%E7%BE%8E%20%E6%97%85%E8%A1%8C%20%E4%BA%BA%E6%B0%97&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "77bee0e52679",
-      "keyword": "［社説］消費税減税はやはり道理に合わない",
-      "watchlist": "public_topic",
-      "watchlistLabel": "ビジネス",
-      "rank": 15,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "ビジネス"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:29",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMibEFVX3lxTE51eVJ0c1cxdFJmTXl4Q0w0WjZLUmdlYmhqRHNWSGxoZjBwZ0VicWdjdm1QWVhWc0Q0dkV1Q1BBbFNiMW1QbTJyZTBIR3loYnBRcklKNXdndm13bi0tR2NDdnBPdldHbWpMNTdEWQ?oc=5"
-    },
-    {
-      "id": "21539c33926e",
-      "keyword": "元モー娘",
-      "watchlist": "public_topic",
-      "watchlistLabel": "エンタメ",
-      "rank": 17,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "エンタメ"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:29",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBPZV90MlZmZnZLZVJsSFZFLWJuVjA2Y1ZZN0tNQ1p1b0ZPTF9HSkRrbGN5X3pYWWtyU3NGamE4UDFrVGU3NGZYOVdpcF_SAUhBVV95cUxQZ1FDZW90T0dNRWtZR3ludFlHSTkzdVdmU1RYcW5NOUUwaGpPSk1TM2d4aWhJc0hTRFdwQm8zck1CaGxjVjdINHc?oc=5"
-    },
-    {
-      "id": "e60d80361435",
-      "keyword": "今起きているサービス遅延の原因箇所まで",
-      "watchlist": "public_topic",
-      "watchlistLabel": "総合話題",
-      "rank": 18,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "総合話題"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:29",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiakFVX3lxTE80WVRYTmN0Q1VFYzRaQS1BNVRtTXA4TS16U1lsRDN1WXllX2FJZWVOeXpNMUFKcUdhTHpQMElrY0QxRklDX0NtVmtoODZqdExUdG5NYzE5STYyQjUwaXBKLVB5cy1XRUgwd0E?oc=5"
-    },
-    {
-      "id": "171b8b1984c3",
-      "keyword": "稼げる中小企業へ再編促進 経産省",
-      "watchlist": "public_topic",
-      "watchlistLabel": "ビジネス",
-      "rank": 18,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "ビジネス"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:29",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5ydFpSVzdBVWRaaUQ1eGwyVEJyU293LWtkd0s0Zzg3MVBiaTBndTNHY1MtcGg0Qm9xY2pGWDVSUk1BUk0xRUtHYlpoMGpmQQ?oc=5"
-    },
-    {
-      "id": "878be7cc6d85",
-      "keyword": "夏休み旅行",
-      "watchlist": "seasonal",
-      "watchlistLabel": "季節・イベント",
-      "rank": 18,
-      "previousRank": 18,
-      "rankChange": 0,
-      "score": 58,
-      "previousScore": 58,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "flat",
-      "appearCount": 16,
-      "signalType": "configured_rss",
-      "evidenceCount": 5,
-      "previousEvidenceCount": 5,
-      "evidenceChange": 0,
-      "topicSourceCount": null,
-      "topicSources": null,
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:06",
-          "score": 60
-        },
-        {
-          "time": "10:06",
-          "score": 60
-        },
-        {
-          "time": "10:08",
-          "score": 60
-        },
-        {
-          "time": "10:13",
-          "score": 58
-        },
-        {
-          "time": "10:21",
-          "score": 58
-        },
-        {
-          "time": "10:29",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://news.google.com/search?q=%E5%A4%8F%E4%BC%91%E3%81%BF%20%E6%97%85%E8%A1%8C%20%E4%BA%BA%E6%B0%97&hl=ja&gl=JP&ceid=JP%3Aja"
-    },
-    {
-      "id": "fa6b92c89afd",
-      "keyword": "秋田の最低賃金",
-      "watchlist": "public_topic",
-      "watchlistLabel": "ビジネス",
-      "rank": 20,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "ビジネス"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:29",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1iVWY2WFBpUmtDa2EzOFBQZUpFd2RZQ2t6LUpyMW5zLVlhdThIQ1JacFg3MWFEaWw4WExRTlRwN0J6Yll2X2R6dE9hckMzdGtYbXhhSk9SOEZQeUtDRTBoTTZn?oc=5"
-    },
-    {
-      "id": "6b231228877d",
-      "keyword": "白石麻衣",
-      "watchlist": "public_topic",
-      "watchlistLabel": "エンタメ",
-      "rank": 23,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "エンタメ"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:29",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9kT2dqSVRyalRFUkJnNUE2c1NyVjRkLWExR3JZSE9WaVNTNmxHaFBxS1lzTjdSRWRlbEwySmpTNlJDbWRFWDNLTWFMUUh5MWJFTnRQdzhmdUdSbEYxdy1MUUF3?oc=5"
-    },
-    {
-      "id": "8abc0da2aa58",
-      "keyword": "ウォーシュ議長が国際討論会でデビュー",
-      "watchlist": "public_topic",
-      "watchlistLabel": "ビジネス",
-      "rank": 23,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "ビジネス"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:29",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBfR3BHUU9rdEZBYWY0SFNlYVRiMTdhc214a0dTd0g4RkFCY1RVNjczY2k0RldfTTVnMzZTN2VOY2F1dFduZld0bENMQlpPc2ZkVm55R2hMd1Jhd2dKTjhCTmIxbzBLQmpvdFNMRW9zd1F2Qk9UUVdR?oc=5"
-    },
-    {
-      "id": "84b604271b6e",
-      "keyword": "逆にすごい",
-      "watchlist": "public_topic",
-      "watchlistLabel": "テクノロジー",
-      "rank": 24,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "テクノロジー"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:29",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBJZ1ZTRF9teDUxRlRIMS1VcjRkVVFUVFEyUEE1cEc4Y2xfVGlDeEZhMmJZbDFqZjA2aGhXcFlLcDNlQldwT01BRUttWVczY2hWcnM2dm9kaFBXSUY1WXhQb3QxRERmZzJ5a2lNSG9BbGc?oc=5"
-    },
-    {
-      "id": "f34b52205ccd",
-      "keyword": "東邦液化ガスの元社員",
-      "watchlist": "public_topic",
-      "watchlistLabel": "ビジネス",
-      "rank": 24,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "ビジネス"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:29",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9IOVB1dlQ5a25WUmIweXcxb09KMEVFYnhwTjdnenJnY0d3ckpRZ0lNZnFiU3JhVUZpTGRGYXB1SzhYeHJTZ1FCR2lOSXJpRzR0WmhyRA?oc=5"
-    },
-    {
-      "id": "65f827d1efa3",
-      "keyword": "YOASOBIは7曲を披露",
-      "watchlist": "public_topic",
-      "watchlistLabel": "エンタメ",
-      "rank": 26,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "エンタメ"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:29",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5GRWVXSUNYOC11LTkzcERmUUlkWDRnT0xySUVwejhtWTVPZ1piVnBhTzNxN2VWNVNJdUdVZGZnTVVvazJCeGQycWxZMVBqajEyeXdmZ0hiazZ4LXhoaGc?oc=5"
-    },
-    {
-      "id": "748d5905d9c5",
-      "keyword": "クレカ",
-      "watchlist": "public_topic",
-      "watchlistLabel": "ビジネス",
-      "rank": 26,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "ビジネス"
-      ],
-      "capturedAt": "2026-06-29T10:29:00+09:00",
-      "series": [
-        {
-          "time": "10:29",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9QS0pYOG5kbWFXa193bGVrNzh1di01UGk3bGxDWlg4cVE1UmppdTlGalJUWVNVX2FzT1pEbDFtMHhQZXFKZElZN3g3eU9vZmNRd0J4UFJ6cWpMdVJWbm5wZE5BWdIBaEFVX3lxTFAySURaY0pmaTl6WW12WXR3b0UxNEhJX0NfUEp6c3g4VS1EOENIN080cTdfS2ZrclQzNExvRlB2c1VDYU9uVUl6VnZSd1ZxR2xMZFdsdkFWcm1zd0dLU2k5U3FJdjRYcUtI?oc=5"
-    },
-    {
-      "id": "4304296be742",
-      "keyword": "fivbバレーボール・ネイションズリーグ 男子",
-      "watchlist": "actual_public_trend",
-      "watchlistLabel": "実トレンド",
-      "rank": 1,
-      "previousRank": 1,
-      "rankChange": 0,
-      "score": 100,
-      "previousScore": 100,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "actual_trend",
       "appearCount": 6,
       "signalType": "daily_trend",
       "evidenceCount": 3,
@@ -52985,6 +50462,2511 @@
         }
       ],
       "observeUrl": "https://news.google.com/search?q=%E9%B9%BF%E5%85%90%E5%B3%B6%20%E8%A6%B3%E5%85%89%20%E4%BA%BA%E6%B0%97&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "07e52926e60b",
+      "keyword": "国立競技場",
+      "watchlist": "actual_public_trend",
+      "watchlistLabel": "実トレンド",
+      "rank": 1,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 100,
+      "previousScore": null,
+      "scoreChange": 100,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_trend",
+      "appearCount": 1,
+      "signalType": "daily_trend",
+      "evidenceCount": 3,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "検索急上昇"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 100
+        }
+      ],
+      "observeUrl": "https://trends.google.com/trends/explore?geo=JP&q=%E5%9B%BD%E7%AB%8B%E7%AB%B6%E6%8A%80%E5%A0%B4"
+    },
+    {
+      "id": "e811fbff82bf",
+      "keyword": "西舘勇陽",
+      "watchlist": "actual_public_trend",
+      "watchlistLabel": "実トレンド",
+      "rank": 1,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 100,
+      "previousScore": null,
+      "scoreChange": 100,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_trend",
+      "appearCount": 1,
+      "signalType": "daily_trend",
+      "evidenceCount": 3,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "検索急上昇"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 100
+        }
+      ],
+      "observeUrl": "https://trends.google.com/trends/explore?geo=JP&q=%E8%A5%BF%E8%88%98%E5%8B%87%E9%99%BD"
+    },
+    {
+      "id": "3b939fd4a6fc",
+      "keyword": "クーニャ 田中 碧",
+      "watchlist": "actual_public_trend",
+      "watchlistLabel": "実トレンド",
+      "rank": 1,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 100,
+      "previousScore": null,
+      "scoreChange": 100,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_trend",
+      "appearCount": 1,
+      "signalType": "daily_trend",
+      "evidenceCount": 3,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "検索急上昇"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 100
+        }
+      ],
+      "observeUrl": "https://trends.google.com/trends/explore?geo=JP&q=%E3%82%AF%E3%83%BC%E3%83%8B%E3%83%A3%20%E7%94%B0%E4%B8%AD%20%E7%A2%A7"
+    },
+    {
+      "id": "5862a4b1fef8",
+      "keyword": "dish",
+      "watchlist": "actual_public_trend",
+      "watchlistLabel": "実トレンド",
+      "rank": 1,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 100,
+      "previousScore": null,
+      "scoreChange": 100,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_trend",
+      "appearCount": 1,
+      "signalType": "daily_trend",
+      "evidenceCount": 3,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "検索急上昇"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 100
+        }
+      ],
+      "observeUrl": "https://trends.google.com/trends/explore?geo=JP&q=dish"
+    },
+    {
+      "id": "9c582e9269fe",
+      "keyword": "ワールドカップ",
+      "watchlist": "major_topic",
+      "watchlistLabel": "スポーツ大型トピック",
+      "rank": 1,
+      "previousRank": 1,
+      "rankChange": 0,
+      "score": 100,
+      "previousScore": 100,
+      "scoreChange": 0,
+      "yesterdayScore": 100,
+      "yesterdayChange": 0,
+      "direction": "flat",
+      "trendStatus": "major_topic",
+      "appearCount": 24,
+      "signalType": "major_topic",
+      "evidenceCount": 30,
+      "previousEvidenceCount": 30,
+      "evidenceChange": 0,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 100
+        },
+        {
+          "time": "09:07",
+          "score": 100
+        },
+        {
+          "time": "09:08",
+          "score": 100
+        },
+        {
+          "time": "09:14",
+          "score": 100
+        },
+        {
+          "time": "13:46",
+          "score": 100
+        },
+        {
+          "time": "19:05",
+          "score": 100
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%20OR%20W%E6%9D%AF%20FIFA%20%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "c731931ef36d",
+      "keyword": "FIFAワールドカップ2026",
+      "watchlist": "major_topic",
+      "watchlistLabel": "スポーツ大型トピック",
+      "rank": 1,
+      "previousRank": 1,
+      "rankChange": 0,
+      "score": 100,
+      "previousScore": 100,
+      "scoreChange": 0,
+      "yesterdayScore": 100,
+      "yesterdayChange": 0,
+      "direction": "flat",
+      "trendStatus": "major_topic",
+      "appearCount": 24,
+      "signalType": "major_topic",
+      "evidenceCount": 30,
+      "previousEvidenceCount": 30,
+      "evidenceChange": 0,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 100
+        },
+        {
+          "time": "09:07",
+          "score": 100
+        },
+        {
+          "time": "09:08",
+          "score": 100
+        },
+        {
+          "time": "09:14",
+          "score": 100
+        },
+        {
+          "time": "13:46",
+          "score": 100
+        },
+        {
+          "time": "19:05",
+          "score": 100
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=FIFA%20%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%202026%20OR%20W%E6%9D%AF%202026&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "708d857bbc93",
+      "keyword": "バレーボールネーションズリーグ",
+      "watchlist": "major_topic",
+      "watchlistLabel": "スポーツ大型トピック",
+      "rank": 1,
+      "previousRank": 1,
+      "rankChange": 0,
+      "score": 100,
+      "previousScore": 100,
+      "scoreChange": 0,
+      "yesterdayScore": 100,
+      "yesterdayChange": 0,
+      "direction": "flat",
+      "trendStatus": "major_topic",
+      "appearCount": 24,
+      "signalType": "major_topic",
+      "evidenceCount": 30,
+      "previousEvidenceCount": 30,
+      "evidenceChange": 0,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 100
+        },
+        {
+          "time": "09:07",
+          "score": 100
+        },
+        {
+          "time": "09:08",
+          "score": 100
+        },
+        {
+          "time": "09:14",
+          "score": 100
+        },
+        {
+          "time": "13:46",
+          "score": 100
+        },
+        {
+          "time": "19:05",
+          "score": 100
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E3%83%90%E3%83%AC%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%AB%20%E3%83%8D%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%BA%E3%83%AA%E3%83%BC%E3%82%B0%20%E7%94%B7%E5%AD%90%20OR%20VNL&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "d4983f928f94",
+      "keyword": "MLB",
+      "watchlist": "major_topic",
+      "watchlistLabel": "スポーツ大型トピック",
+      "rank": 1,
+      "previousRank": 1,
+      "rankChange": 0,
+      "score": 100,
+      "previousScore": 100,
+      "scoreChange": 0,
+      "yesterdayScore": 100,
+      "yesterdayChange": 0,
+      "direction": "flat",
+      "trendStatus": "major_topic",
+      "appearCount": 24,
+      "signalType": "major_topic",
+      "evidenceCount": 30,
+      "previousEvidenceCount": 30,
+      "evidenceChange": 0,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 100
+        },
+        {
+          "time": "09:07",
+          "score": 100
+        },
+        {
+          "time": "09:08",
+          "score": 100
+        },
+        {
+          "time": "09:14",
+          "score": 100
+        },
+        {
+          "time": "13:46",
+          "score": 100
+        },
+        {
+          "time": "19:05",
+          "score": 100
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=MLB%20%E5%A4%A7%E8%B0%B7%20OR%20%E3%83%89%E3%82%B8%E3%83%A3%E3%83%BC%E3%82%B9%20OR%20%E3%83%A1%E3%82%B8%E3%83%A3%E3%83%BC%E3%83%AA%E3%83%BC%E3%82%B0&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "30cbddc3a761",
+      "keyword": "夏の高校野球",
+      "watchlist": "major_topic",
+      "watchlistLabel": "季節スポーツ",
+      "rank": 1,
+      "previousRank": 1,
+      "rankChange": 0,
+      "score": 100,
+      "previousScore": 100,
+      "scoreChange": 0,
+      "yesterdayScore": 100,
+      "yesterdayChange": 0,
+      "direction": "flat",
+      "trendStatus": "major_topic",
+      "appearCount": 24,
+      "signalType": "major_topic",
+      "evidenceCount": 26,
+      "previousEvidenceCount": 26,
+      "evidenceChange": 0,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 100
+        },
+        {
+          "time": "09:07",
+          "score": 100
+        },
+        {
+          "time": "09:08",
+          "score": 100
+        },
+        {
+          "time": "09:14",
+          "score": 100
+        },
+        {
+          "time": "13:46",
+          "score": 100
+        },
+        {
+          "time": "19:05",
+          "score": 100
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E9%AB%98%E6%A0%A1%E9%87%8E%E7%90%83%20%E5%A4%8F%20%E7%94%B2%E5%AD%90%E5%9C%92&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "05b65e2f0321",
+      "keyword": "6sixtones",
+      "watchlist": "actual_public_trend",
+      "watchlistLabel": "実トレンド",
+      "rank": 2,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 100,
+      "previousScore": null,
+      "scoreChange": 100,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_trend",
+      "appearCount": 1,
+      "signalType": "daily_trend",
+      "evidenceCount": 3,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "検索急上昇"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 100
+        }
+      ],
+      "observeUrl": "https://trends.google.com/trends/explore?geo=JP&q=6sixtones"
+    },
+    {
+      "id": "129794868833",
+      "keyword": "超ときめき♡宣伝部",
+      "watchlist": "actual_public_trend",
+      "watchlistLabel": "実トレンド",
+      "rank": 3,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 100,
+      "previousScore": null,
+      "scoreChange": 100,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_trend",
+      "appearCount": 1,
+      "signalType": "daily_trend",
+      "evidenceCount": 3,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "検索急上昇"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 100
+        }
+      ],
+      "observeUrl": "https://trends.google.com/trends/explore?geo=JP&q=%E8%B6%85%E3%81%A8%E3%81%8D%E3%82%81%E3%81%8D%E2%99%A1%E5%AE%A3%E4%BC%9D%E9%83%A8"
+    },
+    {
+      "id": "c8594d64cae7",
+      "keyword": "山下健二郎",
+      "watchlist": "actual_public_trend",
+      "watchlistLabel": "実トレンド",
+      "rank": 4,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 100,
+      "previousScore": null,
+      "scoreChange": 100,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_trend",
+      "appearCount": 1,
+      "signalType": "daily_trend",
+      "evidenceCount": 3,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "検索急上昇"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 100
+        }
+      ],
+      "observeUrl": "https://trends.google.com/trends/explore?geo=JP&q=%E5%B1%B1%E4%B8%8B%E5%81%A5%E4%BA%8C%E9%83%8E"
+    },
+    {
+      "id": "622290d8034d",
+      "keyword": "ぶいすぽ",
+      "watchlist": "actual_public_trend",
+      "watchlistLabel": "実トレンド",
+      "rank": 5,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 100,
+      "previousScore": null,
+      "scoreChange": 100,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_trend",
+      "appearCount": 1,
+      "signalType": "daily_trend",
+      "evidenceCount": 3,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "検索急上昇"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 100
+        }
+      ],
+      "observeUrl": "https://trends.google.com/trends/explore?geo=JP&q=%E3%81%B6%E3%81%84%E3%81%99%E3%81%BD"
+    },
+    {
+      "id": "37d9aa7206e3",
+      "keyword": "日刊スポーツ",
+      "watchlist": "actual_public_trend",
+      "watchlistLabel": "実トレンド",
+      "rank": 6,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 99,
+      "previousScore": null,
+      "scoreChange": 99,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_trend",
+      "appearCount": 1,
+      "signalType": "daily_trend",
+      "evidenceCount": 3,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "検索急上昇"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 99
+        }
+      ],
+      "observeUrl": "https://trends.google.com/trends/explore?geo=JP&q=%E6%97%A5%E5%88%8A%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%84"
+    },
+    {
+      "id": "943bd88e643e",
+      "keyword": "オズワルド・伊藤俊介",
+      "watchlist": "public_topic",
+      "watchlistLabel": "総合話題",
+      "rank": 1,
+      "previousRank": 5,
+      "rankChange": 4,
+      "score": 96,
+      "previousScore": 81,
+      "scoreChange": 15,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "up",
+      "trendStatus": "actual_topic",
+      "appearCount": 2,
+      "signalType": "topic_trend",
+      "evidenceCount": 2,
+      "previousEvidenceCount": 1,
+      "evidenceChange": 1,
+      "topicSourceCount": 2,
+      "topicSources": [
+        "総合話題",
+        "エンタメ"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "13:46",
+          "score": 81
+        },
+        {
+          "time": "19:05",
+          "score": 96
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E3%82%AA%E3%82%BA%E3%83%AF%E3%83%AB%E3%83%89%E3%83%BB%E4%BC%8A%E8%97%A4%E4%BF%8A%E4%BB%8B&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "e7241dff566b",
+      "keyword": "米政府",
+      "watchlist": "public_topic",
+      "watchlistLabel": "テクノロジー",
+      "rank": 1,
+      "previousRank": 1,
+      "rankChange": 0,
+      "score": 96,
+      "previousScore": 88,
+      "scoreChange": 8,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "up",
+      "trendStatus": "actual_topic",
+      "appearCount": 2,
+      "signalType": "topic_trend",
+      "evidenceCount": 2,
+      "previousEvidenceCount": 1,
+      "evidenceChange": 1,
+      "topicSourceCount": 2,
+      "topicSources": [
+        "テクノロジー",
+        "ビジネス"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "13:46",
+          "score": 88
+        },
+        {
+          "time": "19:05",
+          "score": 96
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E7%B1%B3%E6%94%BF%E5%BA%9C&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "6df1c86348f0",
+      "keyword": "前日V争いから9ホールの調整 菅楓華",
+      "watchlist": "public_topic",
+      "watchlistLabel": "スポーツ",
+      "rank": 3,
+      "previousRank": 14,
+      "rankChange": 11,
+      "score": 96,
+      "previousScore": 64,
+      "scoreChange": 32,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "up",
+      "trendStatus": "actual_topic",
+      "appearCount": 2,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": 1,
+      "evidenceChange": 0,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "スポーツ"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "13:46",
+          "score": 64
+        },
+        {
+          "time": "19:05",
+          "score": 96
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E5%89%8D%E6%97%A5V%E4%BA%89%E3%81%84%E3%81%8B%E3%82%899%E3%83%9B%E3%83%BC%E3%83%AB%E3%81%AE%E8%AA%BF%E6%95%B4%20%E8%8F%85%E6%A5%93%E8%8F%AF&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "94e807f836ed",
+      "keyword": "グーグル・PayPay・楽天など140社超",
+      "watchlist": "public_topic",
+      "watchlistLabel": "テクノロジー",
+      "rank": 3,
+      "previousRank": 2,
+      "rankChange": -1,
+      "score": 96,
+      "previousScore": 96,
+      "scoreChange": 0,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "flat",
+      "trendStatus": "actual_topic",
+      "appearCount": 8,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": 1,
+      "evidenceChange": 0,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "テクノロジー"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 94
+        },
+        {
+          "time": "09:07",
+          "score": 93
+        },
+        {
+          "time": "09:08",
+          "score": 93
+        },
+        {
+          "time": "09:14",
+          "score": 93
+        },
+        {
+          "time": "13:46",
+          "score": 96
+        },
+        {
+          "time": "19:05",
+          "score": 96
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E3%82%B0%E3%83%BC%E3%82%B0%E3%83%AB%E3%83%BBPayPay%E3%83%BB%E6%A5%BD%E5%A4%A9%E3%81%AA%E3%81%A9140%E7%A4%BE%E8%B6%85&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "ddba2c9277cd",
+      "keyword": "Gemini",
+      "watchlist": "public_topic",
+      "watchlistLabel": "テクノロジー",
+      "rank": 3,
+      "previousRank": 8,
+      "rankChange": 5,
+      "score": 96,
+      "previousScore": 83,
+      "scoreChange": 13,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "up",
+      "trendStatus": "actual_topic",
+      "appearCount": 5,
+      "signalType": "topic_trend",
+      "evidenceCount": 2,
+      "previousEvidenceCount": 2,
+      "evidenceChange": 0,
+      "topicSourceCount": 2,
+      "topicSources": [
+        "テクノロジー",
+        "テクノロジー"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "10:30",
+          "score": 88
+        },
+        {
+          "time": "10:32",
+          "score": 93
+        },
+        {
+          "time": "16:01",
+          "score": 96
+        },
+        {
+          "time": "13:46",
+          "score": 83
+        },
+        {
+          "time": "19:05",
+          "score": 96
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=Gemini&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "be2ab8d72525",
+      "keyword": "スペースX",
+      "watchlist": "public_topic",
+      "watchlistLabel": "テクノロジー",
+      "rank": 5,
+      "previousRank": 5,
+      "rankChange": 0,
+      "score": 95,
+      "previousScore": 87,
+      "scoreChange": 8,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "up",
+      "trendStatus": "actual_topic",
+      "appearCount": 8,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": 1,
+      "evidenceChange": 0,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "テクノロジー"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 96
+        },
+        {
+          "time": "09:07",
+          "score": 96
+        },
+        {
+          "time": "09:08",
+          "score": 96
+        },
+        {
+          "time": "09:14",
+          "score": 96
+        },
+        {
+          "time": "13:46",
+          "score": 87
+        },
+        {
+          "time": "19:05",
+          "score": 95
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9X&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "b780a23b530e",
+      "keyword": "Anthropic",
+      "watchlist": "public_topic",
+      "watchlistLabel": "テクノロジー",
+      "rank": 2,
+      "previousRank": 1,
+      "rankChange": -1,
+      "score": 93,
+      "previousScore": 96,
+      "scoreChange": -3,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "flat",
+      "trendStatus": "actual_topic",
+      "appearCount": 3,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": 1,
+      "evidenceChange": 0,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "テクノロジー"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "08:49",
+          "score": 58
+        },
+        {
+          "time": "13:46",
+          "score": 96
+        },
+        {
+          "time": "19:05",
+          "score": 93
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=Anthropic&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "c1691dcecad4",
+      "keyword": "温泉旅行",
+      "watchlist": "local_leisure",
+      "watchlistLabel": "地域・レジャー",
+      "rank": 26,
+      "previousRank": 22,
+      "rankChange": -4,
+      "score": 93,
+      "previousScore": 60,
+      "scoreChange": 33,
+      "yesterdayScore": 60,
+      "yesterdayChange": 33,
+      "direction": "up",
+      "trendStatus": "rising",
+      "appearCount": 12,
+      "signalType": "configured_rss",
+      "evidenceCount": 20,
+      "previousEvidenceCount": 3,
+      "evidenceChange": 17,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "10:06",
+          "score": 45
+        },
+        {
+          "time": "10:08",
+          "score": 45
+        },
+        {
+          "time": "10:13",
+          "score": 43
+        },
+        {
+          "time": "16:01",
+          "score": 61
+        },
+        {
+          "time": "15:09",
+          "score": 60
+        },
+        {
+          "time": "19:05",
+          "score": 93
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E6%B8%A9%E6%B3%89%20%E6%97%85%E8%A1%8C%20%E4%BA%BA%E6%B0%97&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "cafff6ead82d",
+      "keyword": "都道府県庁ある全４７都市で路線価",
+      "watchlist": "public_topic",
+      "watchlistLabel": "総合話題",
+      "rank": 1,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 92,
+      "previousScore": null,
+      "scoreChange": 92,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 2,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 2,
+      "topicSources": [
+        "総合話題",
+        "ビジネス"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 92
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E9%83%BD%E9%81%93%E5%BA%9C%E7%9C%8C%E5%BA%81%E3%81%82%E3%82%8B%E5%85%A8%EF%BC%94%EF%BC%97%E9%83%BD%E5%B8%82%E3%81%A7%E8%B7%AF%E7%B7%9A%E4%BE%A1&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "08dd5faf998c",
+      "keyword": "サッカー日本代表にブラジルの選手たち",
+      "watchlist": "public_topic",
+      "watchlistLabel": "総合話題",
+      "rank": 1,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 92,
+      "previousScore": null,
+      "scoreChange": 92,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 2,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 2,
+      "topicSources": [
+        "総合話題",
+        "スポーツ"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 92
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E6%97%A5%E6%9C%AC%E4%BB%A3%E8%A1%A8%E3%81%AB%E3%83%96%E3%83%A9%E3%82%B8%E3%83%AB%E3%81%AE%E9%81%B8%E6%89%8B%E3%81%9F%E3%81%A1&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "526df278c16e",
+      "keyword": "花火大会",
+      "watchlist": "major_topic",
+      "watchlistLabel": "季節イベント",
+      "rank": 1,
+      "previousRank": 1,
+      "rankChange": 0,
+      "score": 92,
+      "previousScore": 100,
+      "scoreChange": -8,
+      "yesterdayScore": 100,
+      "yesterdayChange": -8,
+      "direction": "down",
+      "trendStatus": "major_topic",
+      "appearCount": 24,
+      "signalType": "major_topic",
+      "evidenceCount": 27,
+      "previousEvidenceCount": 29,
+      "evidenceChange": -2,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 100
+        },
+        {
+          "time": "09:07",
+          "score": 100
+        },
+        {
+          "time": "09:08",
+          "score": 100
+        },
+        {
+          "time": "09:14",
+          "score": 100
+        },
+        {
+          "time": "13:46",
+          "score": 100
+        },
+        {
+          "time": "19:05",
+          "score": 92
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E8%8A%B1%E7%81%AB%E5%A4%A7%E4%BC%9A%202026%20%E4%BA%BA%E6%B0%97%20OR%20%E9%96%8B%E5%82%AC&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "80bafa67d0e5",
+      "keyword": "最速1000勝のロバーツ監督",
+      "watchlist": "public_topic",
+      "watchlistLabel": "スポーツ",
+      "rank": 1,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 90,
+      "previousScore": null,
+      "scoreChange": 90,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "スポーツ"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 90
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E6%9C%80%E9%80%9F1000%E5%8B%9D%E3%81%AE%E3%83%AD%E3%83%90%E3%83%BC%E3%83%84%E7%9B%A3%E7%9D%A3&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "83c8e9afda3f",
+      "keyword": "ビットコイン",
+      "watchlist": "public_topic",
+      "watchlistLabel": "テクノロジー",
+      "rank": 8,
+      "previousRank": 7,
+      "rankChange": -1,
+      "score": 86,
+      "previousScore": 91,
+      "scoreChange": -5,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "down",
+      "trendStatus": "actual_topic",
+      "appearCount": 8,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": 1,
+      "evidenceChange": 0,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "テクノロジー"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 86
+        },
+        {
+          "time": "09:07",
+          "score": 91
+        },
+        {
+          "time": "09:08",
+          "score": 91
+        },
+        {
+          "time": "09:14",
+          "score": 91
+        },
+        {
+          "time": "13:46",
+          "score": 91
+        },
+        {
+          "time": "19:05",
+          "score": 86
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E3%83%93%E3%83%83%E3%83%88%E3%82%B3%E3%82%A4%E3%83%B3&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "0209a7ef34f6",
+      "keyword": "2026年上期の国内新車販売",
+      "watchlist": "public_topic",
+      "watchlistLabel": "ビジネス",
+      "rank": 3,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 82,
+      "previousScore": null,
+      "scoreChange": 82,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "ビジネス"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 82
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=2026%E5%B9%B4%E4%B8%8A%E6%9C%9F%E3%81%AE%E5%9B%BD%E5%86%85%E6%96%B0%E8%BB%8A%E8%B2%A9%E5%A3%B2&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "d7df67a60768",
+      "keyword": "衆院議員定数削減法案の特別委採決見送り",
+      "watchlist": "public_topic",
+      "watchlistLabel": "総合話題",
+      "rank": 5,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 82,
+      "previousScore": null,
+      "scoreChange": 82,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "総合話題"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 82
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E8%A1%86%E9%99%A2%E8%AD%B0%E5%93%A1%E5%AE%9A%E6%95%B0%E5%89%8A%E6%B8%9B%E6%B3%95%E6%A1%88%E3%81%AE%E7%89%B9%E5%88%A5%E5%A7%94%E6%8E%A1%E6%B1%BA%E8%A6%8B%E9%80%81%E3%82%8A&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "2607591231ce",
+      "keyword": "Ｗ杯フランス代表・エムバペ",
+      "watchlist": "public_topic",
+      "watchlistLabel": "スポーツ",
+      "rank": 5,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 82,
+      "previousScore": null,
+      "scoreChange": 82,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "スポーツ"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 82
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%EF%BC%B7%E6%9D%AF%E3%83%95%E3%83%A9%E3%83%B3%E3%82%B9%E4%BB%A3%E8%A1%A8%E3%83%BB%E3%82%A8%E3%83%A0%E3%83%90%E3%83%9A&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "786e1ae14632",
+      "keyword": "日銀短観",
+      "watchlist": "public_topic",
+      "watchlistLabel": "ビジネス",
+      "rank": 1,
+      "previousRank": 1,
+      "rankChange": 0,
+      "score": 81,
+      "previousScore": 100,
+      "scoreChange": -19,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "down",
+      "trendStatus": "actual_topic",
+      "appearCount": 5,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": 3,
+      "evidenceChange": -2,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "ビジネス"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 100
+        },
+        {
+          "time": "09:07",
+          "score": 100
+        },
+        {
+          "time": "09:08",
+          "score": 100
+        },
+        {
+          "time": "09:14",
+          "score": 100
+        },
+        {
+          "time": "19:05",
+          "score": 81
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E6%97%A5%E9%8A%80%E7%9F%AD%E8%A6%B3&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "2898040ae9c2",
+      "keyword": "超ときめき宣伝部",
+      "watchlist": "public_topic",
+      "watchlistLabel": "エンタメ",
+      "rank": 5,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 81,
+      "previousScore": null,
+      "scoreChange": 81,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "エンタメ"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 81
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E8%B6%85%E3%81%A8%E3%81%8D%E3%82%81%E3%81%8D%E5%AE%A3%E4%BC%9D%E9%83%A8&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "b0c836c5c2c8",
+      "keyword": "ニューウェイ",
+      "watchlist": "public_topic",
+      "watchlistLabel": "スポーツ",
+      "rank": 8,
+      "previousRank": 8,
+      "rankChange": 0,
+      "score": 81,
+      "previousScore": 76,
+      "scoreChange": 5,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "up",
+      "trendStatus": "actual_topic",
+      "appearCount": 2,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": 1,
+      "evidenceChange": 0,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "スポーツ"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "13:46",
+          "score": 76
+        },
+        {
+          "time": "19:05",
+          "score": 81
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%A6%E3%82%A7%E3%82%A4&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "2f4db9b2649a",
+      "keyword": "福岡航太朗七段",
+      "watchlist": "public_topic",
+      "watchlistLabel": "エンタメ",
+      "rank": 6,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 79,
+      "previousScore": null,
+      "scoreChange": 79,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "エンタメ"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 79
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E7%A6%8F%E5%B2%A1%E8%88%AA%E5%A4%AA%E6%9C%97%E4%B8%83%E6%AE%B5&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "8c697a9b98c3",
+      "keyword": "熊本・八代",
+      "watchlist": "public_topic",
+      "watchlistLabel": "総合話題",
+      "rank": 7,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 78,
+      "previousScore": null,
+      "scoreChange": 78,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "総合話題"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 78
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E7%86%8A%E6%9C%AC%E3%83%BB%E5%85%AB%E4%BB%A3&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "698de13e6027",
+      "keyword": "PayPay",
+      "watchlist": "public_topic",
+      "watchlistLabel": "テクノロジー",
+      "rank": 7,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 76,
+      "previousScore": null,
+      "scoreChange": 76,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "テクノロジー"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 76
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=PayPay&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "ffc6db232335",
+      "keyword": "歌ってみた選手権",
+      "watchlist": "format",
+      "watchlistLabel": "投稿フォーマット",
+      "rank": 15,
+      "previousRank": 18,
+      "rankChange": 3,
+      "score": 76,
+      "previousScore": 63,
+      "scoreChange": 13,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "up",
+      "trendStatus": "warming",
+      "appearCount": 3,
+      "signalType": "discovered_phrase",
+      "evidenceCount": 3,
+      "previousEvidenceCount": 2,
+      "evidenceChange": 1,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "10:08",
+          "score": 35
+        },
+        {
+          "time": "16:01",
+          "score": 63
+        },
+        {
+          "time": "19:05",
+          "score": 76
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E6%AD%8C%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F%E9%81%B8%E6%89%8B%E6%A8%A9&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "90cd4c65488e",
+      "keyword": "au PAY」",
+      "watchlist": "public_topic",
+      "watchlistLabel": "テクノロジー",
+      "rank": 9,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 72,
+      "previousScore": null,
+      "scoreChange": 72,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "テクノロジー"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 72
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=au%20PAY%E3%80%8D&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "eebf947e1572",
+      "keyword": "北川景子",
+      "watchlist": "public_topic",
+      "watchlistLabel": "エンタメ",
+      "rank": 10,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 71,
+      "previousScore": null,
+      "scoreChange": 71,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "エンタメ"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 71
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E5%8C%97%E5%B7%9D%E6%99%AF%E5%AD%90&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "bc02e0f3d963",
+      "keyword": "クラブワールドカップ",
+      "watchlist": "major_topic",
+      "watchlistLabel": "スポーツ大型トピック",
+      "rank": 18,
+      "previousRank": 18,
+      "rankChange": 0,
+      "score": 67,
+      "previousScore": 67,
+      "scoreChange": 0,
+      "yesterdayScore": 63,
+      "yesterdayChange": 4,
+      "direction": "flat",
+      "trendStatus": "major_topic",
+      "appearCount": 23,
+      "signalType": "major_topic",
+      "evidenceCount": 2,
+      "previousEvidenceCount": 2,
+      "evidenceChange": 0,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 67
+        },
+        {
+          "time": "09:07",
+          "score": 67
+        },
+        {
+          "time": "09:08",
+          "score": 67
+        },
+        {
+          "time": "09:14",
+          "score": 67
+        },
+        {
+          "time": "13:46",
+          "score": 67
+        },
+        {
+          "time": "19:05",
+          "score": 67
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E3%82%AF%E3%83%A9%E3%83%96%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%20OR%20%E3%82%AF%E3%83%A9%E3%83%96W%E6%9D%AF&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "d527638fcba0",
+      "keyword": "FNS歌謡祭タイムテーブル発表",
+      "watchlist": "public_topic",
+      "watchlistLabel": "エンタメ",
+      "rank": 11,
+      "previousRank": 1,
+      "rankChange": -10,
+      "score": 66,
+      "previousScore": 96,
+      "scoreChange": -30,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "down",
+      "trendStatus": "actual_topic",
+      "appearCount": 8,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": 2,
+      "evidenceChange": -1,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "エンタメ"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 96
+        },
+        {
+          "time": "09:07",
+          "score": 96
+        },
+        {
+          "time": "09:08",
+          "score": 96
+        },
+        {
+          "time": "09:14",
+          "score": 96
+        },
+        {
+          "time": "13:46",
+          "score": 96
+        },
+        {
+          "time": "19:05",
+          "score": 66
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=FNS%E6%AD%8C%E8%AC%A1%E7%A5%AD%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E7%99%BA%E8%A1%A8&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "f6214d6e7d3f",
+      "keyword": "三ツ矢サイダー値上げ アサヒ飲料",
+      "watchlist": "public_topic",
+      "watchlistLabel": "ビジネス",
+      "rank": 11,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 66,
+      "previousScore": null,
+      "scoreChange": 66,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "ビジネス"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 66
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E4%B8%89%E3%83%84%E7%9F%A2%E3%82%B5%E3%82%A4%E3%83%80%E3%83%BC%E5%80%A4%E4%B8%8A%E3%81%92%20%E3%82%A2%E3%82%B5%E3%83%92%E9%A3%B2%E6%96%99&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "c0535b6b004a",
+      "keyword": "フランスの枠内シュート12本を浴びたスウェーデン",
+      "watchlist": "public_topic",
+      "watchlistLabel": "スポーツ",
+      "rank": 13,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 66,
+      "previousScore": null,
+      "scoreChange": 66,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "スポーツ"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 66
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E3%83%95%E3%83%A9%E3%83%B3%E3%82%B9%E3%81%AE%E6%9E%A0%E5%86%85%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%8812%E6%9C%AC%E3%82%92%E6%B5%B4%E3%81%B3%E3%81%9F%E3%82%B9%E3%82%A6%E3%82%A7%E3%83%BC%E3%83%87%E3%83%B3&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "c7c828a4ad63",
+      "keyword": "おじさん構文",
+      "watchlist": "sns_platform",
+      "watchlistLabel": "SNSトレンド",
+      "rank": 3,
+      "previousRank": 3,
+      "rankChange": 0,
+      "score": 65,
+      "previousScore": 100,
+      "scoreChange": -35,
+      "yesterdayScore": 65,
+      "yesterdayChange": 0,
+      "direction": "down",
+      "trendStatus": "flat",
+      "appearCount": 31,
+      "signalType": "discovered_phrase",
+      "evidenceCount": 7,
+      "previousEvidenceCount": 7,
+      "evidenceChange": 0,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 100
+        },
+        {
+          "time": "09:07",
+          "score": 65
+        },
+        {
+          "time": "09:08",
+          "score": 65
+        },
+        {
+          "time": "09:14",
+          "score": 65
+        },
+        {
+          "time": "13:46",
+          "score": 100
+        },
+        {
+          "time": "19:05",
+          "score": 65
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E3%81%8A%E3%81%98%E3%81%95%E3%82%93%E6%A7%8B%E6%96%87&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "ff5b67a75b2c",
+      "keyword": "ダンスチャレンジ",
+      "watchlist": "sns_platform",
+      "watchlistLabel": "SNSトレンド",
+      "rank": 12,
+      "previousRank": 12,
+      "rankChange": 0,
+      "score": 65,
+      "previousScore": 65,
+      "scoreChange": 0,
+      "yesterdayScore": 65,
+      "yesterdayChange": 0,
+      "direction": "flat",
+      "trendStatus": "flat",
+      "appearCount": 33,
+      "signalType": "discovered_phrase",
+      "evidenceCount": 4,
+      "previousEvidenceCount": 4,
+      "evidenceChange": 0,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 65
+        },
+        {
+          "time": "09:07",
+          "score": 65
+        },
+        {
+          "time": "09:08",
+          "score": 65
+        },
+        {
+          "time": "09:14",
+          "score": 65
+        },
+        {
+          "time": "13:46",
+          "score": 65
+        },
+        {
+          "time": "19:05",
+          "score": 65
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E3%83%80%E3%83%B3%E3%82%B9%E3%83%81%E3%83%A3%E3%83%AC%E3%83%B3%E3%82%B8&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "e8c7ef119ba0",
+      "keyword": "学校あるある",
+      "watchlist": "sns_platform",
+      "watchlistLabel": "SNSトレンド",
+      "rank": 12,
+      "previousRank": 12,
+      "rankChange": 0,
+      "score": 65,
+      "previousScore": 65,
+      "scoreChange": 0,
+      "yesterdayScore": 65,
+      "yesterdayChange": 0,
+      "direction": "flat",
+      "trendStatus": "flat",
+      "appearCount": 34,
+      "signalType": "discovered_phrase",
+      "evidenceCount": 4,
+      "previousEvidenceCount": 4,
+      "evidenceChange": 0,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 65
+        },
+        {
+          "time": "09:07",
+          "score": 65
+        },
+        {
+          "time": "09:08",
+          "score": 65
+        },
+        {
+          "time": "09:14",
+          "score": 65
+        },
+        {
+          "time": "13:46",
+          "score": 65
+        },
+        {
+          "time": "19:05",
+          "score": 65
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E5%AD%A6%E6%A0%A1%E3%81%82%E3%82%8B%E3%81%82%E3%82%8B&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "f694b7e10e19",
+      "keyword": "生と死を往還",
+      "watchlist": "public_topic",
+      "watchlistLabel": "エンタメ",
+      "rank": 13,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 65,
+      "previousScore": null,
+      "scoreChange": 65,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "エンタメ"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 65
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E7%94%9F%E3%81%A8%E6%AD%BB%E3%82%92%E5%BE%80%E9%82%84&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "dd3c832f44b6",
+      "keyword": "沖縄飲み会あるある",
+      "watchlist": "sns_platform",
+      "watchlistLabel": "SNSトレンド",
+      "rank": 15,
+      "previousRank": 15,
+      "rankChange": 0,
+      "score": 63,
+      "previousScore": 63,
+      "scoreChange": 0,
+      "yesterdayScore": 63,
+      "yesterdayChange": 0,
+      "direction": "flat",
+      "trendStatus": "flat",
+      "appearCount": 33,
+      "signalType": "discovered_phrase",
+      "evidenceCount": 3,
+      "previousEvidenceCount": 3,
+      "evidenceChange": 0,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 63
+        },
+        {
+          "time": "09:07",
+          "score": 63
+        },
+        {
+          "time": "09:08",
+          "score": 63
+        },
+        {
+          "time": "09:14",
+          "score": 63
+        },
+        {
+          "time": "13:46",
+          "score": 63
+        },
+        {
+          "time": "19:05",
+          "score": 63
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E6%B2%96%E7%B8%84%E9%A3%B2%E3%81%BF%E4%BC%9A%E3%81%82%E3%82%8B%E3%81%82%E3%82%8B&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "be682aca156b",
+      "keyword": "アスクビクターモアで菊花賞制覇の廣崎利洋オーナー",
+      "watchlist": "public_topic",
+      "watchlistLabel": "スポーツ",
+      "rank": 15,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 62,
+      "previousScore": null,
+      "scoreChange": 62,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "スポーツ"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 62
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E3%82%A2%E3%82%B9%E3%82%AF%E3%83%93%E3%82%AF%E3%82%BF%E3%83%BC%E3%83%A2%E3%82%A2%E3%81%A7%E8%8F%8A%E8%8A%B1%E8%B3%9E%E5%88%B6%E8%A6%87%E3%81%AE%E5%BB%A3%E5%B4%8E%E5%88%A9%E6%B4%8B%E3%82%AA%E3%83%BC%E3%83%8A%E3%83%BC&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "a5e487dc05dc",
+      "keyword": "夏休み",
+      "watchlist": "major_topic",
+      "watchlistLabel": "季節イベント",
+      "rank": 15,
+      "previousRank": 13,
+      "rankChange": -2,
+      "score": 60,
+      "previousScore": 100,
+      "scoreChange": -40,
+      "yesterdayScore": 60,
+      "yesterdayChange": 0,
+      "direction": "down",
+      "trendStatus": "major_topic",
+      "appearCount": 28,
+      "signalType": "major_topic",
+      "evidenceCount": 3,
+      "previousEvidenceCount": 4,
+      "evidenceChange": -1,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 60
+        },
+        {
+          "time": "09:07",
+          "score": 60
+        },
+        {
+          "time": "09:08",
+          "score": 60
+        },
+        {
+          "time": "09:14",
+          "score": 60
+        },
+        {
+          "time": "13:46",
+          "score": 100
+        },
+        {
+          "time": "19:05",
+          "score": 60
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E5%A4%8F%E4%BC%91%E3%81%BF%20%E6%97%85%E8%A1%8C%20%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%20%E8%A9%B1%E9%A1%8C&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "79d3328d7ab6",
+      "keyword": "PS5/PS4用タイトル",
+      "watchlist": "public_topic",
+      "watchlistLabel": "総合話題",
+      "rank": 16,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 60,
+      "previousScore": null,
+      "scoreChange": 60,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "総合話題"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 60
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=PS5%2FPS4%E7%94%A8%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "6a648247e136",
+      "keyword": "TikTokチャレンジ",
+      "watchlist": "sns_platform",
+      "watchlistLabel": "SNSトレンド",
+      "rank": 26,
+      "previousRank": 26,
+      "rankChange": 0,
+      "score": 60,
+      "previousScore": 60,
+      "scoreChange": 0,
+      "yesterdayScore": 60,
+      "yesterdayChange": 0,
+      "direction": "flat",
+      "trendStatus": "flat",
+      "appearCount": 36,
+      "signalType": "configured_rss",
+      "evidenceCount": 20,
+      "previousEvidenceCount": 20,
+      "evidenceChange": 0,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 60
+        },
+        {
+          "time": "09:07",
+          "score": 60
+        },
+        {
+          "time": "09:08",
+          "score": 60
+        },
+        {
+          "time": "09:14",
+          "score": 60
+        },
+        {
+          "time": "13:46",
+          "score": 60
+        },
+        {
+          "time": "19:05",
+          "score": 60
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=TikTok%20%E3%83%81%E3%83%A3%E3%83%AC%E3%83%B3%E3%82%B8&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "c72bd46a9b6b",
+      "keyword": "鹿児島グルメ",
+      "watchlist": "local_leisure",
+      "watchlistLabel": "地域・レジャー",
+      "rank": 26,
+      "previousRank": 26,
+      "rankChange": 0,
+      "score": 60,
+      "previousScore": 60,
+      "scoreChange": 0,
+      "yesterdayScore": 60,
+      "yesterdayChange": 0,
+      "direction": "flat",
+      "trendStatus": "flat",
+      "appearCount": 36,
+      "signalType": "configured_rss",
+      "evidenceCount": 20,
+      "previousEvidenceCount": 20,
+      "evidenceChange": 0,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 60
+        },
+        {
+          "time": "09:07",
+          "score": 60
+        },
+        {
+          "time": "09:08",
+          "score": 60
+        },
+        {
+          "time": "09:14",
+          "score": 60
+        },
+        {
+          "time": "13:46",
+          "score": 60
+        },
+        {
+          "time": "19:05",
+          "score": 60
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E9%B9%BF%E5%85%90%E5%B3%B6%20%E3%82%B0%E3%83%AB%E3%83%A1%20%E8%A9%B1%E9%A1%8C&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "e5a34e9f691b",
+      "keyword": "鹿児島観光",
+      "watchlist": "local_leisure",
+      "watchlistLabel": "地域・レジャー",
+      "rank": 26,
+      "previousRank": 26,
+      "rankChange": 0,
+      "score": 60,
+      "previousScore": 60,
+      "scoreChange": 0,
+      "yesterdayScore": 60,
+      "yesterdayChange": 0,
+      "direction": "flat",
+      "trendStatus": "flat",
+      "appearCount": 26,
+      "signalType": "configured_rss",
+      "evidenceCount": 20,
+      "previousEvidenceCount": 20,
+      "evidenceChange": 0,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "09:05",
+          "score": 60
+        },
+        {
+          "time": "09:07",
+          "score": 60
+        },
+        {
+          "time": "09:08",
+          "score": 60
+        },
+        {
+          "time": "09:14",
+          "score": 60
+        },
+        {
+          "time": "13:46",
+          "score": 60
+        },
+        {
+          "time": "19:05",
+          "score": 60
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E9%B9%BF%E5%85%90%E5%B3%B6%20%E8%A6%B3%E5%85%89%20%E4%BA%BA%E6%B0%97&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "2a0cb6b42add",
+      "keyword": "Spotify",
+      "watchlist": "public_topic",
+      "watchlistLabel": "エンタメ",
+      "rank": 16,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 59,
+      "previousScore": null,
+      "scoreChange": 59,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "エンタメ"
+      ],
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "19:05",
+          "score": 59
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=Spotify&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "b130739585aa",
+      "keyword": "リールあるある",
+      "watchlist": "format",
+      "watchlistLabel": "投稿フォーマット",
+      "rank": 26,
+      "previousRank": 26,
+      "rankChange": 0,
+      "score": 59,
+      "previousScore": 59,
+      "scoreChange": 0,
+      "yesterdayScore": 59,
+      "yesterdayChange": 0,
+      "direction": "flat",
+      "trendStatus": "flat",
+      "appearCount": 32,
+      "signalType": "configured_rss",
+      "evidenceCount": 20,
+      "previousEvidenceCount": 20,
+      "evidenceChange": 0,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "18:38",
+          "score": 59
+        },
+        {
+          "time": "18:55",
+          "score": 59
+        },
+        {
+          "time": "08:49",
+          "score": 59
+        },
+        {
+          "time": "08:58",
+          "score": 59
+        },
+        {
+          "time": "09:08",
+          "score": 59
+        },
+        {
+          "time": "19:05",
+          "score": 59
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=Instagram%20%E3%83%AA%E3%83%BC%E3%83%AB%20%E3%81%82%E3%82%8B%E3%81%82%E3%82%8B&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "edd25d7b4866",
+      "keyword": "YouTube Shortsネタ",
+      "watchlist": "sns_platform",
+      "watchlistLabel": "SNSトレンド",
+      "rank": 26,
+      "previousRank": 26,
+      "rankChange": 0,
+      "score": 59,
+      "previousScore": 59,
+      "scoreChange": 0,
+      "yesterdayScore": 59,
+      "yesterdayChange": 0,
+      "direction": "flat",
+      "trendStatus": "flat",
+      "appearCount": 32,
+      "signalType": "configured_rss",
+      "evidenceCount": 20,
+      "previousEvidenceCount": 20,
+      "evidenceChange": 0,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "18:38",
+          "score": 59
+        },
+        {
+          "time": "18:55",
+          "score": 59
+        },
+        {
+          "time": "08:49",
+          "score": 59
+        },
+        {
+          "time": "08:58",
+          "score": 59
+        },
+        {
+          "time": "09:08",
+          "score": 59
+        },
+        {
+          "time": "19:05",
+          "score": 59
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=YouTube%20Shorts%20%E8%A9%B1%E9%A1%8C&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "ba7567f9e0a0",
+      "keyword": "踊ってみた",
+      "watchlist": "sns_platform",
+      "watchlistLabel": "SNSトレンド",
+      "rank": 26,
+      "previousRank": 26,
+      "rankChange": 0,
+      "score": 59,
+      "previousScore": 59,
+      "scoreChange": 0,
+      "yesterdayScore": 59,
+      "yesterdayChange": 0,
+      "direction": "flat",
+      "trendStatus": "flat",
+      "appearCount": 31,
+      "signalType": "configured_rss",
+      "evidenceCount": 20,
+      "previousEvidenceCount": 20,
+      "evidenceChange": 0,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "14:39",
+          "score": 59
+        },
+        {
+          "time": "15:09",
+          "score": 59
+        },
+        {
+          "time": "18:38",
+          "score": 59
+        },
+        {
+          "time": "18:55",
+          "score": 59
+        },
+        {
+          "time": "08:49",
+          "score": 59
+        },
+        {
+          "time": "19:05",
+          "score": 59
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E8%B8%8A%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F%20TikTok&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "a450a56b7894",
+      "keyword": "屋久島旅行",
+      "watchlist": "local_leisure",
+      "watchlistLabel": "地域・レジャー",
+      "rank": 26,
+      "previousRank": 26,
+      "rankChange": 0,
+      "score": 59,
+      "previousScore": 59,
+      "scoreChange": 0,
+      "yesterdayScore": 59,
+      "yesterdayChange": 0,
+      "direction": "flat",
+      "trendStatus": "flat",
+      "appearCount": 28,
+      "signalType": "configured_rss",
+      "evidenceCount": 20,
+      "previousEvidenceCount": 20,
+      "evidenceChange": 0,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "14:12",
+          "score": 59
+        },
+        {
+          "time": "14:39",
+          "score": 59
+        },
+        {
+          "time": "15:09",
+          "score": 59
+        },
+        {
+          "time": "18:55",
+          "score": 59
+        },
+        {
+          "time": "08:49",
+          "score": 59
+        },
+        {
+          "time": "19:05",
+          "score": 59
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E5%B1%8B%E4%B9%85%E5%B3%B6%20%E6%97%85%E8%A1%8C%20%E4%BA%BA%E6%B0%97&hl=ja&gl=JP&ceid=JP%3Aja"
+    },
+    {
+      "id": "88448d216ba2",
+      "keyword": "奄美旅行",
+      "watchlist": "local_leisure",
+      "watchlistLabel": "地域・レジャー",
+      "rank": 26,
+      "previousRank": 26,
+      "rankChange": 0,
+      "score": 59,
+      "previousScore": 59,
+      "scoreChange": 0,
+      "yesterdayScore": 59,
+      "yesterdayChange": 0,
+      "direction": "flat",
+      "trendStatus": "flat",
+      "appearCount": 27,
+      "signalType": "configured_rss",
+      "evidenceCount": 20,
+      "previousEvidenceCount": 20,
+      "evidenceChange": 0,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "capturedAt": "2026-07-01T19:05:00+09:00",
+      "series": [
+        {
+          "time": "13:55",
+          "score": 59
+        },
+        {
+          "time": "14:12",
+          "score": 59
+        },
+        {
+          "time": "14:39",
+          "score": 59
+        },
+        {
+          "time": "15:09",
+          "score": 59
+        },
+        {
+          "time": "08:49",
+          "score": 59
+        },
+        {
+          "time": "19:05",
+          "score": 59
+        }
+      ],
+      "observeUrl": "https://news.google.com/search?q=%E5%A5%84%E7%BE%8E%20%E6%97%85%E8%A1%8C%20%E4%BA%BA%E6%B0%97&hl=ja&gl=JP&ceid=JP%3Aja"
     }
   ]
 }
