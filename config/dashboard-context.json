@@ -25,6 +25,26 @@
       "longitude": 130.997
     }
   ],
+  "anniversarySources": [
+    {
+      "id": "zatsuneta",
+      "label": "雑学ネタ帳",
+      "url": "https://zatsuneta.com/category/anniversary.html",
+      "active": true
+    },
+    {
+      "id": "kinenbi",
+      "label": "日本記念日協会",
+      "url": "https://www.kinenbi.gr.jp/",
+      "active": true
+    },
+    {
+      "id": "yahoo_kids",
+      "label": "Yahoo!きっず",
+      "url": "https://kids.yahoo.co.jp/today",
+      "active": true
+    }
+  ],
   "anniversaries": [
     {
       "date": "01-01",

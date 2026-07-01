@@ -12,6 +12,7 @@ const MAX_WATCH_QUERIES = 80;
 const MAX_LOCAL_OBSERVATION_QUERIES = 72;
 const OPEN_METEO_URL = "https://api.open-meteo.com/v1/forecast";
 const JAPAN_HOLIDAYS_CSV_URL = "https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv";
+const ANNIVERSARY_SOURCE_LIMIT = 20;
 const STANDALONE_WATCHLISTS = new Set(["sns_platform", "format", "seasonal", "local_leisure"]);
 const BROAD_DISPLAY_TERMS = new Set([
   "tiktok",
@@ -116,9 +117,17 @@ const decodeXml = (value) =>
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .replace(/&quot;/g, "\"")
-    .replace(/&#39;/g, "'");
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCodePoint(parseInt(code, 16)));
 
 const stripHtml = (value) => decodeXml(String(value || "").replace(/<[^>]+>/g, " "));
+const cleanHtmlText = (value) =>
+  stripHtml(value)
+    .replace(/\s+/g, " ")
+    .replace(/[「」]/g, "")
+    .trim();
 const cleanupText = (value) =>
   stripHtml(value)
     .replace(/\s+-\s+[^-]+$/u, "")
@@ -317,6 +326,166 @@ const upcomingAnniversaries = (anniversaries = [], now) =>
     .sort((a, b) => a.daysUntil - b.daysUntil)
     .slice(0, 5);
 
+const fetchText = async (url, options = {}) => {
+  const response = await fetch(url, {
+    headers: { "user-agent": "sns-trend-buzzfeed/1.0 (+GitHub Pages dashboard context)" }
+  });
+  if (!response.ok) throw new Error(`${url} failed: ${response.status} ${response.statusText}`);
+  if (options.encoding) {
+    const buffer = await response.arrayBuffer();
+    return new TextDecoder(options.encoding).decode(buffer);
+  }
+  return response.text();
+};
+
+const mmddFromDays = (now, daysUntil) => {
+  const parts = toJstParts(now);
+  const base = new Date(Date.UTC(Number(parts.year), Number(parts.month) - 1, Number(parts.day) + daysUntil, 0, 0, 0));
+  const target = toJstParts(base);
+  return `${target.month}-${target.day}`;
+};
+
+const anniversaryHint = (sourceLabel, daysUntil = 0) => {
+  const timing = daysUntil === 0 ? "今日" : daysUntil === 1 ? "明日" : `${daysUntil}日後`;
+  return `${timing}の投稿ネタ、朝礼・社内広報の一言、SNS文脈確認`;
+};
+
+const cleanAnniversaryTitle = (value) =>
+  cleanHtmlText(value)
+    .replace(/（.*?）/g, "")
+    .replace(/\(.*?\)/g, "")
+    .replace(/の日の日$/u, "の日")
+    .trim();
+
+const isUsefulAnniversaryTitle = (title) => {
+  if (!title || title.length < 2 || title.length > 28) return false;
+  if (/トップページ|今日は何の日|明日は何の日|記念日・出来事|広告|カテゴリー|雑学|検索/u.test(title)) return false;
+  return /の日|開き|節句|七夕|節分|彼岸|土用|十五夜|大晦日|元日|クリスマス|バレンタイン|ハロウィン/u.test(title);
+};
+
+const createAnniversaryItem = ({ title, date, daysUntil, source, sourceUrl, category = "記念日", priority = 0 }) => ({
+  date,
+  title,
+  category,
+  hint: anniversaryHint(source, daysUntil),
+  source,
+  sourceUrl,
+  priority,
+  daysUntil
+});
+
+const dedupeAnniversaries = (items) => {
+  const seen = new Set();
+  return items
+    .filter((item) => item.daysUntil != null && item.daysUntil >= 0)
+    .sort((a, b) => a.daysUntil - b.daysUntil || (b.priority || 0) - (a.priority || 0) || a.title.localeCompare(b.title, "ja"))
+    .filter((item) => {
+      const key = normalize(item.title).replace(/\s+/g, "");
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+};
+
+const parseAnchorTitles = (html) =>
+  [...String(html || "").matchAll(/<a\b[^>]*>([\s\S]*?)<\/a>/gi)]
+    .map((match) => cleanAnniversaryTitle(match[1]))
+    .filter(isUsefulAnniversaryTitle);
+
+const parseZatsunetaAnniversaries = (html, source, now) => {
+  const sections = [];
+  const matches = [...String(html || "").matchAll(/<h3\b[^>]*>[\s\S]*?(今日|明日)[\s\S]*?<\/h3>/gi)];
+  for (let index = 0; index < matches.length; index += 1) {
+    const marker = matches[index];
+    const next = matches[index + 1]?.index ?? String(html || "").indexOf("<h3", marker.index + marker[0].length);
+    const end = next > marker.index ? next : marker.index + 7000;
+    sections.push({
+      daysUntil: marker[1] === "明日" ? 1 : 0,
+      html: String(html || "").slice(marker.index, end)
+    });
+  }
+  return sections.flatMap((section) =>
+    parseAnchorTitles(section.html).slice(0, 12).map((title, index) =>
+      createAnniversaryItem({
+        title,
+        date: mmddFromDays(now, section.daysUntil),
+        daysUntil: section.daysUntil,
+        source: source.label,
+        sourceUrl: source.url,
+        category: /開き|節句|七夕|節分|彼岸|土用/u.test(title) ? "季節" : "記念日",
+        priority: 120 - section.daysUntil * 20 - index
+      })
+    )
+  );
+};
+
+const parseKinenbiAnniversaries = (html, source, now) => {
+  const start = String(html || "").indexOf("today_kinenbilist");
+  const end = start >= 0 ? String(html || "").indexOf("today_search", start) : -1;
+  const segment = start >= 0 ? String(html || "").slice(start, end > start ? end : start + 15000) : html;
+  return parseAnchorTitles(segment)
+    .slice(0, 12)
+    .map((title, index) =>
+      createAnniversaryItem({
+        title,
+        date: monthDay(now),
+        daysUntil: 0,
+        source: source.label,
+        sourceUrl: source.url,
+        category: "認定記念日",
+        priority: 90 - index
+      })
+    );
+};
+
+const parseYahooKidsAnniversaries = (html, source, now) => {
+  const match = String(html || "").match(/<script id="__NEXT_DATA__" type="application\/json">([\s\S]*?)<\/script>/i);
+  if (!match) return [];
+  try {
+    const data = JSON.parse(decodeXml(match[1]));
+    const today = data?.props?.pageProps?.todayResponse?.results || {};
+    const memoryItems = (today.memories || []).map((item) => item.title).filter(Boolean);
+    const calendarItems = (data?.props?.pageProps?.calendarResponse || [])
+      .flatMap((month) => month.todayData || [])
+      .filter((item) => item.date === today.date)
+      .map((item) => item.title);
+    return [...memoryItems, ...calendarItems]
+      .map(cleanAnniversaryTitle)
+      .filter(isUsefulAnniversaryTitle)
+      .slice(0, 4)
+      .map((title, index) =>
+        createAnniversaryItem({
+          title,
+          date: monthDay(now),
+          daysUntil: 0,
+          source: source.label,
+          sourceUrl: source.url,
+          category: "今日は何の日",
+          priority: 110 - index
+        })
+      );
+  } catch (error) {
+    console.warn(`Skipped ${source.label}: ${error.message}`);
+    return [];
+  }
+};
+
+const fetchExternalAnniversaries = async (sources = [], now) => {
+  const activeSources = sources.filter((source) => source.active !== false && source.url);
+  const results = [];
+  for (const source of activeSources) {
+    try {
+      const html = await fetchText(source.url);
+      if (source.id === "zatsuneta") results.push(...parseZatsunetaAnniversaries(html, source, now));
+      else if (source.id === "kinenbi") results.push(...parseKinenbiAnniversaries(html, source, now));
+      else if (source.id === "yahoo_kids") results.push(...parseYahooKidsAnniversaries(html, source, now));
+    } catch (error) {
+      console.warn(`Skipped anniversary source "${source.label || source.id}": ${error.message}`);
+    }
+  }
+  return dedupeAnniversaries(results).slice(0, ANNIVERSARY_SOURCE_LIMIT);
+};
+
 const daysUntilIsoDate = (isoDate, now) => {
   const targetTime = Date.parse(`${isoDate}T00:00:00+09:00`);
   if (Number.isNaN(targetTime)) return null;
@@ -369,12 +538,20 @@ const fetchHolidayContext = async (now) => {
   }
 };
 
-const buildDashboardContext = async (config, now, nowIso) => ({
-  generatedAt: nowIso,
-  weather: await fetchWeatherContext(config.weatherLocations || []),
-  anniversaries: upcomingAnniversaries(config.anniversaries || [], now),
-  holidays: await fetchHolidayContext(now)
-});
+const buildDashboardContext = async (config, now, nowIso) => {
+  const configuredAnniversaries = upcomingAnniversaries(config.anniversaries || [], now).map((item) => ({
+    ...item,
+    source: item.source || "設定",
+    priority: item.priority || 30
+  }));
+  const externalAnniversaries = await fetchExternalAnniversaries(config.anniversarySources || [], now);
+  return {
+    generatedAt: nowIso,
+    weather: await fetchWeatherContext(config.weatherLocations || []),
+    anniversaries: dedupeAnniversaries([...externalAnniversaries, ...configuredAnniversaries]).slice(0, 16),
+    holidays: await fetchHolidayContext(now)
+  };
+};
 
 const fetchGoogleTrendItems = async () => {
   const xml = await fetchRss(TRENDS_RSS_URL);

@@ -169,7 +169,7 @@ const trendCard = (item) => {
 const shortSignalText = (item) => {
   const parts = [statusLabel(item.trendStatus), signalLabel(item.signalType)];
   if (item.evidenceCount) parts.push(`観測 ${item.evidenceCount}件`);
-  if (item.evidenceChange !== null && item.evidenceChange !== undefined) parts.push(`増減 ${signed(item.evidenceChange)}`);
+  if (item.evidenceChange !== null && item.evidenceChange !== undefined) parts.push(`前回比 ${signed(item.evidenceChange)}`);
   if (item.topicSourceCount) parts.push(`観測面 ${item.topicSourceCount}`);
   return parts.join(" / ");
 };
@@ -347,7 +347,7 @@ const contextEventRow = (item) => {
   row.append(create("span", "context-date", contextDateLabel(item.daysUntil)));
   const copy = create("div");
   copy.append(create("strong", "", item.title || "記念日"));
-  copy.append(create("small", "", `${item.category || "記念日"} / ${item.hint || "投稿文脈を確認"}`));
+  copy.append(create("small", "", `${item.category || "記念日"}${item.source ? ` / ${item.source}` : ""} / ${item.hint || "投稿文脈を確認"}`));
   row.append(copy);
   return row;
 };
