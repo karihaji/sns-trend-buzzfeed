@@ -264,9 +264,12 @@ const isMainTrendItem = (item) => {
 const isPostIdea = (item) => {
   const keyword = keywordText(item);
   if (isActualTrend(item) || isActualTopic(item) || isMajorTopic(item)) return false;
+  if (item.signalType !== "discovered_phrase") return false;
   if (isSentenceLikeKeyword(item)) return false;
   if (!/構文|あるある|チャレンジ|ダンス|音源|ミーム|選手権|してみた|作ってみた|検証|ルーティン|テンプレ|ネタ|ハック|診断|ポーズ|加工|コーデ|メイク|レシピ|グッズ/.test(keyword)) return false;
-  return (item.evidenceCount || 0) >= 2 || (item.appearCount || 0) >= 2 || ["rising", "warming", "flat", "cooling"].includes(item.trendStatus);
+  if (item.trendStatus === "cooling") return false;
+  if ((item.appearCount || 0) > 8 && (item.evidenceChange || 0) <= 0) return false;
+  return (item.evidenceCount || 0) >= 2 || (item.evidenceChange || 0) > 0 || ["rising", "warming", "candidate"].includes(item.trendStatus);
 };
 const isEvergreen = isPostIdea;
 
@@ -301,7 +304,7 @@ const compactMetricText = (item) => {
   if (isActualTopic(item)) return `公開話題　観測面 ${item.topicSourceCount || 1}`;
   if (isMajorTopic(item)) return `大型話題　観測件数 ${item.evidenceCount ? `${item.evidenceCount}件` : "-"}`;
   if (isGrowingObservation(item)) return `話題　前回比 ${signed(item.evidenceChange)}`;
-  if (isEvergreen(item)) return `投稿ネタ　観測 ${item.evidenceCount ? `${item.evidenceCount}件` : "-"}`;
+  if (isEvergreen(item)) return `アイデア種　観測 ${item.evidenceCount ? `${item.evidenceCount}件` : "-"}`;
   return `${statusLabel(item.trendStatus)}　前回比 ${signed(item.evidenceChange)}`;
 };
 
@@ -315,7 +318,7 @@ const rankedTrendItems = (items) =>
 
 const evergreenItems = (items) =>
   balancedTake(
-    sortBy(items.filter(isEvergreen), (item) => (item.evidenceCount || 0) * 30 + (item.appearCount || 0) * 12 + (item.score || 0)),
+    sortBy(items.filter(isEvergreen), (item) => (item.evidenceChange || 0) * 120 + (item.evidenceCount || 0) * 34 + (item.score || 0) + ((item.appearCount || 0) <= 4 ? 35 : 0) - Math.max(0, (item.appearCount || 0) - 6) * 8),
     20,
     { sports: 3, technology: 3, entertainment: 5, seasonal: 5, local: 5, general: 6 }
   );
@@ -500,10 +503,10 @@ const compactInfoTray = ({ evergreen, growing }) => {
   const tray = create("div", "compact-info-tray");
 
   const evergreenBox = create("div", "compact-tray-box");
-  evergreenBox.append(create("span", "compact-tray-label", "投稿ネタ"));
+  evergreenBox.append(create("span", "compact-tray-label", "アイデア種"));
   const evergreenRows = create("div", "compact-tray-rows");
   if (evergreen.length) evergreenRows.replaceChildren(...evergreen.slice(0, 2).map(compactMiniWord));
-  else evergreenRows.append(create("small", "compact-tray-empty", "使いやすいネタ待ち"));
+  else evergreenRows.append(create("small", "compact-tray-empty", "新しい型を観測中"));
   evergreenBox.append(evergreenRows);
 
   const growingBox = create("div", "compact-tray-box");
@@ -534,8 +537,8 @@ const listOverview = ({ items, mainTrends, evergreen, growing, localObservations
   insightHead.append(create("span", "section-count", `${items.length}件`));
   const summaryGrid = create("div", "list-summary-grid");
   summaryGrid.append(
-    listSummaryTile("実トレンド", `${mainTrends.length}`, "主役候補"),
-    listSummaryTile("投稿ネタ候補", `${evergreen.length}`, "使いやすい話題"),
+    listSummaryTile("注目ワード", `${mainTrends.length}`, "実反応を優先"),
+    listSummaryTile("アイデア種", `${evergreen.length}`, "直近の投稿型"),
     listSummaryTile("話題", `${growing.length}`, "前回より反応あり"),
     listSummaryTile("ローカル棚", `${localObservations.length}`, "別枠観測")
   );
@@ -713,8 +716,8 @@ const renderHome = ({ site, links, latest }) => {
   heroCopy.append(heroActions);
 
   const heroStats = create("div", "hero-stats");
-  heroStats.append(statTile("実トレンド", `${mainTrends.length}`, "主役候補"));
-  heroStats.append(statTile("投稿ネタ候補", `${evergreen.length}`, "使いやすい話題"));
+  heroStats.append(statTile("注目ワード", `${mainTrends.length}`, "実反応を優先"));
+  heroStats.append(statTile("アイデア種", `${evergreen.length}`, "直近の投稿型"));
   heroStats.append(statTile("話題", `${growing.length}`, "前回より反応あり"));
   heroStats.append(statTile("最終更新", formatUpdated(latest.updatedAt), "Asia/Tokyo"));
   heroTarget.replaceChildren(heroCopy, heroStats);
@@ -729,7 +732,7 @@ const renderHome = ({ site, links, latest }) => {
 
   const leadPanel = create("section", "dashboard-panel lead-panel");
   const leadHead = create("div", "panel-head");
-  leadHead.append(create("h2", "", "いま見るべき話題"));
+  leadHead.append(create("h2", "", "いまの注目ワード"));
   leadHead.append(create("span", "section-count", `${mainTrends.length}件`));
   const leadList = create("div", "pill-list");
   leadList.replaceChildren(...mainTrends.slice(0, 7).map(trendPill));
@@ -737,7 +740,7 @@ const renderHome = ({ site, links, latest }) => {
 
   const evergreenPanel = create("section", "dashboard-panel");
   const evergreenHead = create("div", "panel-head");
-  evergreenHead.append(create("h2", "", "よく使われる投稿ネタ"));
+  evergreenHead.append(create("h2", "", "投稿アイデアの種"));
   evergreenHead.append(create("span", "section-count", `${evergreen.length}件`));
   const evergreenList = create("div", "compact-dashboard-list");
   evergreenList.replaceChildren(...evergreen.slice(0, 6).map(simpleTrendRow));
@@ -855,8 +858,8 @@ const renderList = ({ site, links, latest }) => {
   const growing = sortBy(items.filter(isGrowingObservation), (item) => item.evidenceChange || 0).slice(0, 20);
 
   main.append(listOverview({ items, mainTrends, evergreen, growing, localObservations, context: latest.context || {} }));
-  main.append(section("主役: いま実際に話題のワード", mainTrends, { featured: true, className: "list-main-section", limit: 5, maxItems: 20, expandable: true, totalLabel: `${mainTrends.length}件観測` }));
-  main.append(section("準メイン: よく使われる投稿ネタ", evergreen, { featured: true, className: "list-evergreen-section", limit: 6, maxItems: 20, expandable: true, totalLabel: `${evergreen.length}件保持` }));
+  main.append(section("いまの注目ワード", mainTrends, { featured: true, className: "list-main-section", limit: 5, maxItems: 20, expandable: true, totalLabel: `${mainTrends.length}件観測` }));
+  main.append(section("投稿アイデアの種", evergreen, { featured: true, className: "list-evergreen-section", limit: 6, maxItems: 20, expandable: true, totalLabel: `${evergreen.length}件観測` }));
 
   appendIfAny(
     main,

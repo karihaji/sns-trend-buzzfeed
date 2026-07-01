@@ -1304,7 +1304,11 @@ const scoreItem = ({ rank, previousRank, previousItem, watchlist, evidenceCount 
   const rankPoints = Math.max(0, 42 - rank * 2);
   const rankChange = previousRank ? previousRank - rank : 0;
   const previousDeltaPoints = previousRank ? Math.max(-8, Math.min(18, rankChange * 3)) : 0;
-  const continuityPoints = previousItem ? Math.min(15, (previousItem.appearCount || 1) * 5) : 0;
+  const continuityPoints = previousItem
+    ? signalType === "discovered_phrase"
+      ? Math.min(4, previousItem.appearCount || 1)
+      : Math.min(15, (previousItem.appearCount || 1) * 5)
+    : 0;
   const watchlistPoints = Math.min(16, Math.round((watchlist.priority || 70) / 7));
   const evidencePoints = Math.min(18, evidenceCount * 2);
   const growthPoints =
