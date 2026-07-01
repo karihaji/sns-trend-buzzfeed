@@ -14,7 +14,7 @@ const OPEN_METEO_URL = "https://api.open-meteo.com/v1/forecast";
 const JAPAN_HOLIDAYS_CSV_URL = "https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv";
 const ANNIVERSARY_SOURCE_LIMIT = 20;
 const YAHOO_REALTIME_LIMIT = 28;
-const STANDALONE_WATCHLISTS = new Set(["sns_platform", "format", "seasonal", "local_leisure"]);
+const STANDALONE_WATCHLISTS = new Set(["sns_platform", "format"]);
 const BROAD_DISPLAY_TERMS = new Set([
   "tiktok",
   "instagram",
@@ -1352,9 +1352,7 @@ const main = async () => {
 
   const watchlists = await readJson(path.join(CONFIG_DIR, "watchlists.json"), []);
   const topicSources = await readJson(path.join(CONFIG_DIR, "topic-sources.json"), []);
-  const configuredQueries = await readJson(path.join(CONFIG_DIR, "observe-queries.json"), []);
   const discoveryQueries = await readJson(path.join(CONFIG_DIR, "discovery-queries.json"), []);
-  const majorTopics = await readJson(path.join(CONFIG_DIR, "major-topics.json"), []);
   const localObservationSections = await readJson(path.join(CONFIG_DIR, "local-observation.json"), []);
   const dashboardContextConfig = await readJson(path.join(CONFIG_DIR, "dashboard-context.json"), {});
   const globalExcludes = await readJson(path.join(CONFIG_DIR, "exclude.json"), []);
@@ -1362,18 +1360,16 @@ const main = async () => {
   const history = await readJson(path.join(DATA_DIR, "trend-history.json"), { items: [] });
   const topicSourceSignals = await fetchTopicSourceSignals(topicSources, globalExcludes, now);
   const dailyTrendItems = topicSources.length ? [] : await fetchGoogleTrendItems();
-  const majorTopicSignals = await fetchMajorTopicSignals(majorTopics, globalExcludes, now);
   const discoverySignals = await fetchDiscoverySignals(discoveryQueries, watchlists, globalExcludes, now);
-  const configuredSignals = await fetchConfiguredSignals(configuredQueries, watchlists, globalExcludes, now);
-  const watchlistSignals = await fetchWatchlistSignals(watchlists, globalExcludes, now);
+  const realtimeSeeds = [...topicSourceSignals, ...discoverySignals];
   const yahooRealtimeSignals = await fetchYahooRealtimeSignals(
-    [...topicSourceSignals, ...majorTopicSignals, ...discoverySignals, ...configuredSignals, ...watchlistSignals],
+    realtimeSeeds,
     globalExcludes,
     now
   );
   const localObservations = await fetchLocalObservationSignals(localObservationSections, globalExcludes, previousLatest, now, timeLabel, nowIso);
   const context = await buildDashboardContext(dashboardContextConfig, now, nowIso);
-  const rawItems = [...yahooRealtimeSignals, ...topicSourceSignals, ...dailyTrendItems, ...majorTopicSignals, ...discoverySignals, ...configuredSignals, ...watchlistSignals];
+  const rawItems = [...yahooRealtimeSignals, ...topicSourceSignals, ...dailyTrendItems, ...discoverySignals];
 
   const scoredItems = rawItems
     .map((raw) => {

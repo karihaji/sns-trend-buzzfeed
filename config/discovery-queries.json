@@ -5,7 +5,5 @@
   { "id": "short_video", "query": "ショート動画 流行 OR チャレンジ OR あるある", "watchlist": "sns_platform", "priority": 92 },
   { "id": "reels_format", "query": "リール あるある OR テンプレ OR 流行", "watchlist": "format", "priority": 90 },
   { "id": "x_phrase", "query": "Xで話題 ミーム OR 構文 OR 界隈", "watchlist": "sns_platform", "priority": 88 },
-  { "id": "format_phrase", "query": "してみた 選手権 あるある SNS", "watchlist": "format", "priority": 86 },
-  { "id": "seasonal_meme", "query": "夏休み 花火 旅行 SNS ネタ", "watchlist": "seasonal", "priority": 82 },
-  { "id": "local_phrase", "query": "鹿児島 グルメ 観光 SNS 話題", "watchlist": "local_leisure", "priority": 80 }
+  { "id": "format_phrase", "query": "してみた 選手権 あるある SNS", "watchlist": "format", "priority": 86 }
 ]
