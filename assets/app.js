@@ -83,6 +83,7 @@ const signalLabel = (signalType) => {
     discovered_phrase: "発見フレーズ",
     configured_rss: "重点観測",
     daily_trend: "検索トレンド",
+    yahoo_realtime: "Xリアルタイム",
     topic_trend: "公開RSS",
     major_topic: "大型トピック",
     watchlist_rss: "補助観測"
@@ -534,7 +535,8 @@ const listOverview = ({ items, mainTrends, evergreen, growing, localObservations
 const localObservationLabel = (item) => {
   const tier = item.localTier ? `優先 ${item.localTier}` : "観測";
   const evidence = item.evidenceCount ? `観測 ${item.evidenceCount}件` : "観測中";
-  return `${tier} / ${statusLabel(item.trendStatus)} / ${evidence}`;
+  const source = item.sourceLabel ? ` / ${item.sourceLabel}` : "";
+  return `${tier} / ${statusLabel(item.trendStatus)} / ${evidence}${source}`;
 };
 
 const localObservationCard = (item) => {
@@ -545,6 +547,9 @@ const localObservationCard = (item) => {
   top.append(create("span", "local-section-label", item.localSectionTitle || "ローカル観測"));
   card.append(top);
   card.append(create("strong", "", `#${item.keyword}`));
+  if (item.sourceHeadline && item.sourceHeadline !== item.keyword) {
+    card.append(create("p", "local-headline", item.sourceHeadline));
+  }
   card.append(create("span", "local-meta", localObservationLabel(item)));
   const tags = create("div", "local-tags");
   (item.tags || []).slice(0, 3).forEach((tag) => tags.append(create("span", "", tag)));
@@ -557,7 +562,7 @@ const localObservationRow = (item) => {
   row.href = item.observeUrl || "https://news.google.com/";
   row.append(create("span", "local-row-word", `#${item.keyword}`));
   row.append(create("span", "local-row-section", item.localSectionTitle || "ローカル観測"));
-  row.append(create("span", "local-row-meta", localObservationLabel(item)));
+  row.append(create("span", "local-row-meta", item.sourceLabel || localObservationLabel(item)));
   return row;
 };
 

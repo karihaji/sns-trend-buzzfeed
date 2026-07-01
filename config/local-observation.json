@@ -5,16 +5,16 @@
     "description": "鹿児島の街ネタ、店舗、イベントを拾う起点",
     "cap": 7,
     "entries": [
-      { "tier": "A", "keyword": "KagoshimaniaX", "query": "KagoshimaniaX 鹿児島 グルメ イベント SNS", "tags": ["街ネタ", "グルメ"] },
-      { "tier": "A", "keyword": "TJカゴシマ", "query": "TJカゴシマ グルメ 温泉 イベント", "tags": ["地域情報"] },
-      { "tier": "A", "keyword": "よかガイドかごしま", "query": "よかガイドかごしま 観光 グルメ 温泉", "tags": ["観光"] },
-      { "tier": "A", "keyword": "リビングかごしま", "query": "リビングかごしま おでかけ グルメ イベント", "tags": ["生活"] },
+      { "tier": "A", "keyword": "KagoshimaniaX", "query": "KagoshimaniaX 鹿児島 グルメ イベント SNS", "feedUrl": "https://www.kagoshimaniax.com/feed/", "sourceUrl": "https://www.kagoshimaniax.com/", "tags": ["街ネタ", "グルメ"] },
+      { "tier": "A", "keyword": "TJカゴシマ", "query": "TJカゴシマ グルメ 温泉 イベント", "feedUrl": "https://www.tjkagoshima.com/feed/", "sourceUrl": "https://www.tjkagoshima.com/", "tags": ["地域情報"] },
+      { "tier": "A", "keyword": "よかガイドかごしま", "query": "よかガイドかごしま 観光 グルメ 温泉", "feedUrl": "https://yokaguide.com/feed/", "sourceUrl": "https://yokaguide.com/", "tags": ["観光"] },
+      { "tier": "A", "keyword": "リビングかごしま", "query": "リビングかごしま おでかけ グルメ イベント", "feedUrl": "https://mrs.living.jp/kagoshima/feed", "sourceUrl": "https://mrs.living.jp/kagoshima", "tags": ["生活"] },
       { "tier": "A", "keyword": "おでかけカゴシマ", "query": "おでかけカゴシマ グルメ 週末", "tags": ["おでかけ"] },
       { "tier": "A", "keyword": "かごしまぐるり", "query": "かごしまぐるり グルメ 特産品 地域PR", "tags": ["物産"] },
-      { "tier": "B", "keyword": "Felia フェリア", "query": "Felia フェリア 鹿児島 グルメ 暮らし", "tags": ["生活"] },
-      { "tier": "B", "keyword": "LEAP鹿児島", "query": "LEAP鹿児島 街ネタ 店舗 イベント", "tags": ["街ネタ"] },
-      { "tier": "B", "keyword": "Kagomaga カゴマガ", "query": "Kagomaga カゴマガ 鹿児島 サブカル VTuber", "tags": ["カルチャー"] },
-      { "tier": "B", "keyword": "鹿児島経済新聞", "query": "鹿児島経済新聞 店舗 イベント 街ネタ", "tags": ["ニュース"] }
+      { "tier": "B", "keyword": "Felia フェリア", "query": "Felia フェリア 鹿児島 グルメ 暮らし", "sourceUrl": "https://felia.373news.com/", "tags": ["生活"] },
+      { "tier": "B", "keyword": "LEAP鹿児島", "query": "LEAP鹿児島 街ネタ 店舗 イベント", "feedUrl": "https://www.leapleap.jp/feed/", "sourceUrl": "https://www.leapleap.jp/", "tags": ["街ネタ"] },
+      { "tier": "B", "keyword": "Kagomaga カゴマガ", "query": "Kagomaga カゴマガ 鹿児島 サブカル VTuber", "sourceUrl": "https://www.kagomaga.jp/", "tags": ["カルチャー"] },
+      { "tier": "B", "keyword": "鹿児島経済新聞", "query": "鹿児島経済新聞 店舗 イベント 街ネタ", "feedUrl": "https://kagoshima.keizai.biz/rss.xml", "sourceUrl": "https://kagoshima.keizai.biz/", "tags": ["ニュース"] }
     ]
   },
   {

@@ -13,6 +13,7 @@ const MAX_LOCAL_OBSERVATION_QUERIES = 72;
 const OPEN_METEO_URL = "https://api.open-meteo.com/v1/forecast";
 const JAPAN_HOLIDAYS_CSV_URL = "https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv";
 const ANNIVERSARY_SOURCE_LIMIT = 20;
+const YAHOO_REALTIME_LIMIT = 28;
 const STANDALONE_WATCHLISTS = new Set(["sns_platform", "format", "seasonal", "local_leisure"]);
 const BROAD_DISPLAY_TERMS = new Set([
   "tiktok",
@@ -140,6 +141,17 @@ const humanTrendUrlFor = (keyword) =>
 const newsSearchUrlFor = (keyword) =>
   `https://news.google.com/search?q=${encodeURIComponent(keyword || "トレンド")}&hl=ja&gl=JP&ceid=JP%3Aja`;
 
+const yahooRealtimeUrlFor = (keyword) =>
+  `https://search.yahoo.co.jp/realtime/search?p=${encodeURIComponent(keyword || "話題")}`;
+
+const absoluteYahooUrl = (url, fallbackKeyword) => {
+  if (!url) return yahooRealtimeUrlFor(fallbackKeyword);
+  const cleaned = String(url).replace(/\\u0026/g, "&");
+  if (cleaned.startsWith("http")) return cleaned;
+  if (cleaned.startsWith("/")) return `https://search.yahoo.co.jp${cleaned}`;
+  return yahooRealtimeUrlFor(fallbackKeyword);
+};
+
 const getTag = (entry, tag) => {
   const match = entry.match(new RegExp(`<${escapeRegExp(tag)}[^>]*>([\\s\\S]*?)<\\/${escapeRegExp(tag)}>`, "i"));
   return match ? decodeXml(match[1]).trim() : "";
@@ -254,6 +266,170 @@ const fetchRss = async (url) => {
     throw new Error(`RSS failed: ${response.status} ${response.statusText} ${url}`);
   }
   return response.text();
+};
+
+const fetchHtml = async (url) => {
+  const response = await fetch(url, {
+    headers: {
+      "user-agent": "Mozilla/5.0 (compatible; sns-trend-buzzfeed/1.0; +https://github.com/karihaji/sns-trend-buzzfeed)",
+      "accept-language": "ja,en-US;q=0.9,en;q=0.8"
+    }
+  });
+  if (!response.ok) {
+    throw new Error(`HTML failed: ${response.status} ${response.statusText} ${url}`);
+  }
+  return response.text();
+};
+
+const extractNextData = (html) => {
+  const match = String(html || "").match(/<script[^>]+id=["']__NEXT_DATA__["'][^>]*>([\s\S]*?)<\/script>/i);
+  if (!match) return null;
+  try {
+    return JSON.parse(decodeXml(match[1]));
+  } catch {
+    try {
+      return JSON.parse(match[1]);
+    } catch {
+      return null;
+    }
+  }
+};
+
+const collectObjects = (value, predicate, results = []) => {
+  if (!value || results.length > 200) return results;
+  if (Array.isArray(value)) {
+    value.forEach((item) => collectObjects(item, predicate, results));
+    return results;
+  }
+  if (typeof value === "object") {
+    if (predicate(value)) results.push(value);
+    Object.values(value).forEach((item) => collectObjects(item, predicate, results));
+  }
+  return results;
+};
+
+const parseYahooRealtimePage = (html, query, now) => {
+  const data = extractNextData(html);
+  if (!data) return [];
+  const matomeItems = collectObjects(
+    data,
+    (item) => typeof item.title === "string" && (item.tweetCount != null || item.isBuzzNow != null || Array.isArray(item.themeList))
+  );
+  const hashtagItems = collectObjects(data, (item) => typeof item.text === "string" && item.text.startsWith("#"));
+  const tweetItems = collectObjects(data, (item) => typeof item.body === "string" && (item.like != null || item.rt != null || item.quote != null));
+
+  const results = [];
+  for (const item of matomeItems.slice(0, 8)) {
+    const themes = (item.themeList || []).map((theme) => theme.themeName).filter(Boolean);
+    const sourceText = `${themes.join(" ")} ${item.title || ""} ${item.summary || ""}`;
+    if (!isRelatedToQuery(sourceText, query)) continue;
+    const keyword = compactHeadlineTopic(themes[0] || item.title, query);
+    if (!isUsableLocalTopic(keyword, sourceText, [])) continue;
+    results.push({
+      keyword,
+      title: cleanupNewsHeadline(item.title),
+      summary: cleanupNewsHeadline(item.summary || item.title),
+      tweetCount: Number(item.tweetCount || 0),
+      isBuzzNow: Boolean(item.isBuzzNow),
+      createdAt: item.createdAt ? new Date(Number(item.createdAt) * 1000).toISOString() : null,
+      source: "Yahoo!リアルタイム検索",
+      observeUrl: absoluteYahooUrl(item.url, keyword),
+      query
+    });
+  }
+  for (const item of hashtagItems.slice(0, 6)) {
+    const keyword = cleanupNewsHeadline(item.text);
+    if (!isRelatedToQuery(keyword, query)) continue;
+    results.push({
+      keyword,
+      title: keyword,
+      summary: `${query} の関連ハッシュタグ`,
+      tweetCount: 0,
+      isBuzzNow: false,
+      createdAt: now.toISOString(),
+      source: "Yahoo!リアルタイム検索",
+      observeUrl: absoluteYahooUrl(item.url, keyword),
+      query
+    });
+  }
+  for (const item of tweetItems.slice(0, 8)) {
+    if (!isRelatedToQuery(item.body, query)) continue;
+    const keyword = compactHeadlineTopic(item.body, query);
+    if (!isUsableLocalTopic(keyword, item.body, [])) continue;
+    results.push({
+      keyword,
+      title: keyword,
+      summary: cleanupNewsHeadline(item.body).slice(0, 100),
+      tweetCount: Number(item.like || 0) + Number(item.rt || 0) + Number(item.quote || 0) + Number(item.reply || 0),
+      isBuzzNow: false,
+      createdAt: now.toISOString(),
+      source: "Yahoo!リアルタイム検索",
+      observeUrl: absoluteYahooUrl(item.url, keyword),
+      query
+    });
+  }
+  return results;
+};
+
+const fetchYahooRealtimePage = async (query, now) => {
+  const url = yahooRealtimeUrlFor(query);
+  const html = await fetchHtml(url);
+  return parseYahooRealtimePage(html, query, now);
+};
+
+const cleanupNewsHeadline = (value) =>
+  cleanupText(value)
+    .replace(/\s+-\s+[^-]+$/u, "")
+    .replace(/^\s*(速報|詳報|動画|写真|独自|解説)[：:\s]+/u, "")
+    .replace(/【[^】]{1,28}】/gu, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+const compactHeadlineTopic = (value, fallback = "") => {
+  const headline = cleanupNewsHeadline(value);
+  const quoted = [...headline.matchAll(/[「『]([^」』]{2,24})[」』]/gu)]
+    .map((match) => cleanupNewsHeadline(match[1]))
+    .find((part) => part.length >= 3 && part.length <= 24);
+  if (quoted) return quoted;
+
+  const parts = headline
+    .split(/[：:、。｜|／/]/u)
+    .map((part) => cleanupNewsHeadline(part))
+    .filter((part) => part.length >= 3);
+  const localPart = parts.find((part) => /鹿児島|屋久島|奄美|種子島|天文館|桜島|指宿|霧島|薩摩|大隅|離島/u.test(part));
+  const shortPart = parts.find((part) => part.length <= 28);
+  let topic = localPart || shortPart || headline;
+  if (topic.length > 32) topic = cleanupTopicKeyword(topic);
+  if (topic.length > 32) topic = topic.slice(0, 31).trim();
+  return topic || fallback;
+};
+
+const meaningfulQueryTerms = (query) =>
+  cleanupNewsHeadline(query)
+    .replace(/[()（）"“”]/g, " ")
+    .split(/\s+|OR|AND|　/u)
+    .map((term) => term.trim())
+    .filter((term) => term.length >= 2 && !BROAD_DISPLAY_TERMS.has(normalize(term)))
+    .slice(0, 8);
+
+const isRelatedToQuery = (text, query) => {
+  const terms = meaningfulQueryTerms(query);
+  if (!terms.length) return true;
+  return includesAny(text, terms);
+};
+
+const hasLocalContext = (text) =>
+  /鹿児島|屋久島|奄美|種子島|天文館|桜島|指宿|霧島|薩摩|大隅|南九州|離島|カゴシマ|かごしま|Kagoshima/u.test(text);
+
+const isUsableLocalTopic = (topic, headline, globalExcludes) => {
+  const value = cleanupNewsHeadline(topic);
+  if (value.length < 3 || value.length > 32) return false;
+  if (BROAD_DISPLAY_TERMS.has(normalize(value))) return false;
+  if (GENERIC_TITLE_WORDS.has(value)) return false;
+  if (includesAny(`${value} ${headline}`, globalExcludes)) return false;
+  if (/訃報|死去|逮捕|容疑|事故|事件|火災|災害|被害|不祥事|謝罪|選挙|市議|県議|市長|県知事|裁判/u.test(`${value} ${headline}`)) return false;
+  if (/^(鹿児島|屋久島|奄美|種子島|観光|グルメ|イベント|ニュース)$/u.test(value)) return false;
+  return true;
 };
 
 const weatherSummary = (code) => {
@@ -581,7 +757,8 @@ const fetchTopicSourceSignals = async (sources, globalExcludes, now) => {
           sources: [],
           evidenceCount: 0,
           freshness: 0,
-          observeUrl: source.type === "google_trends" ? humanTrendUrlFor(keyword) : newsSearchUrlFor(keyword)
+          observeUrl: yahooRealtimeUrlFor(keyword),
+          evidenceUrl: source.type === "google_trends" ? humanTrendUrlFor(keyword) : newsSearchUrlFor(keyword)
         };
         existing.sources.push({ id: source.id, label: source.label, priority: source.priority || 60, rank: item.sourceRank });
         existing.evidenceCount += source.type === "google_trends" ? 3 : 1;
@@ -694,7 +871,8 @@ const fetchWatchlistSignals = async (watchlists, globalExcludes, now) => {
         sourceRank: Math.max(1, 30 - Math.min(29, recentItems.length + Math.round(freshness / 7))),
         signalType: "watchlist_rss",
         evidenceCount: recentItems.length || rssItems.length,
-        observeUrl: `https://news.google.com/search?q=${encodeURIComponent(keyword)}&hl=ja&gl=JP&ceid=JP%3Aja`
+        observeUrl: yahooRealtimeUrlFor(keyword),
+        evidenceUrl: `https://news.google.com/search?q=${encodeURIComponent(keyword)}&hl=ja&gl=JP&ceid=JP%3Aja`
       });
     } catch (error) {
       console.warn(`Skipped watchlist keyword "${keyword}": ${error.message}`);
@@ -729,7 +907,8 @@ const fetchConfiguredSignals = async (queries, watchlists, globalExcludes, now) 
         sourceRank: Math.max(1, 26 - Math.min(25, recentItems.length + Math.round(freshness / 6))),
         signalType: "configured_rss",
         evidenceCount: recentItems.length || rssItems.length,
-        observeUrl: `https://news.google.com/search?q=${encodeURIComponent(item.query || item.keyword)}&hl=ja&gl=JP&ceid=JP%3Aja`
+        observeUrl: yahooRealtimeUrlFor(item.keyword),
+        evidenceUrl: `https://news.google.com/search?q=${encodeURIComponent(item.query || item.keyword)}&hl=ja&gl=JP&ceid=JP%3Aja`
       });
     } catch (error) {
       console.warn(`Skipped configured query "${item.keyword}": ${error.message}`);
@@ -764,7 +943,8 @@ const fetchDiscoverySignals = async (queries, watchlists, globalExcludes, now) =
           evidenceCount: 0,
           freshness: 0,
           queryPriority: query.priority || 80,
-          observeUrl: `https://news.google.com/search?q=${encodeURIComponent(candidate.keyword)}&hl=ja&gl=JP&ceid=JP%3Aja`
+          observeUrl: yahooRealtimeUrlFor(candidate.keyword),
+          evidenceUrl: `https://news.google.com/search?q=${encodeURIComponent(candidate.keyword)}&hl=ja&gl=JP&ceid=JP%3Aja`
         };
         existing.evidenceCount += 1;
         existing.freshness += Math.max(0, 7 - daysOld(candidate.pubDate, now));
@@ -812,13 +992,79 @@ const fetchMajorTopicSignals = async (topics, globalExcludes, now) => {
         sourceRank: Math.max(1, 20 - Math.min(19, recentItems.length + Math.round(freshness / 6))),
         signalType: "major_topic",
         evidenceCount: recentItems.length,
-        observeUrl: `https://news.google.com/search?q=${encodeURIComponent(topic.query || topic.keyword)}&hl=ja&gl=JP&ceid=JP%3Aja`
+        observeUrl: yahooRealtimeUrlFor(topic.keyword),
+        evidenceUrl: `https://news.google.com/search?q=${encodeURIComponent(topic.query || topic.keyword)}&hl=ja&gl=JP&ceid=JP%3Aja`
       });
     } catch (error) {
       console.warn(`Skipped major topic "${topic.keyword}": ${error.message}`);
     }
   }
   return results;
+};
+
+const fetchYahooRealtimeSignals = async (seedItems, globalExcludes, now) => {
+  const seeds = [];
+  const seenSeeds = new Set();
+  for (const item of seedItems) {
+    const keyword = cleanupNewsHeadline(item.keyword || item.query || "");
+    if (!keyword || keyword.length < 2 || keyword.length > 32) continue;
+    const key = normalize(keyword);
+    if (seenSeeds.has(key)) continue;
+    seenSeeds.add(key);
+    seeds.push(keyword);
+    if (seeds.length >= YAHOO_REALTIME_LIMIT) break;
+  }
+
+  const aggregated = new Map();
+  for (const seed of seeds) {
+    try {
+      const realtimeItems = await fetchYahooRealtimePage(seed, now);
+      for (const realtime of realtimeItems) {
+        const keyword = cleanupNewsHeadline(realtime.keyword);
+        const sourceText = `${keyword} ${realtime.title || ""} ${realtime.summary || ""}`;
+        if (!isUsableLocalTopic(keyword, sourceText, globalExcludes)) continue;
+        const key = normalize(keyword);
+        const existing = aggregated.get(key) || {
+          keyword,
+          watchlist: {
+            id: "actual_public_trend",
+            label: "Xで話題",
+            includeKeywords: [],
+            excludeKeywords: [],
+            priority: 128
+          },
+          signalType: "yahoo_realtime",
+          evidenceCount: 0,
+          realtimeCount: 0,
+          freshness: 0,
+          sourceRank: 18,
+          observeUrl: realtime.observeUrl || yahooRealtimeUrlFor(keyword),
+          evidenceUrl: newsSearchUrlFor(keyword),
+          realtimeSources: []
+        };
+        const reaction = Math.max(1, Math.min(12, Math.ceil((realtime.tweetCount || 0) / 120)));
+        existing.evidenceCount += 1 + reaction;
+        existing.realtimeCount += realtime.tweetCount || 0;
+        existing.freshness += realtime.isBuzzNow ? 12 : 5;
+        existing.sourceRank = Math.min(existing.sourceRank, Math.max(1, 18 - reaction - (realtime.isBuzzNow ? 4 : 0)));
+        existing.realtimeSources.push(realtime.source);
+        if (realtime.isBuzzNow) existing.trendStatusHint = "rising";
+        aggregated.set(key, existing);
+      }
+    } catch (error) {
+      console.warn(`Skipped Yahoo realtime "${seed}": ${error.message}`);
+    }
+  }
+
+  return [...aggregated.values()]
+    .map((item) => ({
+      ...item,
+      sourceRank: Math.max(1, item.sourceRank - Math.min(6, item.evidenceCount)),
+      topicSourceCount: 1,
+      topicSources: ["Yahoo!リアルタイム検索"]
+    }))
+    .sort((a, b) => b.evidenceCount - a.evidenceCount || a.sourceRank - b.sourceRank)
+    .slice(0, 28);
 };
 
 const tierPriority = (tier) => {
@@ -837,6 +1083,58 @@ const localSearchUrlFor = (entry, globalExcludes) => {
     ceid: "JP:ja"
   });
   return `${GOOGLE_NEWS_SEARCH_URL}?${params.toString()}`;
+};
+
+const absoluteUrl = (url, baseUrl) => {
+  try {
+    return new URL(decodeXml(url), baseUrl).toString();
+  } catch {
+    return baseUrl || "";
+  }
+};
+
+const parseHtmlLatestItems = (html, baseUrl) => {
+  const items = [];
+  const seen = new Set();
+  const anchorMatches = String(html || "").matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi);
+  for (const match of anchorMatches) {
+    const href = absoluteUrl(match[1], baseUrl);
+    const title = cleanupNewsHeadline(match[2]);
+    if (!href || !title || title.length < 4 || title.length > 80) continue;
+    if (/^(続きを読む|詳細|一覧|もっと見る|HOME|トップ|お問い合わせ|プライバシー|Instagram|X|Facebook|LINE)$/iu.test(title)) continue;
+    if (seen.has(`${href}:${title}`)) continue;
+    seen.add(`${href}:${title}`);
+    items.push({
+      keyword: title,
+      description: title,
+      pubDate: "",
+      observeUrl: href,
+      newsTitles: [],
+      sourceRank: items.length + 1
+    });
+    if (items.length >= 18) break;
+  }
+  return items;
+};
+
+const fetchLocalSourceItems = async (entry) => {
+  if (entry.feedUrl) {
+    const xml = await fetchRss(entry.feedUrl);
+    return parseRssItems(xml)
+      .map((item) => ({
+        ...item,
+        observeUrl: item.observeUrl || entry.sourceUrl || entry.feedUrl,
+        sourceLabel: entry.keyword
+      }))
+      .slice(0, 18);
+  }
+  if (entry.sourceUrl) {
+    const html = await fetchHtml(entry.sourceUrl);
+    return parseHtmlLatestItems(html, entry.sourceUrl)
+      .map((item) => ({ ...item, sourceLabel: entry.keyword }))
+      .slice(0, 18);
+  }
+  return [];
 };
 
 const flattenLocalEntries = (sections) => {
@@ -866,50 +1164,99 @@ const fetchLocalObservationSignals = async (sections, globalExcludes, previousLa
 
   for (const entry of entries) {
     if ((sectionCounts[entry.sectionId] || 0) >= entry.sectionCap) continue;
-    const url = localSearchUrlFor(entry, globalExcludes);
     try {
-      const xml = await fetchRss(url);
-      const rssItems = parseRssItems(xml)
+      let rssItems = [];
+      try {
+        rssItems = await fetchLocalSourceItems(entry);
+      } catch (error) {
+        console.warn(`Skipped local source "${entry.keyword}": ${error.message}`);
+      }
+      if (!rssItems.length) {
+        const url = localSearchUrlFor(entry, globalExcludes);
+        const xml = await fetchRss(url);
+        rssItems = parseRssItems(xml).map((item) => ({ ...item, sourceLabel: "Googleローカルニュース" }));
+      }
+      rssItems = rssItems
         .filter((item) => !includesAny(`${item.keyword} ${item.description} ${(item.newsTitles || []).join(" ")}`, globalExcludes))
         .slice(0, 16);
-      if (!rssItems.length) continue;
+      const candidates = [];
 
-      const recentItems = rssItems.filter((item) => daysOld(item.pubDate, now) <= 10);
-      const freshness = recentItems.reduce((sum, item) => sum + Math.max(0, 10 - daysOld(item.pubDate, now)), 0);
-      const evidenceCount = recentItems.length || rssItems.length;
-      const id = idFor(`local:${entry.sectionId}:${entry.keyword}`);
-      const previousItem = previousItems.find((item) => item.id === id) || null;
-      const previousEvidenceCount = previousItem?.evidenceCount ?? null;
-      const evidenceChange = previousEvidenceCount == null ? null : evidenceCount - previousEvidenceCount;
-      const baseScore = entry.priority + Math.min(24, evidenceCount * 3) + Math.min(16, Math.round(freshness / 5));
-      const growthScore = previousEvidenceCount == null ? 0 : Math.max(-18, Math.min(28, evidenceChange * 7));
-      const score = Math.max(0, Math.min(100, Math.round(baseScore / 1.45 + growthScore)));
-      const previousScore = previousItem?.score ?? null;
-      const scoreChange = previousScore == null ? score : score - previousScore;
+      const directSource = Boolean(entry.feedUrl || entry.sourceUrl);
+      const recentItems = rssItems.filter((item) => directSource || daysOld(item.pubDate, now) <= 10);
+      for (const item of recentItems.slice(0, directSource ? 8 : 6)) {
+        const headline = cleanupNewsHeadline(item.keyword || item.newsTitles?.[0] || "");
+        const topic = compactHeadlineTopic(headline, entry.keyword);
+        if (!isUsableLocalTopic(topic, `${headline} ${(item.newsTitles || []).join(" ")}`, globalExcludes)) continue;
+        if (directSource && !isRelatedToQuery(`${headline} ${(item.newsTitles || []).join(" ")}`, entry.query || entry.keyword) && !hasLocalContext(`${headline} ${entry.query || ""}`)) continue;
+        candidates.push({
+          keyword: topic,
+          headline,
+          sourceLabel: item.sourceLabel || entry.keyword,
+          freshness: directSource ? Math.max(6, 12 - daysOld(item.pubDate, now)) : Math.max(0, 10 - daysOld(item.pubDate, now)),
+          evidenceCount: 1,
+          observeUrl: item.observeUrl || entry.sourceUrl || yahooRealtimeUrlFor(topic),
+          evidenceUrl: yahooRealtimeUrlFor(topic)
+        });
+      }
 
-      results.push({
-        id,
-        keyword: entry.keyword,
-        query: entry.query || entry.keyword,
-        localSection: entry.sectionId,
-        localSectionTitle: entry.sectionTitle,
-        localSectionDescription: entry.sectionDescription,
-        localTier: entry.tier || "B",
-        tags: entry.tags || [],
-        score,
-        previousScore,
-        scoreChange,
-        direction: directionFor(scoreChange, previousScore == null),
-        trendStatus: trendStatusFor({ signalType: "local_observation", previousEvidenceCount, evidenceChange }),
-        signalType: "local_observation",
-        evidenceCount,
-        previousEvidenceCount,
-        evidenceChange,
-        capturedAt: nowIso,
-        series: buildSeries(previousItem, timeLabel, score),
-        observeUrl: `https://news.google.com/search?q=${encodeURIComponent(entry.query || entry.keyword)}&hl=ja&gl=JP&ceid=JP%3Aja`
-      });
-      sectionCounts[entry.sectionId] = (sectionCounts[entry.sectionId] || 0) + 1;
+      const byTopic = new Map();
+      for (const candidate of candidates) {
+        const key = normalize(candidate.keyword);
+        const existing = byTopic.get(key) || { ...candidate, evidenceCount: 0, freshness: 0, sourceLabels: new Set(), realtimeCount: 0 };
+        existing.evidenceCount += candidate.evidenceCount || 1;
+        existing.freshness += candidate.freshness || 0;
+        existing.realtimeCount += candidate.realtimeCount || 0;
+        existing.sourceLabels.add(candidate.sourceLabel);
+        if (candidate.sourceLabel === "Yahoo!リアルタイム検索") existing.observeUrl = candidate.observeUrl;
+        byTopic.set(key, existing);
+      }
+
+      const topics = [...byTopic.values()]
+        .sort((a, b) => b.evidenceCount - a.evidenceCount || b.freshness - a.freshness)
+        .slice(0, Math.max(1, Math.min(directSource ? 2 : 1, entry.sectionCap - (sectionCounts[entry.sectionId] || 0))));
+
+      for (const topic of topics) {
+        if ((sectionCounts[entry.sectionId] || 0) >= entry.sectionCap) break;
+        const id = idFor(`local:${entry.sectionId}:${topic.keyword}`);
+        const previousItem = previousItems.find((item) => item.id === id) || null;
+        const previousEvidenceCount = previousItem?.evidenceCount ?? null;
+        const evidenceChange = previousEvidenceCount == null ? null : topic.evidenceCount - previousEvidenceCount;
+        const baseScore = entry.priority + Math.min(30, topic.evidenceCount * 4) + Math.min(20, Math.round(topic.freshness / 4));
+        const realtimeBoost = Math.min(18, Math.ceil((topic.realtimeCount || 0) / 250));
+        const growthScore = previousEvidenceCount == null ? 0 : Math.max(-18, Math.min(28, evidenceChange * 7));
+        const score = Math.max(0, Math.min(100, Math.round(baseScore / 1.38 + realtimeBoost + growthScore)));
+        const previousScore = previousItem?.score ?? null;
+        const scoreChange = previousScore == null ? score : score - previousScore;
+
+        results.push({
+          id,
+          keyword: topic.keyword,
+          query: entry.query || entry.keyword,
+          sourceHeadline: topic.headline,
+          sourceLabel: [...topic.sourceLabels].join(" / "),
+          observationSeed: entry.keyword,
+          localSection: entry.sectionId,
+          localSectionTitle: entry.sectionTitle,
+          localSectionDescription: entry.sectionDescription,
+          localTier: entry.tier || "B",
+          tags: entry.tags || [],
+          score,
+          previousScore,
+          scoreChange,
+          direction: directionFor(scoreChange, previousScore == null),
+          trendStatus: trendStatusFor({ signalType: "local_observation", previousEvidenceCount, evidenceChange }),
+          signalType: "local_observation",
+          evidenceCount: topic.evidenceCount,
+          previousEvidenceCount,
+          evidenceChange,
+          realtimeCount: topic.realtimeCount || null,
+          capturedAt: nowIso,
+          series: buildSeries(previousItem, timeLabel, score),
+          observeUrl: topic.observeUrl || yahooRealtimeUrlFor(topic.keyword),
+          evidenceUrl: topic.evidenceUrl || newsSearchUrlFor(`${topic.keyword} ${entry.query || entry.keyword}`)
+        });
+        sectionCounts[entry.sectionId] = (sectionCounts[entry.sectionId] || 0) + 1;
+      }
     } catch (error) {
       console.warn(`Skipped local observation "${entry.keyword}": ${error.message}`);
     }
@@ -934,6 +1281,7 @@ const yesterdayMatch = (history, keyword, now) => {
 
 const trendStatusFor = ({ signalType, previousEvidenceCount, evidenceChange }) => {
   if (signalType === "daily_trend") return "actual_trend";
+  if (signalType === "yahoo_realtime") return "actual_trend";
   if (signalType === "topic_trend") return "actual_topic";
   if (signalType === "major_topic") return evidenceChange == null ? "major_topic" : evidenceChange > 0 ? "rising" : "major_topic";
   if (signalType === "local_observation") {
@@ -961,11 +1309,11 @@ const scoreItem = ({ rank, previousRank, previousItem, watchlist, evidenceCount 
     previousEvidenceCount == null
       ? 0
       : Math.max(-35, Math.min(42, evidenceChange * 10));
-  const sourcePoints = signalType === "daily_trend" ? 42 : signalType === "topic_trend" ? 30 : signalType === "major_topic" ? 22 : signalType === "discovered_phrase" ? 12 : signalType === "configured_rss" ? 8 : 0;
+  const sourcePoints = signalType === "daily_trend" ? 42 : signalType === "yahoo_realtime" ? 44 : signalType === "topic_trend" ? 30 : signalType === "major_topic" ? 22 : signalType === "discovered_phrase" ? 12 : signalType === "configured_rss" ? 8 : 0;
   const standalonePenalty = signalType === "watchlist_rss" ? 34 : 0;
   const hygienePoints = 5;
   const rawScore = Math.round(rankPoints + previousDeltaPoints + continuityPoints + watchlistPoints + evidencePoints + growthPoints + sourcePoints + hygienePoints - standalonePenalty);
-  if (signalType === "daily_trend") {
+  if (signalType === "daily_trend" || signalType === "yahoo_realtime") {
     return Math.max(65, Math.min(100, rawScore));
   }
   if (signalType === "topic_trend") {
@@ -1018,9 +1366,14 @@ const main = async () => {
   const discoverySignals = await fetchDiscoverySignals(discoveryQueries, watchlists, globalExcludes, now);
   const configuredSignals = await fetchConfiguredSignals(configuredQueries, watchlists, globalExcludes, now);
   const watchlistSignals = await fetchWatchlistSignals(watchlists, globalExcludes, now);
+  const yahooRealtimeSignals = await fetchYahooRealtimeSignals(
+    [...topicSourceSignals, ...majorTopicSignals, ...discoverySignals, ...configuredSignals, ...watchlistSignals],
+    globalExcludes,
+    now
+  );
   const localObservations = await fetchLocalObservationSignals(localObservationSections, globalExcludes, previousLatest, now, timeLabel, nowIso);
   const context = await buildDashboardContext(dashboardContextConfig, now, nowIso);
-  const rawItems = [...topicSourceSignals, ...dailyTrendItems, ...majorTopicSignals, ...discoverySignals, ...configuredSignals, ...watchlistSignals];
+  const rawItems = [...yahooRealtimeSignals, ...topicSourceSignals, ...dailyTrendItems, ...majorTopicSignals, ...discoverySignals, ...configuredSignals, ...watchlistSignals];
 
   const scoredItems = rawItems
     .map((raw) => {
@@ -1078,6 +1431,7 @@ const main = async () => {
         evidenceChange,
         topicSourceCount: raw.topicSourceCount || null,
         topicSources: raw.topicSources || null,
+        realtimeCount: raw.realtimeCount || null,
         capturedAt: nowIso,
         series: buildSeries(previousItem, timeLabel, score),
         observeUrl: raw.observeUrl || "https://trends.google.co.jp/trends/"
