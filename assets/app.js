@@ -272,6 +272,26 @@ const isPostIdea = (item) => {
   return (item.evidenceCount || 0) >= 2 || (item.evidenceChange || 0) > 0 || ["rising", "warming", "candidate"].includes(item.trendStatus);
 };
 const isEvergreen = isPostIdea;
+const isMovingTopic = (item) => {
+  if (isMajorTopic(item)) return false;
+  if (isSentenceLikeKeyword(item)) return false;
+  if (item.trendStatus === "cooling") return false;
+  if (isGrowingObservation(item)) return true;
+  if (isActualTrend(item)) return (item.scoreChange || 0) > 0 || (item.rankChange || 0) > 0;
+  if (isActualTopic(item)) {
+    if (!isCleanPublicTopic(item)) return false;
+    const hasPrevious = item.previousScore !== null && item.previousScore !== undefined;
+    const positiveMovement = hasPrevious && ((item.scoreChange || 0) >= 4 || (item.evidenceChange || 0) > 0 || ((item.rankChange || 0) >= 2 && (item.scoreChange || 0) >= 0));
+    return positiveMovement || (item.topicSourceCount || 0) >= 2;
+  }
+  return false;
+};
+const movingTopicScore = (item) =>
+  (item.scoreChange || 0) * 80 +
+  (item.evidenceChange || 0) * 120 +
+  (item.rankChange || 0) * 36 +
+  (item.topicSourceCount || 0) * 28 +
+  (item.score || 0);
 
 const publicHeatScore = (item) => {
   const score = item.score || 0;
@@ -303,7 +323,7 @@ const compactMetricText = (item) => {
   if (isActualTrend(item)) return `実トレンド　${item.rank ? `順位 ${item.rank}位` : "公開トレンド"}`;
   if (isActualTopic(item)) return `公開話題　観測面 ${item.topicSourceCount || 1}`;
   if (isMajorTopic(item)) return `大型話題　観測件数 ${item.evidenceCount ? `${item.evidenceCount}件` : "-"}`;
-  if (isGrowingObservation(item)) return `話題　前回比 ${signed(item.evidenceChange)}`;
+  if (isMovingTopic(item)) return `反応あり　前回比 ${signed(item.scoreChange)}`;
   if (isEvergreen(item)) return `アイデア種　観測 ${item.evidenceCount ? `${item.evidenceCount}件` : "-"}`;
   return `${statusLabel(item.trendStatus)}　前回比 ${signed(item.evidenceChange)}`;
 };
@@ -510,7 +530,7 @@ const compactInfoTray = ({ evergreen, growing }) => {
   evergreenBox.append(evergreenRows);
 
   const growingBox = create("div", "compact-tray-box");
-  growingBox.append(create("span", "compact-tray-label", "話題"));
+  growingBox.append(create("span", "compact-tray-label", "反応あり"));
   const growingRows = create("div", "compact-tray-rows");
   if (growing.length) growingRows.replaceChildren(...growing.slice(0, 2).map(compactMiniWord));
   else growingRows.append(create("small", "compact-tray-empty", "反応待ち"));
@@ -539,7 +559,7 @@ const listOverview = ({ items, mainTrends, evergreen, growing, localObservations
   summaryGrid.append(
     listSummaryTile("注目ワード", `${mainTrends.length}`, "実反応を優先"),
     listSummaryTile("アイデア種", `${evergreen.length}`, "直近の投稿型"),
-    listSummaryTile("話題", `${growing.length}`, "前回より反応あり"),
+    listSummaryTile("反応あり", `${growing.length}`, "前回比・複数面"),
     listSummaryTile("ローカル棚", `${localObservations.length}`, "別枠観測")
   );
   const counts = items.reduce((acc, item) => {
@@ -700,7 +720,7 @@ const renderHome = ({ site, links, latest }) => {
   const localObservations = latest.localObservations || [];
   const mainTrends = rankedTrendItems(items);
   const evergreen = evergreenItems(items);
-  const growing = sortBy(items.filter(isGrowingObservation), (item) => item.evidenceChange || 0).slice(0, 8);
+  const growing = sortBy(items.filter(isMovingTopic), movingTopicScore).slice(0, 8);
   const heroTarget = document.querySelector("[data-home-hero]");
   const dashboardTarget = document.querySelector("[data-home-dashboard]");
   const topItem = mainTrends[0];
@@ -718,7 +738,7 @@ const renderHome = ({ site, links, latest }) => {
   const heroStats = create("div", "hero-stats");
   heroStats.append(statTile("注目ワード", `${mainTrends.length}`, "実反応を優先"));
   heroStats.append(statTile("アイデア種", `${evergreen.length}`, "直近の投稿型"));
-  heroStats.append(statTile("話題", `${growing.length}`, "前回より反応あり"));
+  heroStats.append(statTile("反応あり", `${growing.length}`, "前回比・複数面"));
   heroStats.append(statTile("最終更新", formatUpdated(latest.updatedAt), "Asia/Tokyo"));
   heroTarget.replaceChildren(heroCopy, heroStats);
 
@@ -756,7 +776,7 @@ const renderHome = ({ site, links, latest }) => {
 
   const growingPanel = create("section", "dashboard-panel");
   const growingHead = create("div", "panel-head");
-  growingHead.append(create("h2", "", "話題"));
+  growingHead.append(create("h2", "", "反応が見える話題"));
   growingHead.append(create("span", "section-count", `${growing.length}件`));
   const growingList = create("div", "compact-dashboard-list");
   if (growing.length) growingList.replaceChildren(...growing.slice(0, 6).map(simpleTrendRow));
@@ -796,7 +816,7 @@ const renderCompact = ({ site, links, latest }) => {
   const compactLimit = Math.min(Math.max(site.maxCompactItems || 6, 6), 8);
   const items = rankedTrendItems(allItems).slice(0, compactLimit);
   const evergreen = evergreenItems(allItems);
-  const growing = sortBy(allItems.filter(isGrowingObservation), (item) => item.evidenceChange || 0);
+  const growing = sortBy(allItems.filter(isMovingTopic), movingTopicScore);
   const activeLinks = links.filter((link) => link.active).sort((a, b) => b.priority - a.priority);
   const context = latest.context || {};
   contextTarget.replaceChildren(compactHeaderContext(context, activeLinks));
@@ -855,7 +875,7 @@ const renderList = ({ site, links, latest }) => {
 
   const mainTrends = rankedTrendItems(items);
   const evergreen = evergreenItems(items);
-  const growing = sortBy(items.filter(isGrowingObservation), (item) => item.evidenceChange || 0).slice(0, 20);
+  const growing = sortBy(items.filter(isMovingTopic), movingTopicScore).slice(0, 20);
 
   main.append(listOverview({ items, mainTrends, evergreen, growing, localObservations, context: latest.context || {} }));
   main.append(section("いまの注目ワード", mainTrends, { featured: true, className: "list-main-section", limit: 5, maxItems: 20, expandable: true, totalLabel: `${mainTrends.length}件観測` }));
@@ -863,7 +883,7 @@ const renderList = ({ site, links, latest }) => {
 
   appendIfAny(
     main,
-    "話題",
+    "反応が見える話題",
     growing,
     { compact: true, limit: 4, maxItems: 20, expandable: true, totalLabel: "最大20件" }
   );
