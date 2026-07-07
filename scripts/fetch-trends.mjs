@@ -15,9 +15,13 @@ const JAPAN_HOLIDAYS_CSV_URL = "https://www8.cao.go.jp/chosei/shukujitsu/syukuji
 const ANNIVERSARY_SOURCE_LIMIT = 20;
 const YAHOO_REALTIME_LIMIT = 28;
 const LOCAL_EVENT_FALLBACK_PATH = path.join(DATA_DIR, "local-events.json");
+const LOCAL_EVENT_ROWS_FALLBACK_PATH = path.join(DATA_DIR, "local-event-rows.json");
 const LOCAL_EVENT_SOURCE_PATH =
   process.env.KAGOSHIMA_EVENT_PAYLOAD ||
   "D:\\kagoshima-event-collector\\output\\calendar_payload.preview.json";
+const LOCAL_EVENT_ROWS_SOURCE_PATH =
+  process.env.KAGOSHIMA_EVENT_ROWS ||
+  "D:\\kagoshima-event-collector\\output\\sheets_rows.preview.json";
 const STANDALONE_WATCHLISTS = new Set(["sns_platform", "format"]);
 const BROAD_DISPLAY_TERMS = new Set([
   "tiktok",
@@ -746,11 +750,41 @@ const parseCalendarSummary = (summary = "") => {
   };
 };
 
+const LOCAL_EVENT_CONTEXT_CATEGORIES = new Set([
+  "商業施設催事",
+  "百貨店催事",
+  "展示",
+  "展示・展覧会",
+  "展覧会",
+  "コンサート",
+  "ライブ",
+  "公演",
+  "舞台",
+  "演劇",
+  "ホテル催事",
+  "祭り",
+  "祭り・地域行事",
+  "鹿児島市イベント",
+  "観光",
+  "スポーツ"
+]);
+
+const LOCAL_EVENT_BLOCK_CATEGORIES = new Set(["学会", "学会・会議", "会議"]);
+const LOCAL_EVENT_CONTEXT_CATEGORY_PATTERN = /商業|百貨店|催事|展示|展覧|コンサート|ライブ|公演|舞台|演劇|祭り|フェス|マルシェ|ホテル|観光|スポーツ/u;
+const LOCAL_EVENT_BLOCK_CATEGORY_PATTERN = /学会|会議|セミナー|研究会/u;
+const LOCAL_EVENT_BLOCK_TITLE_PATTERN = /学会|会議|セミナー|研究会|研修|説明会|相談|講座/u;
+
+const isLocalEventContextCategory = (category = "") =>
+  !LOCAL_EVENT_BLOCK_CATEGORIES.has(category) &&
+  !LOCAL_EVENT_BLOCK_CATEGORY_PATTERN.test(category) &&
+  (LOCAL_EVENT_CONTEXT_CATEGORIES.has(category) || LOCAL_EVENT_CONTEXT_CATEGORY_PATTERN.test(category));
+
 const eventPriority = (event) => {
   const rankPoints = { S: 400, A: 300, B: 170, C: 40 }[event.rank] || 0;
   const datePoints = Math.max(0, 130 - Math.abs(event.daysUntil || 0) * 4);
   const colorPoints = event.colorId === "9" ? 30 : event.colorId === "10" ? 20 : 0;
-  return rankPoints + datePoints + colorPoints;
+  const contextPoints = /商業|百貨店|展示|コンサート|公演|ホテル/u.test(event.category || "") ? 95 : 0;
+  return rankPoints + datePoints + colorPoints + contextPoints;
 };
 
 const compactEventTitle = (title = "") =>
@@ -804,15 +838,51 @@ const normalizeLocalEventPayload = (items = [], now) => {
   return dedupeLocalEvents(normalized).sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil);
 };
 
+const normalizeLocalEventRows = (rows = [], now) => {
+  const normalized = rows
+    .map((row) => {
+      const startDate = dateOnly(row.startDate || row.start_date);
+      const daysUntil = daysUntilIso(startDate, now);
+      const category = row.category || "イベント";
+      const rank = row.rank || row.crowd_rank || "C";
+      return {
+        id: row.id || row.event_hash || idFor(`${row.title}-${startDate}-${row.venue || row.venue_name}`),
+        title: row.title || "",
+        category,
+        rank,
+        venue: row.venue || row.venue_name || row.normalized_venue || "",
+        startDate,
+        endDate: dateOnly(row.endDate || row.end_date) || startDate,
+        daysUntil,
+        colorId: "",
+        sourceUrl: row.sourceUrl || row.source_url || "",
+        sourceName: row.sourceName || row.source_name || "",
+        summary: row.title || "",
+        priority: 0
+      };
+    })
+    .filter((event) => event.title && event.startDate && event.daysUntil != null && event.daysUntil >= -1 && event.daysUntil <= 90)
+    .filter((event) => event.sourceName !== "manual-poc" && !/example\.local/u.test(event.sourceUrl || ""))
+    .filter((event) => !LOCAL_EVENT_BLOCK_TITLE_PATTERN.test(event.title))
+    .filter((event) => isLocalEventContextCategory(event.category))
+    .filter((event) => event.rank !== "excluded")
+    .map((event) => ({ ...event, priority: eventPriority(event) }))
+    .sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil);
+  return dedupeLocalEvents(normalized).sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil);
+};
+
 const readLocalEventContext = async (now) => {
   const readSource = async (file) => normalizeLocalEventPayload(await readJson(file, []), now);
+  const readRows = async (file) => normalizeLocalEventRows(await readJson(file, []), now);
   const sourceEvents = await readSource(LOCAL_EVENT_SOURCE_PATH);
+  const sourceRows = await readRows(LOCAL_EVENT_ROWS_SOURCE_PATH);
   const fallbackEvents = sourceEvents.length ? sourceEvents : await readSource(LOCAL_EVENT_FALLBACK_PATH);
+  const fallbackRows = sourceRows.length ? sourceRows : await readRows(LOCAL_EVENT_ROWS_FALLBACK_PATH);
   const byId = new Map();
-  for (const event of fallbackEvents) {
+  for (const event of [...fallbackEvents, ...fallbackRows]) {
     if (!byId.has(event.id)) byId.set(event.id, event);
   }
-  return [...byId.values()].sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil).slice(0, 48);
+  return [...byId.values()].sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil).slice(0, 96);
 };
 
 const buildDashboardContext = async (config, now, nowIso) => {
