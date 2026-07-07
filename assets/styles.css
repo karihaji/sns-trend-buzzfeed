@@ -1217,10 +1217,10 @@ h1 {
 .trend-pill {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 12px;
+  gap: 10px;
   align-items: center;
-  min-height: 54px;
-  padding: 10px 12px;
+  min-height: 42px;
+  padding: 8px 10px;
   border: 1px solid #e0ebf8;
   border-radius: 8px;
   background:
@@ -1232,14 +1232,14 @@ h1 {
 
 .trend-pill span {
   min-width: 0;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
   overflow-wrap: anywhere;
 }
 
 .trend-pill small {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 11px;
   text-align: right;
 }
 

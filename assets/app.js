@@ -258,7 +258,15 @@ const isCleanPublicTopic = (item) => {
 };
 const isMainTrendItem = (item) => {
   if (item.signalType === "daily_trend" || item.signalType === "yahoo_realtime") return !isSentenceLikeKeyword(item);
-  if (isActualTopic(item)) return isCleanPublicTopic(item) && (item.topicSourceCount || 0) >= 2 && keywordText(item).length <= 16;
+  if (isActualTopic(item)) {
+    if (!isCleanPublicTopic(item)) return false;
+    return (
+      (item.topicSourceCount || 0) >= 2 ||
+      (item.evidenceCount || 0) >= 2 ||
+      (item.score || 0) >= 88 ||
+      (item.rank || 99) <= 10
+    );
+  }
   return false;
 };
 const isPostIdea = (item) => {
@@ -335,6 +343,26 @@ const rankedTrendItems = (items) =>
     { sports: 4, technology: 4, entertainment: 7, seasonal: 4, local: 3, business: 2, general: 7 },
     { maxConsecutive: 2 }
   );
+
+const homeLeadTrendItems = (items, limit = 10) => {
+  const primary = rankedTrendItems(items);
+  if (primary.length >= limit) return primary;
+  const seen = new Set(primary.map(trendClusterKey));
+  const fallback = sortBy(
+    items.filter((item) => {
+      if (!isMovingTopic(item) && !isCleanPublicTopic(item)) return false;
+      if (isPostIdea(item) || isSentenceLikeKeyword(item)) return false;
+      return !seen.has(trendClusterKey(item));
+    }),
+    publicHeatScore
+  );
+  return balancedTake(
+    [...primary, ...fallback],
+    20,
+    { sports: 4, technology: 4, entertainment: 7, seasonal: 4, local: 3, business: 3, general: 8 },
+    { maxConsecutive: 2 }
+  );
+};
 
 const evergreenItems = (items) =>
   balancedTake(
@@ -904,8 +932,7 @@ const renderHome = ({ site, links, latest }) => {
   document.title = site.siteName || "SNSトレンドバズフィード";
   const items = latest.items || [];
   const localObservations = latest.localObservations || [];
-  const mainTrends = rankedTrendItems(items);
-  const evergreen = evergreenItems(items);
+  const mainTrends = homeLeadTrendItems(items, 10);
   const growing = sortBy(items.filter(isMovingTopic), movingTopicScore).slice(0, 8);
   const heroTarget = document.querySelector("[data-home-hero]");
   const dashboardTarget = document.querySelector("[data-home-dashboard]");
@@ -923,7 +950,6 @@ const renderHome = ({ site, links, latest }) => {
 
   const heroStats = create("div", "hero-stats");
   heroStats.append(statTile("注目ワード", `${mainTrends.length}`, "実反応を優先"));
-  if (evergreen.length) heroStats.append(statTile("投稿ヒント", `${evergreen.length}`, "直近の投稿型"));
   heroStats.append(statTile("反応あり", `${growing.length}`, "前回比・複数面"));
   heroStats.append(statTile("最終更新", formatUpdated(latest.updatedAt), "Asia/Tokyo"));
   heroTarget.replaceChildren(heroCopy, heroStats);
@@ -943,16 +969,6 @@ const renderHome = ({ site, links, latest }) => {
   const leadList = create("div", "pill-list");
   leadList.replaceChildren(...mainTrends.slice(0, 10).map(trendPill));
   leadPanel.append(leadHead, leadList);
-
-  const evergreenPanel = evergreen.length ? create("section", "dashboard-panel") : null;
-  if (evergreenPanel) {
-    const evergreenHead = create("div", "panel-head");
-    evergreenHead.append(create("h2", "", "投稿ヒント"));
-    evergreenHead.append(create("span", "section-count", `${evergreen.length}件`));
-    const evergreenList = create("div", "compact-dashboard-list");
-    evergreenList.replaceChildren(...evergreen.slice(0, 6).map(simpleTrendRow));
-    evergreenPanel.append(evergreenHead, evergreenList);
-  }
 
   const categoryPanel = create("section", "dashboard-panel");
   const categoryHead = create("div", "panel-head");
@@ -989,7 +1005,6 @@ const renderHome = ({ site, links, latest }) => {
   const contextPanel = homeContextPanel(latest.context || {}, localObservations);
   const localPanel = localObservationShelf(localObservations, { home: true });
   const panels = [leadPanel, contextPanel, categoryPanel];
-  if (evergreenPanel) panels.push(evergreenPanel);
   panels.push(growingPanel, linksPanel, localPanel);
   dashboardTarget.replaceChildren(...panels);
   document.querySelector("[data-note]").textContent = site.dataRefreshNote || "観測スコアは独自指標です。";
