@@ -14,6 +14,10 @@ const OPEN_METEO_URL = "https://api.open-meteo.com/v1/forecast";
 const JAPAN_HOLIDAYS_CSV_URL = "https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv";
 const ANNIVERSARY_SOURCE_LIMIT = 20;
 const YAHOO_REALTIME_LIMIT = 28;
+const LOCAL_EVENT_FALLBACK_PATH = path.join(DATA_DIR, "local-events.json");
+const LOCAL_EVENT_SOURCE_PATH =
+  process.env.KAGOSHIMA_EVENT_PAYLOAD ||
+  "D:\\kagoshima-event-collector\\output\\calendar_payload.preview.json";
 const STANDALONE_WATCHLISTS = new Set(["sns_platform", "format"]);
 const BROAD_DISPLAY_TERMS = new Set([
   "tiktok",
@@ -716,6 +720,101 @@ const fetchHolidayContext = async (now) => {
   }
 };
 
+const dateOnly = (value) => {
+  if (!value) return "";
+  if (typeof value === "string") return value.slice(0, 10);
+  return String(value.date || value.dateTime || "").slice(0, 10);
+};
+
+const daysUntilIso = (dateValue, now) => {
+  const date = dateOnly(dateValue);
+  if (!date) return null;
+  return daysUntilIsoDate(date, now);
+};
+
+const parseCalendarSummary = (summary = "") => {
+  const rankCategory = summary.match(/^【([^/】]+)\/([^】]+)】/u);
+  const rank = rankCategory?.[1] || "";
+  const category = rankCategory?.[2] || "";
+  const withoutPrefix = summary.replace(/^【[^】]+】/u, "");
+  const [titlePart, venuePart] = withoutPrefix.split("｜");
+  return {
+    rank,
+    category,
+    title: (titlePart || summary).trim(),
+    venue: (venuePart || "").trim()
+  };
+};
+
+const eventPriority = (event) => {
+  const rankPoints = { S: 400, A: 300, B: 170, C: 40 }[event.rank] || 0;
+  const datePoints = Math.max(0, 130 - Math.abs(event.daysUntil || 0) * 4);
+  const colorPoints = event.colorId === "9" ? 30 : event.colorId === "10" ? 20 : 0;
+  return rankPoints + datePoints + colorPoints;
+};
+
+const compactEventTitle = (title = "") =>
+  String(title || "")
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/^【\d{4}年最新版】/u, "")
+    .replace(/第\d+回/u, "")
+    .replace(/[：:｜\s]+/g, "")
+    .slice(0, 28);
+
+const dedupeLocalEvents = (events) => {
+  const byKey = new Map();
+  for (const event of events) {
+    const key = `${event.startDate}:${compactEventTitle(event.title)}`;
+    const existing = byKey.get(key);
+    if (!existing || event.priority > existing.priority) byKey.set(key, event);
+  }
+  return [...byKey.values()];
+};
+
+const normalizeLocalEventPayload = (items = [], now) => {
+  const normalized = items
+    .map((item) => {
+      const parsed = parseCalendarSummary(item.summary || "");
+      const startDate = dateOnly(item.start);
+      const endDate = dateOnly(item.end);
+      const daysUntil = daysUntilIso(startDate, now);
+      const sourceUrl = item.extendedProperties?.private?.source_url || "";
+      const id = item.extendedProperties?.private?.event_hash || idFor(`${item.summary}-${startDate}`);
+      return {
+        id,
+        title: parsed.title,
+        category: parsed.category || "イベント",
+        rank: parsed.rank || "B",
+        venue: item.location || parsed.venue || "",
+        startDate,
+        endDate,
+        daysUntil,
+        colorId: String(item.colorId || "8"),
+        sourceUrl,
+        sourceName: item.extendedProperties?.private?.source_name || "",
+        summary: item.summary || "",
+        priority: 0
+      };
+    })
+    .filter((event) => event.title && event.startDate && event.daysUntil != null && event.daysUntil >= -1 && event.daysUntil <= 120)
+    .filter((event) => event.sourceName !== "manual-poc" && !/example\.local/u.test(event.sourceUrl || ""))
+    .map((event) => ({ ...event, priority: eventPriority(event) }))
+    .sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil);
+  return dedupeLocalEvents(normalized).sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil);
+};
+
+const readLocalEventContext = async (now) => {
+  const readSource = async (file) => normalizeLocalEventPayload(await readJson(file, []), now);
+  const sourceEvents = await readSource(LOCAL_EVENT_SOURCE_PATH);
+  const fallbackEvents = sourceEvents.length ? sourceEvents : await readSource(LOCAL_EVENT_FALLBACK_PATH);
+  const byId = new Map();
+  for (const event of fallbackEvents) {
+    if (!byId.has(event.id)) byId.set(event.id, event);
+  }
+  return [...byId.values()].sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil).slice(0, 48);
+};
+
 const buildDashboardContext = async (config, now, nowIso) => {
   const configuredAnniversaries = upcomingAnniversaries(config.anniversaries || [], now).map((item) => ({
     ...item,
@@ -727,7 +826,8 @@ const buildDashboardContext = async (config, now, nowIso) => {
     generatedAt: nowIso,
     weather: await fetchWeatherContext(config.weatherLocations || []),
     anniversaries: dedupeAnniversaries([...externalAnniversaries, ...configuredAnniversaries]).slice(0, 16),
-    holidays: await fetchHolidayContext(now)
+    holidays: await fetchHolidayContext(now),
+    localEvents: await readLocalEventContext(now)
   };
 };
 

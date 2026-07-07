@@ -1,0 +1,1212 @@
+[
+  {
+    "summary": "【A/PoC】鹿児島イベント動員ウォッチ PoC｜カクイックス交流センター",
+    "location": "カクイックス交流センター",
+    "description": "取得元: https://example.local/kagoshima-event-watch/poc\n分類: PoC\n動員ランク: A\n信頼度: 0.90\n備考: Initial local PoC row. Google接続前の手動サンプルです。",
+    "colorId": "8",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "b678b8d3b80ef53e",
+        "ical_uid": "kagoshima-event-b678b8d3b80ef53e@example.local",
+        "source_name": "manual-poc",
+        "source_url": "https://example.local/kagoshima-event-watch/poc",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:31:36"
+      }
+    },
+    "start": {
+      "date": "2026-07-18"
+    },
+    "end": {
+      "date": "2026-07-19"
+    }
+  },
+  {
+    "summary": "【S/観光】【2026年最新版】かごしま錦江湾サマーナイト大花火大会｜中薩摩エリア",
+    "location": "中薩摩エリア",
+    "description": "取得元: https://www.kagoshima-kankou.com/event/53769\n分類: 観光\n動員ランク: S\n信頼度: 0.65\n備考: かごしまの旅イベント一覧から自動抽出 / 公式詳細: かごしま錦江湾サマーナイト大花火 かごしま錦江湾サマーナイト大花火公式X(旧Twitter)",
+    "colorId": "9",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "c967f596245b8795",
+        "ical_uid": "kagoshima-event-c967f596245b8795@example.local",
+        "source_name": "kagoshima_kankou",
+        "source_url": "https://www.kagoshima-kankou.com/event/53769",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:31:56"
+      }
+    },
+    "start": {
+      "date": "2026-08-29"
+    },
+    "end": {
+      "date": "2026-08-30"
+    }
+  },
+  {
+    "summary": "【S/観光】【2026】桜島と芸術花火｜中薩摩エリア",
+    "location": "中薩摩エリア",
+    "description": "取得元: https://www.kagoshima-kankou.com/event/70058\n分類: 観光\n動員ランク: S\n信頼度: 0.65\n備考: かごしまの旅イベント一覧から自動抽出 / 公式詳細: 公式サイトを見る チケットについて 特集:鹿児島のシンボル・桜島をまるごと楽しもう",
+    "colorId": "9",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "24a27f3ad208eae1",
+        "ical_uid": "kagoshima-event-24a27f3ad208eae1@example.local",
+        "source_name": "kagoshima_kankou",
+        "source_url": "https://www.kagoshima-kankou.com/event/70058",
+        "sheet_row_id": "",
+        "last_seen_at": ""
+      }
+    },
+    "start": {
+      "date": "2026-04-25"
+    },
+    "end": {
+      "date": "2026-04-26"
+    }
+  },
+  {
+    "summary": "【A/コンサート】STARTS presents MISIA 星空のライヴXIII GRAND HORIZON｜宝山ホール",
+    "location": "宝山ホール",
+    "description": "取得元: https://www.houzanhall.com/event/15909/\n分類: コンサート\n動員ランク: A\n信頼度: 0.75\n備考: 宝山ホール公式イベントカレンダーから自動抽出。駐車場なし、公共交通利用推奨。",
+    "colorId": "10",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "2385d7aed99d0800",
+        "ical_uid": "kagoshima-event-2385d7aed99d0800@example.local",
+        "source_name": "houzan_hall",
+        "source_url": "https://www.houzanhall.com/event/15909/",
+        "sheet_row_id": "",
+        "last_seen_at": ""
+      }
+    },
+    "start": {
+      "date": "2026-07-02"
+    },
+    "end": {
+      "date": "2026-07-03"
+    }
+  },
+  {
+    "summary": "【A/コンサート】沢田研二 2026 LIVE 「freedom 安堵 courage」 Dr:古田たかし Ba:富倉安生 Gu:長田進 Gu:真壁陽平 Key:斎藤有太｜宝山ホール",
+    "location": "宝山ホール",
+    "description": "取得元: https://www.houzanhall.com/event/15972/\n分類: コンサート\n動員ランク: A\n信頼度: 0.75\n備考: 宝山ホール公式イベントカレンダーから自動抽出。駐車場なし、公共交通利用推奨。",
+    "colorId": "10",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "d0ade86a907a0a6d",
+        "ical_uid": "kagoshima-event-d0ade86a907a0a6d@example.local",
+        "source_name": "houzan_hall",
+        "source_url": "https://www.houzanhall.com/event/15972/",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:04"
+      }
+    },
+    "start": {
+      "date": "2026-09-05"
+    },
+    "end": {
+      "date": "2026-09-06"
+    }
+  },
+  {
+    "summary": "【A/コンサート】スターダスト☆レビュー 45周年ツアー2025~27 「星屑冒険王」｜宝山ホール",
+    "location": "宝山ホール",
+    "description": "取得元: https://www.houzanhall.com/event/16315/\n分類: コンサート\n動員ランク: A\n信頼度: 0.75\n備考: 宝山ホール公式イベントカレンダーから自動抽出。駐車場なし、公共交通利用推奨。",
+    "colorId": "10",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "bf74cedc4ea3eef9",
+        "ical_uid": "kagoshima-event-bf74cedc4ea3eef9@example.local",
+        "source_name": "houzan_hall",
+        "source_url": "https://www.houzanhall.com/event/16315/",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:04"
+      }
+    },
+    "start": {
+      "date": "2026-10-31"
+    },
+    "end": {
+      "date": "2026-11-01"
+    }
+  },
+  {
+    "summary": "【A/公演】創立45周年記念 鼓童 ワン・アース・ツアー2026「遥か―」｜宝山ホール",
+    "location": "宝山ホール",
+    "description": "取得元: https://kagoshima-onkyo.rgr.jp/organized/12364/\n分類: 公演\n動員ランク: A\n信頼度: 0.72\n備考: 鹿児島音協公演情報から自動抽出",
+    "colorId": "10",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "0b46557f0f0c56ae",
+        "ical_uid": "kagoshima-event-0b46557f0f0c56ae@example.local",
+        "source_name": "kagoshima_onkyo",
+        "source_url": "https://kagoshima-onkyo.rgr.jp/organized/12364/",
+        "sheet_row_id": "",
+        "last_seen_at": ""
+      }
+    },
+    "start": {
+      "date": "2026-07-05"
+    },
+    "end": {
+      "date": "2026-07-06"
+    }
+  },
+  {
+    "summary": "【A/公演】加藤登紀子 加藤登紀子コンサート2026 明日への讃歌 ジーナの生きた100年｜宝山ホール",
+    "location": "宝山ホール",
+    "description": "取得元: https://kagoshima-onkyo.rgr.jp/organized/12425/\n分類: 公演\n動員ランク: A\n信頼度: 0.72\n備考: 鹿児島音協公演情報から自動抽出",
+    "colorId": "10",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "2192788f61c5426b",
+        "ical_uid": "kagoshima-event-2192788f61c5426b@example.local",
+        "source_name": "kagoshima_onkyo",
+        "source_url": "https://kagoshima-onkyo.rgr.jp/organized/12425/",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:23"
+      }
+    },
+    "start": {
+      "date": "2026-07-26"
+    },
+    "end": {
+      "date": "2026-07-27"
+    }
+  },
+  {
+    "summary": "【A/公演】第47回霧島国際音楽祭2026 キリシマ祝祭管弦楽団公演｜宝山ホール",
+    "location": "宝山ホール",
+    "description": "取得元: https://kagoshima-onkyo.rgr.jp/ticket/12571/\n分類: 公演\n動員ランク: A\n信頼度: 0.72\n備考: 鹿児島音協公演情報から自動抽出",
+    "colorId": "10",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "31cea31a6514a957",
+        "ical_uid": "kagoshima-event-31cea31a6514a957@example.local",
+        "source_name": "kagoshima_onkyo",
+        "source_url": "https://kagoshima-onkyo.rgr.jp/ticket/12571/",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:23"
+      }
+    },
+    "start": {
+      "date": "2026-08-05"
+    },
+    "end": {
+      "date": "2026-08-06"
+    }
+  },
+  {
+    "summary": "【A/公演】ディズニー・ワールド・ビート 2026 鹿児島公演 ディズニー・ワールド・ビート 2026 5th Anniversary Tour｜宝山ホール",
+    "location": "宝山ホール",
+    "description": "取得元: https://kagoshima-onkyo.rgr.jp/organized/12175/\n分類: 公演\n動員ランク: A\n信頼度: 0.72\n備考: 鹿児島音協公演情報から自動抽出",
+    "colorId": "10",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "c299d5d44811dad1",
+        "ical_uid": "kagoshima-event-c299d5d44811dad1@example.local",
+        "source_name": "kagoshima_onkyo",
+        "source_url": "https://kagoshima-onkyo.rgr.jp/organized/12175/",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:23"
+      }
+    },
+    "start": {
+      "date": "2026-08-23"
+    },
+    "end": {
+      "date": "2026-08-24"
+    }
+  },
+  {
+    "summary": "【A/公演】沢田研二 沢田研二 2026 LIVE 「freedom 安堵 courage」｜宝山ホール",
+    "location": "宝山ホール",
+    "description": "取得元: https://kagoshima-onkyo.rgr.jp/organized/12441/\n分類: 公演\n動員ランク: A\n信頼度: 0.72\n備考: 鹿児島音協公演情報から自動抽出",
+    "colorId": "10",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "cf340e49fa400824",
+        "ical_uid": "kagoshima-event-cf340e49fa400824@example.local",
+        "source_name": "kagoshima_onkyo",
+        "source_url": "https://kagoshima-onkyo.rgr.jp/organized/12441/",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:23"
+      }
+    },
+    "start": {
+      "date": "2026-09-05"
+    },
+    "end": {
+      "date": "2026-09-06"
+    }
+  },
+  {
+    "summary": "【A/公演】イルカ イルカ55周年コンサート ~あいのたね♥まこう!~｜宝山ホール",
+    "location": "宝山ホール",
+    "description": "取得元: https://kagoshima-onkyo.rgr.jp/organized/12557/\n分類: 公演\n動員ランク: A\n信頼度: 0.72\n備考: 鹿児島音協公演情報から自動抽出",
+    "colorId": "10",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "e6434451f2ca6dc9",
+        "ical_uid": "kagoshima-event-e6434451f2ca6dc9@example.local",
+        "source_name": "kagoshima_onkyo",
+        "source_url": "https://kagoshima-onkyo.rgr.jp/organized/12557/",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:23"
+      }
+    },
+    "start": {
+      "date": "2026-10-10"
+    },
+    "end": {
+      "date": "2026-10-11"
+    }
+  },
+  {
+    "summary": "【A/アリーナイベント】★第54回全日本美容技術選手権大会 プレリハーサル｜西原商会アリーナ",
+    "location": "西原商会アリーナ",
+    "description": "取得元: https://nishihara-shokai-arena.jp/events/%e2%98%85%e7%ac%ac54%e5%9b%9e%e5%85%a8%e6%97%a5%e6%9c%ac%e7%be%8e%e5%ae%b9%e6%8a%80%e8%a1%93%e9%81%b8%e6%89%8b%e6%a8%a9%e5%a4%a7%e4%bc%9a-%e3%83%97%e3%83%ac%e3%83%aa%e3%83%8f%e3%83%bc%e3%82%b5\n分類: アリーナイベント\n動員ランク: A\n信頼度: 0.78\n備考: 西原商会アリーナ公式イベント一覧から自動抽出。★印は臨時駐車場使用イベントの可能性。",
+    "colorId": "6",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "9e19e8b8cd6b71f4",
+        "ical_uid": "kagoshima-event-9e19e8b8cd6b71f4@example.local",
+        "source_name": "nishihara_arena",
+        "source_url": "https://nishihara-shokai-arena.jp/events/%e2%98%85%e7%ac%ac54%e5%9b%9e%e5%85%a8%e6%97%a5%e6%9c%ac%e7%be%8e%e5%ae%b9%e6%8a%80%e8%a1%93%e9%81%b8%e6%89%8b%e6%a8%a9%e5%a4%a7%e4%bc%9a-%e3%83%97%e3%83%ac%e3%83%aa%e3%83%8f%e3%83%bc%e3%82%b5",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:20"
+      }
+    },
+    "start": {
+      "date": "2026-09-07"
+    },
+    "end": {
+      "date": "2026-09-08"
+    }
+  },
+  {
+    "summary": "【A/アリーナイベント】鹿児島県総合体育大会弓道競技大会｜西原商会アリーナ",
+    "location": "西原商会アリーナ",
+    "description": "取得元: https://nishihara-shokai-arena.jp/events/%e9%b9%bf%e5%85%90%e5%b3%b6%e7%9c%8c%e7%b7%8f%e5%90%88%e4%bd%93%e8%82%b2%e5%a4%a7%e4%bc%9a%e5%bc%93%e9%81%93%e7%ab%b6%e6%8a%80%e5%a4%a7%e4%bc%9a\n分類: アリーナイベント\n動員ランク: A\n信頼度: 0.78\n備考: 西原商会アリーナ公式イベント一覧から自動抽出。★印は臨時駐車場使用イベントの可能性。",
+    "colorId": "6",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "30fbfcdf122c9229",
+        "ical_uid": "kagoshima-event-30fbfcdf122c9229@example.local",
+        "source_name": "nishihara_arena",
+        "source_url": "https://nishihara-shokai-arena.jp/events/%e9%b9%bf%e5%85%90%e5%b3%b6%e7%9c%8c%e7%b7%8f%e5%90%88%e4%bd%93%e8%82%b2%e5%a4%a7%e4%bc%9a%e5%bc%93%e9%81%93%e7%ab%b6%e6%8a%80%e5%a4%a7%e4%bc%9a",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:20"
+      }
+    },
+    "start": {
+      "date": "2026-07-23"
+    },
+    "end": {
+      "date": "2026-07-25"
+    }
+  },
+  {
+    "summary": "【A/アリーナイベント】★2026 商品展示会イベント｜西原商会アリーナ",
+    "location": "西原商会アリーナ",
+    "description": "取得元: https://nishihara-shokai-arena.jp/events/%e2%98%852026-%e5%95%86%e5%93%81%e5%b1%95%e7%a4%ba%e4%bc%9a%e3%82%a4%e3%83%99%e3%83%b3%e3%83%88\n分類: アリーナイベント\n動員ランク: A\n信頼度: 0.78\n備考: 西原商会アリーナ公式イベント一覧から自動抽出。★印は臨時駐車場使用イベントの可能性。",
+    "colorId": "3",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "dd99f2456599ef94",
+        "ical_uid": "kagoshima-event-dd99f2456599ef94@example.local",
+        "source_name": "nishihara_arena",
+        "source_url": "https://nishihara-shokai-arena.jp/events/%e2%98%852026-%e5%95%86%e5%93%81%e5%b1%95%e7%a4%ba%e4%bc%9a%e3%82%a4%e3%83%99%e3%83%b3%e3%83%88",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:20"
+      }
+    },
+    "start": {
+      "date": "2026-06-25"
+    },
+    "end": {
+      "date": "2026-06-28"
+    }
+  },
+  {
+    "summary": "【A/アリーナイベント】★2026鹿児島どてらい市｜西原商会アリーナ",
+    "location": "西原商会アリーナ",
+    "description": "取得元: https://nishihara-shokai-arena.jp/events/%e2%98%852026%e9%b9%bf%e5%85%90%e5%b3%b6%e3%81%a9%e3%81%a6%e3%82%89%e3%81%84%e5%b8%82\n分類: アリーナイベント\n動員ランク: A\n信頼度: 0.78\n備考: 西原商会アリーナ公式イベント一覧から自動抽出。★印は臨時駐車場使用イベントの可能性。",
+    "colorId": "6",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "15fa061363316775",
+        "ical_uid": "kagoshima-event-15fa061363316775@example.local",
+        "source_name": "nishihara_arena",
+        "source_url": "https://nishihara-shokai-arena.jp/events/%e2%98%852026%e9%b9%bf%e5%85%90%e5%b3%b6%e3%81%a9%e3%81%a6%e3%82%89%e3%81%84%e5%b8%82",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:20"
+      }
+    },
+    "start": {
+      "date": "2026-06-25"
+    },
+    "end": {
+      "date": "2026-06-28"
+    }
+  },
+  {
+    "summary": "【A/アリーナイベント】★第76回全九州高等学校柔道競技大会｜西原商会アリーナ",
+    "location": "西原商会アリーナ",
+    "description": "取得元: https://nishihara-shokai-arena.jp/events/%e2%98%85%e7%ac%ac%ef%bc%97%ef%bc%96%e5%9b%9e%e5%85%a8%e4%b9%9d%e5%b7%9e%e9%ab%98%e7%ad%89%e5%ad%a6%e6%a0%a1%e6%9f%94%e9%81%93%e7%ab%b6%e6%8a%80%e5%a4%a7%e4%bc%9a\n分類: アリーナイベント\n動員ランク: A\n信頼度: 0.78\n備考: 西原商会アリーナ公式イベント一覧から自動抽出。★印は臨時駐車場使用イベントの可能性。",
+    "colorId": "6",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "2c2ae72c3f445c9d",
+        "ical_uid": "kagoshima-event-2c2ae72c3f445c9d@example.local",
+        "source_name": "nishihara_arena",
+        "source_url": "https://nishihara-shokai-arena.jp/events/%e2%98%85%e7%ac%ac%ef%bc%97%ef%bc%96%e5%9b%9e%e5%85%a8%e4%b9%9d%e5%b7%9e%e9%ab%98%e7%ad%89%e5%ad%a6%e6%a0%a1%e6%9f%94%e9%81%93%e7%ab%b6%e6%8a%80%e5%a4%a7%e4%bc%9a",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:20"
+      }
+    },
+    "start": {
+      "date": "2026-06-19"
+    },
+    "end": {
+      "date": "2026-06-22"
+    }
+  },
+  {
+    "summary": "【S/鹿児島市イベント】おぎおんさぁ｜天文館周辺",
+    "location": "天文館周辺",
+    "description": "取得元: https://www.kagoshima-yokanavi.jp/event/10073\n分類: 鹿児島市イベント\n動員ランク: S\n信頼度: 0.74\n備考: かごしま市観光ナビから自動抽出。開催日表記: 宵祭 2026年7月3日(金)・4日(土) 本祭 2026年7月5日(日)",
+    "colorId": "11",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "0befebb523773a0b",
+        "ical_uid": "kagoshima-event-0befebb523773a0b@example.local",
+        "source_name": "kagoshima_yokanavi",
+        "source_url": "https://www.kagoshima-yokanavi.jp/event/10073",
+        "sheet_row_id": "",
+        "last_seen_at": ""
+      }
+    },
+    "start": {
+      "date": "2026-07-03"
+    },
+    "end": {
+      "date": "2026-07-06"
+    }
+  },
+  {
+    "summary": "【A/鹿児島市イベント】動き出す妖怪展｜",
+    "location": "",
+    "description": "取得元: https://www.kagoshima-yokanavi.jp/event/20367\n分類: 鹿児島市イベント\n動員ランク: A\n信頼度: 0.74\n備考: かごしま市観光ナビから自動抽出。開催日表記: 2026年7月3日(金)~8月31日(月)《休館日》7/21、8/25、毎週月曜日(祝日と最終日を除く)",
+    "colorId": "3",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "84b5c58ab7788e1c",
+        "ical_uid": "kagoshima-event-84b5c58ab7788e1c@example.local",
+        "source_name": "kagoshima_yokanavi",
+        "source_url": "https://www.kagoshima-yokanavi.jp/event/20367",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:01"
+      }
+    },
+    "start": {
+      "date": "2026-07-03"
+    },
+    "end": {
+      "date": "2026-09-01"
+    }
+  },
+  {
+    "summary": "【A/鹿児島市イベント】照國神社 六月灯｜照國神社",
+    "location": "照國神社",
+    "description": "取得元: https://www.kagoshima-yokanavi.jp/event/20370\n分類: 鹿児島市イベント\n動員ランク: A\n信頼度: 0.74\n備考: かごしま市観光ナビから自動抽出。開催日表記: 2026年7月15日(水)、7月16日(木)",
+    "colorId": "11",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "adbc922712a5e692",
+        "ical_uid": "kagoshima-event-adbc922712a5e692@example.local",
+        "source_name": "kagoshima_yokanavi",
+        "source_url": "https://www.kagoshima-yokanavi.jp/event/20370",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:01"
+      }
+    },
+    "start": {
+      "date": "2026-07-15"
+    },
+    "end": {
+      "date": "2026-07-17"
+    }
+  },
+  {
+    "summary": "【A/鹿児島市イベント】南洲神社 六月灯｜南洲神社",
+    "location": "南洲神社",
+    "description": "取得元: https://www.kagoshima-yokanavi.jp/event/20369\n分類: 鹿児島市イベント\n動員ランク: A\n信頼度: 0.74\n備考: かごしま市観光ナビから自動抽出。開催日表記: 2026年7月17日(金)・7月18日(土)",
+    "colorId": "11",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "076c8db588c8625b",
+        "ical_uid": "kagoshima-event-076c8db588c8625b@example.local",
+        "source_name": "kagoshima_yokanavi",
+        "source_url": "https://www.kagoshima-yokanavi.jp/event/20369",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:01"
+      }
+    },
+    "start": {
+      "date": "2026-07-17"
+    },
+    "end": {
+      "date": "2026-07-19"
+    }
+  },
+  {
+    "summary": "【A/鹿児島市イベント】曽我どんの傘焼き｜甲突川河畔",
+    "location": "甲突川河畔",
+    "description": "取得元: https://www.kagoshima-yokanavi.jp/event/10018\n分類: 鹿児島市イベント\n動員ランク: A\n信頼度: 0.74\n備考: かごしま市観光ナビから自動抽出。開催日表記: 2026年7月19日(日)",
+    "colorId": "11",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "0b0bd6c92f2a41fb",
+        "ical_uid": "kagoshima-event-0b0bd6c92f2a41fb@example.local",
+        "source_name": "kagoshima_yokanavi",
+        "source_url": "https://www.kagoshima-yokanavi.jp/event/10018",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:01"
+      }
+    },
+    "start": {
+      "date": "2026-07-19"
+    },
+    "end": {
+      "date": "2026-07-20"
+    }
+  },
+  {
+    "summary": "【A/鹿児島市イベント】錦江湾ナイトクルーズ｜鹿児島港本港区",
+    "location": "鹿児島港本港区",
+    "description": "取得元: https://www.kagoshima-yokanavi.jp/event/20250\n分類: 鹿児島市イベント\n動員ランク: A\n信頼度: 0.74\n備考: かごしま市観光ナビから自動抽出。開催日表記: 1回目:2026年7月25日(土) 19:00〜21:00 (700名) 2回目:2026年8月22日(土) 19:00〜21:00 (700名) 3回目:2026年8月29日(土) 19:00〜21:00 (800名)",
+    "colorId": "9",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "03b1d7b734c43819",
+        "ical_uid": "kagoshima-event-03b1d7b734c43819@example.local",
+        "source_name": "kagoshima_yokanavi",
+        "source_url": "https://www.kagoshima-yokanavi.jp/event/20250",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:01"
+      }
+    },
+    "start": {
+      "date": "2026-07-25"
+    },
+    "end": {
+      "date": "2026-08-30"
+    }
+  },
+  {
+    "summary": "【S/鹿児島市イベント】【2026年最新版】かごしま錦江湾サマーナイト大花火大会｜鹿児島港本港区",
+    "location": "鹿児島港本港区",
+    "description": "取得元: https://www.kagoshima-yokanavi.jp/event/10076\n分類: 鹿児島市イベント\n動員ランク: S\n信頼度: 0.74\n備考: かごしま市観光ナビから自動抽出。開催日表記: 2026年8月29日(土)",
+    "colorId": "9",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "4080b941efe14537",
+        "ical_uid": "kagoshima-event-4080b941efe14537@example.local",
+        "source_name": "kagoshima_yokanavi",
+        "source_url": "https://www.kagoshima-yokanavi.jp/event/10076",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:01"
+      }
+    },
+    "start": {
+      "date": "2026-08-29"
+    },
+    "end": {
+      "date": "2026-08-30"
+    }
+  },
+  {
+    "summary": "【S/鹿児島市イベント】【2026年最新版】おはら祭｜天文館周辺",
+    "location": "天文館周辺",
+    "description": "取得元: https://www.kagoshima-yokanavi.jp/event/10001\n分類: 鹿児島市イベント\n動員ランク: S\n信頼度: 0.74\n備考: かごしま市観光ナビから自動抽出。開催日表記: 2026年11月2日(月)~2026年11月3日(火・祝)",
+    "colorId": "11",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "0b6a185ff72788b9",
+        "ical_uid": "kagoshima-event-0b6a185ff72788b9@example.local",
+        "source_name": "kagoshima_yokanavi",
+        "source_url": "https://www.kagoshima-yokanavi.jp/event/10001",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:01"
+      }
+    },
+    "start": {
+      "date": "2026-11-02"
+    },
+    "end": {
+      "date": "2026-11-04"
+    }
+  },
+  {
+    "summary": "【S/観光】2026 あいら市花火大会 あいら市花火大会:｜霧島・姶良エリア",
+    "location": "霧島・姶良エリア",
+    "description": "取得元: https://www.kagoshima-kankou.com/event/52759\n分類: 観光\n動員ランク: S\n信頼度: 0.65\n備考: かごしまの旅イベント一覧から自動抽出 / 公式詳細: 公式サイトを見る 姶良市商工会青年部インスタグラム",
+    "colorId": "9",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "8f69838ca420acfa",
+        "ical_uid": "kagoshima-event-8f69838ca420acfa@example.local",
+        "source_name": "kagoshima_kankou",
+        "source_url": "https://www.kagoshima-kankou.com/event/52759",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:31:56"
+      }
+    },
+    "start": {
+      "date": "2026-10-11"
+    },
+    "end": {
+      "date": "2026-10-12"
+    }
+  },
+  {
+    "summary": "【A/県イベント】屋久島環境文化村中核施設開館30周年記念シンポジウム｜",
+    "location": "",
+    "description": "取得元: https://www.pref.kagoshima.jp/ad04/kurashi-kankyo/kankyo/yakushima/30th-symposium.html\n分類: 県イベント\n動員ランク: A\n信頼度: 0.55\n備考: 鹿児島県公式イベントカレンダーから自動抽出",
+    "colorId": "8",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "a92e026fc78f204c",
+        "ical_uid": "kagoshima-event-a92e026fc78f204c@example.local",
+        "source_name": "kagoshima_pref",
+        "source_url": "https://www.pref.kagoshima.jp/ad04/kurashi-kankyo/kankyo/yakushima/30th-symposium.html",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:31:59"
+      }
+    },
+    "start": {
+      "date": "2026-07-25"
+    },
+    "end": {
+      "date": "2026-07-26"
+    }
+  },
+  {
+    "summary": "【A/式典・大会】第36回グレンツェンピアノコンクール 鹿児島予選｜宝山ホール",
+    "location": "宝山ホール",
+    "description": "取得元: https://www.houzanhall.com/event/16121/\n分類: 式典・大会\n動員ランク: A\n信頼度: 0.75\n備考: 宝山ホール公式イベントカレンダーから自動抽出。駐車場なし、公共交通利用推奨。",
+    "colorId": "10",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "d2a7694289987cb1",
+        "ical_uid": "kagoshima-event-d2a7694289987cb1@example.local",
+        "source_name": "houzan_hall",
+        "source_url": "https://www.houzanhall.com/event/16121/",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:04"
+      }
+    },
+    "start": {
+      "date": "2026-07-28"
+    },
+    "end": {
+      "date": "2026-07-29"
+    }
+  },
+  {
+    "summary": "【A/アリーナイベント】第46回全国競技かるた鹿児島大会｜西原商会アリーナ",
+    "location": "西原商会アリーナ",
+    "description": "取得元: https://nishihara-shokai-arena.jp/events/%e7%ac%ac46%e5%9b%9e%e5%85%a8%e5%9b%bd%e7%ab%b6%e6%8a%80%e3%81%8b%e3%82%8b%e3%81%9f%e9%b9%bf%e5%85%90%e5%b3%b6%e5%a4%a7%e4%bc%9a\n分類: アリーナイベント\n動員ランク: A\n信頼度: 0.78\n備考: 西原商会アリーナ公式イベント一覧から自動抽出。★印は臨時駐車場使用イベントの可能性。",
+    "colorId": "6",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "4679968240aba8b8",
+        "ical_uid": "kagoshima-event-4679968240aba8b8@example.local",
+        "source_name": "nishihara_arena",
+        "source_url": "https://nishihara-shokai-arena.jp/events/%e7%ac%ac46%e5%9b%9e%e5%85%a8%e5%9b%bd%e7%ab%b6%e6%8a%80%e3%81%8b%e3%82%8b%e3%81%9f%e9%b9%bf%e5%85%90%e5%b3%b6%e5%a4%a7%e4%bc%9a",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:20"
+      }
+    },
+    "start": {
+      "date": "2026-08-16"
+    },
+    "end": {
+      "date": "2026-08-17"
+    }
+  },
+  {
+    "summary": "【A/学会・会議】令和8年度 日事連九州・沖縄ブロック協議会青年部会協議会｜カクイックス交流センター 大ホール",
+    "location": "カクイックス交流センター 大ホール",
+    "description": "取得元: https://www.kagoshima-pac.jp/mc-events/%e4%bb%a4%e5%92%8c%ef%bc%98%e5%b9%b4%e5%ba%a6%e3%80%80%e6%97%a5%e4%ba%8b%e9%80%a3%e4%b9%9d%e5%b7%9e%e3%83%bb%e6%b2%96%e7%b8%84%e3%83%96%e3%83%ad%e3%83%83%e3%82%af%e5%8d%94%e8%ad%b0%e4%bc%9a%e9%9d%92/?mc_id=1844\n分類: 学会・会議\n動員ランク: A\n信頼度: 0.76\n予定時刻: 14:00-15:30\n備考: カクイックス交流センター公式イベントカレンダーJSON-LDから自動抽出",
+    "colorId": "7",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "c3778003ce3213ef",
+        "ical_uid": "kagoshima-event-c3778003ce3213ef@example.local",
+        "source_name": "kagoshima_pac",
+        "source_url": "https://www.kagoshima-pac.jp/mc-events/%e4%bb%a4%e5%92%8c%ef%bc%98%e5%b9%b4%e5%ba%a6%e3%80%80%e6%97%a5%e4%ba%8b%e9%80%a3%e4%b9%9d%e5%b7%9e%e3%83%bb%e6%b2%96%e7%b8%84%e3%83%96%e3%83%ad%e3%83%83%e3%82%af%e5%8d%94%e8%ad%b0%e4%bc%9a%e9%9d%92/?mc_id=1844",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:25"
+      }
+    },
+    "start": {
+      "date": "2026-07-02"
+    },
+    "end": {
+      "date": "2026-07-03"
+    }
+  },
+  {
+    "summary": "【A/学会・会議】第3回茶の湯にふれる市民講座｜カクイックス交流センター 大ホール",
+    "location": "カクイックス交流センター 大ホール",
+    "description": "取得元: https://www.kagoshima-pac.jp/mc-events/%e7%ac%ac3%e5%9b%9e%e8%8c%b6%e3%81%ae%e6%b9%af%e3%81%ab%e3%81%b5%e3%82%8c%e3%82%8b%e5%b8%82%e6%b0%91%e8%ac%9b%e5%ba%a7/?mc_id=1845\n分類: 学会・会議\n動員ランク: A\n信頼度: 0.76\n予定時刻: 14:00-15:30\n備考: カクイックス交流センター公式イベントカレンダーJSON-LDから自動抽出",
+    "colorId": "7",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "84f3af54fbc2508c",
+        "ical_uid": "kagoshima-event-84f3af54fbc2508c@example.local",
+        "source_name": "kagoshima_pac",
+        "source_url": "https://www.kagoshima-pac.jp/mc-events/%e7%ac%ac3%e5%9b%9e%e8%8c%b6%e3%81%ae%e6%b9%af%e3%81%ab%e3%81%b5%e3%82%8c%e3%82%8b%e5%b8%82%e6%b0%91%e8%ac%9b%e5%ba%a7/?mc_id=1845",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:25"
+      }
+    },
+    "start": {
+      "date": "2026-07-05"
+    },
+    "end": {
+      "date": "2026-07-06"
+    }
+  },
+  {
+    "summary": "【A/学会・会議】第45回比較眼科学会年次大会｜カクイックス交流センター(かごしま県民交流センター)",
+    "location": "カクイックス交流センター(かごしま県民交流センター)",
+    "description": "取得元: https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=\n分類: 学会・会議\n動員ランク: A\n信頼度: 0.82\n備考: 医学書院 学会・研究会カレンダー（JAPIC情報提供）から自動抽出",
+    "colorId": "7",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "df5df1d68271491a",
+        "ical_uid": "kagoshima-event-df5df1d68271491a@example.local",
+        "source_name": "igaku_shoin_medical",
+        "source_url": "https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:46"
+      }
+    },
+    "start": {
+      "date": "2026-08-29"
+    },
+    "end": {
+      "date": "2026-08-30"
+    }
+  },
+  {
+    "summary": "【A/学会・会議】第39回鹿児島県母性衛生学会総会ならびに学術集会｜鹿児島県医師会館",
+    "location": "鹿児島県医師会館",
+    "description": "取得元: https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=\n分類: 学会・会議\n動員ランク: A\n信頼度: 0.82\n備考: 医学書院 学会・研究会カレンダー（JAPIC情報提供）から自動抽出",
+    "colorId": "7",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "fc6ed921a0b9b3e7",
+        "ical_uid": "kagoshima-event-fc6ed921a0b9b3e7@example.local",
+        "source_name": "igaku_shoin_medical",
+        "source_url": "https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:46"
+      }
+    },
+    "start": {
+      "date": "2026-08-29"
+    },
+    "end": {
+      "date": "2026-08-30"
+    }
+  },
+  {
+    "summary": "【A/学会・会議】第72回日本リウマチ学会九州・沖縄支部学術集会｜鹿児島県医師会館",
+    "location": "鹿児島県医師会館",
+    "description": "取得元: https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=\n分類: 学会・会議\n動員ランク: A\n信頼度: 0.82\n備考: 医学書院 学会・研究会カレンダー（JAPIC情報提供）から自動抽出",
+    "colorId": "7",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "8fa83695045dcbc7",
+        "ical_uid": "kagoshima-event-8fa83695045dcbc7@example.local",
+        "source_name": "igaku_shoin_medical",
+        "source_url": "https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:46"
+      }
+    },
+    "start": {
+      "date": "2026-09-05"
+    },
+    "end": {
+      "date": "2026-09-06"
+    }
+  },
+  {
+    "summary": "【A/学会・会議】第29回日本IVF学会学術集会 in 鹿児島｜SHIROYAMA HOTEL kagoshima(城山ホテル鹿児島)",
+    "location": "SHIROYAMA HOTEL kagoshima(城山ホテル鹿児島)",
+    "description": "取得元: https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=\n分類: 学会・会議\n動員ランク: A\n信頼度: 0.82\n備考: 医学書院 学会・研究会カレンダー（JAPIC情報提供）から自動抽出",
+    "colorId": "7",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "b426f3457309ad50",
+        "ical_uid": "kagoshima-event-b426f3457309ad50@example.local",
+        "source_name": "igaku_shoin_medical",
+        "source_url": "https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:46"
+      }
+    },
+    "start": {
+      "date": "2026-09-26"
+    },
+    "end": {
+      "date": "2026-09-27"
+    }
+  },
+  {
+    "summary": "【A/学会・会議】The 18th Asian Society of Magnetic Resonance in Medicine(ASMRM2026)｜SHIROYAMA HOTEL kagoshima(城山ホテル鹿児島)",
+    "location": "SHIROYAMA HOTEL kagoshima(城山ホテル鹿児島)",
+    "description": "取得元: https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=\n分類: 学会・会議\n動員ランク: A\n信頼度: 0.82\n備考: 医学書院 学会・研究会カレンダー（JAPIC情報提供）から自動抽出",
+    "colorId": "7",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "8003bb5837cf1318",
+        "ical_uid": "kagoshima-event-8003bb5837cf1318@example.local",
+        "source_name": "igaku_shoin_medical",
+        "source_url": "https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:46"
+      }
+    },
+    "start": {
+      "date": "2026-10-16"
+    },
+    "end": {
+      "date": "2026-10-17"
+    }
+  },
+  {
+    "summary": "【A/学会・会議】JSMRM2026 第54回日本磁気共鳴医学会大会｜SHIROYAMA HOTEL kagoshima(城山ホテル鹿児島)",
+    "location": "SHIROYAMA HOTEL kagoshima(城山ホテル鹿児島)",
+    "description": "取得元: https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=\n分類: 学会・会議\n動員ランク: A\n信頼度: 0.82\n備考: 医学書院 学会・研究会カレンダー（JAPIC情報提供）から自動抽出",
+    "colorId": "7",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "8b6905ea83362572",
+        "ical_uid": "kagoshima-event-8b6905ea83362572@example.local",
+        "source_name": "igaku_shoin_medical",
+        "source_url": "https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:46"
+      }
+    },
+    "start": {
+      "date": "2026-10-16"
+    },
+    "end": {
+      "date": "2026-10-17"
+    }
+  },
+  {
+    "summary": "【A/学会・会議】第30回日本心療内科学会総会・学術大会｜カクイックス交流センター(かごしま県民交流センター)",
+    "location": "カクイックス交流センター(かごしま県民交流センター)",
+    "description": "取得元: https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=\n分類: 学会・会議\n動員ランク: A\n信頼度: 0.82\n備考: 医学書院 学会・研究会カレンダー（JAPIC情報提供）から自動抽出",
+    "colorId": "7",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "a2f615a1eae8f063",
+        "ical_uid": "kagoshima-event-a2f615a1eae8f063@example.local",
+        "source_name": "igaku_shoin_medical",
+        "source_url": "https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:46"
+      }
+    },
+    "start": {
+      "date": "2026-11-14"
+    },
+    "end": {
+      "date": "2026-11-15"
+    }
+  },
+  {
+    "summary": "【A/学会・会議】第38回ハンセン病コ・メディカル学術集会｜アマホームPLAZA (奄美市市民交流センター)",
+    "location": "アマホームPLAZA (奄美市市民交流センター)",
+    "description": "取得元: https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=\n分類: 学会・会議\n動員ランク: A\n信頼度: 0.82\n備考: 医学書院 学会・研究会カレンダー（JAPIC情報提供）から自動抽出",
+    "colorId": "7",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "f6cd6550830bce66",
+        "ical_uid": "kagoshima-event-f6cd6550830bce66@example.local",
+        "source_name": "igaku_shoin_medical",
+        "source_url": "https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:46"
+      }
+    },
+    "start": {
+      "date": "2026-11-20"
+    },
+    "end": {
+      "date": "2026-11-21"
+    }
+  },
+  {
+    "summary": "【A/学会・会議】第4回日本ウイルス療法学会学術集会｜鹿児島県医師会館",
+    "location": "鹿児島県医師会館",
+    "description": "取得元: https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=\n分類: 学会・会議\n動員ランク: A\n信頼度: 0.82\n備考: 医学書院 学会・研究会カレンダー（JAPIC情報提供）から自動抽出",
+    "colorId": "7",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "c545ed679804e1de",
+        "ical_uid": "kagoshima-event-c545ed679804e1de@example.local",
+        "source_name": "igaku_shoin_medical",
+        "source_url": "https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:46"
+      }
+    },
+    "start": {
+      "date": "2026-11-22"
+    },
+    "end": {
+      "date": "2026-11-23"
+    }
+  },
+  {
+    "summary": "【A/学会・会議】第18回日本ニューロリハビリテーション学会学術集会｜カクイックス交流センター(かごしま県民交流センター)",
+    "location": "カクイックス交流センター(かごしま県民交流センター)",
+    "description": "取得元: https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=&ccm_paging_p=2&ccm_order_by=&ccm_order_by_direction=\n分類: 学会・会議\n動員ランク: A\n信頼度: 0.82\n備考: 医学書院 学会・研究会カレンダー（JAPIC情報提供）から自動抽出",
+    "colorId": "7",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "71be4d5cff022613",
+        "ical_uid": "kagoshima-event-71be4d5cff022613@example.local",
+        "source_name": "igaku_shoin_medical",
+        "source_url": "https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=&ccm_paging_p=2&ccm_order_by=&ccm_order_by_direction=",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:46"
+      }
+    },
+    "start": {
+      "date": "2027-03-13"
+    },
+    "end": {
+      "date": "2027-03-14"
+    }
+  },
+  {
+    "summary": "【A/学会・会議】第38回九州アルコール関連問題学会鹿児島大会｜カクイックス交流センター(かごしま県民交流センター)",
+    "location": "カクイックス交流センター(かごしま県民交流センター)",
+    "description": "取得元: https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=&ccm_paging_p=2&ccm_order_by=&ccm_order_by_direction=\n分類: 学会・会議\n動員ランク: A\n信頼度: 0.82\n備考: 医学書院 学会・研究会カレンダー（JAPIC情報提供）から自動抽出",
+    "colorId": "7",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "b401f8e01291ab57",
+        "ical_uid": "kagoshima-event-b401f8e01291ab57@example.local",
+        "source_name": "igaku_shoin_medical",
+        "source_url": "https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=&ccm_paging_p=2&ccm_order_by=&ccm_order_by_direction=",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:46"
+      }
+    },
+    "start": {
+      "date": "2027-03-19"
+    },
+    "end": {
+      "date": "2027-03-20"
+    }
+  },
+  {
+    "summary": "【A/学会・会議】第28回日本正常圧水頭症学会学術集会｜SHIROYAMA HOTEL kagoshima(城山ホテル鹿児島)",
+    "location": "SHIROYAMA HOTEL kagoshima(城山ホテル鹿児島)",
+    "description": "取得元: https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=&ccm_paging_p=2&ccm_order_by=&ccm_order_by_direction=\n分類: 学会・会議\n動員ランク: A\n信頼度: 0.82\n備考: 医学書院 学会・研究会カレンダー（JAPIC情報提供）から自動抽出",
+    "colorId": "7",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "674fbd8d8dbce963",
+        "ical_uid": "kagoshima-event-674fbd8d8dbce963@example.local",
+        "source_name": "igaku_shoin_medical",
+        "source_url": "https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=&ccm_paging_p=2&ccm_order_by=&ccm_order_by_direction=",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:46"
+      }
+    },
+    "start": {
+      "date": "2027-03-26"
+    },
+    "end": {
+      "date": "2027-03-27"
+    }
+  },
+  {
+    "summary": "【A/学会・会議】第48回日本循環制御医学会総会・学術集会｜鹿児島市",
+    "location": "鹿児島市",
+    "description": "取得元: https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=&ccm_paging_p=2&ccm_order_by=&ccm_order_by_direction=\n分類: 学会・会議\n動員ランク: A\n信頼度: 0.82\n備考: 医学書院 学会・研究会カレンダー（JAPIC情報提供）から自動抽出",
+    "colorId": "7",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "4e841629b456eefb",
+        "ical_uid": "kagoshima-event-4e841629b456eefb@example.local",
+        "source_name": "igaku_shoin_medical",
+        "source_url": "https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=&ccm_paging_p=2&ccm_order_by=&ccm_order_by_direction=",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:46"
+      }
+    },
+    "start": {
+      "date": "2027-05-21"
+    },
+    "end": {
+      "date": "2027-05-22"
+    }
+  },
+  {
+    "summary": "【A/学会・会議】日本ケアマネジメント学会第26回研究大会｜カクイックス交流センター(かごしま県民交流センター)",
+    "location": "カクイックス交流センター(かごしま県民交流センター)",
+    "description": "取得元: https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=&ccm_paging_p=2&ccm_order_by=&ccm_order_by_direction=\n分類: 学会・会議\n動員ランク: A\n信頼度: 0.82\n備考: 医学書院 学会・研究会カレンダー（JAPIC情報提供）から自動抽出",
+    "colorId": "7",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "5fd25632adadf537",
+        "ical_uid": "kagoshima-event-5fd25632adadf537@example.local",
+        "source_name": "igaku_shoin_medical",
+        "source_url": "https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=&ccm_paging_p=2&ccm_order_by=&ccm_order_by_direction=",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:46"
+      }
+    },
+    "start": {
+      "date": "2027-06-11"
+    },
+    "end": {
+      "date": "2027-06-12"
+    }
+  },
+  {
+    "summary": "【A/学会・会議】第69回日本老年医学会学術集会｜カクイックス交流センター(かごしま県民交流センター)",
+    "location": "カクイックス交流センター(かごしま県民交流センター)",
+    "description": "取得元: https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=&ccm_paging_p=2&ccm_order_by=&ccm_order_by_direction=\n分類: 学会・会議\n動員ランク: A\n信頼度: 0.82\n備考: 医学書院 学会・研究会カレンダー（JAPIC情報提供）から自動抽出",
+    "colorId": "7",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "bb6f31b69a66c1c6",
+        "ical_uid": "kagoshima-event-bb6f31b69a66c1c6@example.local",
+        "source_name": "igaku_shoin_medical",
+        "source_url": "https://www.igaku-shoin.co.jp/society/medical?pref=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C&query=&ccm_paging_p=2&ccm_order_by=&ccm_order_by_direction=",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:46"
+      }
+    },
+    "start": {
+      "date": "2027-06-11"
+    },
+    "end": {
+      "date": "2027-06-12"
+    }
+  },
+  {
+    "summary": "【A/商業施設催事】RED AMU BARGAIN 6.19-7.26｜アミュプラザ鹿児島",
+    "location": "アミュプラザ鹿児島",
+    "description": "取得元: https://amu.jrkagoshimacity.com/newsevent/detail/?cd=002339\n分類: 商業施設催事\n動員ランク: A\n信頼度: 0.68\n備考: アミュプラザ鹿児島公式ニュース&イベント一覧から自動抽出",
+    "colorId": "4",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "875c057250e37c28",
+        "ical_uid": "kagoshima-event-875c057250e37c28@example.local",
+        "source_name": "amu_plaza",
+        "source_url": "https://amu.jrkagoshimacity.com/newsevent/detail/?cd=002339",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:50"
+      }
+    },
+    "start": {
+      "date": "2026-06-19"
+    },
+    "end": {
+      "date": "2026-07-27"
+    }
+  },
+  {
+    "summary": "【A/スポーツ】サッカー 鹿児島 VS 未定 金沢 J3 | 第23節 白波スタ 白波スタ｜白波スタジアム",
+    "location": "白波スタジアム",
+    "description": "取得元: https://spocale.com/sports/2/game/352198\n分類: スポーツ\n動員ランク: A\n信頼度: 0.66\n備考: スポカレ会場別スポーツ日程から自動抽出",
+    "colorId": "2",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "0b38d9f15c078144",
+        "ical_uid": "kagoshima-event-0b38d9f15c078144@example.local",
+        "source_name": "spocale_places",
+        "source_url": "https://spocale.com/sports/2/game/352198",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:58"
+      }
+    },
+    "start": {
+      "date": "2027-02-20"
+    },
+    "end": {
+      "date": "2027-02-21"
+    }
+  },
+  {
+    "summary": "【A/スポーツ】サッカー 鹿児島 VS 未定 長野 J3 | 第25節 白波スタ 白波スタ｜白波スタジアム",
+    "location": "白波スタジアム",
+    "description": "取得元: https://spocale.com/sports/2/game/352218\n分類: スポーツ\n動員ランク: A\n信頼度: 0.66\n備考: スポカレ会場別スポーツ日程から自動抽出",
+    "colorId": "2",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "2a0b1b636ae25f9f",
+        "ical_uid": "kagoshima-event-2a0b1b636ae25f9f@example.local",
+        "source_name": "spocale_places",
+        "source_url": "https://spocale.com/sports/2/game/352218",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:58"
+      }
+    },
+    "start": {
+      "date": "2027-03-06"
+    },
+    "end": {
+      "date": "2027-03-07"
+    }
+  },
+  {
+    "summary": "【A/スポーツ】サッカー 鹿児島 VS 未定 奈良 J3 | 第29節 白波スタ 白波スタ｜白波スタジアム",
+    "location": "白波スタジアム",
+    "description": "取得元: https://spocale.com/sports/2/game/352258\n分類: スポーツ\n動員ランク: A\n信頼度: 0.66\n備考: スポカレ会場別スポーツ日程から自動抽出",
+    "colorId": "2",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "0fce20e838295eef",
+        "ical_uid": "kagoshima-event-0fce20e838295eef@example.local",
+        "source_name": "spocale_places",
+        "source_url": "https://spocale.com/sports/2/game/352258",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:58"
+      }
+    },
+    "start": {
+      "date": "2027-03-27"
+    },
+    "end": {
+      "date": "2027-03-28"
+    }
+  },
+  {
+    "summary": "【A/スポーツ】サッカー 鹿児島 VS 未定 FC大阪 J3 | 第31節 白波スタ 白波スタ｜白波スタジアム",
+    "location": "白波スタジアム",
+    "description": "取得元: https://spocale.com/sports/2/game/352278\n分類: スポーツ\n動員ランク: A\n信頼度: 0.66\n備考: スポカレ会場別スポーツ日程から自動抽出",
+    "colorId": "2",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "749259a9bf5ddec6",
+        "ical_uid": "kagoshima-event-749259a9bf5ddec6@example.local",
+        "source_name": "spocale_places",
+        "source_url": "https://spocale.com/sports/2/game/352278",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:58"
+      }
+    },
+    "start": {
+      "date": "2027-04-10"
+    },
+    "end": {
+      "date": "2027-04-11"
+    }
+  },
+  {
+    "summary": "【A/スポーツ】サッカー 鹿児島 VS 未定 山口 J3 | 第37節 白波スタ 白波スタ｜白波スタジアム",
+    "location": "白波スタジアム",
+    "description": "取得元: https://spocale.com/sports/2/game/352337\n分類: スポーツ\n動員ランク: A\n信頼度: 0.66\n備考: スポカレ会場別スポーツ日程から自動抽出",
+    "colorId": "2",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "ab44f2819c4e3309",
+        "ical_uid": "kagoshima-event-ab44f2819c4e3309@example.local",
+        "source_name": "spocale_places",
+        "source_url": "https://spocale.com/sports/2/game/352337",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:32:58"
+      }
+    },
+    "start": {
+      "date": "2027-05-15"
+    },
+    "end": {
+      "date": "2027-05-16"
+    }
+  },
+  {
+    "summary": "【A/祭り・地域行事】荒田八幡宮六月灯｜荒田八幡宮",
+    "location": "荒田八幡宮",
+    "description": "取得元: https://www.kagojinjacho.or.jp/news/5311/\n分類: 祭り・地域行事\n動員ランク: A\n信頼度: 0.76\n備考: 鹿児島県神社庁 六月灯一覧から自動抽出 / 原表記: 荒田八幡宮(鹿児島市下荒田二丁目)",
+    "colorId": "11",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "1026cf68523b09df",
+        "ical_uid": "kagoshima-event-1026cf68523b09df@example.local",
+        "source_name": "kagoshima_jinjacho",
+        "source_url": "https://www.kagojinjacho.or.jp/news/5311/",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:31:57"
+      }
+    },
+    "start": {
+      "date": "2026-07-25"
+    },
+    "end": {
+      "date": "2026-07-26"
+    }
+  },
+  {
+    "summary": "【A/祭り・地域行事】鹿児島県護國神社六月灯｜鹿児島県護國神社",
+    "location": "鹿児島県護國神社",
+    "description": "取得元: https://www.kagojinjacho.or.jp/news/5311/\n分類: 祭り・地域行事\n動員ランク: A\n信頼度: 0.76\n備考: 鹿児島県神社庁 六月灯一覧から自動抽出 / 原表記: 鹿児島県護國神社(鹿児島市草牟田二丁目)",
+    "colorId": "11",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "58264b4a9ab899bb",
+        "ical_uid": "kagoshima-event-58264b4a9ab899bb@example.local",
+        "source_name": "kagoshima_jinjacho",
+        "source_url": "https://www.kagojinjacho.or.jp/news/5311/",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:31:57"
+      }
+    },
+    "start": {
+      "date": "2026-07-29"
+    },
+    "end": {
+      "date": "2026-07-30"
+    }
+  },
+  {
+    "summary": "【A/祭り・地域行事】鹿児島県護國神社六月灯｜鹿児島県護國神社",
+    "location": "鹿児島県護國神社",
+    "description": "取得元: https://www.kagojinjacho.or.jp/news/5311/\n分類: 祭り・地域行事\n動員ランク: A\n信頼度: 0.76\n備考: 鹿児島県神社庁 六月灯一覧から自動抽出 / 原表記: 鹿児島県護國神社(鹿児島市草牟田二丁目)",
+    "colorId": "11",
+    "extendedProperties": {
+      "private": {
+        "event_hash": "065fdda8b47f59d3",
+        "ical_uid": "kagoshima-event-065fdda8b47f59d3@example.local",
+        "source_name": "kagoshima_jinjacho",
+        "source_url": "https://www.kagojinjacho.or.jp/news/5311/",
+        "sheet_row_id": "",
+        "last_seen_at": "2026-07-07T08:31:57"
+      }
+    },
+    "start": {
+      "date": "2026-07-30"
+    },
+    "end": {
+      "date": "2026-07-31"
+    }
+  }
+]

@@ -382,6 +382,7 @@ const listSummaryTile = (label, value, detail) => {
 };
 
 const contextDateLabel = (daysUntil) => {
+  if (daysUntil < 0) return "開催中";
   if (daysUntil === 0) return "今日";
   if (daysUntil === 1) return "明日";
   return `${daysUntil}日後`;
@@ -405,6 +406,18 @@ const weatherTile = (item) => {
   return tile;
 };
 
+const localEvents = (context = {}, limit = 6) =>
+  [...(context.localEvents || [])]
+    .filter((item) => item.daysUntil !== null && item.daysUntil !== undefined)
+    .sort((a, b) => (b.priority || 0) - (a.priority || 0) || (a.daysUntil || 0) - (b.daysUntil || 0))
+    .slice(0, limit);
+
+const nearbyLocalEvents = (context = {}, limit = 6) =>
+  [...(context.localEvents || [])]
+    .filter((item) => item.daysUntil !== null && item.daysUntil !== undefined && item.daysUntil >= -1)
+    .sort((a, b) => (a.daysUntil || 0) - (b.daysUntil || 0) || (b.priority || 0) - (a.priority || 0))
+    .slice(0, limit);
+
 const contextEvents = (context = {}, limit = 4) =>
   [...(context.holidays || []), ...(context.anniversaries || [])]
     .sort((a, b) => (a.daysUntil ?? 99) - (b.daysUntil ?? 99))
@@ -420,6 +433,88 @@ const contextIdeaChip = (item) => {
   chip.append(create("b", "", contextDateLabel(item.daysUntil)));
   chip.append(create("span", "", item.title || "記念日"));
   return chip;
+};
+
+const localEventChip = (item) => {
+  const chip = safeExternalAttrs(create("a", `local-event-chip rank-${(item.rank || "b").toLowerCase()}`));
+  chip.href = item.sourceUrl || newsSearchUrl(item.title);
+  chip.append(create("b", "", contextDateLabel(item.daysUntil)));
+  const copy = create("span", "");
+  copy.append(create("strong", "", item.title || "地域イベント"));
+  copy.append(create("small", "", `${item.rank || "B"} / ${item.category || "イベント"} / ${item.venue || "鹿児島"}`));
+  chip.append(copy);
+  return chip;
+};
+
+const localEventRows = (events = [], limit = 3) => {
+  const wrap = create("div", "local-event-rows");
+  if (events.length) {
+    wrap.replaceChildren(...events.slice(0, limit).map(localEventChip));
+  } else {
+    wrap.append(create("small", "compact-tray-empty", "近日イベントを観測中"));
+  }
+  return wrap;
+};
+
+const monthKey = (date) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+
+const localEventCalendar = (events = []) => {
+  const section = create("section", "section event-calendar-section");
+  const head = create("div", "section-head");
+  head.append(create("h2", "", "鹿児島イベントカレンダー"));
+  head.append(create("span", "section-count", `${events.length}件`));
+
+  const base = [...events]
+    .filter((event) => event.daysUntil >= 0)
+    .sort((a, b) => a.daysUntil - b.daysUntil || (b.priority || 0) - (a.priority || 0))[0] || events[0];
+  if (!base) {
+    const empty = create("div", "event-calendar empty", "イベント候補は次回取得後に表示されます。");
+    section.append(head, empty);
+    return section;
+  }
+
+  const current = new Date(`${base.startDate}T00:00:00+09:00`);
+  const year = current.getFullYear();
+  const month = current.getMonth();
+  const first = new Date(year, month, 1);
+  const last = new Date(year, month + 1, 0);
+  const startOffset = first.getDay();
+  const days = [];
+  for (let i = 0; i < startOffset; i += 1) days.push(null);
+  for (let day = 1; day <= last.getDate(); day += 1) days.push(new Date(year, month, day));
+
+  const byDate = new Map();
+  for (const event of events) {
+    const key = event.startDate;
+    if (!key || !key.startsWith(monthKey(first))) continue;
+    const list = byDate.get(key) || [];
+    list.push(event);
+    byDate.set(key, list);
+  }
+
+  const calendar = create("div", "event-calendar");
+  const monthLabel = create("div", "event-calendar-month", `${year}年${month + 1}月`);
+  const weekdays = create("div", "event-calendar-weekdays");
+  ["日", "月", "火", "水", "木", "金", "土"].forEach((label) => weekdays.append(create("span", "", label)));
+  const grid = create("div", "event-calendar-grid");
+  days.forEach((date) => {
+    const cell = create("div", date ? "event-day" : "event-day event-day-empty");
+    if (!date) {
+      grid.append(cell);
+      return;
+    }
+    const iso = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+    cell.append(create("span", "event-day-number", String(date.getDate())));
+    (byDate.get(iso) || []).slice(0, 2).forEach((event) => {
+      const tag = safeExternalAttrs(create("a", `event-day-tag rank-${(event.rank || "b").toLowerCase()}`, event.title));
+      tag.href = event.sourceUrl || newsSearchUrl(event.title);
+      cell.append(tag);
+    });
+    grid.append(cell);
+  });
+  calendar.append(monthLabel, weekdays, grid);
+  section.append(head, calendar);
+  return section;
 };
 
 const weatherRibbon = (context = {}) => {
@@ -471,7 +566,12 @@ const homeContextPanel = (context = {}, localObservations = []) => {
     localRows.append(create("small", "compact-tray-empty", "地域話題を観測中"));
   }
 
-  panel.append(head, ideaWrap, weatherRibbon(context), localRows);
+  const eventItems = nearbyLocalEvents(context, 3);
+  const eventHead = create("div", "context-subhead");
+  eventHead.append(create("span", "", "近日イベント"));
+  eventHead.append(create("small", "", eventItems.length ? "投稿文脈に使える地域予定" : "取得待ち"));
+
+  panel.append(head, ideaWrap, weatherRibbon(context), eventHead, localEventRows(eventItems, 3), localRows);
   return panel;
 };
 
@@ -498,6 +598,11 @@ const listContextPanel = (context = {}) => {
   }
 
   panel.append(head, eventList, weatherGrid);
+  const eventItems = nearbyLocalEvents(context, 5);
+  const eventHead = create("div", "context-subhead list-event-subhead");
+  eventHead.append(create("span", "", "地域イベントピック"));
+  eventHead.append(create("small", "", `${eventItems.length}件`));
+  panel.append(eventHead, localEventRows(eventItems, 5));
   return panel;
 };
 
@@ -513,6 +618,7 @@ const compactHeaderContext = (context = {}, links = []) => {
   const events = [...(context.holidays || []), ...(context.anniversaries || [])]
     .sort((a, b) => (a.daysUntil ?? 99) - (b.daysUntil ?? 99))
     .slice(0, 2);
+  const event = nearbyLocalEvents(context, 1)[0];
   const weather = [...(context.weather || [])].sort((a, b) => compactWeatherOrder(a) - compactWeatherOrder(b)).slice(0, 4);
 
   const eventChip = create("span", "compact-meta-chip compact-meta-event");
@@ -522,6 +628,15 @@ const compactHeaderContext = (context = {}, links = []) => {
   } else {
     eventChip.append(create("b", "", "今日"));
     eventChip.append(create("span", "", "記念日取得待ち"));
+  }
+
+  const localEventChip = create("span", "compact-meta-chip compact-meta-local-event");
+  if (event) {
+    localEventChip.append(create("b", "", contextDateLabel(event.daysUntil)));
+    localEventChip.append(create("span", "", event.title || "地域イベント"));
+  } else {
+    localEventChip.append(create("b", "", "近日"));
+    localEventChip.append(create("span", "", "イベント取得待ち"));
   }
 
   const weatherChip = create("div", "compact-weather-card");
@@ -548,7 +663,7 @@ const compactHeaderContext = (context = {}, links = []) => {
   else observeLinks.append(create("small", "compact-tray-empty", "リンク設定待ち"));
   observeMenu.append(observeLinks);
 
-  wrap.append(eventChip, weatherChip, observeMenu);
+  wrap.append(eventChip, localEventChip, weatherChip, observeMenu);
   return wrap;
 };
 
@@ -609,6 +724,7 @@ const compactInfoTray = ({ evergreen, growing }) => {
 };
 
 const listOverview = ({ items, mainTrends, evergreen, growing, localObservations, context }) => {
+  const eventItems = localEvents(context, 20);
   const wrap = create("section", "list-overview");
   const focus = create("div", "list-focus-panel");
   const focusHead = create("div", "list-panel-head");
@@ -628,7 +744,7 @@ const listOverview = ({ items, mainTrends, evergreen, growing, localObservations
     listSummaryTile("注目ワード", `${mainTrends.length}`, "実反応を優先"),
     listSummaryTile("アイデア種", `${evergreen.length}`, "直近の投稿型"),
     listSummaryTile("反応あり", `${growing.length}`, "前回比・複数面"),
-    listSummaryTile("ローカル棚", `${localObservations.length}`, "別枠観測")
+    listSummaryTile("地域予定", `${eventItems.length}`, "近日イベント")
   );
   const counts = items.reduce((acc, item) => {
     const key = categoryKey(item);
@@ -945,10 +1061,14 @@ const renderList = ({ site, links, latest }) => {
   const mainTrends = rankedTrendItems(items);
   const evergreen = evergreenItems(items);
   const growing = sortBy(items.filter(isMovingTopic), movingTopicScore).slice(0, 20);
+  const eventItems = localEvents(latest.context || {}, 48);
 
   main.append(listOverview({ items, mainTrends, evergreen, growing, localObservations, context: latest.context || {} }));
   main.append(section("いまの注目ワード", mainTrends, { featured: true, className: "list-main-section", limit: 5, maxItems: 20, expandable: true, totalLabel: `${mainTrends.length}件観測` }));
   main.append(section("投稿アイデアの種", evergreen, { featured: true, className: "list-evergreen-section", limit: 6, maxItems: 20, expandable: true, totalLabel: `${evergreen.length}件観測` }));
+  if (eventItems.length) {
+    main.append(localEventCalendar(eventItems));
+  }
 
   appendIfAny(
     main,

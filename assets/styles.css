@@ -454,6 +454,101 @@ h1 {
   white-space: nowrap;
 }
 
+.context-subhead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 13px 0 8px;
+  padding-top: 12px;
+  border-top: 1px solid #e1edf8;
+}
+
+.context-subhead span {
+  color: #17243a;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.context-subhead small {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 760;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.local-event-rows {
+  display: grid;
+  gap: 8px;
+}
+
+.local-event-chip {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 9px;
+  align-items: center;
+  min-width: 0;
+  min-height: 48px;
+  padding: 8px 10px;
+  border: 1px solid #d7e8f7;
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(1, 139, 238, 0.08), rgba(255, 255, 255, 0.94)),
+    #fff;
+}
+
+.local-event-chip > b {
+  display: inline-grid;
+  place-items: center;
+  min-height: 28px;
+  border-radius: 999px;
+  background: #eaf5ff;
+  color: var(--accent-ink);
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.local-event-chip span {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.local-event-chip strong,
+.local-event-chip small {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.local-event-chip strong {
+  color: #13233a;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.local-event-chip small {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 720;
+}
+
+.local-event-chip.rank-s > b,
+.event-day-tag.rank-s {
+  background: #fff2d5;
+  color: #8a5600;
+}
+
+.local-event-chip.rank-a > b,
+.event-day-tag.rank-a {
+  background: #eaf5ff;
+  color: #075a9f;
+}
+
 .context-event-row {
   display: grid;
   grid-template-columns: 52px minmax(0, 1fr);
@@ -608,6 +703,86 @@ h1 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
   align-items: stretch;
+}
+
+.event-calendar-section {
+  grid-column: 1 / -1;
+}
+
+.event-calendar {
+  padding: 14px;
+  border: 1px solid #cfe3f4;
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(1, 139, 238, 0.12), transparent 28%),
+    #fff;
+  box-shadow: 0 12px 28px rgba(21, 52, 92, 0.06);
+}
+
+.event-calendar-month {
+  margin-bottom: 12px;
+  color: #13233a;
+  font-size: 20px;
+  font-weight: 850;
+}
+
+.event-calendar-weekdays,
+.event-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.event-calendar-weekdays {
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.event-calendar-weekdays span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.event-calendar-grid {
+  gap: 6px;
+}
+
+.event-day {
+  display: grid;
+  align-content: start;
+  gap: 5px;
+  min-width: 0;
+  min-height: 108px;
+  padding: 8px;
+  border: 1px solid #e0ebf8;
+  border-radius: 8px;
+  background: rgba(248, 251, 255, 0.92);
+}
+
+.event-day-empty {
+  background: transparent;
+  border-color: transparent;
+}
+
+.event-day-number {
+  color: #44536b;
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.event-day-tag {
+  min-width: 0;
+  overflow: hidden;
+  padding: 4px 6px;
+  border-radius: 6px;
+  background: #edf6ff;
+  color: #075a9f;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .link-grid {
@@ -1446,7 +1621,7 @@ h1 {
 
 .compact-meta-strip {
   display: grid;
-  grid-template-columns: minmax(150px, 0.72fr) minmax(360px, 1.5fr) auto;
+  grid-template-columns: minmax(140px, 0.62fr) minmax(150px, 0.7fr) minmax(330px, 1.45fr) auto;
   align-items: center;
   justify-content: flex-end;
   gap: 8px;
@@ -1487,6 +1662,11 @@ h1 {
 .compact-meta-event {
   border-color: #ecd49f;
   background: #fff9ea;
+}
+
+.compact-meta-local-event {
+  border-color: #b8d8f4;
+  background: #eef7ff;
 }
 
 .compact-meta-weather {
@@ -2037,6 +2217,10 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .local-event-chip {
+    grid-template-columns: 1fr;
+  }
+
   .trend-pill small {
     text-align: left;
   }
@@ -2075,6 +2259,24 @@ h1 {
 
   .compact-metrics {
     text-align: left;
+  }
+
+  .event-calendar {
+    padding: 10px;
+  }
+
+  .event-calendar-grid {
+    gap: 4px;
+  }
+
+  .event-day {
+    min-height: 74px;
+    padding: 5px;
+  }
+
+  .event-day-tag {
+    padding: 3px 4px;
+    font-size: 9px;
   }
 
   .section-head {
