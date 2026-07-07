@@ -798,6 +798,16 @@ const compactEventTitle = (title = "") =>
     .replace(/^(.{2,10})\1/u, "$1")
     .slice(0, 28);
 
+const cleanLocalEventTitle = (title = "") =>
+  String(title || "")
+    .normalize("NFKC")
+    .replace(/^【\d{4}年最新版】/u, "")
+    .replace(/^(.{2,16})\s+\1/u, "$1")
+    .replace(/^(.{2,16})\1/u, "$1")
+    .replace(/(.{4,32})\s+\1[:：]?$/u, "$1")
+    .replace(/\s+/g, " ")
+    .trim();
+
 const preferLocalEvent = (current, next) => {
   if (!current) return next;
   if ((next.priority || 0) !== (current.priority || 0)) return (next.priority || 0) > (current.priority || 0) ? next : current;
@@ -829,7 +839,7 @@ const normalizeLocalEventPayload = (items = [], now) => {
       const id = item.extendedProperties?.private?.event_hash || idFor(`${item.summary}-${startDate}`);
       return {
         id,
-        title: parsed.title,
+        title: cleanLocalEventTitle(parsed.title),
         category: parsed.category || "イベント",
         rank: parsed.rank || "B",
         venue: item.location || parsed.venue || "",
@@ -859,7 +869,7 @@ const normalizeLocalEventRows = (rows = [], now) => {
       const rank = row.rank || row.crowd_rank || "C";
       return {
         id: row.id || row.event_hash || idFor(`${row.title}-${startDate}-${row.venue || row.venue_name}`),
-        title: row.title || "",
+        title: cleanLocalEventTitle(row.title),
         category,
         rank,
         venue: row.venue || row.venue_name || row.normalized_venue || "",

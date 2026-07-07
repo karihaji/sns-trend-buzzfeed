@@ -64,6 +64,15 @@ const compactKey = (event) =>
     .replace(/^(.{2,10})\1/u, "$1")
     .slice(0, 28)}`;
 
+const cleanTitle = (title = "") =>
+  normalize(title)
+    .replace(/^【\d{4}年最新版】/u, "")
+    .replace(/^(.{2,16})\s+\1/u, "$1")
+    .replace(/^(.{2,16})\1/u, "$1")
+    .replace(/(.{4,32})\s+\1[:：]?$/u, "$1")
+    .replace(/\s+/g, " ")
+    .trim();
+
 const isContextCategory = (category = "") =>
   !BLOCK_CATEGORIES.has(category) &&
   !BLOCK_CATEGORY_PATTERN.test(category) &&
@@ -91,7 +100,7 @@ const sanitizeRow = (row) => {
   const sourceUrl = row.sourceUrl || row.source_url;
   return {
     id: idFor(`${row.title}|${startDate}|${venue}|${sourceUrl}`),
-    title: normalize(row.title),
+    title: cleanTitle(row.title),
     category: normalize(row.category || "イベント"),
     rank: normalize(row.rank || row.crowd_rank || "C"),
     venue,
