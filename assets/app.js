@@ -923,7 +923,7 @@ const renderHome = ({ site, links, latest }) => {
 
   const heroStats = create("div", "hero-stats");
   heroStats.append(statTile("注目ワード", `${mainTrends.length}`, "実反応を優先"));
-  heroStats.append(statTile("アイデア種", `${evergreen.length}`, "直近の投稿型"));
+  if (evergreen.length) heroStats.append(statTile("投稿ヒント", `${evergreen.length}`, "直近の投稿型"));
   heroStats.append(statTile("反応あり", `${growing.length}`, "前回比・複数面"));
   heroStats.append(statTile("最終更新", formatUpdated(latest.updatedAt), "Asia/Tokyo"));
   heroTarget.replaceChildren(heroCopy, heroStats);
@@ -941,16 +941,18 @@ const renderHome = ({ site, links, latest }) => {
   leadHead.append(create("h2", "", "いまの注目ワード"));
   leadHead.append(create("span", "section-count", `${mainTrends.length}件`));
   const leadList = create("div", "pill-list");
-  leadList.replaceChildren(...mainTrends.slice(0, 7).map(trendPill));
+  leadList.replaceChildren(...mainTrends.slice(0, 10).map(trendPill));
   leadPanel.append(leadHead, leadList);
 
-  const evergreenPanel = create("section", "dashboard-panel");
-  const evergreenHead = create("div", "panel-head");
-  evergreenHead.append(create("h2", "", "投稿アイデアの種"));
-  evergreenHead.append(create("span", "section-count", `${evergreen.length}件`));
-  const evergreenList = create("div", "compact-dashboard-list");
-  evergreenList.replaceChildren(...evergreen.slice(0, 6).map(simpleTrendRow));
-  evergreenPanel.append(evergreenHead, evergreenList);
+  const evergreenPanel = evergreen.length ? create("section", "dashboard-panel") : null;
+  if (evergreenPanel) {
+    const evergreenHead = create("div", "panel-head");
+    evergreenHead.append(create("h2", "", "投稿ヒント"));
+    evergreenHead.append(create("span", "section-count", `${evergreen.length}件`));
+    const evergreenList = create("div", "compact-dashboard-list");
+    evergreenList.replaceChildren(...evergreen.slice(0, 6).map(simpleTrendRow));
+    evergreenPanel.append(evergreenHead, evergreenList);
+  }
 
   const categoryPanel = create("section", "dashboard-panel");
   const categoryHead = create("div", "panel-head");
@@ -986,7 +988,10 @@ const renderHome = ({ site, links, latest }) => {
 
   const contextPanel = homeContextPanel(latest.context || {}, localObservations);
   const localPanel = localObservationShelf(localObservations, { home: true });
-  dashboardTarget.replaceChildren(leadPanel, contextPanel, categoryPanel, evergreenPanel, growingPanel, linksPanel, localPanel);
+  const panels = [leadPanel, contextPanel, categoryPanel];
+  if (evergreenPanel) panels.push(evergreenPanel);
+  panels.push(growingPanel, linksPanel, localPanel);
+  dashboardTarget.replaceChildren(...panels);
   document.querySelector("[data-note]").textContent = site.dataRefreshNote || "観測スコアは独自指標です。";
 };
 
