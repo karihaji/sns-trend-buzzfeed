@@ -599,10 +599,12 @@ const listContextPanel = (context = {}) => {
 
   panel.append(head, eventList, weatherGrid);
   const eventItems = nearbyLocalEvents(context, 5);
+  const eventBlock = create("div", "list-event-block");
   const eventHead = create("div", "context-subhead list-event-subhead");
   eventHead.append(create("span", "", "地域イベントピック"));
   eventHead.append(create("small", "", `${eventItems.length}件`));
-  panel.append(eventHead, localEventRows(eventItems, 5));
+  eventBlock.append(eventHead, localEventRows(eventItems, 5));
+  panel.append(eventBlock);
   return panel;
 };
 
