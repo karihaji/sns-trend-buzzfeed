@@ -310,7 +310,8 @@ h1 {
 
 .list-context-panel {
   background:
-    linear-gradient(180deg, rgba(1, 139, 238, 0.09), rgba(255, 255, 255, 0.92) 38%),
+    radial-gradient(circle at 90% 10%, rgba(255, 184, 77, 0.18), transparent 30%),
+    linear-gradient(180deg, rgba(1, 139, 238, 0.08), rgba(255, 255, 255, 0.94) 42%),
     #fff;
   border-color: #bfd9f4;
 }
@@ -408,6 +409,51 @@ h1 {
   gap: 9px;
 }
 
+.context-idea-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.context-idea-chip {
+  display: inline-grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 32px;
+  padding: 6px 9px;
+  border: 1px solid #dbe9f8;
+  border-radius: 999px;
+  background: #fbfdff;
+  color: #24324a;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.035);
+}
+
+.context-idea-chip b {
+  display: inline-grid;
+  place-items: center;
+  min-width: 34px;
+  min-height: 20px;
+  border-radius: 999px;
+  background: #fff2d5;
+  color: #9a5b00;
+  font-size: 10px;
+  font-weight: 850;
+}
+
+.context-idea-chip span {
+  min-width: 0;
+  overflow: hidden;
+  color: #24324a;
+  font-size: 12px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .context-event-row {
   display: grid;
   grid-template-columns: 52px minmax(0, 1fr);
@@ -452,6 +498,45 @@ h1 {
   margin-top: 12px;
 }
 
+.weather-ribbon {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.weather-ribbon-item {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  min-height: 70px;
+  padding: 9px;
+  border: 1px solid #dbe8f6;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #f7fbff, #fff);
+}
+
+.weather-ribbon-item span,
+.weather-ribbon-item small {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 760;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.weather-ribbon-item strong {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--accent-ink);
+  font-size: 13px;
+  font-weight: 850;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .weather-tile {
   display: grid;
   gap: 4px;
@@ -472,6 +557,44 @@ h1 {
 .weather-tile strong {
   color: var(--accent-ink);
   font-size: 16px;
+}
+
+.context-local-snippets {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.context-local-snippet {
+  display: grid;
+  grid-template-columns: 82px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid #dce8f5;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.context-local-snippet span,
+.context-local-snippet strong {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.context-local-snippet span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 780;
+}
+
+.context-local-snippet strong {
+  color: #17243a;
+  font-size: 12px;
+  font-weight: 850;
 }
 
 .mini-empty {
@@ -853,6 +976,13 @@ h1 {
 
 .lead-panel {
   grid-row: span 2;
+}
+
+.home-context-panel {
+  border-color: #bdd9f2;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(1, 139, 238, 0.14), transparent 30%),
+    linear-gradient(180deg, #ffffff, #f7fbff);
 }
 
 .panel-head {
@@ -1881,12 +2011,14 @@ h1 {
   }
 
   .list-focus-list,
-  .list-summary-grid {
+  .list-summary-grid,
+  .weather-ribbon {
     grid-template-columns: 1fr;
   }
 
   .hero-stats,
   .home-link-list,
+  .weather-ribbon,
   .local-card-grid,
   .home-local-shelf .local-card-grid,
   .local-groups {
@@ -1898,6 +2030,10 @@ h1 {
   }
 
   .trend-pill {
+    grid-template-columns: 1fr;
+  }
+
+  .context-local-snippet {
     grid-template-columns: 1fr;
   }
 

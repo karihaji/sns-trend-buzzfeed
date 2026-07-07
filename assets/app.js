@@ -405,15 +405,83 @@ const weatherTile = (item) => {
   return tile;
 };
 
+const contextEvents = (context = {}, limit = 4) =>
+  [...(context.holidays || []), ...(context.anniversaries || [])]
+    .sort((a, b) => (a.daysUntil ?? 99) - (b.daysUntil ?? 99))
+    .slice(0, limit);
+
+const weatherItems = (context = {}, limit = 4) =>
+  [...(context.weather || [])]
+    .sort((a, b) => compactWeatherOrder(a) - compactWeatherOrder(b))
+    .slice(0, limit);
+
+const contextIdeaChip = (item) => {
+  const chip = create("span", "context-idea-chip");
+  chip.append(create("b", "", contextDateLabel(item.daysUntil)));
+  chip.append(create("span", "", item.title || "記念日"));
+  return chip;
+};
+
+const weatherRibbon = (context = {}) => {
+  const ribbon = create("div", "weather-ribbon");
+  const weather = weatherItems(context, 4);
+  if (weather.length) {
+    ribbon.replaceChildren(
+      ...weather.map((item) => {
+        const node = create("div", "weather-ribbon-item");
+        node.append(create("span", "", item.label || "地域"));
+        node.append(create("strong", "", item.summary || "観測中"));
+        node.append(create("small", "", `${item.temperature ?? "-"}℃ / ${item.precipitation ?? "-"}%`));
+        return node;
+      })
+    );
+  } else {
+    ribbon.append(create("div", "empty mini-empty", "天気は次回取得時に反映されます。"));
+  }
+  return ribbon;
+};
+
+const homeContextPanel = (context = {}, localObservations = []) => {
+  const panel = create("section", "dashboard-panel home-context-panel");
+  const head = create("div", "panel-head");
+  head.append(create("h2", "", "今日使える文脈"));
+  head.append(create("span", "section-count", "記念日・天気・地域"));
+
+  const events = contextEvents(context, 3);
+  const ideaWrap = create("div", "context-idea-row");
+  if (events.length) {
+    ideaWrap.replaceChildren(...events.map(contextIdeaChip));
+  } else {
+    ideaWrap.append(create("small", "compact-tray-empty", "記念日情報を取得中"));
+  }
+
+  const localRows = create("div", "context-local-snippets");
+  const localItems = localObservations.slice(0, 2);
+  if (localItems.length) {
+    localRows.replaceChildren(
+      ...localItems.map((item) => {
+        const anchor = safeExternalAttrs(create("a", "context-local-snippet"));
+        anchor.href = item.observeUrl || item.sourceUrl || "https://news.google.com/";
+        anchor.append(create("span", "", item.sourceLabel || "ローカル"));
+        anchor.append(create("strong", "", item.keyword || item.title || "地域話題"));
+        return anchor;
+      })
+    );
+  } else {
+    localRows.append(create("small", "compact-tray-empty", "地域話題を観測中"));
+  }
+
+  panel.append(head, ideaWrap, weatherRibbon(context), localRows);
+  return panel;
+};
+
 const listContextPanel = (context = {}) => {
   const panel = create("div", "list-context-panel");
   const head = create("div", "list-panel-head");
-  head.append(create("h2", "", "今日の運用メモ"));
-  head.append(create("span", "section-count", "投稿文脈"));
+  head.append(create("h2", "", "今日の文脈・地域状況"));
+  head.append(create("span", "section-count", "深掘り"));
 
-  const events = [...(context.holidays || []), ...(context.anniversaries || [])]
-    .sort((a, b) => (a.daysUntil ?? 99) - (b.daysUntil ?? 99))
-    .slice(0, 4);
+  const events = contextEvents(context, 5);
   const eventList = create("div", "context-event-list");
   if (events.length) {
     eventList.replaceChildren(...events.map(contextEventRow));
@@ -422,7 +490,7 @@ const listContextPanel = (context = {}) => {
   }
 
   const weatherGrid = create("div", "weather-grid");
-  const weather = (context.weather || []).slice(0, 4);
+  const weather = weatherItems(context, 4);
   if (weather.length) {
     weatherGrid.replaceChildren(...weather.map(weatherTile));
   } else {
@@ -798,8 +866,9 @@ const renderHome = ({ site, links, latest }) => {
   );
   linksPanel.append(linksHead, linkList);
 
+  const contextPanel = homeContextPanel(latest.context || {}, localObservations);
   const localPanel = localObservationShelf(localObservations, { home: true });
-  dashboardTarget.replaceChildren(leadPanel, categoryPanel, evergreenPanel, growingPanel, linksPanel, localPanel);
+  dashboardTarget.replaceChildren(leadPanel, contextPanel, categoryPanel, evergreenPanel, growingPanel, linksPanel, localPanel);
   document.querySelector("[data-note]").textContent = site.dataRefreshNote || "観測スコアは独自指標です。";
 };
 
