@@ -791,19 +791,31 @@ const compactEventTitle = (title = "") =>
   String(title || "")
     .normalize("NFKC")
     .toLowerCase()
+    .replace(/dr[:：].*$/iu, "")
     .replace(/^【\d{4}年最新版】/u, "")
     .replace(/第\d+回/u, "")
     .replace(/[：:｜\s]+/g, "")
+    .replace(/^(.{2,10})\1/u, "$1")
     .slice(0, 28);
 
+const preferLocalEvent = (current, next) => {
+  if (!current) return next;
+  if ((next.priority || 0) !== (current.priority || 0)) return (next.priority || 0) > (current.priority || 0) ? next : current;
+  return String(next.title || "").length < String(current.title || "").length ? next : current;
+};
+
 const dedupeLocalEvents = (events) => {
-  const byKey = new Map();
+  const byTitleKey = new Map();
   for (const event of events) {
     const key = `${event.startDate}:${compactEventTitle(event.title)}`;
-    const existing = byKey.get(key);
-    if (!existing || event.priority > existing.priority) byKey.set(key, event);
+    byTitleKey.set(key, preferLocalEvent(byTitleKey.get(key), event));
   }
-  return [...byKey.values()];
+  const byVenueKey = new Map();
+  for (const event of byTitleKey.values()) {
+    const venueKey = event.venue ? `${event.startDate}:${event.venue}:${compactEventTitle(event.title).slice(0, 12)}` : `${event.startDate}:${compactEventTitle(event.title)}`;
+    byVenueKey.set(venueKey, preferLocalEvent(byVenueKey.get(venueKey), event));
+  }
+  return [...byVenueKey.values()];
 };
 
 const normalizeLocalEventPayload = (items = [], now) => {
@@ -882,7 +894,7 @@ const readLocalEventContext = async (now) => {
   for (const event of [...fallbackEvents, ...fallbackRows]) {
     if (!byId.has(event.id)) byId.set(event.id, event);
   }
-  return [...byId.values()].sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil).slice(0, 96);
+  return dedupeLocalEvents([...byId.values()]).sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil).slice(0, 96);
 };
 
 const buildDashboardContext = async (config, now, nowIso) => {

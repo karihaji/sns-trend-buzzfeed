@@ -57,9 +57,11 @@ const daysUntil = (date, today) => {
 const compactKey = (event) =>
   `${event.startDate}:${normalize(event.title)
     .toLowerCase()
+    .replace(/dr[:：].*$/iu, "")
     .replace(/^【\d{4}年最新版】/u, "")
     .replace(/第\d+回/u, "")
     .replace(/[：:｜\s]+/g, "")
+    .replace(/^(.{2,10})\1/u, "$1")
     .slice(0, 28)}`;
 
 const isContextCategory = (category = "") =>
