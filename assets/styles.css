@@ -1278,11 +1278,34 @@ h1 {
 }
 
 .growing-panel .compact-dashboard-list {
-  min-height: 132px;
+  min-height: 118px;
 }
 
 .compact-dashboard-list .simple-trend-row {
   border-color: #e8edf5;
+}
+
+.growing-panel .simple-trend-row {
+  grid-template-columns: minmax(0, 1fr) minmax(130px, 0.9fr) auto;
+  min-height: 31px;
+  padding: 5px 10px;
+}
+
+.growing-panel .simple-keyword {
+  font-size: 13px;
+}
+
+.growing-panel .simple-meta {
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.growing-panel .simple-badge {
+  width: 28px;
+  min-width: 28px;
+  height: 22px;
 }
 
 .compact-dashboard-list .empty {
@@ -2128,6 +2151,16 @@ h1 {
   .growing-panel,
   .growing-panel .compact-dashboard-list {
     min-height: 0;
+  }
+
+  .growing-panel .simple-trend-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-height: 42px;
+    padding: 8px 12px;
+  }
+
+  .growing-panel .simple-meta {
+    white-space: normal;
   }
 
   .lead-panel .pill-list {
