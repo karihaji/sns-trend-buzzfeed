@@ -1067,6 +1067,22 @@ const section = (title, items, options = {}) => {
   return wrap;
 };
 
+const accordionSection = (title, items, options = {}) => {
+  const wrap = create("section", "section accordion-section");
+  if (options.className) wrap.classList.add(options.className);
+  const head = create("div", "section-head");
+  head.append(create("h2", "", title));
+  head.append(create("span", "section-count", options.totalLabel || `${items.length}件`));
+  const details = create("details", "accordion");
+  const summary = create("summary", "", items.length ? `${items.length}件を簡易表示` : "該当する観測ワードはまだありません");
+  const list = create("div", "simple-trend-list");
+  if (items.length) list.replaceChildren(...items.slice(0, options.maxItems || items.length).map(simpleTrendRow));
+  else renderEmpty(list, "該当する観測ワードはまだありません。");
+  details.append(summary, list);
+  wrap.append(head, details);
+  return wrap;
+};
+
 const appendIfAny = (target, title, items, options = {}) => {
   if (items.length) target.append(section(title, items, options));
 };
@@ -1085,7 +1101,7 @@ const renderList = ({ site, links, latest }) => {
 
   main.append(listOverview({ items, mainTrends, evergreen, growing, localObservations, context: latest.context || {} }));
   main.append(section("いまの注目ワード", mainTrends, { featured: true, className: "list-main-section", limit: 4, maxItems: 20, expandable: true, totalLabel: `${mainTrends.length}件観測` }));
-  main.append(section("投稿アイデアの種", evergreen, { featured: true, className: "list-evergreen-section", limit: 6, maxItems: 20, expandable: true, totalLabel: `${evergreen.length}件観測` }));
+  main.append(accordionSection("投稿アイデアの種", evergreen, { className: "list-evergreen-section", maxItems: 20, totalLabel: `${evergreen.length}件観測` }));
   if (eventItems.length) {
     main.append(localEventCalendar(eventItems));
   }

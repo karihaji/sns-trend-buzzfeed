@@ -241,6 +241,14 @@ h1 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.list-evergreen-section.accordion-section {
+  margin-top: 14px;
+}
+
+.list-evergreen-section .accordion {
+  margin-top: 0;
+}
+
 .list-main-section .grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
