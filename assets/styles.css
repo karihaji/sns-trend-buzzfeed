@@ -1173,22 +1173,35 @@ h1 {
 
 .dashboard-layout {
   display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.1fr) minmax(360px, 0.9fr);
+  grid-template-areas:
+    "lead lead context"
+    "category growing context"
+    "links links links"
+    "local local local";
+  align-items: start;
   gap: 14px;
   margin-top: 14px;
 }
 
-.home-top-band {
-  display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(360px, 0.85fr);
-  align-items: start;
-  gap: 14px;
+.lead-panel {
+  grid-area: lead;
 }
 
-.home-secondary-band {
-  display: grid;
-  grid-template-columns: minmax(260px, 0.9fr) minmax(320px, 1.1fr) minmax(260px, 0.9fr);
-  align-items: start;
-  gap: 14px;
+.home-context-panel {
+  grid-area: context;
+}
+
+.category-panel {
+  grid-area: category;
+}
+
+.growing-panel {
+  grid-area: growing;
+}
+
+.links-panel {
+  grid-area: links;
 }
 
 .dashboard-panel {
@@ -1340,6 +1353,7 @@ h1 {
 }
 
 .home-local-shelf {
+  grid-area: local;
   grid-column: 1 / -1;
   margin-top: 0;
 }
@@ -2087,10 +2101,18 @@ h1 {
   }
 
   .dashboard-hero,
-  .dashboard-layout,
-  .home-top-band,
-  .home-secondary-band {
+  .dashboard-layout {
     grid-template-columns: 1fr;
+  }
+
+  .dashboard-layout {
+    grid-template-areas:
+      "lead"
+      "context"
+      "category"
+      "growing"
+      "links"
+      "local";
   }
 
   .lead-panel .pill-list {

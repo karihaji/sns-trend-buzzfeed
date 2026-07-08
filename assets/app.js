@@ -970,7 +970,7 @@ const renderHome = ({ site, links, latest }) => {
   leadList.replaceChildren(...mainTrends.slice(0, 10).map(trendPill));
   leadPanel.append(leadHead, leadList);
 
-  const categoryPanel = create("section", "dashboard-panel");
+  const categoryPanel = create("section", "dashboard-panel category-panel");
   const categoryHead = create("div", "panel-head");
   categoryHead.append(create("h2", "", "カテゴリ構成"));
   categoryHead.append(create("span", "section-count", `${items.length}件`));
@@ -978,7 +978,7 @@ const renderHome = ({ site, links, latest }) => {
   bars.replaceChildren(...categoryEntries.map(([key, count]) => categoryBar(key, count, maxCategory)));
   categoryPanel.append(categoryHead, bars);
 
-  const growingPanel = create("section", "dashboard-panel");
+  const growingPanel = create("section", "dashboard-panel growing-panel");
   const growingHead = create("div", "panel-head");
   growingHead.append(create("h2", "", "反応が見える話題"));
   growingHead.append(create("span", "section-count", `${growing.length}件`));
@@ -987,7 +987,7 @@ const renderHome = ({ site, links, latest }) => {
   else renderEmpty(growingList, "前回より反応が見える話題はまだありません。");
   growingPanel.append(growingHead, growingList);
 
-  const linksPanel = create("section", "dashboard-panel");
+  const linksPanel = create("section", "dashboard-panel links-panel");
   const linksHead = create("div", "panel-head");
   linksHead.append(create("h2", "", "観測リンク"));
   const linkList = create("div", "home-link-list");
@@ -1004,11 +1004,7 @@ const renderHome = ({ site, links, latest }) => {
 
   const contextPanel = homeContextPanel(latest.context || {}, localObservations);
   const localPanel = localObservationShelf(localObservations, { home: true });
-  const topBand = create("div", "home-top-band");
-  topBand.append(leadPanel, contextPanel);
-  const secondaryBand = create("div", "home-secondary-band");
-  secondaryBand.append(categoryPanel, growingPanel, linksPanel);
-  dashboardTarget.replaceChildren(topBand, secondaryBand, localPanel);
+  dashboardTarget.replaceChildren(leadPanel, contextPanel, categoryPanel, growingPanel, linksPanel, localPanel);
   document.querySelector("[data-note]").textContent = site.dataRefreshNote || "観測スコアは独自指標です。";
 };
 
@@ -1088,7 +1084,7 @@ const renderList = ({ site, links, latest }) => {
   const eventItems = localEvents(latest.context || {}, 48);
 
   main.append(listOverview({ items, mainTrends, evergreen, growing, localObservations, context: latest.context || {} }));
-  main.append(section("いまの注目ワード", mainTrends, { featured: true, className: "list-main-section", limit: 5, maxItems: 20, expandable: true, totalLabel: `${mainTrends.length}件観測` }));
+  main.append(section("いまの注目ワード", mainTrends, { featured: true, className: "list-main-section", limit: 4, maxItems: 20, expandable: true, totalLabel: `${mainTrends.length}件観測` }));
   main.append(section("投稿アイデアの種", evergreen, { featured: true, className: "list-evergreen-section", limit: 6, maxItems: 20, expandable: true, totalLabel: `${evergreen.length}件観測` }));
   if (eventItems.length) {
     main.append(localEventCalendar(eventItems));
