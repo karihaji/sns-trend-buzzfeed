@@ -1139,7 +1139,7 @@ h1 {
 
 .hero-stats {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
   overflow: hidden;
   background: var(--line);
@@ -1173,17 +1173,26 @@ h1 {
 
 .dashboard-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
   gap: 14px;
   margin-top: 14px;
 }
 
-.dashboard-panel {
-  padding: 16px;
+.home-top-band {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(360px, 0.85fr);
+  align-items: start;
+  gap: 14px;
 }
 
-.lead-panel {
-  grid-row: span 2;
+.home-secondary-band {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(320px, 1.1fr) minmax(260px, 0.9fr);
+  align-items: start;
+  gap: 14px;
+}
+
+.dashboard-panel {
+  padding: 16px;
 }
 
 .home-context-panel {
@@ -2078,7 +2087,9 @@ h1 {
   }
 
   .dashboard-hero,
-  .dashboard-layout {
+  .dashboard-layout,
+  .home-top-band,
+  .home-secondary-band {
     grid-template-columns: 1fr;
   }
 

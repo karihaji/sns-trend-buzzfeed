@@ -1004,9 +1004,11 @@ const renderHome = ({ site, links, latest }) => {
 
   const contextPanel = homeContextPanel(latest.context || {}, localObservations);
   const localPanel = localObservationShelf(localObservations, { home: true });
-  const panels = [leadPanel, contextPanel, categoryPanel];
-  panels.push(growingPanel, linksPanel, localPanel);
-  dashboardTarget.replaceChildren(...panels);
+  const topBand = create("div", "home-top-band");
+  topBand.append(leadPanel, contextPanel);
+  const secondaryBand = create("div", "home-secondary-band");
+  secondaryBand.append(categoryPanel, growingPanel, linksPanel);
+  dashboardTarget.replaceChildren(topBand, secondaryBand, localPanel);
   document.querySelector("[data-note]").textContent = site.dataRefreshNote || "観測スコアは独自指標です。";
 };
 
