@@ -771,13 +771,20 @@ const LOCAL_EVENT_CONTEXT_CATEGORIES = new Set([
 
 const LOCAL_EVENT_BLOCK_CATEGORIES = new Set(["学会", "学会・会議", "会議"]);
 const LOCAL_EVENT_CONTEXT_CATEGORY_PATTERN = /商業|百貨店|催事|展示|展覧|コンサート|ライブ|公演|舞台|演劇|祭り|フェス|マルシェ|ホテル|観光|スポーツ/u;
+const LOCAL_EVENT_CONTEXT_TITLE_PATTERN = /商業|バーゲン|BARGAIN|展示|展覧|コンサート|ライブ|公演|舞台|演劇|祭|六月灯|花火|マルシェ|フェス|POP\s*UP|ポップアップ|妖怪|どてらい市|イベント/u;
 const LOCAL_EVENT_BLOCK_CATEGORY_PATTERN = /学会|会議|セミナー|研究会/u;
 const LOCAL_EVENT_BLOCK_TITLE_PATTERN = /学会|会議|セミナー|研究会|研修|説明会|相談|講座/u;
 
-const isLocalEventContextCategory = (category = "") =>
-  !LOCAL_EVENT_BLOCK_CATEGORIES.has(category) &&
-  !LOCAL_EVENT_BLOCK_CATEGORY_PATTERN.test(category) &&
-  (LOCAL_EVENT_CONTEXT_CATEGORIES.has(category) || LOCAL_EVENT_CONTEXT_CATEGORY_PATTERN.test(category));
+const isLocalEventContext = (event = {}) => {
+  const category = event.category || "";
+  const title = event.title || "";
+  return (
+    !LOCAL_EVENT_BLOCK_CATEGORIES.has(category) &&
+    !LOCAL_EVENT_BLOCK_CATEGORY_PATTERN.test(category) &&
+    !LOCAL_EVENT_BLOCK_TITLE_PATTERN.test(title) &&
+    (LOCAL_EVENT_CONTEXT_CATEGORIES.has(category) || LOCAL_EVENT_CONTEXT_CATEGORY_PATTERN.test(category) || LOCAL_EVENT_CONTEXT_TITLE_PATTERN.test(title))
+  );
+};
 
 const eventPriority = (event) => {
   const rankPoints = { S: 400, A: 300, B: 170, C: 40 }[event.rank] || 0;
@@ -855,6 +862,8 @@ const normalizeLocalEventPayload = (items = [], now) => {
     })
     .filter((event) => event.title && event.startDate && event.daysUntil != null && event.daysUntil >= -1 && event.daysUntil <= 120)
     .filter((event) => event.sourceName !== "manual-poc" && !/example\.local/u.test(event.sourceUrl || ""))
+    .filter((event) => isLocalEventContext(event))
+    .filter((event) => event.rank !== "excluded")
     .map((event) => ({ ...event, priority: eventPriority(event) }))
     .sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil);
   return dedupeLocalEvents(normalized).sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil);
@@ -885,8 +894,7 @@ const normalizeLocalEventRows = (rows = [], now) => {
     })
     .filter((event) => event.title && event.startDate && event.daysUntil != null && event.daysUntil >= -1 && event.daysUntil <= 90)
     .filter((event) => event.sourceName !== "manual-poc" && !/example\.local/u.test(event.sourceUrl || ""))
-    .filter((event) => !LOCAL_EVENT_BLOCK_TITLE_PATTERN.test(event.title))
-    .filter((event) => isLocalEventContextCategory(event.category))
+    .filter((event) => isLocalEventContext(event))
     .filter((event) => event.rank !== "excluded")
     .map((event) => ({ ...event, priority: eventPriority(event) }))
     .sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil);

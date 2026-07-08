@@ -826,6 +826,12 @@ h1 {
   white-space: nowrap;
 }
 
+.event-day-more {
+  color: #44536b;
+  font-size: 10px;
+  font-weight: 750;
+}
+
 .link-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }

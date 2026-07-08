@@ -440,6 +440,12 @@ const localEvents = (context = {}, limit = 6) =>
     .sort((a, b) => (b.priority || 0) - (a.priority || 0) || (a.daysUntil || 0) - (b.daysUntil || 0))
     .slice(0, limit);
 
+const calendarLocalEvents = (context = {}, limit = 96) =>
+  [...(context.localEvents || [])]
+    .filter((item) => item.daysUntil !== null && item.daysUntil !== undefined && item.daysUntil >= -1)
+    .sort((a, b) => (a.startDate || "").localeCompare(b.startDate || "") || (b.priority || 0) - (a.priority || 0))
+    .slice(0, limit);
+
 const nearbyLocalEvents = (context = {}, limit = 6) =>
   [...(context.localEvents || [])]
     .filter((item) => item.daysUntil !== null && item.daysUntil !== undefined && item.daysUntil >= -1)
@@ -486,6 +492,20 @@ const localEventRows = (events = [], limit = 3) => {
 
 const monthKey = (date) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
 
+const eventDateKeysInMonth = (event, first, last) => {
+  const start = new Date(`${event.startDate}T00:00:00+09:00`);
+  const end = new Date(`${event.endDate || event.startDate}T00:00:00+09:00`);
+  if (Number.isNaN(start.getTime())) return [];
+  const cursor = new Date(Math.max(start.getTime(), first.getTime()));
+  const final = new Date(Math.min(Number.isNaN(end.getTime()) ? start.getTime() : end.getTime(), last.getTime()));
+  const keys = [];
+  while (cursor <= final) {
+    keys.push(`${cursor.getFullYear()}-${String(cursor.getMonth() + 1).padStart(2, "0")}-${String(cursor.getDate()).padStart(2, "0")}`);
+    cursor.setDate(cursor.getDate() + 1);
+  }
+  return keys;
+};
+
 const localEventCalendar = (events = []) => {
   const section = create("section", "section event-calendar-section");
   const head = create("div", "section-head");
@@ -513,11 +533,12 @@ const localEventCalendar = (events = []) => {
 
   const byDate = new Map();
   for (const event of events) {
-    const key = event.startDate;
-    if (!key || !key.startsWith(monthKey(first))) continue;
-    const list = byDate.get(key) || [];
-    list.push(event);
-    byDate.set(key, list);
+    for (const key of eventDateKeysInMonth(event, first, last)) {
+      if (!key || !key.startsWith(monthKey(first))) continue;
+      const list = byDate.get(key) || [];
+      list.push(event);
+      byDate.set(key, list);
+    }
   }
 
   const calendar = create("div", "event-calendar");
@@ -533,11 +554,13 @@ const localEventCalendar = (events = []) => {
     }
     const iso = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
     cell.append(create("span", "event-day-number", String(date.getDate())));
-    (byDate.get(iso) || []).slice(0, 2).forEach((event) => {
+    const dayEvents = byDate.get(iso) || [];
+    dayEvents.slice(0, 3).forEach((event) => {
       const tag = safeExternalAttrs(create("a", `event-day-tag rank-${(event.rank || "b").toLowerCase()}`, event.title));
       tag.href = event.sourceUrl || newsSearchUrl(event.title);
       cell.append(tag);
     });
+    if (dayEvents.length > 3) cell.append(create("span", "event-day-more", `他 ${dayEvents.length - 3}件`));
     grid.append(cell);
   });
   calendar.append(monthLabel, weekdays, grid);
@@ -1097,7 +1120,7 @@ const renderList = ({ site, links, latest }) => {
   const mainTrends = rankedTrendItems(items);
   const evergreen = evergreenItems(items);
   const growing = sortBy(items.filter(isMovingTopic), movingTopicScore).slice(0, 20);
-  const eventItems = localEvents(latest.context || {}, 48);
+  const eventItems = calendarLocalEvents(latest.context || {}, 96);
 
   main.append(listOverview({ items, mainTrends, evergreen, growing, localObservations, context: latest.context || {} }));
   main.append(section("いまの注目ワード", mainTrends, { featured: true, className: "list-main-section", limit: 4, maxItems: 20, expandable: true, totalLabel: `${mainTrends.length}件観測` }));
