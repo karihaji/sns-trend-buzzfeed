@@ -1208,6 +1208,11 @@ h1 {
   padding: 16px;
 }
 
+.category-panel,
+.growing-panel {
+  min-height: 194px;
+}
+
 .home-context-panel {
   border-color: #bdd9f2;
   background:
@@ -1270,6 +1275,10 @@ h1 {
   border: 1px solid #e2e8f2;
   border-radius: 8px;
   overflow: hidden;
+}
+
+.growing-panel .compact-dashboard-list {
+  min-height: 132px;
 }
 
 .compact-dashboard-list .simple-trend-row {
@@ -2113,6 +2122,12 @@ h1 {
       "growing"
       "links"
       "local";
+  }
+
+  .category-panel,
+  .growing-panel,
+  .growing-panel .compact-dashboard-list {
+    min-height: 0;
   }
 
   .lead-panel .pill-list {

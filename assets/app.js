@@ -983,7 +983,7 @@ const renderHome = ({ site, links, latest }) => {
   growingHead.append(create("h2", "", "反応が見える話題"));
   growingHead.append(create("span", "section-count", `${growing.length}件`));
   const growingList = create("div", "compact-dashboard-list");
-  if (growing.length) growingList.replaceChildren(...growing.slice(0, 6).map(simpleTrendRow));
+  if (growing.length) growingList.replaceChildren(...growing.slice(0, 4).map(simpleTrendRow));
   else renderEmpty(growingList, "前回より反応が見える話題はまだありません。");
   growingPanel.append(growingHead, growingList);
 
