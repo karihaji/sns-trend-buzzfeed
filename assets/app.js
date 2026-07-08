@@ -440,15 +440,30 @@ const localEvents = (context = {}, limit = 6) =>
     .sort((a, b) => (b.priority || 0) - (a.priority || 0) || (a.daysUntil || 0) - (b.daysUntil || 0))
     .slice(0, limit);
 
+const daysFromToday = (dateValue) => {
+  const iso = String(dateValue || "").slice(0, 10);
+  const target = Date.parse(`${iso}T00:00:00+09:00`);
+  const now = new Date();
+  const today = Date.parse(`${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}T00:00:00+09:00`);
+  if (Number.isNaN(target) || Number.isNaN(today)) return null;
+  return Math.round((target - today) / (24 * 60 * 60 * 1000));
+};
+
+const isVisibleLocalEvent = (item) => {
+  if (item.daysUntil === null || item.daysUntil === undefined) return false;
+  const endDistance = daysFromToday(item.endDate || item.startDate);
+  return item.daysUntil >= -1 || (item.daysUntil <= 0 && endDistance !== null && endDistance >= -1);
+};
+
 const calendarLocalEvents = (context = {}, limit = 96) =>
   [...(context.localEvents || [])]
-    .filter((item) => item.daysUntil !== null && item.daysUntil !== undefined && item.daysUntil >= -1)
+    .filter(isVisibleLocalEvent)
     .sort((a, b) => (a.startDate || "").localeCompare(b.startDate || "") || (b.priority || 0) - (a.priority || 0))
     .slice(0, limit);
 
 const nearbyLocalEvents = (context = {}, limit = 6) =>
   [...(context.localEvents || [])]
-    .filter((item) => item.daysUntil !== null && item.daysUntil !== undefined && item.daysUntil >= -1)
+    .filter(isVisibleLocalEvent)
     .sort((a, b) => (a.daysUntil || 0) - (b.daysUntil || 0) || (b.priority || 0) - (a.priority || 0))
     .slice(0, limit);
 
@@ -512,9 +527,17 @@ const localEventCalendar = (events = []) => {
   head.append(create("h2", "", "鹿児島イベントカレンダー"));
   head.append(create("span", "section-count", `${events.length}件`));
 
-  const base = [...events]
-    .filter((event) => event.daysUntil >= 0)
-    .sort((a, b) => a.daysUntil - b.daysUntil || (b.priority || 0) - (a.priority || 0))[0] || events[0];
+  const base =
+    [...events]
+      .filter((event) => {
+        const endDistance = daysFromToday(event.endDate || event.startDate);
+        return isVisibleLocalEvent(event) && event.daysUntil <= 0 && endDistance !== null && endDistance >= -1;
+      })
+      .sort((a, b) => (b.priority || 0) - (a.priority || 0))[0] ||
+    [...events]
+      .filter((event) => event.daysUntil >= 0)
+      .sort((a, b) => a.daysUntil - b.daysUntil || (b.priority || 0) - (a.priority || 0))[0] ||
+    events[0];
   if (!base) {
     const empty = create("div", "event-calendar empty", "イベント候補は次回取得後に表示されます。");
     section.append(head, empty);

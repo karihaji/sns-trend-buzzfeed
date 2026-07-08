@@ -736,6 +736,13 @@ const daysUntilIso = (dateValue, now) => {
   return daysUntilIsoDate(date, now);
 };
 
+const isLocalEventInWindow = (event, now, maxDays = 120) => {
+  if (event.daysUntil == null) return false;
+  const endDistance = daysUntilIso(event.endDate || event.startDate, now);
+  const isOngoing = endDistance != null && endDistance >= -1 && event.daysUntil <= 0;
+  return (isOngoing || event.daysUntil >= -1) && event.daysUntil <= maxDays;
+};
+
 const parseCalendarSummary = (summary = "") => {
   const rankCategory = summary.match(/^【([^/】]+)\/([^】]+)】/u);
   const rank = rankCategory?.[1] || "";
@@ -860,7 +867,7 @@ const normalizeLocalEventPayload = (items = [], now) => {
         priority: 0
       };
     })
-    .filter((event) => event.title && event.startDate && event.daysUntil != null && event.daysUntil >= -1 && event.daysUntil <= 120)
+    .filter((event) => event.title && event.startDate && isLocalEventInWindow(event, now, 120))
     .filter((event) => event.sourceName !== "manual-poc" && !/example\.local/u.test(event.sourceUrl || ""))
     .filter((event) => isLocalEventContext(event))
     .filter((event) => event.rank !== "excluded")
@@ -892,7 +899,7 @@ const normalizeLocalEventRows = (rows = [], now) => {
         priority: 0
       };
     })
-    .filter((event) => event.title && event.startDate && event.daysUntil != null && event.daysUntil >= -1 && event.daysUntil <= 90)
+    .filter((event) => event.title && event.startDate && isLocalEventInWindow(event, now, 90))
     .filter((event) => event.sourceName !== "manual-poc" && !/example\.local/u.test(event.sourceUrl || ""))
     .filter((event) => isLocalEventContext(event))
     .filter((event) => event.rank !== "excluded")
