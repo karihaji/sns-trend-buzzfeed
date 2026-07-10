@@ -198,6 +198,271 @@ const renderEmpty = (target, message) => {
   target.replaceChildren(create("div", "empty", message));
 };
 
+const xIframeConverterState = {
+  iframeCode: "",
+  iframeSrc: ""
+};
+
+const xIframeConverterClamp = (value, min, max, fallback) => {
+  const number = Number.parseInt(value, 10);
+  if (!Number.isFinite(number)) return fallback;
+  return Math.min(max, Math.max(min, number));
+};
+
+const xIframeConverterRootUrl = () => {
+  return new URL("../", import.meta.url);
+};
+
+const xIframeConverterExtractTweetId = (value = "") => {
+  const source = String(value || "");
+  const match = source.match(/https?:\/\/(?:www\.|mobile\.)?(?:x|twitter)\.com\/[^\/\s"'<>]+\/status(?:es)?\/(\d+)(?=[^\d]|$)/iu);
+  return match?.[1] || "";
+};
+
+const xIframeConverterBuildCode = ({ id, theme, cards, conversation, lang, dnt, width, height }) => {
+  const embedUrl = new URL("x-post-embed.html", xIframeConverterRootUrl());
+  embedUrl.searchParams.set("id", id);
+  embedUrl.searchParams.set("theme", theme);
+  embedUrl.searchParams.set("cards", cards);
+  embedUrl.searchParams.set("conversation", conversation);
+  embedUrl.searchParams.set("lang", lang);
+  embedUrl.searchParams.set("dnt", String(dnt));
+  embedUrl.searchParams.set("width", String(width));
+  const iframeCode = `<iframe
+  src="${embedUrl.toString()}"
+  width="100%"
+  height="${height}"
+  style="width:100%;max-width:${width}px;border:0;overflow:hidden;"
+  loading="lazy"
+  scrolling="no"
+  title="X投稿">
+</iframe>`;
+  return { iframeCode, iframeSrc: embedUrl.toString() };
+};
+
+const xIframeConverterCleanInstagramUrl = (value = "") => {
+  const source = String(value || "").trim();
+  if (!source) return "";
+  const match = source.match(/https?:\/\/(?:www\.|m\.)?instagram\.com\/[^\s"'<>]+/iu);
+  const candidate = match?.[0] || source;
+  try {
+    const url = new URL(candidate);
+    const host = url.hostname.replace(/^www\./iu, "").replace(/^m\./iu, "");
+    if (host !== "instagram.com") return "";
+    const allowed = /^\/(?:p|reel|reels|tv|stories)\/[^/?#]+\/?/iu.test(url.pathname);
+    if (!allowed) return "";
+    const path = url.pathname.endsWith("/") ? url.pathname : `${url.pathname}/`;
+    return `https://www.instagram.com${path}`;
+  } catch {
+    return "";
+  }
+};
+
+const xIframeConverterCopyText = async (text) => {
+  if (!text) return false;
+  if (navigator.clipboard?.writeText && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      // Fall through to textarea copy.
+    }
+  }
+  const helper = document.createElement("textarea");
+  helper.value = text;
+  helper.setAttribute("readonly", "");
+  helper.style.position = "fixed";
+  helper.style.inset = "auto auto 0 0";
+  helper.style.opacity = "0";
+  document.body.append(helper);
+  helper.select();
+  let ok = false;
+  try {
+    ok = document.execCommand("copy");
+  } catch {
+    ok = false;
+  }
+  helper.remove();
+  return ok;
+};
+
+const xIframeConverterToolSection = () => {
+  const sectionEl = create("section", "section x-iframe-converter-section");
+  const head = create("div", "section-head");
+  head.append(create("h2", "", "SNS担当者向けツール"));
+  head.append(create("span", "section-count", "変換"));
+
+  const grid = create("div", "x-iframe-converter-grid");
+  const xCard = create("article", "x-iframe-converter-card");
+  xCard.append(create("h3", "", "X投稿をiframeコードへ変換"));
+  xCard.append(create("p", "x-iframe-converter-lead", "X投稿のURLまたは公式埋め込みコードを入力すると、iframe形式の埋め込みコードを生成します。"));
+  const input = create("textarea", "x-iframe-converter-textarea");
+  input.placeholder = "X投稿のURL、または埋め込みコードを貼り付けてください";
+  input.rows = 6;
+  const error = create("p", "x-iframe-converter-message", "");
+
+  const settings = create("div", "x-iframe-converter-settings");
+  const field = (label, control) => {
+    const wrap = create("label", "x-iframe-converter-field");
+    wrap.append(create("span", "", label), control);
+    return wrap;
+  };
+  const select = (options) => {
+    const element = document.createElement("select");
+    options.forEach(([value, label]) => {
+      const option = document.createElement("option");
+      option.value = value;
+      option.textContent = label;
+      element.append(option);
+    });
+    return element;
+  };
+  const theme = select([["light", "ライト"], ["dark", "ダーク"]]);
+  const cards = select([["visible", "表示する"], ["hidden", "非表示"]]);
+  const conversation = select([["none", "非表示"], ["all", "表示する"]]);
+  const lang = select([["ja", "日本語"], ["en", "英語"]]);
+  const dnt = select([["true", "有効"], ["false", "無効"]]);
+  const height = document.createElement("input");
+  height.type = "number";
+  height.min = "300";
+  height.max = "1500";
+  height.value = "720";
+  const width = document.createElement("input");
+  width.type = "number";
+  width.min = "250";
+  width.max = "550";
+  width.value = "550";
+  settings.append(
+    field("テーマ", theme),
+    field("画像・動画・カード", cards),
+    field("返信元の投稿", conversation),
+    field("表示言語", lang),
+    field("iframeの高さ(px)", height),
+    field("最大横幅(px)", width),
+    field("パーソナライズ抑制", dnt)
+  );
+
+  const actions = create("div", "x-iframe-converter-actions");
+  const convert = create("button", "x-iframe-converter-button x-iframe-converter-button-primary", "変換する");
+  const clear = create("button", "x-iframe-converter-button", "入力をクリア");
+  const copy = create("button", "x-iframe-converter-button", "生成コードをコピー");
+  convert.type = "button";
+  clear.type = "button";
+  copy.type = "button";
+  copy.disabled = true;
+  actions.append(convert, clear, copy);
+
+  const output = create("textarea", "x-iframe-converter-output");
+  output.readOnly = true;
+  output.rows = 8;
+  const preview = create("div", "x-iframe-converter-preview");
+  preview.append(create("p", "", "変換すると、ここに表示イメージが表示されます。"));
+
+  convert.addEventListener("click", () => {
+    const id = xIframeConverterExtractTweetId(input.value);
+    if (!id || !/^\d+$/u.test(id)) {
+      error.textContent = "X投稿のURLまたは埋め込みコードを確認してください。";
+      output.value = "";
+      xIframeConverterState.iframeCode = "";
+      xIframeConverterState.iframeSrc = "";
+      copy.disabled = true;
+      preview.replaceChildren(create("p", "", "変換すると、ここに表示イメージが表示されます。"));
+      return;
+    }
+    const result = xIframeConverterBuildCode({
+      id,
+      theme: theme.value === "dark" ? "dark" : "light",
+      cards: cards.value === "hidden" ? "hidden" : "visible",
+      conversation: conversation.value === "all" ? "all" : "none",
+      lang: lang.value === "en" ? "en" : "ja",
+      dnt: dnt.value !== "false",
+      height: xIframeConverterClamp(height.value, 300, 1500, 720),
+      width: xIframeConverterClamp(width.value, 250, 550, 550)
+    });
+    error.textContent = "";
+    output.value = result.iframeCode;
+    xIframeConverterState.iframeCode = result.iframeCode;
+    xIframeConverterState.iframeSrc = result.iframeSrc;
+    copy.disabled = false;
+    const frame = document.createElement("iframe");
+    frame.src = result.iframeSrc;
+    frame.width = "100%";
+    frame.height = String(xIframeConverterClamp(height.value, 300, 1500, 720));
+    frame.loading = "lazy";
+    frame.scrolling = "no";
+    frame.title = "X投稿プレビュー";
+    frame.className = "x-iframe-converter-preview-frame";
+    frame.addEventListener("error", () => {
+      preview.replaceChildren(create("p", "x-iframe-converter-message", "プレビューを読み込めませんでした。"));
+    });
+    preview.replaceChildren(frame);
+  });
+
+  clear.addEventListener("click", () => {
+    input.value = "";
+    output.value = "";
+    error.textContent = "";
+    xIframeConverterState.iframeCode = "";
+    xIframeConverterState.iframeSrc = "";
+    copy.disabled = true;
+    preview.replaceChildren(create("p", "", "変換すると、ここに表示イメージが表示されます。"));
+  });
+
+  copy.addEventListener("click", async () => {
+    const ok = await xIframeConverterCopyText(xIframeConverterState.iframeCode);
+    error.textContent = ok ? "iframeコードをコピーしました。" : "コピーできませんでした。コードを選択してコピーしてください。";
+  });
+
+  xCard.append(input, error, settings, actions, output, preview);
+
+  const instagramCard = create("article", "x-iframe-converter-card");
+  instagramCard.append(create("h3", "", "InstagramシェアURLを整理"));
+  instagramCard.append(create("p", "x-iframe-converter-lead", "共有URLに含まれる個人ID・トラッキング要素を外し、投稿へ直接飛ぶURLへ変換します。"));
+  const igInput = create("textarea", "x-iframe-converter-textarea");
+  igInput.placeholder = "Instagramの共有URLを貼り付けてください";
+  igInput.rows = 4;
+  const igMessage = create("p", "x-iframe-converter-message", "");
+  const igActions = create("div", "x-iframe-converter-actions");
+  const igConvert = create("button", "x-iframe-converter-button x-iframe-converter-button-primary", "変換する");
+  const igClear = create("button", "x-iframe-converter-button", "入力をクリア");
+  const igCopy = create("button", "x-iframe-converter-button", "生成URLをコピー");
+  igConvert.type = "button";
+  igClear.type = "button";
+  igCopy.type = "button";
+  igCopy.disabled = true;
+  igActions.append(igConvert, igClear, igCopy);
+  const igOutput = create("textarea", "x-iframe-converter-output x-iframe-converter-output-small");
+  igOutput.readOnly = true;
+  igOutput.rows = 3;
+
+  igConvert.addEventListener("click", () => {
+    const cleaned = xIframeConverterCleanInstagramUrl(igInput.value);
+    if (!cleaned) {
+      igOutput.value = "";
+      igCopy.disabled = true;
+      igMessage.textContent = "Instagramの投稿URLを確認してください。";
+      return;
+    }
+    igOutput.value = cleaned;
+    igCopy.disabled = false;
+    igMessage.textContent = "";
+  });
+  igClear.addEventListener("click", () => {
+    igInput.value = "";
+    igOutput.value = "";
+    igCopy.disabled = true;
+    igMessage.textContent = "";
+  });
+  igCopy.addEventListener("click", async () => {
+    const ok = await xIframeConverterCopyText(igOutput.value);
+    igMessage.textContent = ok ? "URLをコピーしました。" : "コピーできませんでした。URLを選択してコピーしてください。";
+  });
+  instagramCard.append(igInput, igMessage, igActions, igOutput);
+  grid.append(xCard, instagramCard);
+  sectionEl.append(head, grid);
+  return sectionEl;
+};
+
 const sortBy = (items, selector) => [...items].sort((a, b) => selector(b) - selector(a));
 const categoryKey = (item) => {
   const label = item.watchlistLabel || "";
@@ -1099,7 +1364,7 @@ const renderHome = ({ site, links, latest }) => {
 
   const contextPanel = homeContextPanel(latest.context || {}, localObservations);
   const localPanel = localObservationShelf(localObservations, { home: true });
-  dashboardTarget.replaceChildren(leadPanel, contextPanel, categoryPanel, growingPanel, linksPanel, localPanel);
+  dashboardTarget.replaceChildren(leadPanel, contextPanel, categoryPanel, growingPanel, linksPanel, localPanel, xIframeConverterToolSection());
   document.querySelector("[data-note]").textContent = site.dataRefreshNote || "観測スコアは独自指標です。";
 };
 
@@ -1129,6 +1394,8 @@ const renderCompact = ({ site, links, latest }) => {
 
   const linksTarget = document.querySelector("[data-compact-links]");
   linksTarget.replaceChildren(compactInfoTray({ evergreen, growing }));
+  const shell = document.querySelector(".compact-shell");
+  if (shell && !shell.querySelector(".x-iframe-converter-section")) shell.append(xIframeConverterToolSection());
 
   const more = document.querySelector("[data-more]");
   more.href = site.sharePointListUrl || "../";
@@ -1234,6 +1501,7 @@ const renderList = ({ site, links, latest }) => {
   grid.replaceChildren(...links.filter((link) => link.active).sort((a, b) => b.priority - a.priority).map(linkCard));
   linkSection.append(head, grid);
   main.append(linkSection);
+  main.append(xIframeConverterToolSection());
 
   document.querySelector("[data-note]").textContent = site.dataRefreshNote || "観測スコアは独自指標です。";
 };

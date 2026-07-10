@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>X投稿</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: "Segoe UI", "Noto Sans JP", system-ui, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        background: #f7fbff;
+        color: #172033;
+      }
+
+      body[data-theme="dark"] {
+        background: #101827;
+        color: #f8fbff;
+      }
+
+      .x-iframe-converter-embed-wrap {
+        display: grid;
+        justify-items: center;
+        width: 100%;
+        min-height: 100vh;
+        padding: 10px;
+      }
+
+      .x-iframe-converter-embed-target {
+        width: 100%;
+        max-width: var(--tweet-width, 550px);
+      }
+
+      .x-iframe-converter-embed-message {
+        width: min(100%, var(--tweet-width, 550px));
+        margin: 0;
+        padding: 14px;
+        border: 1px solid #cfe3f4;
+        border-radius: 8px;
+        background: #fff;
+        color: #172033;
+        font-size: 13px;
+        font-weight: 750;
+        line-height: 1.55;
+        text-align: center;
+      }
+
+      body[data-theme="dark"] .x-iframe-converter-embed-message {
+        border-color: #334155;
+        background: #182235;
+        color: #f8fbff;
+      }
+
+      .x-iframe-converter-embed-message a {
+        display: inline-block;
+        margin-top: 8px;
+        color: #018bee;
+        font-weight: 850;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="x-iframe-converter-embed-wrap">
+      <div class="x-iframe-converter-embed-target" data-embed-target></div>
+    </main>
+    <script>
+      (() => {
+        const params = new URLSearchParams(window.location.search);
+        const pick = (name, allowed, fallback) => (allowed.includes(params.get(name)) ? params.get(name) : fallback);
+        const clamp = (value, min, max, fallback) => {
+          const number = Number.parseInt(value, 10);
+          if (!Number.isFinite(number)) return fallback;
+          return Math.min(max, Math.max(min, number));
+        };
+        const id = /^\d+$/.test(params.get("id") || "") ? params.get("id") : "";
+        const theme = pick("theme", ["light", "dark"], "light");
+        const cards = pick("cards", ["visible", "hidden"], "visible");
+        const conversation = pick("conversation", ["all", "none"], "none");
+        const lang = pick("lang", ["ja", "en"], "ja");
+        const dnt = pick("dnt", ["true", "false"], "true") === "true";
+        const width = clamp(params.get("width"), 250, 550, 550);
+        const target = document.querySelector("[data-embed-target]");
+        document.documentElement.lang = lang;
+        document.body.dataset.theme = theme;
+        document.body.style.setProperty("--tweet-width", `${width}px`);
+
+        const showMessage = (message, withLink = false) => {
+          target.replaceChildren();
+          const box = document.createElement("p");
+          box.className = "x-iframe-converter-embed-message";
+          box.textContent = message;
+          if (withLink && id) {
+            const link = document.createElement("a");
+            link.href = `https://x.com/i/status/${id}`;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.textContent = "元投稿をXで開く";
+            box.append(document.createElement("br"), link);
+          }
+          target.append(box);
+        };
+
+        if (!id) {
+          showMessage("このX投稿は表示できません。");
+          return;
+        }
+
+        const loadWidgets = () =>
+          new Promise((resolve, reject) => {
+            if (window.twttr?.widgets?.createTweet) {
+              resolve(window.twttr);
+              return;
+            }
+            const script = document.createElement("script");
+            script.src = "https://platform.x.com/widgets.js";
+            script.async = true;
+            script.charset = "utf-8";
+            script.onload = () => {
+              if (window.twttr?.ready) window.twttr.ready(() => resolve(window.twttr));
+              else reject(new Error("widgets unavailable"));
+            };
+            script.onerror = () => reject(new Error("widgets failed"));
+            document.head.append(script);
+          });
+
+        loadWidgets()
+          .then((twttr) =>
+            twttr.widgets.createTweet(id, target, {
+              theme,
+              cards: cards === "hidden" ? "hidden" : undefined,
+              conversation: conversation === "none" ? "none" : undefined,
+              lang,
+              dnt,
+              width
+            })
+          )
+          .then((element) => {
+            if (!element) showMessage("このX投稿は表示できません。", true);
+          })
+          .catch(() => {
+            showMessage("X投稿を読み込めませんでした。", true);
+          });
+      })();
+    </script>
+  </body>
+</html>
