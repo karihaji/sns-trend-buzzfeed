@@ -1010,14 +1010,14 @@ h1 {
 
 .x-iframe-converter-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
   gap: 12px;
   align-items: start;
 }
 
 .x-iframe-converter-card {
   display: grid;
-  gap: 12px;
+  grid-template-columns: minmax(190px, 0.24fr) minmax(0, 1fr);
+  gap: 14px;
   min-width: 0;
   padding: 16px;
   border: 1px solid #cfe3f4;
@@ -1026,6 +1026,19 @@ h1 {
     linear-gradient(135deg, rgba(1, 139, 238, 0.08), rgba(255, 255, 255, 0.94)),
     #fff;
   box-shadow: 0 12px 28px rgba(21, 52, 92, 0.06);
+}
+
+.x-iframe-converter-card-instagram {
+  background:
+    linear-gradient(135deg, rgba(236, 72, 132, 0.07), rgba(255, 255, 255, 0.96)),
+    #fff;
+}
+
+.x-iframe-converter-intro {
+  display: grid;
+  align-content: start;
+  gap: 7px;
+  min-width: 0;
 }
 
 .x-iframe-converter-card h3 {
@@ -1039,6 +1052,28 @@ h1 {
   font-size: 12px;
   font-weight: 650;
   line-height: 1.65;
+}
+
+.x-iframe-converter-lane {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  align-items: stretch;
+}
+
+.x-iframe-converter-lane-x {
+  grid-template-columns: minmax(220px, 0.95fr) minmax(280px, 1.1fr) minmax(260px, 1.05fr);
+}
+
+.x-iframe-converter-lane-instagram {
+  grid-template-columns: minmax(260px, 1fr) minmax(150px, 0.34fr) minmax(260px, 1fr);
+}
+
+.x-iframe-converter-pane {
+  display: grid;
+  align-content: start;
+  gap: 9px;
+  min-width: 0;
 }
 
 .x-iframe-converter-textarea,
@@ -1058,22 +1093,25 @@ h1 {
 .x-iframe-converter-textarea,
 .x-iframe-converter-output {
   resize: vertical;
+  min-height: 116px;
   padding: 10px 11px;
   line-height: 1.55;
 }
 
 .x-iframe-converter-output {
+  min-height: 144px;
   background: #f8fbff;
   font-family: Consolas, "Courier New", monospace;
 }
 
 .x-iframe-converter-output-small {
+  min-height: 84px;
   resize: none;
 }
 
 .x-iframe-converter-settings {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 9px;
 }
 
@@ -1097,9 +1135,13 @@ h1 {
 }
 
 .x-iframe-converter-actions {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
+}
+
+.x-iframe-converter-lane-instagram .x-iframe-converter-actions {
+  grid-template-columns: 1fr;
 }
 
 .x-iframe-converter-button {
@@ -1136,7 +1178,7 @@ h1 {
 .x-iframe-converter-preview {
   display: grid;
   place-items: center;
-  min-height: 180px;
+  min-height: 150px;
   overflow: hidden;
   padding: 12px;
   border: 1px dashed #bddaf4;
@@ -2519,8 +2561,15 @@ h1 {
   .list-dashboard > .local-shelf,
   .list-dashboard > .local-detail-section,
   .list-dashboard > .link-section,
-  .list-dashboard > .event-calendar-section {
+  .list-dashboard > .event-calendar-section,
+  .list-dashboard > .x-iframe-converter-section {
     grid-column: 1 / -1;
+  }
+
+  .x-iframe-converter-card,
+  .x-iframe-converter-lane-x,
+  .x-iframe-converter-lane-instagram {
+    grid-template-columns: 1fr;
   }
 
   .list-main-section .trend-card:first-child {

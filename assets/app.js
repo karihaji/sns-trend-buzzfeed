@@ -293,9 +293,10 @@ const xIframeConverterToolSection = () => {
   head.append(create("span", "section-count", "変換"));
 
   const grid = create("div", "x-iframe-converter-grid");
-  const xCard = create("article", "x-iframe-converter-card");
-  xCard.append(create("h3", "", "X投稿をiframeコードへ変換"));
-  xCard.append(create("p", "x-iframe-converter-lead", "X投稿のURLまたは公式埋め込みコードを入力すると、iframe形式の埋め込みコードを生成します。"));
+  const xCard = create("article", "x-iframe-converter-card x-iframe-converter-card-x");
+  const xIntro = create("div", "x-iframe-converter-intro");
+  xIntro.append(create("h3", "", "X投稿をiframeコードへ変換"));
+  xIntro.append(create("p", "x-iframe-converter-lead", "X投稿のURLまたは公式埋め込みコードを入力すると、iframe形式の埋め込みコードを生成します。"));
   const input = create("textarea", "x-iframe-converter-textarea");
   input.placeholder = "X投稿のURL、または埋め込みコードを貼り付けてください";
   input.rows = 6;
@@ -413,11 +414,20 @@ const xIframeConverterToolSection = () => {
     error.textContent = ok ? "iframeコードをコピーしました。" : "コピーできませんでした。コードを選択してコピーしてください。";
   });
 
-  xCard.append(input, error, settings, actions, output, preview);
+  const xLane = create("div", "x-iframe-converter-lane x-iframe-converter-lane-x");
+  const xInputPanel = create("div", "x-iframe-converter-pane x-iframe-converter-pane-input");
+  xInputPanel.append(input, error);
+  const xControlPanel = create("div", "x-iframe-converter-pane x-iframe-converter-pane-control");
+  xControlPanel.append(settings, actions);
+  const xResultPanel = create("div", "x-iframe-converter-pane x-iframe-converter-pane-result");
+  xResultPanel.append(output, preview);
+  xLane.append(xInputPanel, xControlPanel, xResultPanel);
+  xCard.append(xIntro, xLane);
 
-  const instagramCard = create("article", "x-iframe-converter-card");
-  instagramCard.append(create("h3", "", "InstagramシェアURLを整理"));
-  instagramCard.append(create("p", "x-iframe-converter-lead", "共有URLに含まれる個人ID・トラッキング要素を外し、投稿へ直接飛ぶURLへ変換します。"));
+  const instagramCard = create("article", "x-iframe-converter-card x-iframe-converter-card-instagram");
+  const igIntro = create("div", "x-iframe-converter-intro");
+  igIntro.append(create("h3", "", "InstagramシェアURLを整理"));
+  igIntro.append(create("p", "x-iframe-converter-lead", "共有URLに含まれる個人ID・トラッキング要素を外し、投稿へ直接飛ぶURLへ変換します。"));
   const igInput = create("textarea", "x-iframe-converter-textarea");
   igInput.placeholder = "Instagramの共有URLを貼り付けてください";
   igInput.rows = 4;
@@ -457,7 +467,15 @@ const xIframeConverterToolSection = () => {
     const ok = await xIframeConverterCopyText(igOutput.value);
     igMessage.textContent = ok ? "URLをコピーしました。" : "コピーできませんでした。URLを選択してコピーしてください。";
   });
-  instagramCard.append(igInput, igMessage, igActions, igOutput);
+  const igLane = create("div", "x-iframe-converter-lane x-iframe-converter-lane-instagram");
+  const igInputPanel = create("div", "x-iframe-converter-pane x-iframe-converter-pane-input");
+  igInputPanel.append(igInput, igMessage);
+  const igControlPanel = create("div", "x-iframe-converter-pane x-iframe-converter-pane-control");
+  igControlPanel.append(igActions);
+  const igResultPanel = create("div", "x-iframe-converter-pane x-iframe-converter-pane-result");
+  igResultPanel.append(igOutput);
+  igLane.append(igInputPanel, igControlPanel, igResultPanel);
+  instagramCard.append(igIntro, igLane);
   grid.append(xCard, instagramCard);
   sectionEl.append(head, grid);
   return sectionEl;
