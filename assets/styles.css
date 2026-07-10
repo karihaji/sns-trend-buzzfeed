@@ -767,6 +767,62 @@ h1 {
   font-weight: 850;
 }
 
+.event-calendar-rail {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+  margin: -2px 0 12px;
+}
+
+.event-rail-item {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 34px;
+  padding: 6px 9px;
+  border: 1px solid #b7daf7;
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(1, 139, 238, 0.12), rgba(255, 255, 255, 0.9)),
+    #f7fbff;
+}
+
+.event-rail-item span {
+  display: inline-grid;
+  place-items: center;
+  min-height: 22px;
+  border-radius: 999px;
+  background: #e7f3ff;
+  color: #075a9f;
+  font-size: 10px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.event-rail-item strong {
+  min-width: 0;
+  overflow: hidden;
+  color: #10213a;
+  font-size: 11px;
+  font-weight: 850;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.event-rail-item.rank-s {
+  border-color: #f2cf8b;
+  background:
+    linear-gradient(135deg, rgba(255, 185, 60, 0.16), rgba(255, 255, 255, 0.92)),
+    #fffaf0;
+}
+
+.event-rail-item.rank-s span {
+  background: #fff2d5;
+  color: #8a5600;
+}
+
 .event-calendar-weekdays,
 .event-calendar-grid {
   display: grid;
@@ -824,6 +880,20 @@ h1 {
   line-height: 1.25;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.event-day-tag-long {
+  border-left: 3px solid #018bee;
+  background:
+    linear-gradient(90deg, rgba(1, 139, 238, 0.16), rgba(255, 255, 255, 0.88)),
+    #edf6ff;
+}
+
+.event-day-tag-long.rank-s {
+  border-left-color: #f0a429;
+  background:
+    linear-gradient(90deg, rgba(255, 190, 70, 0.22), rgba(255, 255, 255, 0.88)),
+    #fff7e4;
 }
 
 .event-day-more {
@@ -2334,6 +2404,7 @@ h1 {
 
   .list-focus-list,
   .list-summary-grid,
+  .event-calendar-rail,
   .weather-ribbon {
     grid-template-columns: 1fr;
   }

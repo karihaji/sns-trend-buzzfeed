@@ -21,6 +21,7 @@ concurrency:
 jobs:
   update-and-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -37,6 +38,10 @@ jobs:
 
       - name: Fetch trends
         run: node scripts/fetch-trends.mjs
+
+      - name: Validate generated data
+        run: |
+          node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('data/latest-trends.json','utf8')); const trends=data.items||[]; const local=data.context?.localEvents||[]; if(trends.length<20) throw new Error('Trend data looks too small: '+trends.length); if(local.length<20) throw new Error('Local event data looks too small: '+local.length); console.log('Validated trends='+trends.length+', localEvents='+local.length);"
 
       - name: Commit updated trend data
         uses: stefanzweifel/git-auto-commit-action@v5

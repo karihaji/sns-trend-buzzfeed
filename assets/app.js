@@ -521,6 +521,21 @@ const eventDateKeysInMonth = (event, first, last) => {
   return keys;
 };
 
+const localEventDuration = (event) => {
+  const start = Date.parse(`${event.startDate}T00:00:00+09:00`);
+  const end = Date.parse(`${event.endDate || event.startDate}T00:00:00+09:00`);
+  if (Number.isNaN(start) || Number.isNaN(end)) return 1;
+  return Math.max(1, Math.round((end - start) / (24 * 60 * 60 * 1000)) + 1);
+};
+
+const isLongLocalEvent = (event) => localEventDuration(event) >= 3;
+
+const localEventDateRangeLabel = (event) => {
+  const start = String(event.startDate || "").slice(5).replace("-", "/");
+  const end = String(event.endDate || event.startDate || "").slice(5).replace("-", "/");
+  return start && end && start !== end ? `${start}-${end}` : start;
+};
+
 const localEventCalendar = (events = []) => {
   const section = create("section", "section event-calendar-section");
   const head = create("div", "section-head");
@@ -566,6 +581,23 @@ const localEventCalendar = (events = []) => {
 
   const calendar = create("div", "event-calendar");
   const monthLabel = create("div", "event-calendar-month", `${year}年${month + 1}月`);
+  const ongoing = [...events]
+    .filter((event) => isVisibleLocalEvent(event) && isLongLocalEvent(event) && eventDateKeysInMonth(event, first, last).length)
+    .sort((a, b) => (b.priority || 0) - (a.priority || 0) || localEventDuration(b) - localEventDuration(a))
+    .slice(0, 6);
+  if (ongoing.length) {
+    const rail = create("div", "event-calendar-rail");
+    ongoing.forEach((event) => {
+      const item = safeExternalAttrs(create("a", `event-rail-item rank-${(event.rank || "b").toLowerCase()}`));
+      item.href = event.sourceUrl || newsSearchUrl(event.title);
+      item.append(create("span", "", localEventDateRangeLabel(event)));
+      item.append(create("strong", "", event.title));
+      rail.append(item);
+    });
+    calendar.append(monthLabel, rail);
+  } else {
+    calendar.append(monthLabel);
+  }
   const weekdays = create("div", "event-calendar-weekdays");
   ["日", "月", "火", "水", "木", "金", "土"].forEach((label) => weekdays.append(create("span", "", label)));
   const grid = create("div", "event-calendar-grid");
@@ -577,16 +609,16 @@ const localEventCalendar = (events = []) => {
     }
     const iso = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
     cell.append(create("span", "event-day-number", String(date.getDate())));
-    const dayEvents = byDate.get(iso) || [];
+    const dayEvents = [...(byDate.get(iso) || [])].sort((a, b) => Number(isLongLocalEvent(b)) - Number(isLongLocalEvent(a)) || (b.priority || 0) - (a.priority || 0));
     dayEvents.slice(0, 3).forEach((event) => {
-      const tag = safeExternalAttrs(create("a", `event-day-tag rank-${(event.rank || "b").toLowerCase()}`, event.title));
+      const tag = safeExternalAttrs(create("a", `event-day-tag ${isLongLocalEvent(event) ? "event-day-tag-long" : ""} rank-${(event.rank || "b").toLowerCase()}`, event.title));
       tag.href = event.sourceUrl || newsSearchUrl(event.title);
       cell.append(tag);
     });
     if (dayEvents.length > 3) cell.append(create("span", "event-day-more", `他 ${dayEvents.length - 3}件`));
     grid.append(cell);
   });
-  calendar.append(monthLabel, weekdays, grid);
+  calendar.append(weekdays, grid);
   section.append(head, calendar);
   return section;
 };
