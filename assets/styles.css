@@ -823,6 +823,84 @@ h1 {
   color: #8a5600;
 }
 
+.event-rail-item.event-tone-commerce {
+  border-color: #f4bfd0;
+  background:
+    linear-gradient(135deg, rgba(236, 72, 132, 0.13), rgba(255, 255, 255, 0.92)),
+    #fff7fb;
+}
+
+.event-rail-item.event-tone-commerce span,
+.event-day-tag.event-tone-commerce {
+  background: #fff0f6;
+  color: #9d174d;
+}
+
+.event-rail-item.event-tone-festival {
+  border-color: #f0cc82;
+  background:
+    linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(255, 255, 255, 0.9)),
+    #fff9ed;
+}
+
+.event-rail-item.event-tone-festival span,
+.event-day-tag.event-tone-festival {
+  background: #fff2d5;
+  color: #8a5600;
+}
+
+.event-rail-item.event-tone-stage {
+  border-color: #d5c4ff;
+  background:
+    linear-gradient(135deg, rgba(124, 92, 255, 0.13), rgba(255, 255, 255, 0.92)),
+    #f9f6ff;
+}
+
+.event-rail-item.event-tone-stage span,
+.event-day-tag.event-tone-stage {
+  background: #f1edff;
+  color: #4c1d95;
+}
+
+.event-rail-item.event-tone-exhibit {
+  border-color: #a9ddf7;
+  background:
+    linear-gradient(135deg, rgba(6, 182, 212, 0.13), rgba(255, 255, 255, 0.92)),
+    #f2fbff;
+}
+
+.event-rail-item.event-tone-exhibit span,
+.event-day-tag.event-tone-exhibit {
+  background: #e7f8ff;
+  color: #075985;
+}
+
+.event-rail-item.event-tone-tourism {
+  border-color: #9dd7e5;
+  background:
+    linear-gradient(135deg, rgba(14, 116, 144, 0.12), rgba(255, 255, 255, 0.92)),
+    #f2fbfd;
+}
+
+.event-rail-item.event-tone-tourism span,
+.event-day-tag.event-tone-tourism {
+  background: #e6f6fa;
+  color: #155e75;
+}
+
+.event-rail-item.event-tone-sports {
+  border-color: #bbc9ff;
+  background:
+    linear-gradient(135deg, rgba(59, 91, 219, 0.13), rgba(255, 255, 255, 0.92)),
+    #f6f8ff;
+}
+
+.event-rail-item.event-tone-sports span,
+.event-day-tag.event-tone-sports {
+  background: #edf1ff;
+  color: #273c99;
+}
+
 .event-calendar-weekdays,
 .event-calendar-grid {
   display: grid;
@@ -887,6 +965,30 @@ h1 {
   background:
     linear-gradient(90deg, rgba(1, 139, 238, 0.16), rgba(255, 255, 255, 0.88)),
     #edf6ff;
+}
+
+.event-day-tag-long.event-tone-commerce {
+  border-left-color: #ec4884;
+}
+
+.event-day-tag-long.event-tone-festival {
+  border-left-color: #f59e0b;
+}
+
+.event-day-tag-long.event-tone-stage {
+  border-left-color: #7c5cff;
+}
+
+.event-day-tag-long.event-tone-exhibit {
+  border-left-color: #06b6d4;
+}
+
+.event-day-tag-long.event-tone-tourism {
+  border-left-color: #0e7490;
+}
+
+.event-day-tag-long.event-tone-sports {
+  border-left-color: #3b5bdb;
 }
 
 .event-day-tag-long.rank-s {

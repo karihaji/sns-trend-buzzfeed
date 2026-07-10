@@ -547,6 +547,17 @@ const localEventDateRangeLabel = (event) => {
   return start && end && start !== end ? `${start}-${end}` : start;
 };
 
+const localEventTone = (event) => {
+  const text = `${event.category || ""} ${event.title || ""}`;
+  if (/祭り|地域行事|六月灯|花火|ナイトクルーズ/u.test(text)) return "festival";
+  if (/商業|百貨店|催事|バーゲン|BARGAIN|POP|ポップアップ|SHOP|STORE|マルシェ/u.test(text)) return "commerce";
+  if (/公演|コンサート|ライブ|舞台|演劇|音楽|朗読|寄席/u.test(text)) return "stage";
+  if (/展示|展覧|妖怪|フェスタ/u.test(text)) return "exhibit";
+  if (/観光|温泉|旅行/u.test(text)) return "tourism";
+  if (/スポーツ|アリーナ|大会/u.test(text)) return "sports";
+  return "default";
+};
+
 const localEventCalendar = (events = []) => {
   const section = create("section", "section event-calendar-section");
   const head = create("div", "section-head");
@@ -588,7 +599,7 @@ const localEventCalendar = (events = []) => {
   if (ongoing.length) {
     const rail = create("div", "event-calendar-rail");
     ongoing.forEach((event) => {
-      const item = safeExternalAttrs(create("a", `event-rail-item rank-${(event.rank || "b").toLowerCase()}`));
+      const item = safeExternalAttrs(create("a", `event-rail-item event-tone-${localEventTone(event)} rank-${(event.rank || "b").toLowerCase()}`));
       item.href = event.sourceUrl || newsSearchUrl(event.title);
       item.append(create("span", "", localEventDateRangeLabel(event)));
       item.append(create("strong", "", event.title));
@@ -611,7 +622,13 @@ const localEventCalendar = (events = []) => {
     cell.append(create("span", "event-day-number", String(date.getDate())));
     const dayEvents = [...(byDate.get(iso) || [])].sort((a, b) => Number(isLongLocalEvent(b)) - Number(isLongLocalEvent(a)) || (b.priority || 0) - (a.priority || 0));
     dayEvents.slice(0, 3).forEach((event) => {
-      const tag = safeExternalAttrs(create("a", `event-day-tag ${isLongLocalEvent(event) ? "event-day-tag-long" : ""} rank-${(event.rank || "b").toLowerCase()}`, event.title));
+      const tag = safeExternalAttrs(
+        create(
+          "a",
+          `event-day-tag event-tone-${localEventTone(event)} ${isLongLocalEvent(event) ? "event-day-tag-long" : ""} rank-${(event.rank || "b").toLowerCase()}`,
+          event.title
+        )
+      );
       tag.href = event.sourceUrl || newsSearchUrl(event.title);
       cell.append(tag);
     });
