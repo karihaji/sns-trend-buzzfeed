@@ -507,6 +507,17 @@ const localEventRows = (events = [], limit = 3) => {
 
 const monthKey = (date) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
 
+const jstTodayDate = () => {
+  const parts = new Intl.DateTimeFormat("ja-JP", {
+    timeZone: "Asia/Tokyo",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(new Date());
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return new Date(Number(values.year), Number(values.month) - 1, Number(values.day));
+};
+
 const eventDateKeysInMonth = (event, first, last) => {
   const start = new Date(`${event.startDate}T00:00:00+09:00`);
   const end = new Date(`${event.endDate || event.startDate}T00:00:00+09:00`);
@@ -542,24 +553,13 @@ const localEventCalendar = (events = []) => {
   head.append(create("h2", "", "鹿児島イベントカレンダー"));
   head.append(create("span", "section-count", `${events.length}件`));
 
-  const base =
-    [...events]
-      .filter((event) => {
-        const endDistance = daysFromToday(event.endDate || event.startDate);
-        return isVisibleLocalEvent(event) && event.daysUntil <= 0 && endDistance !== null && endDistance >= -1;
-      })
-      .sort((a, b) => (b.priority || 0) - (a.priority || 0))[0] ||
-    [...events]
-      .filter((event) => event.daysUntil >= 0)
-      .sort((a, b) => a.daysUntil - b.daysUntil || (b.priority || 0) - (a.priority || 0))[0] ||
-    events[0];
-  if (!base) {
+  if (!events.length) {
     const empty = create("div", "event-calendar empty", "イベント候補は次回取得後に表示されます。");
     section.append(head, empty);
     return section;
   }
 
-  const current = new Date(`${base.startDate}T00:00:00+09:00`);
+  const current = jstTodayDate();
   const year = current.getFullYear();
   const month = current.getMonth();
   const first = new Date(year, month, 1);
