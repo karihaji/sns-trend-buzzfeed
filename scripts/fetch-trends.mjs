@@ -672,6 +672,70 @@ const fetchExternalAnniversaries = async (sources = [], now) => {
   return dedupeAnniversaries(results).slice(0, ANNIVERSARY_SOURCE_LIMIT);
 };
 
+const dateFromEventSource = (value) => {
+  const match = String(value || "").match(/^(\d{4}-\d{2}-\d{2})/u);
+  return match ? match[1] : "";
+};
+
+const jsonLdObjects = (html) => {
+  const objects = [];
+  for (const match of String(html || "").matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/giu)) {
+    try {
+      const parsed = JSON.parse(match[1].trim());
+      objects.push(...(Array.isArray(parsed) ? parsed : [parsed]));
+    } catch (error) {
+      console.warn(`Skipped malformed JSON-LD: ${error.message}`);
+    }
+  }
+  return objects;
+};
+
+const parseWalkerPlusExhibitions = (html, source, now) =>
+  jsonLdObjects(html)
+    .filter((item) => {
+      const types = Array.isArray(item?.["@type"]) ? item["@type"] : [item?.["@type"]];
+      return types.includes("Event");
+    })
+    .map((item) => {
+      const startDate = dateFromEventSource(item.startDate);
+      const endDate = dateFromEventSource(item.endDate) || startDate;
+      return {
+        id: idFor(`${source.id}-${item.name}-${startDate}-${item.location?.name || ""}`),
+        title: cleanLocalEventTitle(item.name),
+        category: "展示・展覧会",
+        rank: "B",
+        venue: cleanHtmlText(item.location?.name || ""),
+        startDate,
+        endDate,
+        daysUntil: daysUntilIso(startDate, now),
+        colorId: "",
+        sourceUrl: typeof item.url === "string" && /^https?:\/\//u.test(item.url) ? item.url : source.url,
+        sourceName: source.id,
+        summary: cleanHtmlText(item.description || item.name || ""),
+        priority: 0
+      };
+    })
+    .filter((event) => event.title && event.startDate && isLocalEventInWindow(event, now, 120))
+    .filter(isLocalEventContext)
+    .map((event) => ({ ...event, priority: eventPriority(event) }))
+    .sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil);
+
+const fetchExternalEventSources = async (sources = [], now) => {
+  const results = [];
+  for (const source of sources) {
+    if (source.active === false || !source.url) continue;
+    try {
+      const html = await fetchHtml(source.url);
+      if (source.type === "walkerplus_jsonld") {
+        results.push(...parseWalkerPlusExhibitions(html, source, now));
+      }
+    } catch (error) {
+      console.warn(`Skipped event source "${source.label || source.id}": ${error.message}`);
+    }
+  }
+  return dedupeLocalEvents(results).sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil);
+};
+
 const daysUntilIsoDate = (isoDate, now) => {
   const targetTime = Date.parse(`${isoDate}T00:00:00+09:00`);
   if (Number.isNaN(targetTime)) return null;
@@ -798,8 +862,29 @@ const eventPriority = (event) => {
   const datePoints = Math.max(0, 130 - Math.abs(event.daysUntil || 0) * 4);
   const colorPoints = event.colorId === "9" ? 30 : event.colorId === "10" ? 20 : 0;
   const contextPoints = /商業|百貨店|展示|コンサート|公演|ホテル/u.test(event.category || "") ? 95 : 0;
-  return rankPoints + datePoints + colorPoints + contextPoints;
+  const sourcePoints = event.sourceName === "walkerplus_kagoshima_exhibitions" ? 35 : 0;
+  return rankPoints + datePoints + colorPoints + contextPoints + sourcePoints;
 };
+
+const refreshExternalLocalEvents = (events = [], now) =>
+  events
+    .map((event) => {
+      const startDate = dateOnly(event.startDate);
+      const endDate = dateOnly(event.endDate) || startDate;
+      const normalized = {
+        ...event,
+        title: cleanLocalEventTitle(event.title),
+        category: event.category || "展示・展覧会",
+        rank: event.rank || "B",
+        startDate,
+        endDate,
+        daysUntil: daysUntilIso(startDate, now),
+        priority: 0
+      };
+      return { ...normalized, priority: eventPriority(normalized) };
+    })
+    .filter((event) => event.title && event.startDate && isLocalEventInWindow(event, now, 120))
+    .filter(isLocalEventContext);
 
 const compactEventTitle = (title = "") =>
   String(title || "")
@@ -908,33 +993,40 @@ const normalizeLocalEventRows = (rows = [], now) => {
   return dedupeLocalEvents(normalized).sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil);
 };
 
-const readLocalEventContext = async (now) => {
+const readLocalEventContext = async (now, externalEvents = [], previousExternalEvents = []) => {
   const readSource = async (file) => normalizeLocalEventPayload(await readJson(file, []), now);
   const readRows = async (file) => normalizeLocalEventRows(await readJson(file, []), now);
   const sourceEvents = await readSource(LOCAL_EVENT_SOURCE_PATH);
   const sourceRows = await readRows(LOCAL_EVENT_ROWS_SOURCE_PATH);
   const fallbackEvents = sourceEvents.length ? sourceEvents : await readSource(LOCAL_EVENT_FALLBACK_PATH);
   const fallbackRows = sourceRows.length ? sourceRows : await readRows(LOCAL_EVENT_ROWS_FALLBACK_PATH);
+  const currentSourceNames = new Set(externalEvents.map((event) => event.sourceName).filter(Boolean));
+  const retainedExternalEvents = refreshExternalLocalEvents(previousExternalEvents, now).filter(
+    (event) => !currentSourceNames.has(event.sourceName)
+  );
   const byId = new Map();
-  for (const event of [...fallbackEvents, ...fallbackRows]) {
+  for (const event of [...externalEvents, ...retainedExternalEvents, ...fallbackEvents, ...fallbackRows]) {
     if (!byId.has(event.id)) byId.set(event.id, event);
   }
   return dedupeLocalEvents([...byId.values()]).sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil).slice(0, 96);
 };
 
-const buildDashboardContext = async (config, now, nowIso) => {
+const buildDashboardContext = async (config, now, nowIso, previousContext = {}) => {
   const configuredAnniversaries = upcomingAnniversaries(config.anniversaries || [], now).map((item) => ({
     ...item,
     source: item.source || "設定",
     priority: item.priority || 30
   }));
   const externalAnniversaries = await fetchExternalAnniversaries(config.anniversarySources || [], now);
+  const externalEvents = await fetchExternalEventSources(config.eventSources || [], now);
+  const externalSourceIds = new Set((config.eventSources || []).map((source) => source.id).filter(Boolean));
+  const previousExternalEvents = (previousContext.localEvents || []).filter((event) => externalSourceIds.has(event.sourceName));
   return {
     generatedAt: nowIso,
     weather: await fetchWeatherContext(config.weatherLocations || []),
     anniversaries: dedupeAnniversaries([...externalAnniversaries, ...configuredAnniversaries]).slice(0, 16),
     holidays: await fetchHolidayContext(now),
-    localEvents: await readLocalEventContext(now)
+    localEvents: await readLocalEventContext(now, externalEvents, previousExternalEvents)
   };
 };
 
@@ -1581,7 +1673,7 @@ const main = async () => {
     now
   );
   const localObservations = await fetchLocalObservationSignals(localObservationSections, globalExcludes, previousLatest, now, timeLabel, nowIso);
-  const context = await buildDashboardContext(dashboardContextConfig, now, nowIso);
+  const context = await buildDashboardContext(dashboardContextConfig, now, nowIso, previousLatest.context || {});
   const rawItems = [...yahooRealtimeSignals, ...topicSourceSignals, ...dailyTrendItems, ...discoverySignals];
 
   const scoredItems = rawItems

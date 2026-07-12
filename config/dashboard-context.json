@@ -45,6 +45,15 @@
       "active": true
     }
   ],
+  "eventSources": [
+    {
+      "id": "walkerplus_kagoshima_exhibitions",
+      "type": "walkerplus_jsonld",
+      "label": "Walkerplus 鹿児島県の展示会",
+      "url": "https://www.walkerplus.com/event_list/ar1046/eg0126/",
+      "active": true
+    }
+  ],
   "anniversaries": [
     {
       "date": "01-01",

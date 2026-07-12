@@ -21,6 +21,8 @@ Google Trends RSS上位だけでは拾いにくいワールドカップなどの
 
 有料API、契約API、非公開API、画面スクレイピング、AI推定、正確な投稿数表示は使っていません。
 
+ローカルイベントは、別プロジェクトで収集したカレンダー用データに加え、`config/dashboard-context.json` の `eventSources` を更新時に取得します。現在は Walkerplus の「鹿児島県の展示会」ページが公開している `Event` JSON-LD から、タイトル・開催期間・会場・公式リンクだけを取り込み、既存のイベントと重複を除いてカレンダーへ反映します。取得元が一時的に利用できない場合は、開催期間内の直近取得分を保持し、既存の地域イベント更新も継続します。
+
 ## GitHub Pages公開手順
 
 1. このフォルダの中身を GitHub リポジトリの `main` ブランチへアップロードします。
@@ -35,7 +37,7 @@ Google Trends RSS上位だけでは拾いにくいワールドカップなどの
 - `data/` 配下のJSONを更新してコミット
 - GitHub Pagesへ静的サイトをデプロイ
 
-定期実行は日本時間の 9:00 / 12:00 / 15:00 / 18:00 相当です。
+定期実行は日本時間の 8:00 / 12:00 / 15:00 です。
 
 ## 調整ポイント
 
@@ -44,6 +46,7 @@ Google Trends RSS上位だけでは拾いにくいワールドカップなどの
 - ミーム・構文・動画フォーマット発見用クエリ: `config/discovery-queries.json`
 - 大型イベント・継続観測トピック: `config/major-topics.json`
 - ローカルSNS観測棚: `config/local-observation.json`
+- カレンダーの追加取得元: `config/dashboard-context.json` の `eventSources`
 
 ## 手動取得
 
