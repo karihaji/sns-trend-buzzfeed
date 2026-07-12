@@ -924,12 +924,8 @@ h1 {
 }
 
 .event-day {
-  display: grid;
-  align-content: start;
-  gap: 5px;
   min-width: 0;
-  min-height: 92px;
-  padding: 8px;
+  min-height: 76px;
   border: 1px solid #e0ebf8;
   border-radius: 8px;
   background: rgba(248, 251, 255, 0.92);
@@ -946,62 +942,198 @@ h1 {
   font-weight: 850;
 }
 
-.event-day-tag {
-  min-width: 0;
-  overflow: hidden;
-  padding: 4px 6px;
-  border-radius: 6px;
-  background: #edf6ff;
+.event-day-button {
+  display: grid;
+  align-content: space-between;
+  justify-items: start;
+  gap: 6px;
+  width: 100%;
+  min-height: 74px;
+  padding: 8px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+}
+
+.event-day-button-active {
+  cursor: pointer;
+}
+
+.event-day-button-active:hover,
+.event-day-button-active:focus-visible {
+  outline: 0;
+  background: #eaf5ff;
+  box-shadow: inset 0 0 0 2px #018bee;
+}
+
+.event-day-markers {
+  display: flex;
+  gap: 4px;
+  min-height: 8px;
+}
+
+.event-day-marker {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #8fa5bd;
+}
+
+.event-day-marker.event-tone-commerce { background: #ec4884; }
+.event-day-marker.event-tone-festival { background: #f59e0b; }
+.event-day-marker.event-tone-stage { background: #7c5cff; }
+.event-day-marker.event-tone-exhibit { background: #06b6d4; }
+.event-day-marker.event-tone-tourism { background: #0e7490; }
+.event-day-marker.event-tone-sports { background: #3b5bdb; }
+
+.event-day-count {
   color: #075a9f;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.event-calendar-dialog {
+  width: min(680px, calc(100vw - 32px));
+  max-height: min(720px, calc(100dvh - 32px));
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #b7daf7;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 24px 64px rgba(15, 32, 58, 0.3);
+}
+
+.event-calendar-dialog::backdrop {
+  background: rgba(14, 28, 49, 0.48);
+}
+
+.event-calendar-dialog-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid #dbe9f6;
+  background: #f7fbff;
+}
+
+.event-calendar-dialog-title {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+
+.event-calendar-dialog-title h3 {
+  color: #10213a;
+  font-size: 18px;
+  font-weight: 850;
+}
+
+.event-calendar-dialog-count {
+  color: #075a9f;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.event-calendar-dialog-close {
+  display: inline-grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #b7daf7;
+  border-radius: 7px;
+  background: #fff;
+  color: #3d526b;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.event-calendar-dialog-close:hover,
+.event-calendar-dialog-close:focus-visible {
+  outline: 0;
+  border-color: #018bee;
+  color: #075a9f;
+  box-shadow: 0 0 0 3px rgba(1, 139, 238, 0.14);
+}
+
+.event-calendar-dialog-body {
+  display: grid;
+  gap: 8px;
+  max-height: min(590px, calc(100dvh - 112px));
+  padding: 14px 18px 18px;
+  overflow: auto;
+}
+
+.event-dialog-item {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #dbe9f6;
+  border-left: 4px solid #018bee;
+  border-radius: 7px;
+  background: #fff;
+}
+
+.event-dialog-item:hover,
+.event-dialog-item:focus-visible {
+  outline: 0;
+  border-color: #9acff6;
+  box-shadow: 0 6px 16px rgba(1, 139, 238, 0.1);
+}
+
+.event-dialog-item.event-tone-commerce { border-left-color: #ec4884; }
+.event-dialog-item.event-tone-festival { border-left-color: #f59e0b; }
+.event-dialog-item.event-tone-stage { border-left-color: #7c5cff; }
+.event-dialog-item.event-tone-exhibit { border-left-color: #06b6d4; }
+.event-dialog-item.event-tone-tourism { border-left-color: #0e7490; }
+.event-dialog-item.event-tone-sports { border-left-color: #3b5bdb; }
+
+.event-dialog-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.event-dialog-category,
+.event-dialog-range {
+  display: inline-flex;
+  padding: 3px 6px;
+  border-radius: 999px;
   font-size: 10px;
   font-weight: 800;
-  line-height: 1.25;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
-.event-day-tag-long {
-  border-left: 3px solid #018bee;
-  background:
-    linear-gradient(90deg, rgba(1, 139, 238, 0.16), rgba(255, 255, 255, 0.88)),
-    #edf6ff;
+.event-dialog-category {
+  background: #eaf5ff;
+  color: #075a9f;
 }
 
-.event-day-tag-long.event-tone-commerce {
-  border-left-color: #ec4884;
+.event-dialog-range {
+  background: #f1f5f9;
+  color: #526277;
 }
 
-.event-day-tag-long.event-tone-festival {
-  border-left-color: #f59e0b;
+.event-dialog-item strong {
+  overflow-wrap: anywhere;
+  color: #10213a;
+  font-size: 14px;
+  font-weight: 850;
+  line-height: 1.45;
 }
 
-.event-day-tag-long.event-tone-stage {
-  border-left-color: #7c5cff;
-}
-
-.event-day-tag-long.event-tone-exhibit {
-  border-left-color: #06b6d4;
-}
-
-.event-day-tag-long.event-tone-tourism {
-  border-left-color: #0e7490;
-}
-
-.event-day-tag-long.event-tone-sports {
-  border-left-color: #3b5bdb;
-}
-
-.event-day-tag-long.rank-s {
-  border-left-color: #f0a429;
-  background:
-    linear-gradient(90deg, rgba(255, 190, 70, 0.22), rgba(255, 255, 255, 0.88)),
-    #fff7e4;
-}
-
-.event-day-more {
-  color: #44536b;
-  font-size: 10px;
-  font-weight: 750;
+.event-dialog-item small {
+  color: #5d6e83;
+  font-size: 11px;
+  font-weight: 650;
 }
 
 .x-iframe-converter-section {
@@ -2796,13 +2928,35 @@ h1 {
   }
 
   .event-day {
-    min-height: 74px;
-    padding: 5px;
+    min-height: 58px;
   }
 
-  .event-day-tag {
-    padding: 3px 4px;
-    font-size: 9px;
+  .event-day-button {
+    min-height: 56px;
+    padding: 5px;
+    gap: 4px;
+  }
+
+  .event-day-count {
+    font-size: 10px;
+  }
+
+  .event-calendar-dialog {
+    width: calc(100vw - 20px);
+    max-height: calc(100dvh - 20px);
+  }
+
+  .event-calendar-dialog-head {
+    padding: 13px 14px;
+  }
+
+  .event-calendar-dialog-body {
+    max-height: calc(100dvh - 96px);
+    padding: 10px 14px 14px;
+  }
+
+  .event-dialog-item {
+    padding: 10px;
   }
 
   .section-head {

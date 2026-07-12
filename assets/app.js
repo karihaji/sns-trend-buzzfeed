@@ -841,6 +841,22 @@ const localEventTone = (event) => {
   return "default";
 };
 
+const localEventDialogDateLabel = (date) => {
+  const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+  return `${date.getMonth() + 1}月${date.getDate()}日（${weekdays[date.getDay()]}）`;
+};
+
+const localEventDetailRow = (event) => {
+  const item = safeExternalAttrs(create("a", `event-dialog-item event-tone-${localEventTone(event)}`));
+  item.href = event.sourceUrl || newsSearchUrl(event.title);
+  const meta = create("div", "event-dialog-meta");
+  meta.append(create("span", "event-dialog-category", event.category || "イベント"));
+  meta.append(create("span", "event-dialog-range", localEventDateRangeLabel(event)));
+  item.append(meta, create("strong", "", event.title || "地域イベント"));
+  item.append(create("small", "", event.venue || "会場情報を確認"));
+  return item;
+};
+
 const localEventCalendar = (events = []) => {
   const section = create("section", "section event-calendar-section");
   const head = create("div", "section-head");
@@ -875,6 +891,33 @@ const localEventCalendar = (events = []) => {
 
   const calendar = create("div", "event-calendar");
   const monthLabel = create("div", "event-calendar-month", `${year}年${month + 1}月`);
+  const eventDialog = create("dialog", "event-calendar-dialog");
+  const dialogHeader = create("div", "event-calendar-dialog-head");
+  const dialogTitle = create("h3", "", "イベント");
+  const dialogCount = create("span", "event-calendar-dialog-count", "");
+  const dialogClose = create("button", "event-calendar-dialog-close", "×");
+  dialogClose.type = "button";
+  dialogClose.setAttribute("aria-label", "イベント一覧を閉じる");
+  dialogHeader.append(create("div", "event-calendar-dialog-title"), dialogClose);
+  dialogHeader.firstElementChild.append(dialogTitle, dialogCount);
+  const dialogBody = create("div", "event-calendar-dialog-body");
+  eventDialog.append(dialogHeader, dialogBody);
+
+  const showEventDialog = (date, dayEvents) => {
+    const sorted = [...dayEvents].sort(
+      (a, b) => Number(isLongLocalEvent(b)) - Number(isLongLocalEvent(a)) || (b.priority || 0) - (a.priority || 0)
+    );
+    dialogTitle.textContent = localEventDialogDateLabel(date);
+    dialogCount.textContent = `${sorted.length}件`;
+    dialogBody.replaceChildren(...sorted.map(localEventDetailRow));
+    if (!eventDialog.open) eventDialog.showModal();
+  };
+
+  dialogClose.addEventListener("click", () => eventDialog.close());
+  eventDialog.addEventListener("click", (event) => {
+    if (event.target === eventDialog) eventDialog.close();
+  });
+
   const ongoing = [...events]
     .filter((event) => isVisibleLocalEvent(event) && isLongLocalEvent(event) && eventDateKeysInMonth(event, first, last).length)
     .sort((a, b) => (b.priority || 0) - (a.priority || 0) || localEventDuration(b) - localEventDuration(a))
@@ -902,24 +945,33 @@ const localEventCalendar = (events = []) => {
       return;
     }
     const iso = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
-    cell.append(create("span", "event-day-number", String(date.getDate())));
     const dayEvents = [...(byDate.get(iso) || [])].sort((a, b) => Number(isLongLocalEvent(b)) - Number(isLongLocalEvent(a)) || (b.priority || 0) - (a.priority || 0));
-    dayEvents.slice(0, 3).forEach((event) => {
-      const tag = safeExternalAttrs(
-        create(
-          "a",
-          `event-day-tag event-tone-${localEventTone(event)} ${isLongLocalEvent(event) ? "event-day-tag-long" : ""} rank-${(event.rank || "b").toLowerCase()}`,
-          event.title
-        )
-      );
-      tag.href = event.sourceUrl || newsSearchUrl(event.title);
-      cell.append(tag);
-    });
-    if (dayEvents.length > 3) cell.append(create("span", "event-day-more", `他 ${dayEvents.length - 3}件`));
+    const dayButton = create("button", dayEvents.length ? "event-day-button event-day-button-active" : "event-day-button");
+    dayButton.type = "button";
+    dayButton.append(create("span", "event-day-number", String(date.getDate())));
+    if (dayEvents.length) {
+      const summaries = new Map();
+      dayEvents.forEach((event) => {
+        const tone = localEventTone(event);
+        summaries.set(tone, (summaries.get(tone) || 0) + 1);
+      });
+      const markers = create("span", "event-day-markers");
+      [...summaries.entries()].slice(0, 4).forEach(([tone, count]) => {
+        const marker = create("span", `event-day-marker event-tone-${tone}`);
+        marker.title = `${tone === "exhibit" ? "展示" : tone === "stage" ? "公演" : tone === "commerce" ? "催事" : tone === "festival" ? "地域行事" : tone === "tourism" ? "観光" : tone === "sports" ? "スポーツ" : "イベント"} ${count}件`;
+        markers.append(marker);
+      });
+      dayButton.append(markers, create("strong", "event-day-count", `${dayEvents.length}件`));
+      dayButton.setAttribute("aria-label", `${localEventDialogDateLabel(date)}のイベント ${dayEvents.length}件を表示`);
+      dayButton.addEventListener("click", () => showEventDialog(date, dayEvents));
+    } else {
+      dayButton.setAttribute("aria-label", `${localEventDialogDateLabel(date)}はイベントなし`);
+    }
+    cell.append(dayButton);
     grid.append(cell);
   });
   calendar.append(weekdays, grid);
-  section.append(head, calendar);
+  section.append(head, calendar, eventDialog);
   return section;
 };
 
