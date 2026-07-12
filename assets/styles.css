@@ -1148,8 +1148,8 @@ h1 {
 
 .x-iframe-converter-card {
   display: grid;
-  grid-template-columns: minmax(190px, 0.24fr) minmax(0, 1fr);
-  gap: 14px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
   min-width: 0;
   padding: 16px;
   border: 1px solid #cfe3f4;
@@ -1168,9 +1168,12 @@ h1 {
 
 .x-iframe-converter-intro {
   display: grid;
-  align-content: start;
-  gap: 7px;
+  grid-template-columns: minmax(220px, 0.38fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 18px;
   min-width: 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #dbe9f6;
 }
 
 .x-iframe-converter-card h3 {
@@ -1194,11 +1197,11 @@ h1 {
 }
 
 .x-iframe-converter-lane-x {
-  grid-template-columns: minmax(220px, 0.95fr) minmax(280px, 1.1fr) minmax(260px, 1.05fr);
+  grid-template-columns: minmax(220px, 0.9fr) minmax(300px, 1.1fr) minmax(260px, 0.95fr);
 }
 
 .x-iframe-converter-lane-instagram {
-  grid-template-columns: minmax(260px, 1fr) minmax(150px, 0.34fr) minmax(260px, 1fr);
+  grid-template-columns: minmax(260px, 1fr) minmax(190px, 0.52fr) minmax(260px, 1fr);
 }
 
 .x-iframe-converter-pane {
@@ -1268,12 +1271,16 @@ h1 {
 
 .x-iframe-converter-actions {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
 }
 
 .x-iframe-converter-lane-instagram .x-iframe-converter-actions {
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.x-iframe-converter-actions > :last-child {
+  grid-column: 1 / -1;
 }
 
 .x-iframe-converter-button {
@@ -2699,6 +2706,7 @@ h1 {
   }
 
   .x-iframe-converter-card,
+  .x-iframe-converter-intro,
   .x-iframe-converter-lane-x,
   .x-iframe-converter-lane-instagram {
     grid-template-columns: 1fr;
@@ -2873,10 +2881,6 @@ h1 {
 
   .local-event-chip {
     grid-template-columns: 1fr;
-  }
-
-  .x-iframe-converter-settings {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .trend-pill small {
