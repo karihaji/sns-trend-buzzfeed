@@ -293,6 +293,58 @@ const xIframeConverterToolSection = () => {
   head.append(create("span", "section-count", "変換"));
 
   const grid = create("div", "x-iframe-converter-grid");
+  const resultDialog = create("dialog", "x-iframe-converter-dialog");
+  const resultHeader = create("div", "x-iframe-converter-dialog-head");
+  const resultTitle = create("h3", "", "変換結果");
+  const resultClose = create("button", "x-iframe-converter-dialog-close", "×");
+  resultClose.type = "button";
+  resultClose.setAttribute("aria-label", "変換結果を閉じる");
+  resultHeader.append(resultTitle, resultClose);
+  const resultBody = create("div", "x-iframe-converter-dialog-body");
+  resultDialog.append(resultHeader, resultBody);
+
+  const openResultDialog = ({ title, code, previewSrc = "", previewHeight = 0, copyLabel }) => {
+    resultTitle.textContent = title;
+    const codePane = create("div", "x-iframe-converter-result-pane");
+    const codeOutput = create("textarea", "x-iframe-converter-output x-iframe-converter-dialog-output");
+    codeOutput.readOnly = true;
+    codeOutput.rows = 8;
+    codeOutput.value = code;
+    const copyResult = create("button", "x-iframe-converter-button x-iframe-converter-button-primary", copyLabel);
+    copyResult.type = "button";
+    copyResult.addEventListener("click", async () => {
+      const ok = await xIframeConverterCopyText(code);
+      copyResult.textContent = ok ? "コピーしました" : "コピーできませんでした";
+    });
+    codePane.append(create("span", "x-iframe-converter-result-label", "生成コード"), codeOutput, copyResult);
+    const content = create("div", previewSrc ? "x-iframe-converter-result-grid" : "x-iframe-converter-result-grid x-iframe-converter-result-grid-single");
+    content.append(codePane);
+    if (previewSrc) {
+      const previewPane = create("div", "x-iframe-converter-result-pane x-iframe-converter-result-preview");
+      previewPane.append(create("span", "x-iframe-converter-result-label", "表示イメージ"));
+      const frame = document.createElement("iframe");
+      frame.src = previewSrc;
+      frame.width = "100%";
+      frame.height = String(previewHeight);
+      frame.loading = "lazy";
+      frame.scrolling = "no";
+      frame.title = "X投稿プレビュー";
+      frame.className = "x-iframe-converter-preview-frame";
+      frame.addEventListener("error", () => {
+        previewPane.append(create("p", "x-iframe-converter-message", "プレビューを読み込めませんでした。"));
+      });
+      previewPane.append(frame);
+      content.append(previewPane);
+    }
+    resultBody.replaceChildren(content);
+    if (!resultDialog.open) resultDialog.showModal();
+  };
+
+  resultClose.addEventListener("click", () => resultDialog.close());
+  resultDialog.addEventListener("click", (event) => {
+    if (event.target === resultDialog) resultDialog.close();
+  });
+
   const xCard = create("article", "x-iframe-converter-card x-iframe-converter-card-x");
   const xIntro = create("div", "x-iframe-converter-intro");
   xIntro.append(create("h3", "", "X投稿をiframeコードへ変換"));
@@ -346,28 +398,16 @@ const xIframeConverterToolSection = () => {
   const actions = create("div", "x-iframe-converter-actions");
   const convert = create("button", "x-iframe-converter-button x-iframe-converter-button-primary", "変換する");
   const clear = create("button", "x-iframe-converter-button", "入力をクリア");
-  const copy = create("button", "x-iframe-converter-button", "生成コードをコピー");
   convert.type = "button";
   clear.type = "button";
-  copy.type = "button";
-  copy.disabled = true;
-  actions.append(convert, clear, copy);
-
-  const output = create("textarea", "x-iframe-converter-output");
-  output.readOnly = true;
-  output.rows = 8;
-  const preview = create("div", "x-iframe-converter-preview");
-  preview.append(create("p", "", "変換すると、ここに表示イメージが表示されます。"));
+  actions.append(convert, clear);
 
   convert.addEventListener("click", () => {
     const id = xIframeConverterExtractTweetId(input.value);
     if (!id || !/^\d+$/u.test(id)) {
       error.textContent = "X投稿のURLまたは埋め込みコードを確認してください。";
-      output.value = "";
       xIframeConverterState.iframeCode = "";
       xIframeConverterState.iframeSrc = "";
-      copy.disabled = true;
-      preview.replaceChildren(create("p", "", "変換すると、ここに表示イメージが表示されます。"));
       return;
     }
     const result = xIframeConverterBuildCode({
@@ -381,37 +421,22 @@ const xIframeConverterToolSection = () => {
       width: xIframeConverterClamp(width.value, 250, 550, 550)
     });
     error.textContent = "";
-    output.value = result.iframeCode;
     xIframeConverterState.iframeCode = result.iframeCode;
     xIframeConverterState.iframeSrc = result.iframeSrc;
-    copy.disabled = false;
-    const frame = document.createElement("iframe");
-    frame.src = result.iframeSrc;
-    frame.width = "100%";
-    frame.height = String(xIframeConverterClamp(height.value, 300, 1500, 720));
-    frame.loading = "lazy";
-    frame.scrolling = "no";
-    frame.title = "X投稿プレビュー";
-    frame.className = "x-iframe-converter-preview-frame";
-    frame.addEventListener("error", () => {
-      preview.replaceChildren(create("p", "x-iframe-converter-message", "プレビューを読み込めませんでした。"));
+    openResultDialog({
+      title: "X投稿の変換結果",
+      code: result.iframeCode,
+      previewSrc: result.iframeSrc,
+      previewHeight: xIframeConverterClamp(height.value, 300, 1500, 720),
+      copyLabel: "iframeコードをコピー"
     });
-    preview.replaceChildren(frame);
   });
 
   clear.addEventListener("click", () => {
     input.value = "";
-    output.value = "";
     error.textContent = "";
     xIframeConverterState.iframeCode = "";
     xIframeConverterState.iframeSrc = "";
-    copy.disabled = true;
-    preview.replaceChildren(create("p", "", "変換すると、ここに表示イメージが表示されます。"));
-  });
-
-  copy.addEventListener("click", async () => {
-    const ok = await xIframeConverterCopyText(xIframeConverterState.iframeCode);
-    error.textContent = ok ? "iframeコードをコピーしました。" : "コピーできませんでした。コードを選択してコピーしてください。";
   });
 
   const xLane = create("div", "x-iframe-converter-lane x-iframe-converter-lane-x");
@@ -419,9 +444,7 @@ const xIframeConverterToolSection = () => {
   xInputPanel.append(input, error);
   const xControlPanel = create("div", "x-iframe-converter-pane x-iframe-converter-pane-control");
   xControlPanel.append(settings, actions);
-  const xResultPanel = create("div", "x-iframe-converter-pane x-iframe-converter-pane-result");
-  xResultPanel.append(output, preview);
-  xLane.append(xInputPanel, xControlPanel, xResultPanel);
+  xLane.append(xInputPanel, xControlPanel);
   xCard.append(xIntro, xLane);
 
   const instagramCard = create("article", "x-iframe-converter-card x-iframe-converter-card-instagram");
@@ -435,49 +458,36 @@ const xIframeConverterToolSection = () => {
   const igActions = create("div", "x-iframe-converter-actions");
   const igConvert = create("button", "x-iframe-converter-button x-iframe-converter-button-primary", "変換する");
   const igClear = create("button", "x-iframe-converter-button", "入力をクリア");
-  const igCopy = create("button", "x-iframe-converter-button", "生成URLをコピー");
   igConvert.type = "button";
   igClear.type = "button";
-  igCopy.type = "button";
-  igCopy.disabled = true;
-  igActions.append(igConvert, igClear, igCopy);
-  const igOutput = create("textarea", "x-iframe-converter-output x-iframe-converter-output-small");
-  igOutput.readOnly = true;
-  igOutput.rows = 3;
+  igActions.append(igConvert, igClear);
 
   igConvert.addEventListener("click", () => {
     const cleaned = xIframeConverterCleanInstagramUrl(igInput.value);
     if (!cleaned) {
-      igOutput.value = "";
-      igCopy.disabled = true;
       igMessage.textContent = "Instagramの投稿URLを確認してください。";
       return;
     }
-    igOutput.value = cleaned;
-    igCopy.disabled = false;
     igMessage.textContent = "";
+    openResultDialog({
+      title: "Instagram URLの変換結果",
+      code: cleaned,
+      copyLabel: "生成URLをコピー"
+    });
   });
   igClear.addEventListener("click", () => {
     igInput.value = "";
-    igOutput.value = "";
-    igCopy.disabled = true;
     igMessage.textContent = "";
-  });
-  igCopy.addEventListener("click", async () => {
-    const ok = await xIframeConverterCopyText(igOutput.value);
-    igMessage.textContent = ok ? "URLをコピーしました。" : "コピーできませんでした。URLを選択してコピーしてください。";
   });
   const igLane = create("div", "x-iframe-converter-lane x-iframe-converter-lane-instagram");
   const igInputPanel = create("div", "x-iframe-converter-pane x-iframe-converter-pane-input");
   igInputPanel.append(igInput, igMessage);
   const igControlPanel = create("div", "x-iframe-converter-pane x-iframe-converter-pane-control");
   igControlPanel.append(igActions);
-  const igResultPanel = create("div", "x-iframe-converter-pane x-iframe-converter-pane-result");
-  igResultPanel.append(igOutput);
-  igLane.append(igInputPanel, igControlPanel, igResultPanel);
+  igLane.append(igInputPanel, igControlPanel);
   instagramCard.append(igIntro, igLane);
   grid.append(xCard, instagramCard);
-  sectionEl.append(head, grid);
+  sectionEl.append(head, grid, resultDialog);
   return sectionEl;
 };
 

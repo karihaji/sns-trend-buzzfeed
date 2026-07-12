@@ -1197,11 +1197,11 @@ h1 {
 }
 
 .x-iframe-converter-lane-x {
-  grid-template-columns: minmax(220px, 0.9fr) minmax(300px, 1.1fr) minmax(260px, 0.95fr);
+  grid-template-columns: minmax(220px, 0.9fr) minmax(300px, 1.1fr);
 }
 
 .x-iframe-converter-lane-instagram {
-  grid-template-columns: minmax(260px, 1fr) minmax(190px, 0.52fr) minmax(260px, 1fr);
+  grid-template-columns: minmax(260px, 1fr) minmax(190px, 0.52fr);
 }
 
 .x-iframe-converter-pane {
@@ -1279,10 +1279,6 @@ h1 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.x-iframe-converter-actions > :last-child {
-  grid-column: 1 / -1;
-}
-
 .x-iframe-converter-button {
   min-height: 34px;
   padding: 0 12px;
@@ -1331,6 +1327,110 @@ h1 {
 .x-iframe-converter-preview-frame {
   max-width: 550px;
   border: 0;
+}
+
+.x-iframe-converter-dialog {
+  width: min(940px, calc(100vw - 32px));
+  max-height: min(760px, calc(100dvh - 32px));
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #b7daf7;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 24px 64px rgba(15, 32, 58, 0.3);
+}
+
+.x-iframe-converter-dialog::backdrop {
+  background: rgba(14, 28, 49, 0.48);
+}
+
+.x-iframe-converter-dialog-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid #dbe9f6;
+  background: #f7fbff;
+}
+
+.x-iframe-converter-dialog-head h3 {
+  color: #10213a;
+  font-size: 18px;
+  font-weight: 850;
+}
+
+.x-iframe-converter-dialog-close {
+  display: inline-grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #b7daf7;
+  border-radius: 7px;
+  background: #fff;
+  color: #3d526b;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.x-iframe-converter-dialog-close:hover,
+.x-iframe-converter-dialog-close:focus-visible {
+  outline: 0;
+  border-color: #018bee;
+  color: #075a9f;
+  box-shadow: 0 0 0 3px rgba(1, 139, 238, 0.14);
+}
+
+.x-iframe-converter-dialog-body {
+  max-height: min(648px, calc(100dvh - 112px));
+  padding: 16px 18px 18px;
+  overflow: auto;
+}
+
+.x-iframe-converter-result-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(300px, 1.1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.x-iframe-converter-result-grid-single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.x-iframe-converter-result-pane {
+  display: grid;
+  align-content: start;
+  gap: 9px;
+  min-width: 0;
+}
+
+.x-iframe-converter-result-label {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.x-iframe-converter-dialog-output {
+  min-height: 224px;
+  resize: vertical;
+}
+
+.x-iframe-converter-result-preview {
+  place-items: center;
+  min-height: 260px;
+  padding: 12px;
+  border: 1px dashed #bddaf4;
+  border-radius: 8px;
+  background: #f8fbff;
+}
+
+.x-iframe-converter-result-preview .x-iframe-converter-result-label {
+  justify-self: start;
 }
 
 .link-grid {
@@ -1693,7 +1793,8 @@ h1 {
     "lead lead context"
     "category growing context"
     "links links links"
-    "local local local";
+    "local local local"
+    "tool tool tool";
   align-items: start;
   gap: 14px;
   margin-top: 14px;
@@ -1717,6 +1818,12 @@ h1 {
 
 .links-panel {
   grid-area: links;
+}
+
+.dashboard-layout > .x-iframe-converter-section {
+  grid-area: tool;
+  grid-column: auto;
+  min-width: 0;
 }
 
 .dashboard-panel {
@@ -2659,7 +2766,8 @@ h1 {
       "category"
       "growing"
       "links"
-      "local";
+      "local"
+      "tool";
   }
 
   .category-panel,
@@ -2829,6 +2937,28 @@ h1 {
   .x-iframe-converter-actions {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .x-iframe-converter-dialog {
+    width: calc(100vw - 20px);
+    max-height: calc(100dvh - 20px);
+  }
+
+  .x-iframe-converter-dialog-head {
+    padding: 13px 14px;
+  }
+
+  .x-iframe-converter-dialog-body {
+    max-height: calc(100dvh - 96px);
+    padding: 12px 14px 14px;
+  }
+
+  .x-iframe-converter-result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .x-iframe-converter-dialog-output {
+    min-height: 180px;
   }
 
   .home-nav a,
