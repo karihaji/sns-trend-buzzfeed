@@ -736,6 +736,40 @@ const fetchExternalEventSources = async (sources = [], now) => {
   return dedupeLocalEvents(results).sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil);
 };
 
+const normalizeGoogleSheetDate = (value) => {
+  const raw = String(value || "").trim();
+  const googleDate = raw.match(/^Date\((\d{4}),(\d{1,2}),(\d{1,2})/u);
+  if (googleDate) {
+    const [, year, month, day] = googleDate;
+    return `${year}-${String(Number(month) + 1).padStart(2, "0")}-${day.padStart(2, "0")}`;
+  }
+  const date = raw.match(/^(20\d{2})[/-](\d{1,2})[/-](\d{1,2})/u);
+  if (date) {
+    const [, year, month, day] = date;
+    return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+  }
+  return raw.slice(0, 10);
+};
+
+const parseGoogleSheetsRows = (text) => {
+  const match = String(text || "").match(/google\.visualization\.Query\.setResponse\((\{[\s\S]*\})\);?\s*$/u);
+  if (!match) throw new Error("Unexpected Google Sheets response");
+  const table = JSON.parse(match[1]).table;
+  const columns = table?.cols || [];
+  const headers = columns.map((column) => String(column?.label || column?.id || "").trim());
+  const dateFields = new Set(["start_date", "end_date"]);
+  return (table?.rows || []).map((row) => {
+    const record = {};
+    (row?.c || []).forEach((cell, index) => {
+      const header = headers[index];
+      if (!header || !cell) return;
+      const value = cell.f ?? cell.v ?? "";
+      record[header] = dateFields.has(header) ? normalizeGoogleSheetDate(value) : String(value || "").trim();
+    });
+    return record;
+  });
+};
+
 const daysUntilIsoDate = (isoDate, now) => {
   const targetTime = Date.parse(`${isoDate}T00:00:00+09:00`);
   if (Number.isNaN(targetTime)) return null;
@@ -792,6 +826,24 @@ const dateOnly = (value) => {
   if (!value) return "";
   if (typeof value === "string") return value.slice(0, 10);
   return String(value.date || value.dateTime || "").slice(0, 10);
+};
+
+const previousIsoDate = (value) => {
+  const date = dateOnly(value);
+  if (!/^\d{4}-\d{2}-\d{2}$/u.test(date)) return "";
+  const parsed = new Date(`${date}T00:00:00Z`);
+  parsed.setUTCDate(parsed.getUTCDate() - 1);
+  return parsed.toISOString().slice(0, 10);
+};
+
+// Google Calendar and ICS all-day DTEND values are exclusive, unlike timed end values.
+const calendarPayloadEndDate = (value, startDate) => {
+  const endDate = dateOnly(value);
+  if (!endDate) return startDate;
+  if (value && typeof value === "object" && value.date && !value.dateTime) {
+    return previousIsoDate(endDate) >= startDate ? previousIsoDate(endDate) : startDate;
+  }
+  return endDate;
 };
 
 const daysUntilIso = (dateValue, now) => {
@@ -932,7 +984,7 @@ const normalizeLocalEventPayload = (items = [], now) => {
     .map((item) => {
       const parsed = parseCalendarSummary(item.summary || "");
       const startDate = dateOnly(item.start);
-      const endDate = dateOnly(item.end);
+      const endDate = calendarPayloadEndDate(item.end, startDate);
       const daysUntil = daysUntilIso(startDate, now);
       const sourceUrl = item.extendedProperties?.private?.source_url || "";
       const id = item.extendedProperties?.private?.event_hash || idFor(`${item.summary}-${startDate}`);
@@ -993,7 +1045,29 @@ const normalizeLocalEventRows = (rows = [], now) => {
   return dedupeLocalEvents(normalized).sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil);
 };
 
-const readLocalEventContext = async (now, externalEvents = [], previousExternalEvents = []) => {
+const fetchExternalLocalEventRows = async (sources = [], now) => {
+  const events = [];
+  const statuses = [];
+  for (const source of sources) {
+    if (source.active === false || !source.url || source.type !== "google_sheets_gviz") continue;
+    try {
+      const rows = parseGoogleSheetsRows(await fetchText(source.url));
+      const normalized = normalizeLocalEventRows(rows, now);
+      const minimumItems = Math.max(1, Number(source.minimumItems || 1));
+      if (normalized.length < minimumItems) {
+        throw new Error(`Only ${normalized.length} eligible event rows were returned`);
+      }
+      events.push(...normalized);
+      statuses.push({ id: source.id, label: source.label || source.id, ok: true, rows: rows.length, items: normalized.length });
+    } catch (error) {
+      console.warn(`Skipped local event source "${source.label || source.id}": ${error.message}`);
+      statuses.push({ id: source.id, label: source.label || source.id, ok: false, rows: 0, items: 0, error: error.message });
+    }
+  }
+  return { events: dedupeLocalEvents(events), statuses };
+};
+
+const readLocalEventContext = async (now, externalEvents = [], previousExternalEvents = [], remoteRows = []) => {
   const readSource = async (file) => normalizeLocalEventPayload(await readJson(file, []), now);
   const readRows = async (file) => normalizeLocalEventRows(await readJson(file, []), now);
   const sourceEvents = await readSource(LOCAL_EVENT_SOURCE_PATH);
@@ -1005,7 +1079,7 @@ const readLocalEventContext = async (now, externalEvents = [], previousExternalE
     (event) => !currentSourceNames.has(event.sourceName)
   );
   const byId = new Map();
-  for (const event of [...externalEvents, ...retainedExternalEvents, ...fallbackEvents, ...fallbackRows]) {
+  for (const event of [...remoteRows, ...externalEvents, ...retainedExternalEvents, ...fallbackEvents, ...fallbackRows]) {
     if (!byId.has(event.id)) byId.set(event.id, event);
   }
   return dedupeLocalEvents([...byId.values()]).sort((a, b) => b.priority - a.priority || a.daysUntil - b.daysUntil).slice(0, 96);
@@ -1019,6 +1093,7 @@ const buildDashboardContext = async (config, now, nowIso, previousContext = {}) 
   }));
   const externalAnniversaries = await fetchExternalAnniversaries(config.anniversarySources || [], now);
   const externalEvents = await fetchExternalEventSources(config.eventSources || [], now);
+  const remoteLocalEvents = await fetchExternalLocalEventRows(config.localEventSources || [], now);
   const externalSourceIds = new Set((config.eventSources || []).map((source) => source.id).filter(Boolean));
   const previousExternalEvents = (previousContext.localEvents || []).filter((event) => externalSourceIds.has(event.sourceName));
   return {
@@ -1026,7 +1101,8 @@ const buildDashboardContext = async (config, now, nowIso, previousContext = {}) 
     weather: await fetchWeatherContext(config.weatherLocations || []),
     anniversaries: dedupeAnniversaries([...externalAnniversaries, ...configuredAnniversaries]).slice(0, 16),
     holidays: await fetchHolidayContext(now),
-    localEvents: await readLocalEventContext(now, externalEvents, previousExternalEvents)
+    localEventSources: remoteLocalEvents.statuses,
+    localEvents: await readLocalEventContext(now, externalEvents, previousExternalEvents, remoteLocalEvents.events)
   };
 };
 

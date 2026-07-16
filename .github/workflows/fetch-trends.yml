@@ -41,7 +41,8 @@ jobs:
 
       - name: Validate generated data
         run: |
-          node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('data/latest-trends.json','utf8')); const trends=data.items||[]; const local=data.context?.localEvents||[]; if(trends.length<20) throw new Error('Trend data looks too small: '+trends.length); if(local.length<20) throw new Error('Local event data looks too small: '+local.length); console.log('Validated trends='+trends.length+', localEvents='+local.length);"
+          node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('data/latest-trends.json','utf8')); const trends=data.items||[]; const local=data.context?.localEvents||[]; const sheet=(data.context?.localEventSources||[]).find((source)=>source.id==='kagoshima_event_sheet'); if(trends.length<20) throw new Error('Trend data looks too small: '+trends.length); if(local.length<20) throw new Error('Local event data looks too small: '+local.length); if(!sheet?.ok || sheet.items<20) throw new Error('Google Sheets event source is unavailable or too small'); console.log('Validated trends='+trends.length+', localEvents='+local.length+', sheetEvents='+sheet.items);"
+          node scripts/validate-local-event-dates.mjs
 
       - name: Commit updated trend data
         uses: stefanzweifel/git-auto-commit-action@v5

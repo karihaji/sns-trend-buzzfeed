@@ -54,6 +54,16 @@
       "active": true
     }
   ],
+  "localEventSources": [
+    {
+      "id": "kagoshima_event_sheet",
+      "type": "google_sheets_gviz",
+      "label": "鹿児島イベント台帳",
+      "url": "https://docs.google.com/spreadsheets/d/1xBQBm8dAXbkmtH2HNVbdk3ip5ta6Ycbhh1bsJZrmLSw/gviz/tq?tqx=out:json&sheet=events",
+      "minimumItems": 20,
+      "active": true
+    }
+  ],
   "anniversaries": [
     {
       "date": "01-01",
