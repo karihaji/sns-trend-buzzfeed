@@ -8,6 +8,7 @@ const DATA_DIR = path.join(ROOT, "data");
 const SNAPSHOT_DIR = path.join(DATA_DIR, "snapshots");
 const TRENDS_RSS_URL = "https://trends.google.co.jp/trending/rss?geo=JP";
 const GOOGLE_NEWS_SEARCH_URL = "https://news.google.com/rss/search";
+const TREND_MINIMUM_ITEMS = 20;
 const MAX_WATCH_QUERIES = 80;
 const MAX_LOCAL_OBSERVATION_QUERIES = 72;
 const OPEN_METEO_URL = "https://api.open-meteo.com/v1/forecast";
@@ -1825,10 +1826,30 @@ const main = async () => {
     }
   }
 
-  const items = [...byId.values()].sort((a, b) => b.score - a.score || a.rank - b.rank).slice(0, 60);
+  const collectedItems = [...byId.values()].sort((a, b) => b.score - a.score || a.rank - b.rank).slice(0, 60);
+  const previousItems = previousLatest.items || [];
+  const retainedPreviousItems = collectedItems.length < TREND_MINIMUM_ITEMS && previousItems.length >= TREND_MINIMUM_ITEMS;
+  const items = retainedPreviousItems ? previousItems.slice(0, 60) : collectedItems;
+  const trendUpdatedAt = retainedPreviousItems
+    ? previousLatest.trendUpdatedAt || previousLatest.updatedAt || null
+    : nowIso;
+
+  if (retainedPreviousItems) {
+    console.warn(
+      `Trend collection returned only ${collectedItems.length} items; retained ${items.length} items from ${trendUpdatedAt}.`
+    );
+  }
 
   const latest = {
     updatedAt: nowIso,
+    trendUpdatedAt,
+    trendCollection: {
+      status: retainedPreviousItems ? "retained_previous" : "fresh",
+      attemptedAt: nowIso,
+      collectedItems: collectedItems.length,
+      publishedItems: items.length,
+      retainedFrom: retainedPreviousItems ? trendUpdatedAt : null
+    },
     source: "Google Trends RSS JP",
     note: "Google Trends RSSと公開RSS検索から候補フレーズを抽出し、ウォッチリストと除外語でSNS投稿向けテーマに絞り込んでいます。",
     items,
@@ -1836,7 +1857,7 @@ const main = async () => {
     context
   };
   const nextHistory = {
-    items: [...(history.items || []), ...items].slice(-1200)
+    items: [...(history.items || []), ...(retainedPreviousItems ? [] : items)].slice(-1200)
   };
 
   await mkdir(SNAPSHOT_DIR, { recursive: true });
