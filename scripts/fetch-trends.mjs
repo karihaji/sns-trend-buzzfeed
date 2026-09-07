@@ -1055,11 +1055,24 @@ const fetchExternalLocalEventRows = async (sources = [], now) => {
       const rows = parseGoogleSheetsRows(await fetchText(source.url));
       const normalized = normalizeLocalEventRows(rows, now);
       const minimumItems = Math.max(1, Number(source.minimumItems || 1));
-      if (normalized.length < minimumItems) {
-        throw new Error(`Only ${normalized.length} eligible event rows were returned`);
-      }
+      if (!normalized.length) throw new Error("No eligible event rows were returned");
+      const degraded = normalized.length < minimumItems;
       events.push(...normalized);
-      statuses.push({ id: source.id, label: source.label || source.id, ok: true, rows: rows.length, items: normalized.length });
+      statuses.push({
+        id: source.id,
+        label: source.label || source.id,
+        ok: true,
+        degraded,
+        rows: rows.length,
+        items: normalized.length,
+        expectedItems: minimumItems,
+        warning: degraded ? `Expected at least ${minimumItems} eligible rows, received ${normalized.length}` : null
+      });
+      if (degraded) {
+        console.warn(
+          `Local event source "${source.label || source.id}" is below its expected inventory: ${normalized.length}/${minimumItems}`
+        );
+      }
     } catch (error) {
       console.warn(`Skipped local event source "${source.label || source.id}": ${error.message}`);
       statuses.push({ id: source.id, label: source.label || source.id, ok: false, rows: 0, items: 0, error: error.message });

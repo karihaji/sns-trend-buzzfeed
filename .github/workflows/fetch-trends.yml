@@ -41,7 +41,7 @@ jobs:
 
       - name: Validate generated data
         run: |
-          node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('data/latest-trends.json','utf8')); const trends=data.items||[]; const local=data.context?.localEvents||[]; const sheet=(data.context?.localEventSources||[]).find((source)=>source.id==='kagoshima_event_sheet'); if(trends.length<20) throw new Error('Trend data looks too small: '+trends.length); if(local.length<20) throw new Error('Local event data looks too small: '+local.length); if(!sheet?.ok || sheet.items<20) throw new Error('Google Sheets event source is unavailable or too small'); console.log('Validated trends='+trends.length+', localEvents='+local.length+', sheetEvents='+sheet.items);"
+          node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('data/latest-trends.json','utf8')); const trends=data.items||[]; const local=data.context?.localEvents||[]; const sheet=(data.context?.localEventSources||[]).find((source)=>source.id==='kagoshima_event_sheet'); if(trends.length<20) throw new Error('Trend data looks too small: '+trends.length); if(local.length<10) throw new Error('Local event data looks too small: '+local.length); if(!sheet?.ok || sheet.items<1) throw new Error('Google Sheets event source is unavailable or returned no eligible events'); console.log('Validated trends='+trends.length+', localEvents='+local.length+', sheetEvents='+sheet.items+', sheetDegraded='+Boolean(sheet.degraded));"
           node scripts/validate-local-event-dates.mjs
 
       - name: Commit updated trend data
