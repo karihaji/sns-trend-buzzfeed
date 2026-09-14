@@ -12,6 +12,8 @@ const TREND_MINIMUM_ITEMS = 20;
 const MAX_WATCH_QUERIES = 80;
 const MAX_LOCAL_OBSERVATION_QUERIES = 72;
 const OPEN_METEO_URL = "https://api.open-meteo.com/v1/forecast";
+const WEATHER_FETCH_ATTEMPTS = 3;
+const WEATHER_RETRY_DELAY_MS = 100;
 const JAPAN_HOLIDAYS_CSV_URL = "https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv";
 const ANNIVERSARY_SOURCE_LIMIT = 20;
 const YAHOO_REALTIME_LIMIT = 28;
@@ -454,10 +456,53 @@ const weatherSummary = (code) => {
   return "観測中";
 };
 
-const fetchWeatherContext = async (locations = []) => {
+const wait = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
+
+const missingWeatherFor = (location) => ({
+  id: location.id,
+  label: location.label,
+  temperature: null,
+  high: null,
+  low: null,
+  precipitation: null,
+  wind: null,
+  weatherCode: null,
+  summary: "観測中",
+  status: "missing"
+});
+
+const hasUsableWeatherValue = (weather) =>
+  weather &&
+  weather.status !== "missing" &&
+  [weather.temperature, weather.high, weather.low, weather.precipitation, weather.weatherCode].some(
+    (value) => value != null
+  );
+
+const validateWeatherCompleteness = (locations = [], weather = []) => {
+  const expectedIds = locations.slice(0, 6).map((location) => location.id);
+  const generatedIds = weather.map((location) => location.id);
+  const expected = [...expectedIds].sort();
+  const generated = [...generatedIds].sort();
+  if (expected.length !== generated.length || expected.some((id, index) => id !== generated[index])) {
+    throw new Error(
+      `Weather locations are incomplete: expected=${expectedIds.join(",")} generated=${generatedIds.join(",")}`
+    );
+  }
+};
+
+const fetchWeatherContext = async (
+  locations = [],
+  previousWeather = [],
+  { fetchImpl = fetch, attempts = WEATHER_FETCH_ATTEMPTS, retryDelayMs = WEATHER_RETRY_DELAY_MS } = {}
+) => {
   const results = [];
+  const previousById = new Map(previousWeather.map((weather) => [weather.id, weather]));
   for (const location of locations.slice(0, 6)) {
-    if (location.latitude == null || location.longitude == null) continue;
+    if (location.latitude == null || location.longitude == null) {
+      console.warn(`Weather unavailable: ${location.id} (${location.label}) status=missing reason=coordinates`);
+      results.push(missingWeatherFor(location));
+      continue;
+    }
     const params = new URLSearchParams({
       latitude: String(location.latitude),
       longitude: String(location.longitude),
@@ -466,28 +511,56 @@ const fetchWeatherContext = async (locations = []) => {
       timezone: "Asia/Tokyo",
       forecast_days: "1"
     });
-    try {
-      const response = await fetch(`${OPEN_METEO_URL}?${params.toString()}`, {
-        headers: { "user-agent": "sns-trend-buzzfeed/1.0 (+GitHub Pages dashboard context)" }
-      });
-      if (!response.ok) throw new Error(`Weather failed: ${response.status} ${response.statusText}`);
-      const data = await response.json();
-      const code = data.current?.weather_code ?? data.daily?.weather_code?.[0] ?? null;
-      results.push({
-        id: location.id,
-        label: location.label,
-        temperature: Math.round(data.current?.temperature_2m ?? data.daily?.temperature_2m_max?.[0] ?? 0),
-        high: Math.round(data.daily?.temperature_2m_max?.[0] ?? 0),
-        low: Math.round(data.daily?.temperature_2m_min?.[0] ?? 0),
-        precipitation: data.daily?.precipitation_probability_max?.[0] ?? null,
-        wind: Math.round(data.current?.wind_speed_10m ?? 0),
-        weatherCode: code,
-        summary: weatherSummary(code)
-      });
-    } catch (error) {
-      console.warn(`Skipped weather "${location.label || location.id}": ${error.message}`);
+    let freshWeather = null;
+    let lastError = null;
+    const maxAttempts = Math.max(1, Number(attempts) || WEATHER_FETCH_ATTEMPTS);
+    for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+      try {
+        const response = await fetchImpl(`${OPEN_METEO_URL}?${params.toString()}`, {
+          headers: { "user-agent": "sns-trend-buzzfeed/1.0 (+GitHub Pages dashboard context)" }
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText}`);
+        const data = await response.json();
+        const code = data.current?.weather_code ?? data.daily?.weather_code?.[0] ?? null;
+        const high = data.daily?.temperature_2m_max?.[0];
+        const low = data.daily?.temperature_2m_min?.[0];
+        if (code == null || high == null || low == null) throw new Error("Open-Meteo response is missing required values");
+        freshWeather = {
+          id: location.id,
+          label: location.label,
+          temperature: Math.round(data.current?.temperature_2m ?? high),
+          high: Math.round(high),
+          low: Math.round(low),
+          precipitation: data.daily?.precipitation_probability_max?.[0] ?? null,
+          wind: data.current?.wind_speed_10m == null ? null : Math.round(data.current.wind_speed_10m),
+          weatherCode: code,
+          summary: weatherSummary(code),
+          status: "fresh"
+        };
+        console.log(`Weather fetch complete: ${location.id} (${location.label}) attempt ${attempt}/${maxAttempts} status=fresh`);
+        break;
+      } catch (error) {
+        lastError = error;
+        console.warn(
+          `Weather fetch failed: ${location.id} (${location.label}) attempt ${attempt}/${maxAttempts}: ${error.message}`
+        );
+        if (attempt < maxAttempts && retryDelayMs > 0) await wait(retryDelayMs);
+      }
+    }
+    if (freshWeather) {
+      results.push(freshWeather);
+      continue;
+    }
+    const previous = previousById.get(location.id);
+    if (hasUsableWeatherValue(previous)) {
+      results.push({ ...previous, id: location.id, label: location.label, status: "stale" });
+      console.warn(`Weather fallback used: ${location.id} (${location.label}) status=stale error=${lastError?.message || "unknown"}`);
+    } else {
+      results.push(missingWeatherFor(location));
+      console.warn(`Weather unavailable: ${location.id} (${location.label}) status=missing error=${lastError?.message || "unknown"}`);
     }
   }
+  validateWeatherCompleteness(locations, results);
   return results;
 };
 
@@ -1112,7 +1185,7 @@ const buildDashboardContext = async (config, now, nowIso, previousContext = {}) 
   const previousExternalEvents = (previousContext.localEvents || []).filter((event) => externalSourceIds.has(event.sourceName));
   return {
     generatedAt: nowIso,
-    weather: await fetchWeatherContext(config.weatherLocations || []),
+    weather: await fetchWeatherContext(config.weatherLocations || [], previousContext.weather || []),
     anniversaries: dedupeAnniversaries([...externalAnniversaries, ...configuredAnniversaries]).slice(0, 16),
     holidays: await fetchHolidayContext(now),
     localEventSources: remoteLocalEvents.statuses,
@@ -1881,7 +1954,14 @@ const main = async () => {
   console.log(`Saved ${items.length} trend items at ${nowIso}`);
 };
 
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+const currentModulePath = new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1");
+const isDirectRun = process.argv[1] && path.resolve(process.argv[1]) === path.resolve(currentModulePath);
+
+export { fetchWeatherContext, validateWeatherCompleteness };
+
+if (isDirectRun) {
+  main().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });
+}
