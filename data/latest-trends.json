@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-11-22T19:51:00+09:00",
+  "updatedAt": "2026-11-23T09:37:00+09:00",
   "trendUpdatedAt": "2026-11-22T19:51:00+09:00",
   "trendCollection": {
-    "status": "fresh",
-    "attemptedAt": "2026-11-22T19:51:00+09:00",
-    "collectedItems": 60,
+    "status": "retained_previous",
+    "attemptedAt": "2026-11-23T09:37:00+09:00",
+    "collectedItems": 11,
     "publishedItems": 60,
-    "retainedFrom": null
+    "retainedFrom": "2026-11-22T19:51:00+09:00"
   },
   "source": "Google Trends RSS JP",
   "note": "Google Trends RSSと公開RSS検索から候補フレーズを抽出し、ウォッチリストと除外語でSNS投稿向けテーマに絞り込んでいます。",
@@ -2182,10 +2182,10 @@
   ],
   "localObservations": [
     {
-      "id": "03f95152528b",
-      "keyword": "2027 HAPPY BAG",
+      "id": "d41f60bd56a4",
+      "keyword": "地鶏と野菜巻き とりくら 天文館店",
       "query": "KagoshimaniaX 鹿児島 グルメ イベント SNS",
-      "sourceHeadline": "タリーズの「2027 HAPPY BAG」は予約受付中！5,500円と10,000円の2種、受け取りは12/11〜17。鹿児島は県内3店舗",
+      "sourceHeadline": "鹿児島市の「地鶏と野菜巻き とりくら 天文館店」が食べログ焼き鳥百名店に初選出",
       "sourceLabel": "KagoshimaniaX",
       "observationSeed": "KagoshimaniaX",
       "localSection": "local_media",
@@ -2206,21 +2206,21 @@
       "previousEvidenceCount": null,
       "evidenceChange": null,
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T09:37:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "09:37",
           "score": 78
         }
       ],
-      "observeUrl": "https://kagoshimaniax.com/fukubukuro2027-tullys/",
-      "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=2027%20HAPPY%20BAG"
+      "observeUrl": "https://kagoshimaniax.com/tabelog-yakitori-hyakumeiten-2026-torikura/",
+      "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%9C%B0%E9%B6%8F%E3%81%A8%E9%87%8E%E8%8F%9C%E5%B7%BB%E3%81%8D%20%E3%81%A8%E3%82%8A%E3%81%8F%E3%82%89%20%E5%A4%A9%E6%96%87%E9%A4%A8%E5%BA%97"
     },
     {
-      "id": "bf66351c3523",
-      "keyword": "sakurazima",
+      "id": "fcaa7fdd409f",
+      "keyword": "ダイソーPCスタンドを使ってみたが",
       "query": "KagoshimaniaX 鹿児島 グルメ イベント SNS",
-      "sourceHeadline": "日本の流出パスワード5位に「sakurazima」！桜島がランクイン、鹿児島民のリテラシーの話なのかな？！",
+      "sourceHeadline": "ダイソーPCスタンドを使ってみたが、僕には少し惜しい感じだった",
       "sourceLabel": "KagoshimaniaX",
       "observationSeed": "KagoshimaniaX",
       "localSection": "local_media",
@@ -2241,15 +2241,15 @@
       "previousEvidenceCount": null,
       "evidenceChange": null,
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T09:37:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "09:37",
           "score": 78
         }
       ],
-      "observeUrl": "https://kagoshimaniax.com/sakurazima-password-nordpass-2026/",
-      "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=sakurazima"
+      "observeUrl": "https://kagoshimaniax.com/daiso-pcstand/",
+      "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%80%E3%82%A4%E3%82%BD%E3%83%BCPC%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%89%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F%E3%81%8C"
     },
     {
       "id": "d7e334c107f7",
@@ -2275,12 +2275,8 @@
       "previousEvidenceCount": 1,
       "evidenceChange": 0,
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T09:37:00+09:00",
       "series": [
-        {
-          "time": "10:41",
-          "score": 77
-        },
         {
           "time": "20:01",
           "score": 77
@@ -2299,6 +2295,10 @@
         },
         {
           "time": "19:51",
+          "score": 77
+        },
+        {
+          "time": "09:37",
           "score": 77
         }
       ],
@@ -2329,12 +2329,8 @@
       "previousEvidenceCount": 1,
       "evidenceChange": 0,
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T09:37:00+09:00",
       "series": [
-        {
-          "time": "10:41",
-          "score": 77
-        },
         {
           "time": "20:01",
           "score": 77
@@ -2353,65 +2349,15 @@
         },
         {
           "time": "19:51",
+          "score": 77
+        },
+        {
+          "time": "09:37",
           "score": 77
         }
       ],
       "observeUrl": "https://tjkagoshima.com/2025/06/02/news20250424/",
       "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=TJ%E3%82%AB%E3%82%B4%E3%82%B7%E3%83%9E%E5%85%AC%E5%BC%8F%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%20%E3%83%AA%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%A2%E3%83%AB%EF%BC%81"
-    },
-    {
-      "id": "b55bf6d684b4",
-      "keyword": "グランピングスポット人気ランキングTOP10！手ぶらで贅沢にア",
-      "query": "こしかの温泉 サウナ グランピング",
-      "sourceHeadline": "グランピングスポット人気ランキングTOP10！手ぶらで贅沢にアウトドアを満喫できる日本各地の体験型リゾートを紹介",
-      "sourceLabel": "Googleローカルニュース",
-      "observationSeed": "こしかの温泉",
-      "localSection": "local_leisure_islands",
-      "localSectionTitle": "温泉・離島・レジャー",
-      "localSectionDescription": "サウナ、温泉、屋久島、奄美、航路、旅行",
-      "localTier": "A",
-      "tags": [
-        "温泉"
-      ],
-      "score": 77,
-      "previousScore": 77,
-      "scoreChange": 0,
-      "direction": "flat",
-      "trendStatus": "flat",
-      "signalType": "local_observation",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "10:41",
-          "score": 75
-        },
-        {
-          "time": "20:01",
-          "score": 75
-        },
-        {
-          "time": "10:09",
-          "score": 77
-        },
-        {
-          "time": "19:44",
-          "score": 77
-        },
-        {
-          "time": "09:08",
-          "score": 77
-        },
-        {
-          "time": "19:51",
-          "score": 77
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE0ta05pb09TMGI4dWVoTTJuT1h0N2N2V3JYZXNNUzV0dTRCaEFLam9ZRnNQRTBobkZiUkw4aHpKMWVzMWdfR09TWUFQd3VQX194NFdlX05n0gFbQVVfeXFMUC1NdTVwNzg4SVFYZ2FRb1dxdHdGblBpZm5GZk5iaUxnbENXRWpQMlVUS1ZtOURodFh2NDlZTFh2S2pRTnp4TFgyY3ZSQlVIUUczT3Z0VUNFZTdjWQ?oc=5",
-      "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%94%E3%83%B3%E3%82%B0%E3%82%B9%E3%83%9D%E3%83%83%E3%83%88%E4%BA%BA%E6%B0%97%E3%83%A9%E3%83%B3%E3%82%AD%E3%83%B3%E3%82%B0TOP10%EF%BC%81%E6%89%8B%E3%81%B6%E3%82%89%E3%81%A7%E8%B4%85%E6%B2%A2%E3%81%AB%E3%82%A2"
     },
     {
       "id": "1367d73713b0",
@@ -2437,12 +2383,8 @@
       "previousEvidenceCount": 1,
       "evidenceChange": 0,
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T09:37:00+09:00",
       "series": [
-        {
-          "time": "10:41",
-          "score": 77
-        },
         {
           "time": "20:01",
           "score": 77
@@ -2461,6 +2403,10 @@
         },
         {
           "time": "19:51",
+          "score": 77
+        },
+        {
+          "time": "09:37",
           "score": 77
         }
       ],
@@ -2491,12 +2437,8 @@
       "previousEvidenceCount": 1,
       "evidenceChange": 0,
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T09:37:00+09:00",
       "series": [
-        {
-          "time": "10:41",
-          "score": 77
-        },
         {
           "time": "20:01",
           "score": 77
@@ -2515,6 +2457,10 @@
         },
         {
           "time": "19:51",
+          "score": 77
+        },
+        {
+          "time": "09:37",
           "score": 77
         }
       ],
@@ -2522,114 +2468,22 @@
       "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%98%89%E4%B9%8B%E5%8A%A9%E8%92%B8%E6%BA%9C%E6%89%80"
     },
     {
-      "id": "5788d0dc65c4",
-      "keyword": "好きを伸ばし拡げ",
-      "query": "リビングかごしま おでかけ グルメ イベント",
-      "sourceHeadline": "好きを伸ばし拡げ、地域の暮らしに寄り添い支える",
-      "sourceLabel": "Googleローカルニュース",
-      "observationSeed": "リビングかごしま",
+      "id": "0ac9cc931bd0",
+      "keyword": "モーニング",
+      "query": "Kagomaga カゴマガ 鹿児島 サブカル VTuber",
+      "sourceHeadline": "モーニング",
+      "sourceLabel": "Kagomaga カゴマガ",
+      "observationSeed": "Kagomaga カゴマガ",
       "localSection": "local_media",
       "localSectionTitle": "地域メディア",
       "localSectionDescription": "鹿児島の街ネタ、店舗、イベントを拾う起点",
-      "localTier": "A",
+      "localTier": "B",
       "tags": [
-        "生活"
+        "カルチャー"
       ],
-      "score": 77,
-      "previousScore": 77,
-      "scoreChange": 0,
-      "direction": "flat",
-      "trendStatus": "flat",
-      "signalType": "local_observation",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:44",
-          "score": 77
-        },
-        {
-          "time": "09:08",
-          "score": 77
-        },
-        {
-          "time": "19:51",
-          "score": 77
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9ybGlWVDlzRWFZWTIwVmo0WkpBdlZib3EzTGJHTTVrcnNnQlJxb1NFT3pEUHU4NUxFQXZ0UGEyLU9SQ0FOcFdUTko4MEpSd2o4cXowVm5YbUw0OVNJRXpN?oc=5",
-      "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%A5%BD%E3%81%8D%E3%82%92%E4%BC%B8%E3%81%B0%E3%81%97%E6%8B%A1%E3%81%92"
-    },
-    {
-      "id": "b777d18840d2",
-      "keyword": "8出発 グットリの北九州発・奄美大島2泊3日ホエールウォッチン",
-      "query": "奄美旅行 観光 SNS",
-      "sourceHeadline": "1/8出発 グットリの北九州発・奄美大島2泊3日ホエールウォッチングとマングローブカヌーが付いた観光バス付プランも",
-      "sourceLabel": "Googleローカルニュース",
-      "observationSeed": "奄美旅行",
-      "localSection": "local_leisure_islands",
-      "localSectionTitle": "温泉・離島・レジャー",
-      "localSectionDescription": "サウナ、温泉、屋久島、奄美、航路、旅行",
-      "localTier": "A",
-      "tags": [
-        "離島"
-      ],
-      "score": 77,
-      "previousScore": 77,
-      "scoreChange": 0,
-      "direction": "flat",
-      "trendStatus": "flat",
-      "signalType": "local_observation",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "20:01",
-          "score": 77
-        },
-        {
-          "time": "10:09",
-          "score": 77
-        },
-        {
-          "time": "19:44",
-          "score": 77
-        },
-        {
-          "time": "09:08",
-          "score": 77
-        },
-        {
-          "time": "19:51",
-          "score": 77
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9LMEQyWDE4OE5vUWxyVjNyekFkQ2FZWGpMRFdsQ3FYamlOc3hYS1pGSV9BRTItUkRlaW9vbjBWT0NkRGlGTnNKY2w3MmlTdTlpanVRbFRBQU9lRTY4RnNNNldXUHZxV0dKOHc?oc=5",
-      "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=8%E5%87%BA%E7%99%BA%20%E3%82%B0%E3%83%83%E3%83%88%E3%83%AA%E3%81%AE%E5%8C%97%E4%B9%9D%E5%B7%9E%E7%99%BA%E3%83%BB%E5%A5%84%E7%BE%8E%E5%A4%A7%E5%B3%B62%E6%B3%8A3%E6%97%A5%E3%83%9B%E3%82%A8%E3%83%BC%E3%83%AB%E3%82%A6%E3%82%A9%E3%83%83%E3%83%81%E3%83%B3"
-    },
-    {
-      "id": "84605f6f1f87",
-      "keyword": "TikTok配信者×クリエイター〜推しの声が物語になる〜",
-      "query": "鹿児島TikTok クリエイター ショート動画",
-      "sourceHeadline": "TikTok配信者×クリエイター〜推しの声が物語になる〜",
-      "sourceLabel": "Googleローカルニュース",
-      "observationSeed": "鹿児島TikTok",
-      "localSection": "local_subculture",
-      "localSectionTitle": "サブカル・若年層",
-      "localSectionDescription": "鹿児島発の若年層文脈、界隈語、ファン投稿",
-      "localTier": "A",
-      "tags": [
-        "動画"
-      ],
-      "score": 76,
+      "score": 64,
       "previousScore": null,
-      "scoreChange": 76,
+      "scoreChange": 64,
       "direction": "new",
       "trendStatus": "candidate",
       "signalType": "local_observation",
@@ -2637,82 +2491,28 @@
       "previousEvidenceCount": null,
       "evidenceChange": null,
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T09:37:00+09:00",
       "series": [
         {
-          "time": "19:51",
-          "score": 76
+          "time": "09:37",
+          "score": 64
         }
       ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9ZLUFfc3J6QlVMd0tIMTF1MW1zbGNjRWtENm80TElBX2pmRGpzNHF4WlRNLXBRWlYySjZGd21YQlltd3Ixd1d1Zl9CV25CbXNjeHQ0?oc=5",
-      "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=TikTok%E9%85%8D%E4%BF%A1%E8%80%85%C3%97%E3%82%AF%E3%83%AA%E3%82%A8%E3%82%A4%E3%82%BF%E3%83%BC%E3%80%9C%E6%8E%A8%E3%81%97%E3%81%AE%E5%A3%B0%E3%81%8C%E7%89%A9%E8%AA%9E%E3%81%AB%E3%81%AA%E3%82%8B%E3%80%9C"
-    },
-    {
-      "id": "af51c7a8b8ed",
-      "keyword": "銭湯・温泉施設",
-      "query": "指宿こころの湯 温泉",
-      "sourceHeadline": "鹿児島県の「銭湯・温泉施設」15選！ あなたが一番好きなのはどこ？ | 鹿児島県 ねとらぼリサーチ",
-      "sourceLabel": "Googleローカルニュース",
-      "observationSeed": "指宿こころの湯",
-      "localSection": "local_leisure_islands",
-      "localSectionTitle": "温泉・離島・レジャー",
-      "localSectionDescription": "サウナ、温泉、屋久島、奄美、航路、旅行",
-      "localTier": "A",
-      "tags": [
-        "温泉"
-      ],
-      "score": 75,
-      "previousScore": 75,
-      "scoreChange": 0,
-      "direction": "flat",
-      "trendStatus": "flat",
-      "signalType": "local_observation",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "10:41",
-          "score": 76
-        },
-        {
-          "time": "20:01",
-          "score": 76
-        },
-        {
-          "time": "10:09",
-          "score": 76
-        },
-        {
-          "time": "19:44",
-          "score": 75
-        },
-        {
-          "time": "09:08",
-          "score": 75
-        },
-        {
-          "time": "19:51",
-          "score": 75
-        }
-      ],
-      "observeUrl": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE90NEJTUjJ2OVNqUUMyS19rMjVYQVZfcmRXT083Nm9KTC1KQ3A5UHN5VkNwMmhXLVhhWEJUSnh2dEczNFJIMnNDYkc1c1lwRldBVzVsNXlvbVhiQkRFbzhDUDRvY9IBaEFVX3lxTE1CTUREUlc3Q2k4Y2ZuNG5pU2Jrd2Uzai1VLS1FS0ZHV3RsaWdhVmVhWkgyZ3NLczdhbXFpMXdVaGFEeDhBTnlmSXJhRlJOSldlWEZ1T2ZwY2Y2bW5kNVZyV3RHMnZPUWF4?oc=5",
-      "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=%E9%8A%AD%E6%B9%AF%E3%83%BB%E6%B8%A9%E6%B3%89%E6%96%BD%E8%A8%AD"
+      "observeUrl": "https://www.kagomaga.jp/?cat=713",
+      "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%A2%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0"
     }
   ],
   "context": {
-    "generatedAt": "2026-11-22T19:51:00+09:00",
+    "generatedAt": "2026-11-23T09:37:00+09:00",
     "weather": [
       {
         "id": "kagoshima",
         "label": "鹿児島",
-        "temperature": 11,
-        "high": 13,
-        "low": 10,
-        "precipitation": 41,
-        "wind": 8,
+        "temperature": 13,
+        "high": 17,
+        "low": 9,
+        "precipitation": 14,
+        "wind": 3,
         "weatherCode": 0,
         "summary": "晴れ",
         "status": "fresh"
@@ -2720,35 +2520,35 @@
       {
         "id": "yakushima",
         "label": "屋久島",
-        "temperature": 15,
-        "high": 15,
-        "low": 14,
-        "precipitation": 49,
-        "wind": 27,
-        "weatherCode": 1,
+        "temperature": 16,
+        "high": 21,
+        "low": 15,
+        "precipitation": 0,
+        "wind": 8,
+        "weatherCode": 0,
         "summary": "晴れ",
         "status": "fresh"
       },
       {
         "id": "amami",
         "label": "奄美",
-        "temperature": 18,
-        "high": 19,
+        "temperature": 21,
+        "high": 22,
         "low": 18,
-        "precipitation": 92,
-        "wind": 16,
-        "weatherCode": 1,
+        "precipitation": 39,
+        "wind": 11,
+        "weatherCode": 0,
         "summary": "晴れ",
         "status": "fresh"
       },
       {
         "id": "tanegashima",
         "label": "種子島",
-        "temperature": 14,
-        "high": 15,
+        "temperature": 16,
+        "high": 18,
         "low": 13,
-        "precipitation": 29,
-        "wind": 17,
+        "precipitation": 0,
+        "wind": 3,
         "weatherCode": 0,
         "summary": "晴れ",
         "status": "fresh"
@@ -2756,8 +2556,8 @@
     ],
     "anniversaries": [
       {
-        "date": "11-22",
-        "title": "いい夫婦の日",
+        "date": "11-23",
+        "title": "勤労感謝の日",
         "category": "記念日",
         "hint": "今日の投稿ネタ、朝礼・社内広報の一言、SNS文脈確認",
         "source": "雑学ネタ帳",
@@ -2766,8 +2566,8 @@
         "daysUntil": 0
       },
       {
-        "date": "11-22",
-        "title": "大工さんの日",
+        "date": "11-23",
+        "title": "いいふみの日",
         "category": "記念日",
         "hint": "今日の投稿ネタ、朝礼・社内広報の一言、SNS文脈確認",
         "source": "雑学ネタ帳",
@@ -2776,8 +2576,8 @@
         "daysUntil": 0
       },
       {
-        "date": "11-22",
-        "title": "ボタンの日",
+        "date": "11-23",
+        "title": "いい夫妻の日",
         "category": "記念日",
         "hint": "今日の投稿ネタ、朝礼・社内広報の一言、SNS文脈確認",
         "source": "雑学ネタ帳",
@@ -2786,8 +2586,8 @@
         "daysUntil": 0
       },
       {
-        "date": "11-22",
-        "title": "長野県りんごの日",
+        "date": "11-23",
+        "title": "いい兄さんの日",
         "category": "記念日",
         "hint": "今日の投稿ネタ、朝礼・社内広報の一言、SNS文脈確認",
         "source": "雑学ネタ帳",
@@ -2796,8 +2596,8 @@
         "daysUntil": 0
       },
       {
-        "date": "11-22",
-        "title": "大人の日",
+        "date": "11-23",
+        "title": "いいファミリーの日",
         "category": "記念日",
         "hint": "今日の投稿ネタ、朝礼・社内広報の一言、SNS文脈確認",
         "source": "雑学ネタ帳",
@@ -2806,8 +2606,8 @@
         "daysUntil": 0
       },
       {
-        "date": "11-22",
-        "title": "クリーム＆の日",
+        "date": "11-23",
+        "title": "外食の日",
         "category": "記念日",
         "hint": "今日の投稿ネタ、朝礼・社内広報の一言、SNS文脈確認",
         "source": "雑学ネタ帳",
@@ -2816,8 +2616,8 @@
         "daysUntil": 0
       },
       {
-        "date": "11-22",
-        "title": "試し書きの日",
+        "date": "11-23",
+        "title": "ゲームの日",
         "category": "記念日",
         "hint": "今日の投稿ネタ、朝礼・社内広報の一言、SNS文脈確認",
         "source": "雑学ネタ帳",
@@ -2826,8 +2626,8 @@
         "daysUntil": 0
       },
       {
-        "date": "11-22",
-        "title": "あにまるすまいるの日",
+        "date": "11-23",
+        "title": "Jリーグの日",
         "category": "記念日",
         "hint": "今日の投稿ネタ、朝礼・社内広報の一言、SNS文脈確認",
         "source": "雑学ネタ帳",
@@ -2836,8 +2636,8 @@
         "daysUntil": 0
       },
       {
-        "date": "11-22",
-        "title": "いいフルフルの日",
+        "date": "11-23",
+        "title": "手袋の日",
         "category": "記念日",
         "hint": "今日の投稿ネタ、朝礼・社内広報の一言、SNS文脈確認",
         "source": "雑学ネタ帳",
@@ -2846,8 +2646,8 @@
         "daysUntil": 0
       },
       {
-        "date": "11-22",
-        "title": "愛ひとつぶの日",
+        "date": "11-23",
+        "title": "ハートケアの日",
         "category": "記念日",
         "hint": "今日の投稿ネタ、朝礼・社内広報の一言、SNS文脈確認",
         "source": "雑学ネタ帳",
@@ -2856,8 +2656,8 @@
         "daysUntil": 0
       },
       {
-        "date": "11-22",
-        "title": "韓国キムチの日",
+        "date": "11-23",
+        "title": "珍味の日",
         "category": "記念日",
         "hint": "今日の投稿ネタ、朝礼・社内広報の一言、SNS文脈確認",
         "source": "雑学ネタ帳",
@@ -2866,8 +2666,8 @@
         "daysUntil": 0
       },
       {
-        "date": "11-22",
-        "title": "いいブーブーの日",
+        "date": "11-23",
+        "title": "牡蠣の日",
         "category": "記念日",
         "hint": "今日の投稿ネタ、朝礼・社内広報の一言、SNS文脈確認",
         "source": "雑学ネタ帳",
@@ -2876,8 +2676,8 @@
         "daysUntil": 0
       },
       {
-        "date": "11-22",
-        "title": "レオンアーツの日",
+        "date": "11-23",
+        "title": "いい積立の日",
         "category": "認定記念日",
         "hint": "今日の投稿ネタ、朝礼・社内広報の一言、SNS文脈確認",
         "source": "日本記念日協会",
@@ -2886,8 +2686,8 @@
         "daysUntil": 0
       },
       {
-        "date": "11-22",
-        "title": "三河一色うなぎの日",
+        "date": "11-23",
+        "title": "栗原揚げの日",
         "category": "認定記念日",
         "hint": "今日の投稿ネタ、朝礼・社内広報の一言、SNS文脈確認",
         "source": "日本記念日協会",
@@ -2896,23 +2696,23 @@
         "daysUntil": 0
       },
       {
-        "date": "11-22",
-        "title": "なないろSMSの日",
+        "date": "11-23",
+        "title": "勤脳感謝の日",
         "category": "認定記念日",
         "hint": "今日の投稿ネタ、朝礼・社内広報の一言、SNS文脈確認",
         "source": "日本記念日協会",
         "sourceUrl": "https://www.kinenbi.gr.jp/",
-        "priority": 86,
+        "priority": 88,
         "daysUntil": 0
       },
       {
-        "date": "11-22",
-        "title": "甘酒ヌーボーの日",
+        "date": "11-23",
+        "title": "イケボ音声の日",
         "category": "認定記念日",
         "hint": "今日の投稿ネタ、朝礼・社内広報の一言、SNS文脈確認",
         "source": "日本記念日協会",
         "sourceUrl": "https://www.kinenbi.gr.jp/",
-        "priority": 84,
+        "priority": 87,
         "daysUntil": 0
       }
     ],
@@ -2922,7 +2722,7 @@
         "title": "勤労感謝の日",
         "category": "祝日",
         "hint": "祝日投稿、営業案内、地域イベント確認",
-        "daysUntil": 1
+        "daysUntil": 0
       }
     ],
     "localEventSources": [
@@ -2946,12 +2746,12 @@
         "venue": "都城市総合文化ホール(中ホール)",
         "startDate": "2026-11-23",
         "endDate": "2026-11-23",
-        "daysUntil": 1,
+        "daysUntil": 0,
         "colorId": "",
         "sourceUrl": "https://kagoshima-onkyo.rgr.jp/organized/12756/",
         "sourceName": "kagoshima_onkyo",
         "summary": "細坪基佳・平賀和人・三浦和人 フレンドシップフォークコンサート2026",
-        "priority": 521
+        "priority": 525
       },
       {
         "id": "5108f757bab201e1",
@@ -2961,27 +2761,12 @@
         "venue": "宝山ホール",
         "startDate": "2026-11-28",
         "endDate": "2026-11-28",
-        "daysUntil": 6,
+        "daysUntil": 5,
         "colorId": "",
         "sourceUrl": "https://kagoshima-onkyo.rgr.jp/organized/12786/",
         "sourceName": "kagoshima_onkyo",
         "summary": "宝山プレゼンツ 鹿児島県文化センター開館60周年記念 野村萬斎・裕基 狂言への誘い(いざない)",
-        "priority": 501
-      },
-      {
-        "id": "40a97e416736",
-        "title": "第1回 BEX&#39;s LOCAL THE PREMIUM",
-        "category": "展示・展覧会",
-        "rank": "B",
-        "venue": "サンあもり",
-        "startDate": "2026-11-22",
-        "endDate": "2026-11-22",
-        "daysUntil": 0,
-        "colorId": "",
-        "sourceUrl": "https://www.walkerplus.com/event_list/ar1046/eg0126/",
-        "sourceName": "walkerplus_kagoshima_exhibitions",
-        "summary": "全国から、改良メダカのトップブリーダーが鹿児島へ集結！県内外から多数の来客が見込まれる。特別な一日を過ごそう。",
-        "priority": 430
+        "priority": 505
       },
       {
         "id": "b2b8d7f2893b",
@@ -2991,12 +2776,27 @@
         "venue": "長島美術館 別館B1F",
         "startDate": "2026-11-21",
         "endDate": "2026-11-23",
-        "daysUntil": -1,
+        "daysUntil": -2,
         "colorId": "",
         "sourceUrl": "https://ngp.jp/nagashima-museum/entry103.html",
         "sourceName": "walkerplus_kagoshima_exhibitions",
         "summary": "書道の枠にとらわれない、自由な発想と筆文字アートで人気の智ちゃん先生と、北薩、南薩など鹿児島各地にある教室の生徒による智書(さとりしょ)展が長島美術館別館地下にて開催される。智書は智ちゃん先生が考案した、字の上手い下手関係なく、書き順・書き方にこだわらず、自由に筆ペン一本で自分の心を相手に伝える書。生徒の作品や、師範の作品など約250点を一堂に展示する。",
-        "priority": 426
+        "priority": 422
+      },
+      {
+        "id": "70e63d99ef1d",
+        "title": "第77回企画展 上野原遺跡発掘調査40周年記念特別企画展~魅力 再発見 すごいぞ!上野原遺跡",
+        "category": "展示・展覧会",
+        "rank": "B",
+        "venue": "上野原縄文の森 展示館企画展示室",
+        "startDate": "2026-11-21",
+        "endDate": "2027-03-07",
+        "daysUntil": -2,
+        "colorId": "",
+        "sourceUrl": "https://www.jomon-no-mori.jp/jomon-no-mori/",
+        "sourceName": "walkerplus_kagoshima_exhibitions",
+        "summary": "発見当時、縄文時代の最古・最大級の遺跡として注目された上野原遺跡は、最初の発掘調査から今年で40年目となった。その間、約10,600年前の竪穴住居群は、国の史跡に指定され、見つかった約8,600年前の土器や石器、土偶など767点は、国の重要文化財に指定された。今回の企画展では、近年の研究成果を踏まえ、改めて上野原遺跡の発掘調査成果を振り返る。",
+        "priority": 422
       },
       {
         "id": "c1e9dc02a35c",
@@ -3006,27 +2806,12 @@
         "venue": "フラワーパークかごしま 屋内庭園",
         "startDate": "2026-11-27",
         "endDate": "2027-01-08",
-        "daysUntil": 5,
+        "daysUntil": 4,
         "colorId": "",
         "sourceUrl": "https://www.fp-k.org/",
         "sourceName": "walkerplus_kagoshima_exhibitions",
         "summary": "冬の代表的な花シクラメン。花色や形にいろいろなバリエーションがあり、鹿児島県内で生産された様々な品種を中心に紹介。1月9日（土）は、9時から展示品の即売会が開催される（無くなり次第終了）。",
-        "priority": 410
-      },
-      {
-        "id": "854ce1bfbf513747",
-        "title": "ディズニー・オン・クラシック 都城公演 ディズニー・オン・クラシック まほうの夜の音楽会 2026",
-        "category": "公演",
-        "rank": "B",
-        "venue": "都城市総合文化ホール(大ホール)",
-        "startDate": "2026-11-22",
-        "endDate": "2026-11-22",
-        "daysUntil": 0,
-        "colorId": "",
-        "sourceUrl": "https://kagoshima-onkyo.rgr.jp/organized/12651/",
-        "sourceName": "kagoshima_onkyo",
-        "summary": "ディズニー・オン・クラシック 都城公演 ディズニー・オン・クラシック まほうの夜の音楽会 2026",
-        "priority": 395
+        "priority": 414
       },
       {
         "id": "a850f5d6edd64747",
@@ -3036,7 +2821,7 @@
         "venue": "宝山ホール",
         "startDate": "2027-01-30",
         "endDate": "2027-01-30",
-        "daysUntil": 69,
+        "daysUntil": 68,
         "colorId": "",
         "sourceUrl": "https://kagoshima-onkyo.rgr.jp/organized/12858/",
         "sourceName": "kagoshima_onkyo",
@@ -3051,12 +2836,27 @@
         "venue": "谷山サザンホール",
         "startDate": "2027-02-14",
         "endDate": "2027-02-14",
-        "daysUntil": 84,
+        "daysUntil": 83,
         "colorId": "",
         "sourceUrl": "https://kagoshima-onkyo.rgr.jp/ticket/12834/",
         "sourceName": "kagoshima_onkyo",
         "summary": "un sept six アンセットシスピアノデュオコンサート",
         "priority": 395
+      },
+      {
+        "id": "854ce1bfbf513747",
+        "title": "ディズニー・オン・クラシック 都城公演 ディズニー・オン・クラシック まほうの夜の音楽会 2026",
+        "category": "公演",
+        "rank": "B",
+        "venue": "都城市総合文化ホール(大ホール)",
+        "startDate": "2026-11-22",
+        "endDate": "2026-11-22",
+        "daysUntil": -1,
+        "colorId": "",
+        "sourceUrl": "https://kagoshima-onkyo.rgr.jp/organized/12651/",
+        "sourceName": "kagoshima_onkyo",
+        "summary": "ディズニー・オン・クラシック 都城公演 ディズニー・オン・クラシック まほうの夜の音楽会 2026",
+        "priority": 391
       },
       {
         "id": "76772f9e73f5",
@@ -3066,12 +2866,12 @@
         "venue": "art space＆shop haru",
         "startDate": "2026-11-13",
         "endDate": "2026-12-01",
-        "daysUntil": -9,
+        "daysUntil": -10,
         "colorId": "",
         "sourceUrl": "https://haru-graphic.com/space/event/2026_itigoitie.html",
         "sourceName": "walkerplus_kagoshima_exhibitions",
         "summary": "主催より：タイトルの一期一会（いちごいちえ）は、私の好きな言葉です。茶道由来の四文字熟語ですが、一生に一度きりの出会いと思ってその瞬間をシャッターを切りました。 出会った人々や街風景、自然風景など 皆様の心にも旅の情景と懐かしさが生まれれば幸いです。",
-        "priority": 394
+        "priority": 390
       },
       {
         "id": "2779b6d31e9e",
@@ -3081,42 +2881,12 @@
         "venue": "かごしま近代文学館 常設展示2F 向田邦子の世界",
         "startDate": "2026-11-11",
         "endDate": "2027-03-15",
-        "daysUntil": -11,
+        "daysUntil": -12,
         "colorId": "",
         "sourceUrl": "https://www.k-kb.or.jp/kinmeru/",
         "sourceName": "walkerplus_kagoshima_exhibitions",
         "summary": "旅好きな作家として知られる向田邦子。国内、国外を問わず、興味のある場所へと旅に行った。異国の地は、足腰の丈夫なうちに、こういう所を見ておかないといけないと観光地ではない場所を好んだ。日本国内は、小旅行気分を味わえた鎌倉や自分のル―ツを探し求めた石川県能登島、故郷もどきの鹿児島、その他にも岐阜や広島など様々な場所を旅している。向田邦子が旅した足跡を一緒にたどろう！",
-        "priority": 386
-      },
-      {
-        "id": "f6b5c9fed9e6",
-        "title": "マンガ【推しの子】展 -星のキセキ- 鹿児島会場",
-        "category": "展示・展覧会",
-        "rank": "B",
-        "venue": "カクイックス交流センター(かごしま県民交流センター)",
-        "startDate": "2026-11-07",
-        "endDate": "2027-01-11",
-        "daysUntil": -15,
-        "colorId": "",
-        "sourceUrl": "https://373news.com/corporation/service/event/osinoko-ten",
-        "sourceName": "walkerplus_kagoshima_exhibitions",
-        "summary": "マンガ【推しの子】展 -星のキセキ-が九州初上陸。2026年11月7日(土)からカクイックス交流センター(かごしま県民交流センター)6階で開催。今展覧会では、作品の世界観に包まれた空間で、マンガの名シーンの数々やストーリーをイラスト展示で振り返るとともに、赤坂アカ×横槍メンゴ両氏によるコメントもを交えて、作品の“舞台裏”に迫る。",
-        "priority": 370
-      },
-      {
-        "id": "5052ad29a412",
-        "title": "竹之内彬裕回顧展「注ぐ器」",
-        "category": "展示・展覧会",
-        "rank": "B",
-        "venue": "和紙ギャラリー",
-        "startDate": "2026-11-07",
-        "endDate": "2026-11-23",
-        "daysUntil": -15,
-        "colorId": "",
-        "sourceUrl": "https://www.instagram.com/p/DeORTUSSF8Q/",
-        "sourceName": "walkerplus_kagoshima_exhibitions",
-        "summary": "鹿児島を拠点に活躍した陶芸家・竹ノ内彬裕氏の没後一年の回顧展。作り続けられた陶匣碗を初め、最後の作品となった注ぐ器など、氏の作品を百点余り展示する。氏の制作活動と人柄を偲んで―。",
-        "priority": 370
+        "priority": 382
       },
       {
         "id": "34d6081698d1b96f",
@@ -3126,12 +2896,42 @@
         "venue": "宝山ホール",
         "startDate": "2026-11-29",
         "endDate": "2026-11-29",
-        "daysUntil": 7,
+        "daysUntil": 6,
         "colorId": "",
         "sourceUrl": "https://www.houzanhall.com/event/16576/",
         "sourceName": "houzan_hall",
         "summary": "みんなのカンレキオールスターズビッグバンドコンサート",
-        "priority": 367
+        "priority": 371
+      },
+      {
+        "id": "f6b5c9fed9e6",
+        "title": "マンガ【推しの子】展 -星のキセキ- 鹿児島会場",
+        "category": "展示・展覧会",
+        "rank": "B",
+        "venue": "カクイックス交流センター(かごしま県民交流センター)",
+        "startDate": "2026-11-07",
+        "endDate": "2027-01-11",
+        "daysUntil": -16,
+        "colorId": "",
+        "sourceUrl": "https://373news.com/corporation/service/event/osinoko-ten",
+        "sourceName": "walkerplus_kagoshima_exhibitions",
+        "summary": "マンガ【推しの子】展 -星のキセキ-が九州初上陸。2026年11月7日(土)からカクイックス交流センター(かごしま県民交流センター)6階で開催。今展覧会では、作品の世界観に包まれた空間で、マンガの名シーンの数々やストーリーをイラスト展示で振り返るとともに、赤坂アカ×横槍メンゴ両氏によるコメントもを交えて、作品の“舞台裏”に迫る。",
+        "priority": 366
+      },
+      {
+        "id": "5052ad29a412",
+        "title": "竹之内彬裕回顧展「注ぐ器」",
+        "category": "展示・展覧会",
+        "rank": "B",
+        "venue": "和紙ギャラリー",
+        "startDate": "2026-11-07",
+        "endDate": "2026-11-23",
+        "daysUntil": -16,
+        "colorId": "",
+        "sourceUrl": "https://www.instagram.com/p/DeORTUSSF8Q/",
+        "sourceName": "walkerplus_kagoshima_exhibitions",
+        "summary": "鹿児島を拠点に活躍した陶芸家・竹ノ内彬裕氏の没後一年の回顧展。作り続けられた陶匣碗を初め、最後の作品となった注ぐ器など、氏の作品を百点余り展示する。氏の制作活動と人柄を偲んで―。",
+        "priority": 366
       },
       {
         "id": "a63668d149b5",
@@ -3141,12 +2941,12 @@
         "venue": "かごしま近代文学館 常設展示2階",
         "startDate": "2026-12-09",
         "endDate": "2027-06-09",
-        "daysUntil": 17,
+        "daysUntil": 16,
         "colorId": "",
         "sourceUrl": "https://www.k-kb.or.jp/kinmeru/",
         "sourceName": "walkerplus_kagoshima_exhibitions",
         "summary": "山。故郷の山はと問われると、頭の中に浮かぶ山があるはず。生活とともにある山、有名な山、百名山と言われる山など。鹿児島は、現在も噴火を続ける桜島や霧島連山、低山ながらも作家・深田久弥の『百名山』に名を連ね、薩摩富士と呼ばれる開聞岳、世界遺産の屋久島にある宮之浦岳など数多くの山がある。今展では、鹿児島の山に魅了された作家たちや鹿児島ゆかりの山を愛した作家たちを紹介する。",
-        "priority": 362
+        "priority": 366
       },
       {
         "id": "d7db405736c3",
@@ -3156,7 +2956,7 @@
         "venue": "長島美術館",
         "startDate": "2026-09-20",
         "endDate": "2026-11-30",
-        "daysUntil": -63,
+        "daysUntil": -64,
         "colorId": "",
         "sourceUrl": "https://ngp.jp/nagashima-museum/",
         "sourceName": "walkerplus_kagoshima_exhibitions",
@@ -3171,7 +2971,7 @@
         "venue": "かごしま近代文学館 文学ホール、常設展示室2階",
         "startDate": "2026-10-03",
         "endDate": "2026-11-30",
-        "daysUntil": -50,
+        "daysUntil": -51,
         "colorId": "",
         "sourceUrl": "https://www.k-kb.or.jp/kinmeru/",
         "sourceName": "walkerplus_kagoshima_exhibitions",
@@ -3186,7 +2986,7 @@
         "venue": "白波スタジアム",
         "startDate": "2027-02-20",
         "endDate": "2027-02-20",
-        "daysUntil": 90,
+        "daysUntil": 89,
         "colorId": "",
         "sourceUrl": "https://spocale.com/sports/2/game/352198",
         "sourceName": "spocale_places",
@@ -3201,7 +3001,7 @@
         "venue": "白波スタジアム",
         "startDate": "2027-03-06",
         "endDate": "2027-03-06",
-        "daysUntil": 104,
+        "daysUntil": 103,
         "colorId": "2",
         "sourceUrl": "https://spocale.com/sports/2/game/352218",
         "sourceName": "spocale_places",
@@ -3216,12 +3016,12 @@
         "venue": "カクイックス交流センター",
         "startDate": "2026-12-20",
         "endDate": "2026-12-20",
-        "daysUntil": 28,
+        "daysUntil": 27,
         "colorId": "",
         "sourceUrl": "https://kagoshima-onkyo.rgr.jp/organized/12828/",
         "sourceName": "kagoshima_onkyo",
         "summary": "柳家花緑 みなみ寄席 柳家花緑 独演会",
-        "priority": 283
+        "priority": 287
       },
       {
         "id": "9ca947b27020a203",
@@ -3231,7 +3031,7 @@
         "venue": "カクイックス交流センター",
         "startDate": "2027-01-17",
         "endDate": "2027-01-17",
-        "daysUntil": 56,
+        "daysUntil": 55,
         "colorId": "",
         "sourceUrl": "https://kagoshima-onkyo.rgr.jp/organized/12873/",
         "sourceName": "kagoshima_onkyo",
@@ -3246,12 +3046,12 @@
         "venue": "マルヤガーデンズ",
         "startDate": "2026-11-21",
         "endDate": "2026-11-23",
-        "daysUntil": -1,
+        "daysUntil": -2,
         "colorId": "",
         "sourceUrl": "https://www.maruya-gardens.com/event/miyuki2026/",
         "sourceName": "maruya_gardens",
         "summary": "第3回 ミユキデザインイラスト展",
-        "priority": 261
+        "priority": 257
       },
       {
         "id": "b62e1dd6d5f6238b",
@@ -3261,12 +3061,12 @@
         "venue": "",
         "startDate": "2026-12-06",
         "endDate": "2026-12-06",
-        "daysUntil": 14,
+        "daysUntil": 13,
         "colorId": "",
         "sourceUrl": "https://www.runningsakurajima.jp/",
         "sourceName": "kagoshima_yokanavi",
         "summary": "ランニング桜島",
-        "priority": 244
+        "priority": 248
       },
       {
         "id": "c3000daacc247def",
@@ -3276,7 +3076,7 @@
         "venue": "",
         "startDate": "2026-07-18",
         "endDate": "2026-12-31",
-        "daysUntil": -127,
+        "daysUntil": -128,
         "colorId": "",
         "sourceUrl": "https://www.kagoshima-kankou.com/event/71090",
         "sourceName": "kagoshima_kankou",
@@ -3291,7 +3091,7 @@
         "venue": "",
         "startDate": "2026-08-12",
         "endDate": "2027-01-11",
-        "daysUntil": -102,
+        "daysUntil": -103,
         "colorId": "",
         "sourceUrl": "https://www.pref.kagoshima.jp/ab10/kyoiku-bunka/bunka/shinko/rekishibunkazone_stamp.html",
         "sourceName": "kagoshima_yokanavi",
@@ -3306,7 +3106,7 @@
         "venue": "北薩摩エリア",
         "startDate": "2026-09-01",
         "endDate": "2027-01-31",
-        "daysUntil": -82,
+        "daysUntil": -83,
         "colorId": "",
         "sourceUrl": "https://www.kagoshima-kankou.com/event/71123",
         "sourceName": "kagoshima_kankou",
@@ -3321,7 +3121,7 @@
         "venue": "大隅エリア",
         "startDate": "2026-10-17",
         "endDate": "2026-11-23",
-        "daysUntil": -36,
+        "daysUntil": -37,
         "colorId": "",
         "sourceUrl": "https://www.kagoshima-kankou.com/event/70718",
         "sourceName": "kagoshima_kankou",
@@ -3336,12 +3136,12 @@
         "venue": "マルヤガーデンズ",
         "startDate": "2026-12-19",
         "endDate": "2026-12-28",
-        "daysUntil": 27,
+        "daysUntil": 26,
         "colorId": "",
         "sourceUrl": "https://www.maruya-gardens.com/event/pahogalleryvol-1/",
         "sourceName": "maruya_gardens",
         "summary": "PAHO GALLERY ニューヨークフェア Vol.1",
-        "priority": 157
+        "priority": 161
       },
       {
         "id": "385d2e474a3d37e8",
@@ -3351,12 +3151,12 @@
         "venue": "マルヤガーデンズ",
         "startDate": "2026-12-19",
         "endDate": "2026-12-19",
-        "daysUntil": 27,
+        "daysUntil": 26,
         "colorId": "",
         "sourceUrl": "https://www.maruya-gardens.com/event/lemonjamco/",
         "sourceName": "maruya_gardens",
         "summary": "レモンジャム子 POP UP STORE",
-        "priority": 157
+        "priority": 161
       },
       {
         "id": "762f38d1234b89ce",
@@ -3366,7 +3166,7 @@
         "venue": "マルヤガーデンズ",
         "startDate": "2026-09-01",
         "endDate": "2026-11-23",
-        "daysUntil": -82,
+        "daysUntil": -83,
         "colorId": "",
         "sourceUrl": "https://www.maruya-gardens.com/event/a-n-l/",
         "sourceName": "maruya_gardens",
@@ -3381,7 +3181,7 @@
         "venue": "常設展示室",
         "startDate": "2026-09-15",
         "endDate": "2026-11-29",
-        "daysUntil": -68,
+        "daysUntil": -69,
         "colorId": "",
         "sourceUrl": "https://www.city.kagoshima.lg.jp/soumu/shichoshitu/kouhou/shise/koho/documents/0911up0809.xlsx",
         "sourceName": "kagoshima_city_excel",
