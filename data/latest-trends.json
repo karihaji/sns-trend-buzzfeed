@@ -1,53 +1,19 @@
 {
-  "updatedAt": "2026-11-23T09:37:00+09:00",
-  "trendUpdatedAt": "2026-11-22T19:51:00+09:00",
+  "updatedAt": "2026-11-23T20:57:00+09:00",
+  "trendUpdatedAt": "2026-11-23T20:57:00+09:00",
   "trendCollection": {
-    "status": "retained_previous",
-    "attemptedAt": "2026-11-23T09:37:00+09:00",
-    "collectedItems": 11,
+    "status": "fresh",
+    "attemptedAt": "2026-11-23T20:57:00+09:00",
+    "collectedItems": 60,
     "publishedItems": 60,
-    "retainedFrom": "2026-11-22T19:51:00+09:00"
+    "retainedFrom": null
   },
   "source": "Google Trends RSS JP",
   "note": "Google Trends RSSと公開RSS検索から候補フレーズを抽出し、ウォッチリストと除外語でSNS投稿向けテーマに絞り込んでいます。",
   "items": [
     {
-      "id": "a8cdf745b156",
-      "keyword": "映画中のお手洗いを緩和してくれると",
-      "watchlist": "actual_public_trend",
-      "watchlistLabel": "Xで話題",
-      "rank": 1,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 100,
-      "previousScore": null,
-      "scoreChange": 100,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_trend",
-      "appearCount": 1,
-      "signalType": "yahoo_realtime",
-      "evidenceCount": 13,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "Yahoo!リアルタイム検索"
-      ],
-      "realtimeCount": 2705,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 100
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search/tweet/2124346491577966793?ifr=tl_tw"
-    },
-    {
-      "id": "97ccaa74fec7",
-      "keyword": "ユヴェントス 対 ヴェネツィア",
+      "id": "de97422e2e96",
+      "keyword": "宝くじ 当選番号",
       "watchlist": "actual_public_trend",
       "watchlistLabel": "実トレンド",
       "rank": 1,
@@ -70,18 +36,18 @@
         "検索急上昇"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 100
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%A6%E3%83%B4%E3%82%A7%E3%83%B3%E3%83%88%E3%82%B9%20%E5%AF%BE%20%E3%83%B4%E3%82%A7%E3%83%8D%E3%83%84%E3%82%A3%E3%82%A2"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%AE%9D%E3%81%8F%E3%81%98%20%E5%BD%93%E9%81%B8%E7%95%AA%E5%8F%B7"
     },
     {
-      "id": "e4e5ef4987ac",
-      "keyword": "ドラム vivant",
+      "id": "2ec893127fa0",
+      "keyword": "weather tomorrow",
       "watchlist": "actual_public_trend",
       "watchlistLabel": "実トレンド",
       "rank": 1,
@@ -104,18 +70,18 @@
         "検索急上昇"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 100
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%89%E3%83%A9%E3%83%A0%20vivant"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=weather%20tomorrow"
     },
     {
-      "id": "b7e8bf45c6f5",
-      "keyword": "ブリッジ",
+      "id": "f70033ef9217",
+      "keyword": "cuaca besok",
       "watchlist": "actual_public_trend",
       "watchlistLabel": "実トレンド",
       "rank": 1,
@@ -138,18 +104,18 @@
         "検索急上昇"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 100
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%96%E3%83%AA%E3%83%83%E3%82%B8"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=cuaca%20besok"
     },
     {
-      "id": "0ce821e081d8",
-      "keyword": "よしこ",
+      "id": "3f2d58f7ff4a",
+      "keyword": "thời tiết ngày mai",
       "watchlist": "actual_public_trend",
       "watchlistLabel": "実トレンド",
       "rank": 1,
@@ -172,52 +138,18 @@
         "検索急上昇"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 100
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%82%88%E3%81%97%E3%81%93"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=th%E1%BB%9Di%20ti%E1%BA%BFt%20ng%C3%A0y%20mai"
     },
     {
-      "id": "4aa2557444f9",
-      "keyword": "出川哲朗",
-      "watchlist": "actual_public_trend",
-      "watchlistLabel": "実トレンド",
-      "rank": 2,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 100,
-      "previousScore": null,
-      "scoreChange": 100,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_trend",
-      "appearCount": 1,
-      "signalType": "daily_trend",
-      "evidenceCount": 3,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "検索急上昇"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 100
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%87%BA%E5%B7%9D%E5%93%B2%E6%9C%97"
-    },
-    {
-      "id": "edef42602eaa",
-      "keyword": "踊る大捜査線 映画",
+      "id": "40601f4189d7",
+      "keyword": "ウルフアロン",
       "watchlist": "actual_public_trend",
       "watchlistLabel": "実トレンド",
       "rank": 3,
@@ -240,18 +172,18 @@
         "検索急上昇"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 100
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E8%B8%8A%E3%82%8B%E5%A4%A7%E6%8D%9C%E6%9F%BB%E7%B7%9A%20%E6%98%A0%E7%94%BB"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%82%A6%E3%83%AB%E3%83%95%E3%82%A2%E3%83%AD%E3%83%B3"
     },
     {
-      "id": "8331957e6060",
-      "keyword": "acc emerging teams asia cup",
+      "id": "883ab2c7cf2e",
+      "keyword": "土屋太鳳",
       "watchlist": "actual_public_trend",
       "watchlistLabel": "実トレンド",
       "rank": 4,
@@ -274,18 +206,52 @@
         "検索急上昇"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 100
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=acc%20emerging%20teams%20asia%20cup"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%9C%9F%E5%B1%8B%E5%A4%AA%E9%B3%B3"
     },
     {
-      "id": "c1342c9200d0",
-      "keyword": "楽天 証券 訴訟",
+      "id": "b7a49a14a500",
+      "keyword": "広島カープ",
+      "watchlist": "actual_public_trend",
+      "watchlistLabel": "実トレンド",
+      "rank": 5,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 100,
+      "previousScore": null,
+      "scoreChange": 100,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_trend",
+      "appearCount": 1,
+      "signalType": "daily_trend",
+      "evidenceCount": 3,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "検索急上昇"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 100
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%BA%83%E5%B3%B6%E3%82%AB%E3%83%BC%E3%83%97"
+    },
+    {
+      "id": "29457262a217",
+      "keyword": "ネプリーグ",
       "watchlist": "actual_public_trend",
       "watchlistLabel": "実トレンド",
       "rank": 6,
@@ -308,212 +274,52 @@
         "検索急上昇"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 99
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E6%A5%BD%E5%A4%A9%20%E8%A8%BC%E5%88%B8%20%E8%A8%B4%E8%A8%9F"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%8D%E3%83%97%E3%83%AA%E3%83%BC%E3%82%B0"
     },
     {
-      "id": "f0fe115ebfab",
-      "keyword": "松岡昌宏",
-      "watchlist": "public_topic",
-      "watchlistLabel": "総合話題",
-      "rank": 1,
-      "previousRank": 5,
-      "rankChange": 4,
-      "score": 96,
-      "previousScore": 81,
-      "scoreChange": 15,
-      "yesterdayScore": 81,
-      "yesterdayChange": 15,
-      "direction": "up",
-      "trendStatus": "actual_topic",
-      "appearCount": 2,
-      "signalType": "topic_trend",
-      "evidenceCount": 2,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 1,
-      "topicSourceCount": 2,
-      "topicSources": [
-        "総合話題",
-        "エンタメ"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "10:09",
-          "score": 81
-        },
-        {
-          "time": "19:51",
-          "score": 96
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E6%9D%BE%E5%B2%A1%E6%98%8C%E5%AE%8F"
-    },
-    {
-      "id": "c7e7eb5e045a",
-      "keyword": "横綱大の里",
-      "watchlist": "public_topic",
-      "watchlistLabel": "総合話題",
-      "rank": 1,
-      "previousRank": 24,
-      "rankChange": 23,
-      "score": 96,
-      "previousScore": 58,
-      "scoreChange": 38,
+      "id": "1c99a32231c8",
+      "keyword": "プロジェクト4",
+      "watchlist": "actual_public_trend",
+      "watchlistLabel": "実トレンド",
+      "rank": 7,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 97,
+      "previousScore": null,
+      "scoreChange": 97,
       "yesterdayScore": null,
       "yesterdayChange": null,
-      "direction": "up",
-      "trendStatus": "actual_topic",
-      "appearCount": 4,
-      "signalType": "topic_trend",
-      "evidenceCount": 2,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 1,
-      "topicSourceCount": 2,
-      "topicSources": [
-        "総合話題",
-        "スポーツ"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:45",
-          "score": 90
-        },
-        {
-          "time": "20:34",
-          "score": 71
-        },
-        {
-          "time": "20:01",
-          "score": 58
-        },
-        {
-          "time": "19:51",
-          "score": 96
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E6%A8%AA%E7%B6%B1%E5%A4%A7%E3%81%AE%E9%87%8C"
-    },
-    {
-      "id": "6ec92c4a13ce",
-      "keyword": "ロボット犬はもう",
-      "watchlist": "public_topic",
-      "watchlistLabel": "テクノロジー",
-      "rank": 10,
-      "previousRank": 18,
-      "rankChange": 8,
-      "score": 93,
-      "previousScore": 58,
-      "scoreChange": 35,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "up",
-      "trendStatus": "actual_topic",
-      "appearCount": 2,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
+      "direction": "new",
+      "trendStatus": "actual_trend",
+      "appearCount": 1,
+      "signalType": "daily_trend",
+      "evidenceCount": 3,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
       "topicSourceCount": 1,
       "topicSources": [
-        "テクノロジー"
+        "検索急上昇"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "09:08",
-          "score": 58
-        },
-        {
-          "time": "19:51",
-          "score": 93
+          "time": "20:57",
+          "score": 97
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%AD%E3%83%9C%E3%83%83%E3%83%88%E7%8A%AC%E3%81%AF%E3%82%82%E3%81%86"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%884"
     },
     {
-      "id": "752ef8411125",
-      "keyword": "タワーレコードに不正アクセス",
-      "watchlist": "public_topic",
-      "watchlistLabel": "総合話題",
-      "rank": 1,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 92,
-      "previousScore": null,
-      "scoreChange": 92,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 2,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 2,
-      "topicSources": [
-        "総合話題",
-        "ビジネス"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 92
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%82%BF%E3%83%AF%E3%83%BC%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AB%E4%B8%8D%E6%AD%A3%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9"
-    },
-    {
-      "id": "b8453ce99803",
-      "keyword": "ボージョレ",
-      "watchlist": "public_topic",
-      "watchlistLabel": "総合話題",
-      "rank": 1,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 92,
-      "previousScore": null,
-      "scoreChange": 92,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 2,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 2,
-      "topicSources": [
-        "総合話題",
-        "ビジネス"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 92
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%9C%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%AC"
-    },
-    {
-      "id": "e6d7b274e96a",
-      "keyword": "東出昌大",
+      "id": "a7221f669e41",
+      "keyword": "鈴木京香",
       "watchlist": "public_topic",
       "watchlistLabel": "総合話題",
       "rank": 1,
@@ -537,18 +343,18 @@
         "エンタメ"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 92
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E6%9D%B1%E5%87%BA%E6%98%8C%E5%A4%A7"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E9%88%B4%E6%9C%A8%E4%BA%AC%E9%A6%99"
     },
     {
-      "id": "e2db109fabfa",
-      "keyword": "丘みどり",
+      "id": "e052e5ca7f78",
+      "keyword": "6周年の集大成",
       "watchlist": "public_topic",
       "watchlistLabel": "総合話題",
       "rank": 1,
@@ -572,18 +378,18 @@
         "エンタメ"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 92
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E4%B8%98%E3%81%BF%E3%81%A9%E3%82%8A"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=6%E5%91%A8%E5%B9%B4%E3%81%AE%E9%9B%86%E5%A4%A7%E6%88%90"
     },
     {
-      "id": "653bc12b1e54",
-      "keyword": "パナソニック",
+      "id": "644d69d43066",
+      "keyword": "阪神 優勝パレードに藤川監督",
       "watchlist": "public_topic",
       "watchlistLabel": "総合話題",
       "rank": 1,
@@ -607,18 +413,18 @@
         "スポーツ"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 92
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%91%E3%83%8A%E3%82%BD%E3%83%8B%E3%83%83%E3%82%AF"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E9%98%AA%E7%A5%9E%20%E5%84%AA%E5%8B%9D%E3%83%91%E3%83%AC%E3%83%BC%E3%83%89%E3%81%AB%E8%97%A4%E5%B7%9D%E7%9B%A3%E7%9D%A3"
     },
     {
-      "id": "37a7cc3a5791",
-      "keyword": "ラグビー日本",
+      "id": "3a38b9f16d5a",
+      "keyword": "全米覇者スパーン",
       "watchlist": "public_topic",
       "watchlistLabel": "総合話題",
       "rank": 1,
@@ -642,18 +448,18 @@
         "スポーツ"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 92
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%A9%E3%82%B0%E3%83%93%E3%83%BC%E6%97%A5%E6%9C%AC"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%85%A8%E7%B1%B3%E8%A6%87%E8%80%85%E3%82%B9%E3%83%91%E3%83%BC%E3%83%B3"
     },
     {
-      "id": "7a8cd3f41e7b",
-      "keyword": "孤立状態の福島・北塩原村",
+      "id": "c4ee3e84db13",
+      "keyword": "立憲民主党",
       "watchlist": "public_topic",
       "watchlistLabel": "総合話題",
       "rank": 1,
@@ -676,52 +482,18 @@
         "総合話題"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 90
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%AD%A4%E7%AB%8B%E7%8A%B6%E6%85%8B%E3%81%AE%E7%A6%8F%E5%B3%B6%E3%83%BB%E5%8C%97%E5%A1%A9%E5%8E%9F%E6%9D%91"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E7%AB%8B%E6%86%B2%E6%B0%91%E4%B8%BB%E5%85%9A"
     },
     {
-      "id": "11d41ddaa6c7",
-      "keyword": "狩野英孝 ゲーム課金",
-      "watchlist": "public_topic",
-      "watchlistLabel": "エンタメ",
-      "rank": 1,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 89,
-      "previousScore": null,
-      "scoreChange": 89,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "エンタメ"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 89
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E7%8B%A9%E9%87%8E%E8%8B%B1%E5%AD%9D%20%E3%82%B2%E3%83%BC%E3%83%A0%E8%AA%B2%E9%87%91"
-    },
-    {
-      "id": "e7d4de9ed568",
-      "keyword": "AI兵器先行の米露 規制に消極姿勢",
+      "id": "2178f0091692",
+      "keyword": "小型ドローンの一斉起爆で大型建物",
       "watchlist": "public_topic",
       "watchlistLabel": "テクノロジー",
       "rank": 1,
@@ -744,18 +516,18 @@
         "テクノロジー"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 88
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=AI%E5%85%B5%E5%99%A8%E5%85%88%E8%A1%8C%E3%81%AE%E7%B1%B3%E9%9C%B2%20%E8%A6%8F%E5%88%B6%E3%81%AB%E6%B6%88%E6%A5%B5%E5%A7%BF%E5%8B%A2"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%B0%8F%E5%9E%8B%E3%83%89%E3%83%AD%E3%83%BC%E3%83%B3%E3%81%AE%E4%B8%80%E6%96%89%E8%B5%B7%E7%88%86%E3%81%A7%E5%A4%A7%E5%9E%8B%E5%BB%BA%E7%89%A9"
     },
     {
-      "id": "c540c14cdb52",
-      "keyword": "習主席",
+      "id": "abe219ad0807",
+      "keyword": "首里城正殿の一般公開開始 [写真特集17/17]",
       "watchlist": "public_topic",
       "watchlistLabel": "総合話題",
       "rank": 3,
@@ -778,97 +550,29 @@
         "総合話題"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 86
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E7%BF%92%E4%B8%BB%E5%B8%AD"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E9%A6%96%E9%87%8C%E5%9F%8E%E6%AD%A3%E6%AE%BF%E3%81%AE%E4%B8%80%E8%88%AC%E5%85%AC%E9%96%8B%E9%96%8B%E5%A7%8B%20%5B%E5%86%99%E7%9C%9F%E7%89%B9%E9%9B%8617%2F17%5D"
     },
     {
-      "id": "55747cba3bb7",
-      "keyword": "全米OP覇者J.J.スポーン",
-      "watchlist": "public_topic",
-      "watchlistLabel": "スポーツ",
-      "rank": 3,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 86,
-      "previousScore": null,
-      "scoreChange": 86,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "スポーツ"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 86
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%85%A8%E7%B1%B3OP%E8%A6%87%E8%80%85J.J.%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%B3"
-    },
-    {
-      "id": "029f59ee570b",
-      "keyword": "フェルスタッペン",
-      "watchlist": "public_topic",
-      "watchlistLabel": "スポーツ",
-      "rank": 4,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 84,
-      "previousScore": null,
-      "scoreChange": 84,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "スポーツ"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 84
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%95%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%BF%E3%83%83%E3%83%9A%E3%83%B3"
-    },
-    {
-      "id": "15d66a355113",
-      "keyword": "AI利用料値上げの足音──アンソロピック上場で判明",
+      "id": "003de9affc58",
+      "keyword": "楽天証券の情報漏えい",
       "watchlist": "public_topic",
       "watchlistLabel": "テクノロジー",
-      "rank": 4,
-      "previousRank": 3,
-      "rankChange": -1,
-      "score": 84,
-      "previousScore": 84,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
+      "rank": 6,
+      "previousRank": 6,
+      "rankChange": 0,
+      "score": 83,
+      "previousScore": 78,
+      "scoreChange": 5,
+      "yesterdayScore": 78,
+      "yesterdayChange": 5,
+      "direction": "up",
       "trendStatus": "actual_topic",
       "appearCount": 2,
       "signalType": "topic_trend",
@@ -880,64 +584,30 @@
         "テクノロジー"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "09:08",
-          "score": 84
+          "time": "19:51",
+          "score": 78
         },
         {
-          "time": "19:51",
-          "score": 84
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=AI%E5%88%A9%E7%94%A8%E6%96%99%E5%80%A4%E4%B8%8A%E3%81%92%E3%81%AE%E8%B6%B3%E9%9F%B3%E2%94%80%E2%94%80%E3%82%A2%E3%83%B3%E3%82%BD%E3%83%AD%E3%83%94%E3%83%83%E3%82%AF%E4%B8%8A%E5%A0%B4%E3%81%A7%E5%88%A4%E6%98%8E"
-    },
-    {
-      "id": "8ca5b1c2194a",
-      "keyword": "目と脳",
-      "watchlist": "public_topic",
-      "watchlistLabel": "エンタメ",
-      "rank": 4,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 83,
-      "previousScore": null,
-      "scoreChange": 83,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "エンタメ"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
+          "time": "20:57",
           "score": 83
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E7%9B%AE%E3%81%A8%E8%84%B3"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E6%A5%BD%E5%A4%A9%E8%A8%BC%E5%88%B8%E3%81%AE%E6%83%85%E5%A0%B1%E6%BC%8F%E3%81%88%E3%81%84"
     },
     {
-      "id": "5f39e55a30de",
-      "keyword": "timelesz菊池風磨",
+      "id": "5476c76b27b7",
+      "keyword": "コーチは森",
       "watchlist": "public_topic",
-      "watchlistLabel": "エンタメ",
+      "watchlistLabel": "スポーツ",
       "rank": 5,
       "previousRank": null,
       "rankChange": null,
-      "score": 81,
+      "score": 82,
       "previousScore": null,
-      "scoreChange": 81,
+      "scoreChange": 82,
       "yesterdayScore": null,
       "yesterdayChange": null,
       "direction": "new",
@@ -949,21 +619,55 @@
       "evidenceChange": null,
       "topicSourceCount": 1,
       "topicSources": [
-        "エンタメ"
+        "スポーツ"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
-          "score": 81
+          "time": "20:57",
+          "score": 82
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=timelesz%E8%8F%8A%E6%B1%A0%E9%A2%A8%E7%A3%A8"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%82%B3%E3%83%BC%E3%83%81%E3%81%AF%E6%A3%AE"
     },
     {
-      "id": "64ae0f97ffea",
-      "keyword": "奈良の空にブルーインパルス 古都の名所上空を華麗に飛行",
+      "id": "1b84a797f521",
+      "keyword": "最新ウォークマンは65万円",
+      "watchlist": "public_topic",
+      "watchlistLabel": "テクノロジー",
+      "rank": 5,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 80,
+      "previousScore": null,
+      "scoreChange": 80,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "テクノロジー"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 80
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E6%9C%80%E6%96%B0%E3%82%A6%E3%82%A9%E3%83%BC%E3%82%AF%E3%83%9E%E3%83%B3%E3%81%AF65%E4%B8%87%E5%86%86"
+    },
+    {
+      "id": "8dea3b92cc6a",
+      "keyword": "40人態勢で捜索続く 福島・郡山市で中学1年生",
       "watchlist": "public_topic",
       "watchlistLabel": "総合話題",
       "rank": 6,
@@ -986,59 +690,93 @@
         "総合話題"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 80
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%A5%88%E8%89%AF%E3%81%AE%E7%A9%BA%E3%81%AB%E3%83%96%E3%83%AB%E3%83%BC%E3%82%A4%E3%83%B3%E3%83%91%E3%83%AB%E3%82%B9%20%E5%8F%A4%E9%83%BD%E3%81%AE%E5%90%8D%E6%89%80%E4%B8%8A%E7%A9%BA%E3%82%92%E8%8F%AF%E9%BA%97%E3%81%AB%E9%A3%9B%E8%A1%8C"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=40%E4%BA%BA%E6%85%8B%E5%8B%A2%E3%81%A7%E6%8D%9C%E7%B4%A2%E7%B6%9A%E3%81%8F%20%E7%A6%8F%E5%B3%B6%E3%83%BB%E9%83%A1%E5%B1%B1%E5%B8%82%E3%81%A7%E4%B8%AD%E5%AD%A61%E5%B9%B4%E7%94%9F"
     },
     {
-      "id": "f3c115f12c91",
-      "keyword": "村上春樹さん",
+      "id": "60cc28e1d86c",
+      "keyword": "トップテン17回の荒木優奈",
       "watchlist": "public_topic",
-      "watchlistLabel": "エンタメ",
-      "rank": 11,
-      "previousRank": 13,
-      "rankChange": 2,
+      "watchlistLabel": "スポーツ",
+      "rank": 6,
+      "previousRank": null,
+      "rankChange": null,
       "score": 80,
-      "previousScore": 65,
-      "scoreChange": 15,
+      "previousScore": null,
+      "scoreChange": 80,
       "yesterdayScore": null,
       "yesterdayChange": null,
-      "direction": "up",
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "スポーツ"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 80
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%88%E3%83%83%E3%83%97%E3%83%86%E3%83%B317%E5%9B%9E%E3%81%AE%E8%8D%92%E6%9C%A8%E5%84%AA%E5%A5%88"
+    },
+    {
+      "id": "c41ee7c727f1",
+      "keyword": "高橋一生さん",
+      "watchlist": "public_topic",
+      "watchlistLabel": "エンタメ",
+      "rank": 2,
+      "previousRank": 1,
+      "rankChange": -1,
+      "score": 79,
+      "previousScore": 92,
+      "scoreChange": -13,
+      "yesterdayScore": 92,
+      "yesterdayChange": -13,
+      "direction": "down",
       "trendStatus": "actual_topic",
       "appearCount": 2,
       "signalType": "topic_trend",
       "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
+      "previousEvidenceCount": 2,
+      "evidenceChange": -1,
       "topicSourceCount": 1,
       "topicSources": [
         "エンタメ"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
           "time": "09:08",
-          "score": 65
+          "score": 92
         },
         {
-          "time": "19:51",
-          "score": 80
+          "time": "20:57",
+          "score": 79
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E6%9D%91%E4%B8%8A%E6%98%A5%E6%A8%B9%E3%81%95%E3%82%93"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E9%AB%98%E6%A9%8B%E4%B8%80%E7%94%9F%E3%81%95%E3%82%93"
     },
     {
-      "id": "003de9affc58",
-      "keyword": "楽天証券の情報漏えい",
+      "id": "e873daa88392",
+      "keyword": "日本代表のSO伊藤龍之介",
       "watchlist": "public_topic",
-      "watchlistLabel": "テクノロジー",
-      "rank": 6,
+      "watchlistLabel": "スポーツ",
+      "rank": 7,
       "previousRank": null,
       "rankChange": null,
       "score": 78,
@@ -1055,63 +793,29 @@
       "evidenceChange": null,
       "topicSourceCount": 1,
       "topicSources": [
-        "テクノロジー"
+        "スポーツ"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 78
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E6%A5%BD%E5%A4%A9%E8%A8%BC%E5%88%B8%E3%81%AE%E6%83%85%E5%A0%B1%E6%BC%8F%E3%81%88%E3%81%84"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E6%97%A5%E6%9C%AC%E4%BB%A3%E8%A1%A8%E3%81%AESO%E4%BC%8A%E8%97%A4%E9%BE%8D%E4%B9%8B%E4%BB%8B"
     },
     {
-      "id": "e485d60d2d5b",
-      "keyword": "Anthropicの数学者",
-      "watchlist": "public_topic",
-      "watchlistLabel": "ビジネス",
-      "rank": 6,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 76,
-      "previousScore": null,
-      "scoreChange": 76,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "ビジネス"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 76
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=Anthropic%E3%81%AE%E6%95%B0%E5%AD%A6%E8%80%85"
-    },
-    {
-      "id": "9d2fd1382f30",
-      "keyword": "富雄丸山古墳出土と推定の銅鏡",
+      "id": "4323c2829b20",
+      "keyword": "山田まりや 約5年別居の末に離婚 後押しした共同親権",
       "watchlist": "public_topic",
       "watchlistLabel": "エンタメ",
-      "rank": 9,
+      "rank": 7,
       "previousRank": null,
       "rankChange": null,
-      "score": 73,
+      "score": 77,
       "previousScore": null,
-      "scoreChange": 73,
+      "scoreChange": 77,
       "yesterdayScore": null,
       "yesterdayChange": null,
       "direction": "new",
@@ -1126,21 +830,89 @@
         "エンタメ"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
-          "score": 73
+          "time": "20:57",
+          "score": 77
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%AF%8C%E9%9B%84%E4%B8%B8%E5%B1%B1%E5%8F%A4%E5%A2%B3%E5%87%BA%E5%9C%9F%E3%81%A8%E6%8E%A8%E5%AE%9A%E3%81%AE%E9%8A%85%E9%8F%A1"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%B1%B1%E7%94%B0%E3%81%BE%E3%82%8A%E3%82%84%20%E7%B4%845%E5%B9%B4%E5%88%A5%E5%B1%85%E3%81%AE%E6%9C%AB%E3%81%AB%E9%9B%A2%E5%A9%9A%20%E5%BE%8C%E6%8A%BC%E3%81%97%E3%81%97%E3%81%9F%E5%85%B1%E5%90%8C%E8%A6%AA%E6%A8%A9"
     },
     {
-      "id": "985cd0dd8485",
-      "keyword": "荒木優奈",
+      "id": "dd154978d087",
+      "keyword": "イスラエル連立協議",
+      "watchlist": "public_topic",
+      "watchlistLabel": "総合話題",
+      "rank": 9,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 74,
+      "previousScore": null,
+      "scoreChange": 74,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "総合話題"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 74
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%82%A4%E3%82%B9%E3%83%A9%E3%82%A8%E3%83%AB%E9%80%A3%E7%AB%8B%E5%8D%94%E8%AD%B0"
+    },
+    {
+      "id": "dfdcdfb260c8",
+      "keyword": "武豊騎手",
       "watchlist": "public_topic",
       "watchlistLabel": "スポーツ",
-      "rank": 10,
+      "rank": 9,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 74,
+      "previousScore": null,
+      "scoreChange": 74,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "スポーツ"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 74
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E6%AD%A6%E8%B1%8A%E9%A8%8E%E6%89%8B"
+    },
+    {
+      "id": "491cb5c6c623",
+      "keyword": "強さの水準",
+      "watchlist": "public_topic",
+      "watchlistLabel": "テクノロジー",
+      "rank": 9,
       "previousRank": null,
       "rankChange": null,
       "score": 72,
@@ -1157,159 +929,21 @@
       "evidenceChange": null,
       "topicSourceCount": 1,
       "topicSources": [
-        "スポーツ"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 72
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E8%8D%92%E6%9C%A8%E5%84%AA%E5%A5%88"
-    },
-    {
-      "id": "6b8e882b8e03",
-      "keyword": "大谷翔平",
-      "watchlist": "public_topic",
-      "watchlistLabel": "スポーツ",
-      "rank": 14,
-      "previousRank": 11,
-      "rankChange": -3,
-      "score": 71,
-      "previousScore": 67,
-      "scoreChange": 4,
-      "yesterdayScore": 96,
-      "yesterdayChange": -25,
-      "direction": "flat",
-      "trendStatus": "actual_topic",
-      "appearCount": 318,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "スポーツ"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:40",
-          "score": 96
-        },
-        {
-          "time": "09:45",
-          "score": 79
-        },
-        {
-          "time": "11:11",
-          "score": 96
-        },
-        {
-          "time": "10:09",
-          "score": 96
-        },
-        {
-          "time": "09:08",
-          "score": 67
-        },
-        {
-          "time": "19:51",
-          "score": 71
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%A4%A7%E8%B0%B7%E7%BF%94%E5%B9%B3"
-    },
-    {
-      "id": "ee45928d450c",
-      "keyword": "14カ国と首脳会談",
-      "watchlist": "public_topic",
-      "watchlistLabel": "総合話題",
-      "rank": 11,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 70,
-      "previousScore": null,
-      "scoreChange": 70,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "総合話題"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 70
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=14%E3%82%AB%E5%9B%BD%E3%81%A8%E9%A6%96%E8%84%B3%E4%BC%9A%E8%AB%87"
-    },
-    {
-      "id": "a73aaa5763fd",
-      "keyword": "マイクロソフト",
-      "watchlist": "public_topic",
-      "watchlistLabel": "テクノロジー",
-      "rank": 14,
-      "previousRank": 7,
-      "rankChange": -7,
-      "score": 69,
-      "previousScore": 96,
-      "scoreChange": -27,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "down",
-      "trendStatus": "actual_topic",
-      "appearCount": 5,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
         "テクノロジー"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "09:45",
-          "score": 88
-        },
-        {
-          "time": "18:54",
-          "score": 93
-        },
-        {
-          "time": "08:43",
-          "score": 60
-        },
-        {
-          "time": "20:34",
-          "score": 96
-        },
-        {
-          "time": "19:51",
-          "score": 69
+          "time": "20:57",
+          "score": 72
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%BD%E3%83%95%E3%83%88"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%BC%B7%E3%81%95%E3%81%AE%E6%B0%B4%E6%BA%96"
     },
     {
-      "id": "7dc16b0d6dd0",
-      "keyword": "後藤真希 全部抱えて2年半休業 今は口に出すように",
+      "id": "2313bf53627e",
+      "keyword": "スノ岩本照",
       "watchlist": "public_topic",
       "watchlistLabel": "エンタメ",
       "rank": 12,
@@ -1332,18 +966,52 @@
         "エンタメ"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 67
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%BE%8C%E8%97%A4%E7%9C%9F%E5%B8%8C%20%E5%85%A8%E9%83%A8%E6%8A%B1%E3%81%88%E3%81%A62%E5%B9%B4%E5%8D%8A%E4%BC%91%E6%A5%AD%20%E4%BB%8A%E3%81%AF%E5%8F%A3%E3%81%AB%E5%87%BA%E3%81%99%E3%82%88%E3%81%86%E3%81%AB"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%82%B9%E3%83%8E%E5%B2%A9%E6%9C%AC%E7%85%A7"
     },
     {
-      "id": "4c136b8b2a44",
-      "keyword": "知らない番号から電話",
+      "id": "6b4dc151ec74",
+      "keyword": "第2157回ロト6の当選番号速報 11月23日の抽選結果",
+      "watchlist": "public_topic",
+      "watchlistLabel": "ビジネス",
+      "rank": 11,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 66,
+      "previousScore": null,
+      "scoreChange": 66,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "ビジネス"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 66
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E7%AC%AC2157%E5%9B%9E%E3%83%AD%E3%83%886%E3%81%AE%E5%BD%93%E9%81%B8%E7%95%AA%E5%8F%B7%E9%80%9F%E5%A0%B1%2011%E6%9C%8823%E6%97%A5%E3%81%AE%E6%8A%BD%E9%81%B8%E7%B5%90%E6%9E%9C"
+    },
+    {
+      "id": "27347e7293db",
+      "keyword": "エヌビディア前CEOの不倫相手",
       "watchlist": "public_topic",
       "watchlistLabel": "テクノロジー",
       "rank": 12,
@@ -1366,48 +1034,14 @@
         "テクノロジー"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 66
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E7%9F%A5%E3%82%89%E3%81%AA%E3%81%84%E7%95%AA%E5%8F%B7%E3%81%8B%E3%82%89%E9%9B%BB%E8%A9%B1"
-    },
-    {
-      "id": "a0c90ff1bd21",
-      "keyword": "島田麻央に荒川静香",
-      "watchlist": "public_topic",
-      "watchlistLabel": "スポーツ",
-      "rank": 13,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 66,
-      "previousScore": null,
-      "scoreChange": 66,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "スポーツ"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 66
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%B3%B6%E7%94%B0%E9%BA%BB%E5%A4%AE%E3%81%AB%E8%8D%92%E5%B7%9D%E9%9D%99%E9%A6%99"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%82%A8%E3%83%8C%E3%83%93%E3%83%87%E3%82%A3%E3%82%A2%E5%89%8DCEO%E3%81%AE%E4%B8%8D%E5%80%AB%E7%9B%B8%E6%89%8B"
     },
     {
       "id": "6a648247e136",
@@ -1415,29 +1049,25 @@
       "watchlist": "sns_platform",
       "watchlistLabel": "SNSトレンド",
       "rank": 3,
-      "previousRank": 1,
-      "rankChange": -2,
+      "previousRank": 3,
+      "rankChange": 0,
       "score": 65,
-      "previousScore": 100,
-      "scoreChange": -35,
+      "previousScore": 65,
+      "scoreChange": 0,
       "yesterdayScore": 65,
       "yesterdayChange": 0,
-      "direction": "down",
-      "trendStatus": "cooling",
-      "appearCount": 61,
+      "direction": "flat",
+      "trendStatus": "flat",
+      "appearCount": 62,
       "signalType": "discovered_phrase",
       "evidenceCount": 7,
-      "previousEvidenceCount": 8,
-      "evidenceChange": -1,
+      "previousEvidenceCount": 7,
+      "evidenceChange": 0,
       "topicSourceCount": null,
       "topicSources": null,
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
-        {
-          "time": "10:41",
-          "score": 65
-        },
         {
           "time": "20:01",
           "score": 65
@@ -1456,6 +1086,10 @@
         },
         {
           "time": "19:51",
+          "score": 65
+        },
+        {
+          "time": "20:57",
           "score": 65
         }
       ],
@@ -1476,7 +1110,7 @@
       "yesterdayChange": 0,
       "direction": "flat",
       "trendStatus": "flat",
-      "appearCount": 97,
+      "appearCount": 98,
       "signalType": "discovered_phrase",
       "evidenceCount": 7,
       "previousEvidenceCount": 7,
@@ -1484,12 +1118,8 @@
       "topicSourceCount": null,
       "topicSources": null,
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
-        {
-          "time": "10:41",
-          "score": 65
-        },
         {
           "time": "20:01",
           "score": 65
@@ -1509,21 +1139,25 @@
         {
           "time": "19:51",
           "score": 65
+        },
+        {
+          "time": "20:57",
+          "score": 65
         }
       ],
       "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E8%96%AC%E5%89%A4%E5%B8%AB%E3%81%82%E3%82%8B%E3%81%82%E3%82%8B"
     },
     {
-      "id": "0ebeeeb9531c",
-      "keyword": "西野七瀬",
+      "id": "438904d3367f",
+      "keyword": "勤労感謝の日に70円ラーメン提供",
       "watchlist": "public_topic",
-      "watchlistLabel": "エンタメ",
-      "rank": 13,
+      "watchlistLabel": "ビジネス",
+      "rank": 12,
       "previousRank": null,
       "rankChange": null,
-      "score": 65,
+      "score": 64,
       "previousScore": null,
-      "scoreChange": 65,
+      "scoreChange": 64,
       "yesterdayScore": null,
       "yesterdayChange": null,
       "direction": "new",
@@ -1535,21 +1169,105 @@
       "evidenceChange": null,
       "topicSourceCount": 1,
       "topicSources": [
-        "エンタメ"
+        "ビジネス"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
-          "score": 65
+          "time": "20:57",
+          "score": 64
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E8%A5%BF%E9%87%8E%E4%B8%83%E7%80%AC"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%8B%A4%E5%8A%B4%E6%84%9F%E8%AC%9D%E3%81%AE%E6%97%A5%E3%81%AB70%E5%86%86%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3%E6%8F%90%E4%BE%9B"
     },
     {
-      "id": "5b025607e9e4",
-      "keyword": "ホンダF1",
+      "id": "0732b64efa3f",
+      "keyword": "ジャパンカップ外国馬情報 調教状況・関係者コメント）",
+      "watchlist": "public_topic",
+      "watchlistLabel": "スポーツ",
+      "rank": 14,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 64,
+      "previousScore": null,
+      "scoreChange": 64,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "スポーツ"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 64
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3%E3%82%AB%E3%83%83%E3%83%97%E5%A4%96%E5%9B%BD%E9%A6%AC%E6%83%85%E5%A0%B1%20%E8%AA%BF%E6%95%99%E7%8A%B6%E6%B3%81%E3%83%BB%E9%96%A2%E4%BF%82%E8%80%85%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88%EF%BC%89"
+    },
+    {
+      "id": "fcfb76c1e6a3",
+      "keyword": "競輪レース情報",
+      "watchlist": "public_topic",
+      "watchlistLabel": "スポーツ",
+      "rank": 18,
+      "previousRank": 10,
+      "rankChange": -8,
+      "score": 63,
+      "previousScore": 79,
+      "scoreChange": -16,
+      "yesterdayScore": 79,
+      "yesterdayChange": -16,
+      "direction": "down",
+      "trendStatus": "actual_topic",
+      "appearCount": 5,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": 1,
+      "evidenceChange": 0,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "スポーツ"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "10:45",
+          "score": 70
+        },
+        {
+          "time": "10:41",
+          "score": 85
+        },
+        {
+          "time": "19:44",
+          "score": 96
+        },
+        {
+          "time": "09:08",
+          "score": 79
+        },
+        {
+          "time": "20:57",
+          "score": 63
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E7%AB%B6%E8%BC%AA%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1"
+    },
+    {
+      "id": "9c552633b213",
+      "keyword": "サイ・ヤング賞2回のスクーバル",
       "watchlist": "public_topic",
       "watchlistLabel": "スポーツ",
       "rank": 15,
@@ -1572,18 +1290,86 @@
         "スポーツ"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 62
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%9B%E3%83%B3%E3%83%80F1"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%82%B5%E3%82%A4%E3%83%BB%E3%83%A4%E3%83%B3%E3%82%B0%E8%B3%9E2%E5%9B%9E%E3%81%AE%E3%82%B9%E3%82%AF%E3%83%BC%E3%83%90%E3%83%AB"
     },
     {
-      "id": "c067a50560d5",
-      "keyword": "自動運転の自家用車",
+      "id": "69a08471a4c0",
+      "keyword": "超簡単！今週の12星座別・開運アクション",
+      "watchlist": "public_topic",
+      "watchlistLabel": "エンタメ",
+      "rank": 15,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 61,
+      "previousScore": null,
+      "scoreChange": 61,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "エンタメ"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 61
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E8%B6%85%E7%B0%A1%E5%8D%98%EF%BC%81%E4%BB%8A%E9%80%B1%E3%81%AE12%E6%98%9F%E5%BA%A7%E5%88%A5%E3%83%BB%E9%96%8B%E9%81%8B%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3"
+    },
+    {
+      "id": "4c3724a9f582",
+      "keyword": "日本海東北自動車道・象潟ＩＣ―小砂川ＩＣ間",
+      "watchlist": "public_topic",
+      "watchlistLabel": "ビジネス",
+      "rank": 14,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 60,
+      "previousScore": null,
+      "scoreChange": 60,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "ビジネス"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 60
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E6%97%A5%E6%9C%AC%E6%B5%B7%E6%9D%B1%E5%8C%97%E8%87%AA%E5%8B%95%E8%BB%8A%E9%81%93%E3%83%BB%E8%B1%A1%E6%BD%9F%EF%BC%A9%EF%BC%A3%E2%80%95%E5%B0%8F%E7%A0%82%E5%B7%9D%EF%BC%A9%EF%BC%A3%E9%96%93"
+    },
+    {
+      "id": "204d74b14fe1",
+      "keyword": "カード類",
       "watchlist": "public_topic",
       "watchlistLabel": "テクノロジー",
       "rank": 15,
@@ -1606,18 +1392,18 @@
         "テクノロジー"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 60
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E8%87%AA%E5%8B%95%E9%81%8B%E8%BB%A2%E3%81%AE%E8%87%AA%E5%AE%B6%E7%94%A8%E8%BB%8A"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%82%AB%E3%83%BC%E3%83%89%E9%A1%9E"
     },
     {
-      "id": "a85ca6c0602e",
-      "keyword": "坂元達裕",
+      "id": "5558e23e1f17",
+      "keyword": "GG賞2度の名手再現！ 本多雄一",
       "watchlist": "public_topic",
       "watchlistLabel": "スポーツ",
       "rank": 16,
@@ -1640,344 +1426,226 @@
         "スポーツ"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 60
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%9D%82%E5%85%83%E9%81%94%E8%A3%95"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=GG%E8%B3%9E2%E5%BA%A6%E3%81%AE%E5%90%8D%E6%89%8B%E5%86%8D%E7%8F%BE%EF%BC%81%20%E6%9C%AC%E5%A4%9A%E9%9B%84%E4%B8%80"
     },
     {
-      "id": "83c8e9afda3f",
-      "keyword": "ビットコイン",
+      "id": "2f20f7ce5f89",
+      "keyword": "FIRST",
+      "watchlist": "public_topic",
+      "watchlistLabel": "エンタメ",
+      "rank": 16,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 59,
+      "previousScore": null,
+      "scoreChange": 59,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "エンタメ"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 59
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=FIRST"
+    },
+    {
+      "id": "ec86a2cd04df",
+      "keyword": "宮迫博之プロデュースの焼肉店",
+      "watchlist": "public_topic",
+      "watchlistLabel": "エンタメ",
+      "rank": 17,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 58,
+      "previousScore": null,
+      "scoreChange": 58,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "エンタメ"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 58
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%AE%AE%E8%BF%AB%E5%8D%9A%E4%B9%8B%E3%83%97%E3%83%AD%E3%83%87%E3%83%A5%E3%83%BC%E3%82%B9%E3%81%AE%E7%84%BC%E8%82%89%E5%BA%97"
+    },
+    {
+      "id": "f20c965a4fec",
+      "keyword": "「尖っているものを捨てる時には発泡スチロール",
+      "watchlist": "public_topic",
+      "watchlistLabel": "エンタメ",
+      "rank": 18,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 58,
+      "previousScore": null,
+      "scoreChange": 58,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "エンタメ"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 58
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%80%8C%E5%B0%96%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%82%82%E3%81%AE%E3%82%92%E6%8D%A8%E3%81%A6%E3%82%8B%E6%99%82%E3%81%AB%E3%81%AF%E7%99%BA%E6%B3%A1%E3%82%B9%E3%83%81%E3%83%AD%E3%83%BC%E3%83%AB"
+    },
+    {
+      "id": "5c7086f70cde",
+      "keyword": "三井住友銀行",
       "watchlist": "public_topic",
       "watchlistLabel": "ビジネス",
-      "rank": 13,
+      "rank": 18,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 58,
+      "previousScore": null,
+      "scoreChange": 58,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "ビジネス"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 58
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E4%B8%89%E4%BA%95%E4%BD%8F%E5%8F%8B%E9%8A%80%E8%A1%8C"
+    },
+    {
+      "id": "7edbf9586947",
+      "keyword": "迫力と歓声",
+      "watchlist": "public_topic",
+      "watchlistLabel": "スポーツ",
+      "rank": 19,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 58,
+      "previousScore": null,
+      "scoreChange": 58,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "スポーツ"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 58
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E8%BF%AB%E5%8A%9B%E3%81%A8%E6%AD%93%E5%A3%B0"
+    },
+    {
+      "id": "e6d7b274e96a",
+      "keyword": "東出昌大",
+      "watchlist": "public_topic",
+      "watchlistLabel": "エンタメ",
+      "rank": 19,
       "previousRank": 1,
-      "rankChange": -12,
-      "score": 59,
-      "previousScore": 96,
-      "scoreChange": -37,
-      "yesterdayScore": 77,
-      "yesterdayChange": -18,
+      "rankChange": -18,
+      "score": 58,
+      "previousScore": 92,
+      "scoreChange": -34,
+      "yesterdayScore": 92,
+      "yesterdayChange": -34,
       "direction": "down",
       "trendStatus": "actual_topic",
-      "appearCount": 5,
+      "appearCount": 2,
       "signalType": "topic_trend",
       "evidenceCount": 1,
       "previousEvidenceCount": 2,
       "evidenceChange": -1,
       "topicSourceCount": 1,
       "topicSources": [
-        "ビジネス"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:29",
-          "score": 68
-        },
-        {
-          "time": "08:50",
-          "score": 58
-        },
-        {
-          "time": "19:44",
-          "score": 77
-        },
-        {
-          "time": "09:08",
-          "score": 96
-        },
-        {
-          "time": "19:51",
-          "score": 59
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%93%E3%83%83%E3%83%88%E3%82%B3%E3%82%A4%E3%83%B3"
-    },
-    {
-      "id": "7bb9f0900d24",
-      "keyword": "iPhoneは2年返却と4年使用どちら",
-      "watchlist": "public_topic",
-      "watchlistLabel": "テクノロジー",
-      "rank": 16,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "テクノロジー"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=iPhone%E3%81%AF2%E5%B9%B4%E8%BF%94%E5%8D%B4%E3%81%A84%E5%B9%B4%E4%BD%BF%E7%94%A8%E3%81%A9%E3%81%A1%E3%82%89"
-    },
-    {
-      "id": "8a8d8a0039a5",
-      "keyword": "国内FA権を行使しDeNA移籍",
-      "watchlist": "public_topic",
-      "watchlistLabel": "スポーツ",
-      "rank": 17,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "スポーツ"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%9B%BD%E5%86%85FA%E6%A8%A9%E3%82%92%E8%A1%8C%E4%BD%BF%E3%81%97DeNA%E7%A7%BB%E7%B1%8D"
-    },
-    {
-      "id": "553af258b4dc",
-      "keyword": "iPhone Duo分解",
-      "watchlist": "public_topic",
-      "watchlistLabel": "テクノロジー",
-      "rank": 17,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "テクノロジー"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=iPhone%20Duo%E5%88%86%E8%A7%A3"
-    },
-    {
-      "id": "8404af9d5499",
-      "keyword": "あの天才バレー少女",
-      "watchlist": "public_topic",
-      "watchlistLabel": "スポーツ",
-      "rank": 18,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "スポーツ"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%81%82%E3%81%AE%E5%A4%A9%E6%89%8D%E3%83%90%E3%83%AC%E3%83%BC%E5%B0%91%E5%A5%B3"
-    },
-    {
-      "id": "4dbd4cb35714",
-      "keyword": "駆けろ麒麟 呼べよ稲妻",
-      "watchlist": "public_topic",
-      "watchlistLabel": "エンタメ",
-      "rank": 18,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
         "エンタメ"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
           "time": "19:51",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E9%A7%86%E3%81%91%E3%82%8D%E9%BA%92%E9%BA%9F%20%E5%91%BC%E3%81%B9%E3%82%88%E7%A8%B2%E5%A6%BB"
-    },
-    {
-      "id": "94990ace3c00",
-      "keyword": "アリアン6",
-      "watchlist": "public_topic",
-      "watchlistLabel": "総合話題",
-      "rank": 19,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "総合話題"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%82%A2%E3%83%AA%E3%82%A2%E3%83%B36"
-    },
-    {
-      "id": "9813a7e73968",
-      "keyword": "高橋一生さん公演中に骨折 手術受け",
-      "watchlist": "public_topic",
-      "watchlistLabel": "エンタメ",
-      "rank": 19,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "エンタメ"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E9%AB%98%E6%A9%8B%E4%B8%80%E7%94%9F%E3%81%95%E3%82%93%E5%85%AC%E6%BC%94%E4%B8%AD%E3%81%AB%E9%AA%A8%E6%8A%98%20%E6%89%8B%E8%A1%93%E5%8F%97%E3%81%91"
-    },
-    {
-      "id": "150a3962ad6b",
-      "keyword": "20万円切りで",
-      "watchlist": "public_topic",
-      "watchlistLabel": "テクノロジー",
-      "rank": 19,
-      "previousRank": 16,
-      "rankChange": -3,
-      "score": 58,
-      "previousScore": 58,
-      "scoreChange": 0,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "flat",
-      "trendStatus": "actual_topic",
-      "appearCount": 2,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": 1,
-      "evidenceChange": 0,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "テクノロジー"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "09:08",
-          "score": 58
+          "score": 92
         },
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 58
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=20%E4%B8%87%E5%86%86%E5%88%87%E3%82%8A%E3%81%A7"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E6%9D%B1%E5%87%BA%E6%98%8C%E5%A4%A7"
     },
     {
-      "id": "aaa7d2e70ded",
-      "keyword": "腫瘍マーカー見落とし",
+      "id": "baf562cfb09f",
+      "keyword": "木村文乃 ダイビング300本に到達",
       "watchlist": "public_topic",
       "watchlistLabel": "エンタメ",
       "rank": 20,
@@ -2000,88 +1668,20 @@
         "エンタメ"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 58
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E8%85%AB%E7%98%8D%E3%83%9E%E3%83%BC%E3%82%AB%E3%83%BC%E8%A6%8B%E8%90%BD%E3%81%A8%E3%81%97"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E6%9C%A8%E6%9D%91%E6%96%87%E4%B9%83%20%E3%83%80%E3%82%A4%E3%83%93%E3%83%B3%E3%82%B0300%E6%9C%AC%E3%81%AB%E5%88%B0%E9%81%94"
     },
     {
-      "id": "213bdac12329",
-      "keyword": "ロボット100万台超",
+      "id": "124007ad83d3",
+      "keyword": "日本のiPhoneも標的",
       "watchlist": "public_topic",
       "watchlistLabel": "テクノロジー",
-      "rank": 20,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "テクノロジー"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%AD%E3%83%9C%E3%83%83%E3%83%88100%E4%B8%87%E5%8F%B0%E8%B6%85"
-    },
-    {
-      "id": "81385bb4361c",
-      "keyword": "既婚者専用マッチングアプリ 実態",
-      "watchlist": "public_topic",
-      "watchlistLabel": "ビジネス",
-      "rank": 20,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "ビジネス"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E6%97%A2%E5%A9%9A%E8%80%85%E5%B0%82%E7%94%A8%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%82%A2%E3%83%97%E3%83%AA%20%E5%AE%9F%E6%85%8B"
-    },
-    {
-      "id": "51524bf3f43d",
-      "keyword": "メッシ",
-      "watchlist": "public_topic",
-      "watchlistLabel": "スポーツ",
       "rank": 21,
       "previousRank": null,
       "rankChange": null,
@@ -2099,57 +1699,23 @@
       "evidenceChange": null,
       "topicSourceCount": 1,
       "topicSources": [
-        "スポーツ"
+        "テクノロジー"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "19:51",
+          "time": "20:57",
           "score": 58
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%A1%E3%83%83%E3%82%B7"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E6%97%A5%E6%9C%AC%E3%81%AEiPhone%E3%82%82%E6%A8%99%E7%9A%84"
     },
     {
-      "id": "c3a216d34f4c",
-      "keyword": "福間女流四冠が第2子妊娠公表",
+      "id": "973cd1434f59",
+      "keyword": "スマホの充電",
       "watchlist": "public_topic",
-      "watchlistLabel": "エンタメ",
-      "rank": 21,
-      "previousRank": null,
-      "rankChange": null,
-      "score": 58,
-      "previousScore": null,
-      "scoreChange": 58,
-      "yesterdayScore": null,
-      "yesterdayChange": null,
-      "direction": "new",
-      "trendStatus": "actual_topic",
-      "appearCount": 1,
-      "signalType": "topic_trend",
-      "evidenceCount": 1,
-      "previousEvidenceCount": null,
-      "evidenceChange": null,
-      "topicSourceCount": 1,
-      "topicSources": [
-        "エンタメ"
-      ],
-      "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
-      "series": [
-        {
-          "time": "19:51",
-          "score": 58
-        }
-      ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E7%A6%8F%E9%96%93%E5%A5%B3%E6%B5%81%E5%9B%9B%E5%86%A0%E3%81%8C%E7%AC%AC2%E5%AD%90%E5%A6%8A%E5%A8%A0%E5%85%AC%E8%A1%A8"
-    },
-    {
-      "id": "37dbf91c8e54",
-      "keyword": "乃木坂46金川紗耶",
-      "watchlist": "public_topic",
-      "watchlistLabel": "エンタメ",
+      "watchlistLabel": "テクノロジー",
       "rank": 22,
       "previousRank": null,
       "rankChange": null,
@@ -2167,25 +1733,425 @@
       "evidenceChange": null,
       "topicSourceCount": 1,
       "topicSources": [
+        "テクノロジー"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 58
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%82%B9%E3%83%9E%E3%83%9B%E3%81%AE%E5%85%85%E9%9B%BB"
+    },
+    {
+      "id": "fc44425aab54",
+      "keyword": "五輪2連覇・堀米雄斗",
+      "watchlist": "public_topic",
+      "watchlistLabel": "スポーツ",
+      "rank": 23,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 58,
+      "previousScore": null,
+      "scoreChange": 58,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "スポーツ"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 58
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E4%BA%94%E8%BC%AA2%E9%80%A3%E8%A6%87%E3%83%BB%E5%A0%80%E7%B1%B3%E9%9B%84%E6%96%97"
+    },
+    {
+      "id": "7082937ef2ca",
+      "keyword": "相次ぐ情報流出",
+      "watchlist": "public_topic",
+      "watchlistLabel": "テクノロジー",
+      "rank": 23,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 58,
+      "previousScore": null,
+      "scoreChange": 58,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "テクノロジー"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 58
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E7%9B%B8%E6%AC%A1%E3%81%90%E6%83%85%E5%A0%B1%E6%B5%81%E5%87%BA"
+    },
+    {
+      "id": "653bc12b1e54",
+      "keyword": "パナソニック",
+      "watchlist": "public_topic",
+      "watchlistLabel": "スポーツ",
+      "rank": 24,
+      "previousRank": 1,
+      "rankChange": -23,
+      "score": 58,
+      "previousScore": 92,
+      "scoreChange": -34,
+      "yesterdayScore": 92,
+      "yesterdayChange": -34,
+      "direction": "down",
+      "trendStatus": "actual_topic",
+      "appearCount": 2,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": 2,
+      "evidenceChange": -1,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "スポーツ"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "19:51",
+          "score": 92
+        },
+        {
+          "time": "20:57",
+          "score": 58
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%91%E3%83%8A%E3%82%BD%E3%83%8B%E3%83%83%E3%82%AF"
+    },
+    {
+      "id": "c0d60ce7a6d1",
+      "keyword": "新しい伝説",
+      "watchlist": "public_topic",
+      "watchlistLabel": "スポーツ",
+      "rank": 25,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 58,
+      "previousScore": null,
+      "scoreChange": 58,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "スポーツ"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 58
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E6%96%B0%E3%81%97%E3%81%84%E4%BC%9D%E8%AA%AC"
+    },
+    {
+      "id": "8ae98a0c9cee",
+      "keyword": "森下暢仁",
+      "watchlist": "public_topic",
+      "watchlistLabel": "スポーツ",
+      "rank": 26,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 58,
+      "previousScore": null,
+      "scoreChange": 58,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "スポーツ"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 58
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E6%A3%AE%E4%B8%8B%E6%9A%A2%E4%BB%81"
+    },
+    {
+      "id": "2b5fa060f596",
+      "keyword": "超特急タカシこと松尾太陽",
+      "watchlist": "public_topic",
+      "watchlistLabel": "エンタメ",
+      "rank": 26,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 58,
+      "previousScore": null,
+      "scoreChange": 58,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
         "エンタメ"
       ],
       "realtimeCount": null,
-      "capturedAt": "2026-11-22T19:51:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 58
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E8%B6%85%E7%89%B9%E6%80%A5%E3%82%BF%E3%82%AB%E3%82%B7%E3%81%93%E3%81%A8%E6%9D%BE%E5%B0%BE%E5%A4%AA%E9%99%BD"
+    },
+    {
+      "id": "34a0565a33bc",
+      "keyword": "マイクロソフトは5割下落でアップルは上昇",
+      "watchlist": "public_topic",
+      "watchlistLabel": "テクノロジー",
+      "rank": 26,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 58,
+      "previousScore": null,
+      "scoreChange": 58,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "テクノロジー"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 58
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%BD%E3%83%95%E3%83%88%E3%81%AF5%E5%89%B2%E4%B8%8B%E8%90%BD%E3%81%A7%E3%82%A2%E3%83%83%E3%83%97%E3%83%AB%E3%81%AF%E4%B8%8A%E6%98%87"
+    },
+    {
+      "id": "8fe4755018d0",
+      "keyword": "自由契約公示された中日・マラー",
+      "watchlist": "public_topic",
+      "watchlistLabel": "スポーツ",
+      "rank": 27,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 58,
+      "previousScore": null,
+      "scoreChange": 58,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "スポーツ"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 58
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E8%87%AA%E7%94%B1%E5%A5%91%E7%B4%84%E5%85%AC%E7%A4%BA%E3%81%95%E3%82%8C%E3%81%9F%E4%B8%AD%E6%97%A5%E3%83%BB%E3%83%9E%E3%83%A9%E3%83%BC"
+    },
+    {
+      "id": "96a0ee35020e",
+      "keyword": "手のひらサイズだった保護猫",
+      "watchlist": "public_topic",
+      "watchlistLabel": "エンタメ",
+      "rank": 27,
+      "previousRank": null,
+      "rankChange": null,
+      "score": 58,
+      "previousScore": null,
+      "scoreChange": 58,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "new",
+      "trendStatus": "actual_topic",
+      "appearCount": 1,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "エンタメ"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 58
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E6%89%8B%E3%81%AE%E3%81%B2%E3%82%89%E3%82%B5%E3%82%A4%E3%82%BA%E3%81%A0%E3%81%A3%E3%81%9F%E4%BF%9D%E8%AD%B7%E7%8C%AB"
+    },
+    {
+      "id": "213bdac12329",
+      "keyword": "ロボット100万台超",
+      "watchlist": "public_topic",
+      "watchlistLabel": "テクノロジー",
+      "rank": 27,
+      "previousRank": 20,
+      "rankChange": -7,
+      "score": 58,
+      "previousScore": 58,
+      "scoreChange": 0,
+      "yesterdayScore": 58,
+      "yesterdayChange": 0,
+      "direction": "flat",
+      "trendStatus": "actual_topic",
+      "appearCount": 2,
+      "signalType": "topic_trend",
+      "evidenceCount": 1,
+      "previousEvidenceCount": 1,
+      "evidenceChange": 0,
+      "topicSourceCount": 1,
+      "topicSources": [
+        "テクノロジー"
+      ],
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
           "time": "19:51",
           "score": 58
+        },
+        {
+          "time": "20:57",
+          "score": 58
         }
       ],
-      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E4%B9%83%E6%9C%A8%E5%9D%8246%E9%87%91%E5%B7%9D%E7%B4%97%E8%80%B6"
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%AD%E3%83%9C%E3%83%83%E3%83%88100%E4%B8%87%E5%8F%B0%E8%B6%85"
+    },
+    {
+      "id": "f74038d79bf5",
+      "keyword": "自虐ネタ",
+      "watchlist": "sns_platform",
+      "watchlistLabel": "SNSトレンド",
+      "rank": 18,
+      "previousRank": 18,
+      "rankChange": 0,
+      "score": 45,
+      "previousScore": 45,
+      "scoreChange": 0,
+      "yesterdayScore": null,
+      "yesterdayChange": null,
+      "direction": "flat",
+      "trendStatus": "flat",
+      "appearCount": 18,
+      "signalType": "discovered_phrase",
+      "evidenceCount": 2,
+      "previousEvidenceCount": 2,
+      "evidenceChange": 0,
+      "topicSourceCount": null,
+      "topicSources": null,
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "09:45",
+          "score": 45
+        },
+        {
+          "time": "10:45",
+          "score": 45
+        },
+        {
+          "time": "20:16",
+          "score": 45
+        },
+        {
+          "time": "20:01",
+          "score": 45
+        },
+        {
+          "time": "19:44",
+          "score": 45
+        },
+        {
+          "time": "20:57",
+          "score": 45
+        }
+      ],
+      "observeUrl": "https://search.yahoo.co.jp/realtime/search?p=%E8%87%AA%E8%99%90%E3%83%8D%E3%82%BF"
     }
   ],
   "localObservations": [
     {
-      "id": "d41f60bd56a4",
-      "keyword": "地鶏と野菜巻き とりくら 天文館店",
+      "id": "5841b901d12c",
+      "keyword": "霧島横川蒸留所",
       "query": "KagoshimaniaX 鹿児島 グルメ イベント SNS",
-      "sourceHeadline": "鹿児島市の「地鶏と野菜巻き とりくら 天文館店」が食べログ焼き鳥百名店に初選出",
+      "sourceHeadline": "霧島横川蒸留所、坂本龍馬生誕日に限定ウイスキーを発売！薩長同盟をイメージした特別な一本",
       "sourceLabel": "KagoshimaniaX",
       "observationSeed": "KagoshimaniaX",
       "localSection": "local_media",
@@ -2206,21 +2172,21 @@
       "previousEvidenceCount": null,
       "evidenceChange": null,
       "realtimeCount": null,
-      "capturedAt": "2026-11-23T09:37:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "09:37",
+          "time": "20:57",
           "score": 78
         }
       ],
-      "observeUrl": "https://kagoshimaniax.com/tabelog-yakitori-hyakumeiten-2026-torikura/",
-      "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%9C%B0%E9%B6%8F%E3%81%A8%E9%87%8E%E8%8F%9C%E5%B7%BB%E3%81%8D%20%E3%81%A8%E3%82%8A%E3%81%8F%E3%82%89%20%E5%A4%A9%E6%96%87%E9%A4%A8%E5%BA%97"
+      "observeUrl": "https://kagoshimaniax.com/kirishima-yokogawa-distillery-ryoma-whisky-2026/",
+      "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=%E9%9C%A7%E5%B3%B6%E6%A8%AA%E5%B7%9D%E8%92%B8%E7%95%99%E6%89%80"
     },
     {
-      "id": "fcaa7fdd409f",
-      "keyword": "ダイソーPCスタンドを使ってみたが",
+      "id": "65ca8f5c6f86",
+      "keyword": "吉野家・すき家・ジョイフル",
       "query": "KagoshimaniaX 鹿児島 グルメ イベント SNS",
-      "sourceHeadline": "ダイソーPCスタンドを使ってみたが、僕には少し惜しい感じだった",
+      "sourceHeadline": "１０００円前後でひとり鍋！チェーン店のなべまとめ２０２６冬｜吉野家・すき家・ジョイフル",
       "sourceLabel": "KagoshimaniaX",
       "observationSeed": "KagoshimaniaX",
       "localSection": "local_media",
@@ -2241,15 +2207,15 @@
       "previousEvidenceCount": null,
       "evidenceChange": null,
       "realtimeCount": null,
-      "capturedAt": "2026-11-23T09:37:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "09:37",
+          "time": "20:57",
           "score": 78
         }
       ],
-      "observeUrl": "https://kagoshimaniax.com/daiso-pcstand/",
-      "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%80%E3%82%A4%E3%82%BD%E3%83%BCPC%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%89%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F%E3%81%8C"
+      "observeUrl": "https://kagoshimaniax.com/chain-nabe2026/",
+      "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%90%89%E9%87%8E%E5%AE%B6%E3%83%BB%E3%81%99%E3%81%8D%E5%AE%B6%E3%83%BB%E3%82%B8%E3%83%A7%E3%82%A4%E3%83%95%E3%83%AB"
     },
     {
       "id": "d7e334c107f7",
@@ -2275,12 +2241,8 @@
       "previousEvidenceCount": 1,
       "evidenceChange": 0,
       "realtimeCount": null,
-      "capturedAt": "2026-11-23T09:37:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
-        {
-          "time": "20:01",
-          "score": 77
-        },
         {
           "time": "10:09",
           "score": 77
@@ -2299,6 +2261,10 @@
         },
         {
           "time": "09:37",
+          "score": 77
+        },
+        {
+          "time": "20:57",
           "score": 77
         }
       ],
@@ -2329,12 +2295,8 @@
       "previousEvidenceCount": 1,
       "evidenceChange": 0,
       "realtimeCount": null,
-      "capturedAt": "2026-11-23T09:37:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
-        {
-          "time": "20:01",
-          "score": 77
-        },
         {
           "time": "10:09",
           "score": 77
@@ -2354,10 +2316,48 @@
         {
           "time": "09:37",
           "score": 77
+        },
+        {
+          "time": "20:57",
+          "score": 77
         }
       ],
       "observeUrl": "https://tjkagoshima.com/2025/06/02/news20250424/",
       "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=TJ%E3%82%AB%E3%82%B4%E3%82%B7%E3%83%9E%E5%85%AC%E5%BC%8F%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%20%E3%83%AA%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%A2%E3%83%AB%EF%BC%81"
+    },
+    {
+      "id": "b55bf6d684b4",
+      "keyword": "グランピングスポット人気ランキングTOP10！手ぶらで贅沢にア",
+      "query": "こしかの温泉 サウナ グランピング",
+      "sourceHeadline": "グランピングスポット人気ランキングTOP10！手ぶらで贅沢にアウトドアを満喫できる日本各地の体験型リゾートを紹介",
+      "sourceLabel": "Googleローカルニュース",
+      "observationSeed": "こしかの温泉",
+      "localSection": "local_leisure_islands",
+      "localSectionTitle": "温泉・離島・レジャー",
+      "localSectionDescription": "サウナ、温泉、屋久島、奄美、航路、旅行",
+      "localTier": "A",
+      "tags": [
+        "温泉"
+      ],
+      "score": 77,
+      "previousScore": null,
+      "scoreChange": 77,
+      "direction": "new",
+      "trendStatus": "candidate",
+      "signalType": "local_observation",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 77
+        }
+      ],
+      "observeUrl": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE0ta05pb09TMGI4dWVoTTJuT1h0N2N2V3JYZXNNUzV0dTRCaEFLam9ZRnNQRTBobkZiUkw4aHpKMWVzMWdfR09TWUFQd3VQX194NFdlX05n0gFbQVVfeXFMUC1NdTVwNzg4SVFYZ2FRb1dxdHdGblBpZm5GZk5iaUxnbENXRWpQMlVUS1ZtOURodFh2NDlZTFh2S2pRTnp4TFgyY3ZSQlVIUUczT3Z0VUNFZTdjWQ?oc=5",
+      "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%94%E3%83%B3%E3%82%B0%E3%82%B9%E3%83%9D%E3%83%83%E3%83%88%E4%BA%BA%E6%B0%97%E3%83%A9%E3%83%B3%E3%82%AD%E3%83%B3%E3%82%B0TOP10%EF%BC%81%E6%89%8B%E3%81%B6%E3%82%89%E3%81%A7%E8%B4%85%E6%B2%A2%E3%81%AB%E3%82%A2"
     },
     {
       "id": "1367d73713b0",
@@ -2383,12 +2383,8 @@
       "previousEvidenceCount": 1,
       "evidenceChange": 0,
       "realtimeCount": null,
-      "capturedAt": "2026-11-23T09:37:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
-        {
-          "time": "20:01",
-          "score": 77
-        },
         {
           "time": "10:09",
           "score": 77
@@ -2407,6 +2403,10 @@
         },
         {
           "time": "09:37",
+          "score": 77
+        },
+        {
+          "time": "20:57",
           "score": 77
         }
       ],
@@ -2437,12 +2437,8 @@
       "previousEvidenceCount": 1,
       "evidenceChange": 0,
       "realtimeCount": null,
-      "capturedAt": "2026-11-23T09:37:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
-        {
-          "time": "20:01",
-          "score": 77
-        },
         {
           "time": "10:09",
           "score": 77
@@ -2462,28 +2458,32 @@
         {
           "time": "09:37",
           "score": 77
+        },
+        {
+          "time": "20:57",
+          "score": 77
         }
       ],
       "observeUrl": "https://yokaguide.com/souvenior/41358.html",
       "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=%E5%98%89%E4%B9%8B%E5%8A%A9%E8%92%B8%E6%BA%9C%E6%89%80"
     },
     {
-      "id": "0ac9cc931bd0",
-      "keyword": "モーニング",
-      "query": "Kagomaga カゴマガ 鹿児島 サブカル VTuber",
-      "sourceHeadline": "モーニング",
-      "sourceLabel": "Kagomaga カゴマガ",
-      "observationSeed": "Kagomaga カゴマガ",
-      "localSection": "local_media",
-      "localSectionTitle": "地域メディア",
-      "localSectionDescription": "鹿児島の街ネタ、店舗、イベントを拾う起点",
-      "localTier": "B",
+      "id": "b777d18840d2",
+      "keyword": "8出発 グットリの北九州発・奄美大島2泊3日ホエールウォッチン",
+      "query": "奄美旅行 観光 SNS",
+      "sourceHeadline": "1/8出発 グットリの北九州発・奄美大島2泊3日ホエールウォッチングとマングローブカヌーが付いた観光バス付プランも",
+      "sourceLabel": "Googleローカルニュース",
+      "observationSeed": "奄美旅行",
+      "localSection": "local_leisure_islands",
+      "localSectionTitle": "温泉・離島・レジャー",
+      "localSectionDescription": "サウナ、温泉、屋久島、奄美、航路、旅行",
+      "localTier": "A",
       "tags": [
-        "カルチャー"
+        "離島"
       ],
-      "score": 64,
+      "score": 77,
       "previousScore": null,
-      "scoreChange": 64,
+      "scoreChange": 77,
       "direction": "new",
       "trendStatus": "candidate",
       "signalType": "local_observation",
@@ -2491,53 +2491,87 @@
       "previousEvidenceCount": null,
       "evidenceChange": null,
       "realtimeCount": null,
-      "capturedAt": "2026-11-23T09:37:00+09:00",
+      "capturedAt": "2026-11-23T20:57:00+09:00",
       "series": [
         {
-          "time": "09:37",
-          "score": 64
+          "time": "20:57",
+          "score": 77
         }
       ],
-      "observeUrl": "https://www.kagomaga.jp/?cat=713",
-      "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%A2%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0"
+      "observeUrl": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9LMEQyWDE4OE5vUWxyVjNyekFkQ2FZWGpMRFdsQ3FYamlOc3hYS1pGSV9BRTItUkRlaW9vbjBWT0NkRGlGTnNKY2w3MmlTdTlpanVRbFRBQU9lRTY4RnNNNldXUHZxV0dKOHc?oc=5",
+      "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=8%E5%87%BA%E7%99%BA%20%E3%82%B0%E3%83%83%E3%83%88%E3%83%AA%E3%81%AE%E5%8C%97%E4%B9%9D%E5%B7%9E%E7%99%BA%E3%83%BB%E5%A5%84%E7%BE%8E%E5%A4%A7%E5%B3%B62%E6%B3%8A3%E6%97%A5%E3%83%9B%E3%82%A8%E3%83%BC%E3%83%AB%E3%82%A6%E3%82%A9%E3%83%83%E3%83%81%E3%83%B3"
+    },
+    {
+      "id": "dd5ee6b75a5e",
+      "keyword": "ニッポン全国物産展2026",
+      "query": "おでかけカゴシマ グルメ 週末",
+      "sourceHeadline": "今週末は池袋サンシャインシティで日本全国の“うまいもの”を食べ尽くす？ 入場無料「ニッポン全国物産展2026」で食べたいご当地メシ＆スイーツを一挙解説｜グルメとフード",
+      "sourceLabel": "Googleローカルニュース",
+      "observationSeed": "おでかけカゴシマ",
+      "localSection": "local_media",
+      "localSectionTitle": "地域メディア",
+      "localSectionDescription": "鹿児島の街ネタ、店舗、イベントを拾う起点",
+      "localTier": "A",
+      "tags": [
+        "おでかけ"
+      ],
+      "score": 76,
+      "previousScore": null,
+      "scoreChange": 76,
+      "direction": "new",
+      "trendStatus": "candidate",
+      "signalType": "local_observation",
+      "evidenceCount": 1,
+      "previousEvidenceCount": null,
+      "evidenceChange": null,
+      "realtimeCount": null,
+      "capturedAt": "2026-11-23T20:57:00+09:00",
+      "series": [
+        {
+          "time": "20:57",
+          "score": 76
+        }
+      ],
+      "observeUrl": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE5KZnlMZnZ5ZXJHZ1RvRjItbjRpYlJvbk9SaGhMbXpLZXdzUnFkS3paeDJpMFo1ajNOMjREN1RtcmxuWm5kT01OMUl5eXA?oc=5",
+      "evidenceUrl": "https://search.yahoo.co.jp/realtime/search?p=%E3%83%8B%E3%83%83%E3%83%9D%E3%83%B3%E5%85%A8%E5%9B%BD%E7%89%A9%E7%94%A3%E5%B1%952026"
     }
   ],
   "context": {
-    "generatedAt": "2026-11-23T09:37:00+09:00",
+    "generatedAt": "2026-11-23T20:57:00+09:00",
     "weather": [
       {
         "id": "kagoshima",
         "label": "鹿児島",
-        "temperature": 13,
+        "temperature": 16,
         "high": 17,
         "low": 9,
-        "precipitation": 14,
-        "wind": 3,
-        "weatherCode": 0,
-        "summary": "晴れ",
+        "precipitation": 8,
+        "wind": 8,
+        "weatherCode": 2,
+        "summary": "くもり",
         "status": "fresh"
       },
       {
         "id": "yakushima",
         "label": "屋久島",
-        "temperature": 16,
-        "high": 21,
+        "temperature": 18,
+        "high": 20,
         "low": 15,
-        "precipitation": 0,
-        "wind": 8,
-        "weatherCode": 0,
+        "precipitation": 2,
+        "wind": 17,
+        "weatherCode": 1,
         "summary": "晴れ",
         "status": "fresh"
       },
       {
         "id": "amami",
         "label": "奄美",
-        "temperature": 21,
+        "temperature": 22,
         "high": 22,
         "low": 18,
         "precipitation": 39,
-        "wind": 11,
-        "weatherCode": 0,
+        "wind": 13,
+        "weatherCode": 1,
         "summary": "晴れ",
         "status": "fresh"
       },
@@ -2548,9 +2582,9 @@
         "high": 18,
         "low": 13,
         "precipitation": 0,
-        "wind": 3,
-        "weatherCode": 0,
-        "summary": "晴れ",
+        "wind": 8,
+        "weatherCode": 2,
+        "summary": "くもり",
         "status": "fresh"
       }
     ],
