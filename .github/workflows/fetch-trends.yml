@@ -10,6 +10,7 @@ on:
     - cron: "0 20,23,3,6 * * *"
 
 permissions:
+  actions: read
   contents: write
   pages: write
   id-token: write
@@ -22,9 +23,6 @@ jobs:
   update-and-deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -51,10 +49,35 @@ jobs:
           file_pattern: "data/*.json data/**/*.json"
 
       - name: Upload Pages artifact
+        id: upload
         uses: actions/upload-pages-artifact@v3
         with:
           path: "."
 
+    outputs:
+      artifact_id: ${{ steps.upload.outputs.artifact_id }}
+
+  deploy:
+    needs: update-and-deploy
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Wait for the uploaded Pages artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_ID: ${{ needs.update-and-deploy.outputs.artifact_id }}
+        run: |
+          for attempt in {1..24}; do
+            if gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" \
+              --jq '.artifacts[] | select(.name=="github-pages" and .expired==false) | .id' | grep -Fxq "$ARTIFACT_ID"; then
+              exit 0
+            fi
+            sleep 5
+          done
+          exit 1
+
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
